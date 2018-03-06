@@ -8,7 +8,6 @@
 .project
 .settings
 .cproject
-obj/
 patches/
 .vagrant/
 .vscode/
@@ -17,7 +16,3 @@ cov-int*
 # script-generated files
 docs/Manual.pdf
 README.pdf
-
-# build generated files
-/src/main/fc/settings_generated.h
-/src/main/fc/settings_generated.c
