@@ -183,8 +183,8 @@
 
 #undef USE_SERIALRX_SPEKTRUM
 #undef USE_SERIALRX_IBUS
-//#define SPEKTRUM_BIND
-//#define BIND_PIN                PA3
+#define SPEKTRUM_BIND
+#define BIND_PIN                PA3
 
 //#define USE_SERIAL_4WAY_BLHELI_INTERFACE
 
