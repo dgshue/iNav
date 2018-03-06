@@ -14,26 +14,26 @@
 	.file	"gps_i2cnav.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.d17ddedf70018507,"",%progbits
+	.section	.gnu.lto_.profile.39ddb340a2971503,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.inline.d17ddedf70018507,"",%progbits
+	.section	.gnu.lto_.inline.39ddb340a2971503,"",%progbits
 	.ascii	"x\234cf\300\016\230\340,\000\000\234\000\006"
 	.text
-	.section	.gnu.lto_.pureconst.d17ddedf70018507,"",%progbits
+	.section	.gnu.lto_.pureconst.39ddb340a2971503,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.symbol_nodes.d17ddedf70018507,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.39ddb340a2971503,"",%progbits
 	.ascii	"x\234cf```b\200\001\000\000L\000\006"
 	.text
-	.section	.gnu.lto_.refs.d17ddedf70018507,"",%progbits
+	.section	.gnu.lto_.refs.39ddb340a2971503,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.decls.d17ddedf70018507,"",%progbits
+	.section	.gnu.lto_.decls.39ddb340a2971503,"",%progbits
 	.ascii	"x\234cf``P\001\342\377@\000\244\030\030\2418\200\201"
 	.ascii	"\000\000\000\3208\004v"
 	.text
-	.section	.gnu.lto_.symtab.d17ddedf70018507,"",%progbits
+	.section	.gnu.lto_.symtab.39ddb340a2971503,"",%progbits
 	.text
 	.section	.gnu.lto_.opts,"",%progbits
 	.ascii	"'-fno-trapv' '-mthumb' '-mcpu=cortex-m3' '-ggdb3' '"

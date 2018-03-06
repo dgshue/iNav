@@ -14,10 +14,10 @@
 	.file	"light_led.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.8bff87061acb772c,"",%progbits
+	.section	.gnu.lto_.profile.be507634a58e0f58,"",%progbits
 	.ascii	"x\234cf```e\200\000F\206\006FS\000\002A\000\300"
 	.text
-	.section	.gnu.lto_.jmpfuncs.8bff87061acb772c,"",%progbits
+	.section	.gnu.lto_.jmpfuncs.be507634a58e0f58,"",%progbits
 	.ascii	"x\234cf\300\016\026Bif\006FF\306zF \203\211\221\221"
 	.ascii	"\271\276\236\011$\310\312\010\024`bbT\221b`\372\310"
 	.ascii	"\304x\377\311\371\213\034/\230~\202\344\030\2273J\201"
@@ -26,7 +26,7 @@
 	.ascii	"`\\\311\0101\360\374\203\303\375< Af&\006\306U@A\270"
 	.ascii	"m\030\3063\000\000X\000!\033"
 	.text
-	.section	.gnu.lto_.inline.8bff87061acb772c,"",%progbits
+	.section	.gnu.lto_.inline.be507634a58e0f58,"",%progbits
 	.ascii	"x\234cf\300\016\226Cif\006\006\016\001F\006&\266\017"
 	.ascii	"z\014l\013\344\231@bL\334\014\014\214\023\374\230\031"
 	.ascii	"\004$\030\231\0313?21\336\177r\376\"\307\013\246\237"
@@ -36,11 +36,11 @@
 	.ascii	",\022\305\010R\313\300\312\307\310\300\002\244\031\200"
 	.ascii	"\226\243(`\000\0007Z\027\246"
 	.text
-	.section	.gnu.lto_.pureconst.8bff87061acb772c,"",%progbits
+	.section	.gnu.lto_.pureconst.be507634a58e0f58,"",%progbits
 	.ascii	"x\234cf```g\200\000f\006\011f\011V\011\000\001\270\000"
 	.ascii	"^"
 	.text
-	.section	.gnu.lto_ledToggle.8bff87061acb772c,"",%progbits
+	.section	.gnu.lto_ledToggle.be507634a58e0f58,"",%progbits
 	.ascii	"x\234eP\317K\033a\020\2357\337f]\233\036\304S\310\245"
 	.ascii	"\245\020\274\271wO\275\371gH\321\320\006\264\207Xz\013"
 	.ascii	"~[#\344Tc(%\340\217\213H\265j\264\332\203\332K\216\005"
@@ -67,7 +67,7 @@
 	.ascii	"\330\263\314K\177$\233y\235\316\216\373\243\231\347"
 	.ascii	"/^\015\215\246G\372\207\311H\270\001FA\272j"
 	.text
-	.section	.gnu.lto_ledSet.8bff87061acb772c,"",%progbits
+	.section	.gnu.lto_ledSet.be507634a58e0f58,"",%progbits
 	.ascii	"x\234mR\337KTA\024\236o\346\356\356\335\275\353\"\321"
 	.ascii	"\203\354CFf\"\204\227\010z\351\305\267\236\373\013\""
 	.ascii	"Tj\301\014Tz\023\357\352V>\345\266D,\225Q-\245f\256"
@@ -108,7 +108,7 @@
 	.ascii	"P[S]Q%\024M\362h\235\036\251\243\255\306\232\352?\356"
 	.ascii	"\367D\306"
 	.text
-	.section	.gnu.lto_ledInit.8bff87061acb772c,"",%progbits
+	.section	.gnu.lto_ledInit.be507634a58e0f58,"",%progbits
 	.ascii	"x\234}T]O\224W\020\236\347\234\367k?d\0270j\366\306"
 	.ascii	"\246\324\250I\343&6\361\202\253\336\365g4DIKB\275XI"
 	.ascii	"\3234!\276\260\253xU\020\233\206Z\332\244\351\227V\205"
@@ -161,7 +161,7 @@
 	.ascii	"\215\271C\331\346\246W^my\271\271\361\300\236\375\224"
 	.ascii	"jhni\314\035lha\227\230\320\364/e\270\3533"
 	.text
-	.section	.gnu.lto_.symbol_nodes.8bff87061acb772c,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.be507634a58e0f58,"",%progbits
 	.ascii	"x\234U\212M\016\301P\024\205\277w\257\307cd\007\266"
 	.ascii	"cW\267\003!ab\005Rb#\252\365\233\030Y\000b(\261\003"
 	.ascii	"\361\252\006\355\231|\371\3169\012\\\371G\012\014\346"
@@ -171,12 +171,12 @@
 	.ascii	"S\015\344\223\327@\275\262\272E\217\314~\354\361\034"
 	.ascii	"\277\207\352\273\214\246%c?\253~\217H\276P\335;\230"
 	.text
-	.section	.gnu.lto_.refs.8bff87061acb772c,"",%progbits
+	.section	.gnu.lto_.refs.be507634a58e0f58,"",%progbits
 	.ascii	"x\234%\307\301\011\200@\020\305\320\374\3148\013\213"
 	.ascii	"`\033\366_\241\2129<H\0017\177B\202\255\216S\365]\037"
 	.ascii	"\270_\322\270\310\211\027\017\017\224\000\234"
 	.text
-	.section	.gnu.lto_.decls.8bff87061acb772c,"",%progbits
+	.section	.gnu.lto_.decls.be507634a58e0f58,"",%progbits
 	.ascii	"x\234\225YiTU\307\226\276u\352\302\035\270\\\214IL\232"
 	.ascii	"\356t\214\351\266\337\353N$\303\353\254\374xk\345)`"
 	.ascii	"\302\213xy\027L\354\341-\236QLXm\300\026|\235\254\325"
@@ -441,7 +441,7 @@
 	.ascii	"\376\3336AF\276_\262\352\253\200\200U\026\300\377\002"
 	.ascii	"\203\246s\335"
 	.text
-	.section	.gnu.lto_.symtab.8bff87061acb772c,"",%progbits
+	.section	.gnu.lto_.symtab.be507634a58e0f58,"",%progbits
 	.ascii	"ledToggle\000\000\000\000\000\000\000\000\000\000\000"
 	.ascii	"\000H\001\000\000ledSet\000\000\000\000\000\000\000"
 	.ascii	"\000\000\000\000\000M\001\000\000ledPolarity\000\000"

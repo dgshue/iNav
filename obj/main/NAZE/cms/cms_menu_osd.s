@@ -14,26 +14,26 @@
 	.file	"cms_menu_osd.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.b80c0f284f3e2d37,"",%progbits
+	.section	.gnu.lto_.profile.c502a8cd6627db19,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.inline.b80c0f284f3e2d37,"",%progbits
+	.section	.gnu.lto_.inline.c502a8cd6627db19,"",%progbits
 	.ascii	"x\234cf\300\016\230\340,\000\000\234\000\006"
 	.text
-	.section	.gnu.lto_.pureconst.b80c0f284f3e2d37,"",%progbits
+	.section	.gnu.lto_.pureconst.c502a8cd6627db19,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.symbol_nodes.b80c0f284f3e2d37,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.c502a8cd6627db19,"",%progbits
 	.ascii	"x\234cf```b\200\001\000\000L\000\006"
 	.text
-	.section	.gnu.lto_.refs.b80c0f284f3e2d37,"",%progbits
+	.section	.gnu.lto_.refs.c502a8cd6627db19,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.decls.b80c0f284f3e2d37,"",%progbits
+	.section	.gnu.lto_.decls.c502a8cd6627db19,"",%progbits
 	.ascii	"x\234cf``P\001\342\377@\000\244\030\030\2418\200\201"
 	.ascii	"\000\000\000\3208\004v"
 	.text
-	.section	.gnu.lto_.symtab.b80c0f284f3e2d37,"",%progbits
+	.section	.gnu.lto_.symtab.c502a8cd6627db19,"",%progbits
 	.text
 	.section	.gnu.lto_.opts,"",%progbits
 	.ascii	"'-fno-trapv' '-mthumb' '-mcpu=cortex-m3' '-ggdb3' '"

@@ -370,7 +370,7 @@
 #define NAZE 1
 #define __FORKNAME__ "inav"
 #define __TARGET__ "NAZE"
-#define __REVISION__ "3d51ccc"
+#define __REVISION__ "8d7eea1"
 # 1 "./src/main/sensors/compass.c"
 # 18 "./src/main/sensors/compass.c"
 # 1 "/usr/lib/gcc/arm-none-eabi/4.9.3/include/stdbool.h" 1 3 4
@@ -14095,6 +14095,11 @@ extern void assert_param(int val);
 #define BARO 
 #define USE_BARO_MS5611 
 #define USE_BARO_BMP280 
+
+#define MAG 
+#define USE_MAG_HMC5883 
+#define USE_MAG_QMC5883 
+#define MAG_HMC5883_ALIGN CW180_DEG
 # 116 "./src/main/target/NAZE/target.h"
 #define SOFTSERIAL_1_RX_PIN PA6
 #define SOFTSERIAL_1_TX_PIN PA7
@@ -14103,26 +14108,26 @@ extern void assert_param(int val);
 
 #define USE_I2C 
 #define I2C_DEVICE (I2CDEV_2)
-# 168 "./src/main/target/NAZE/target.h"
-#define USE_ADC 
-#define ADC_CHANNEL_1_PIN PB1
-#define ADC_CHANNEL_2_PIN PA4
-#define ADC_CHANNEL_3_PIN PA1
-#define CURRENT_METER_ADC_CHANNEL ADC_CHN_1
-#define VBAT_ADC_CHANNEL ADC_CHN_2
-#define RSSI_ADC_CHANNEL ADC_CHN_3
-# 184 "./src/main/target/NAZE/target.h"
+# 176 "./src/main/target/NAZE/target.h"
+#define NAV_AUTO_MAG_DECLINATION 
+#define NAV_GPS_GLITCH_DETECTION 
+
+
+
+
+
+
 #define USE_SERIALRX_SPEKTRUM 
 #undef USE_SERIALRX_IBUS
-#define SPEKTRUM_BIND 
-#define BIND_PIN PA3
+
+
 
 
 
 #define TARGET_MOTOR_COUNT 6
 
-#define DEFAULT_FEATURES FEATURE_VBAT
-#define DEFAULT_RX_FEATURE FEATURE_RX_PPM
+
+
 
 
 #define MAX_PWM_OUTPUT_PORTS 10
@@ -16839,13 +16844,272 @@ mag_t mag;
 extern const compassConfig_t pgResetTemplate_compassConfig; compassConfig_t compassConfig_System; compassConfig_t compassConfig_Copy; extern const pgRegistry_t compassConfig_Registry; const pgRegistry_t compassConfig_Registry __attribute__ ((section(".pg_registry"), used, aligned(4))) = { .pgn = 40 | (1 << 12), .size = sizeof(compassConfig_t) | PGR_SIZE_SYSTEM_FLAG, .address = (uint8_t*)&compassConfig_System, .copy = (uint8_t*)&compassConfig_Copy, .ptr = 0, .reset = {.ptr = (void*)&pgResetTemplate_compassConfig}, };
 
 
+#define MAG_HARDWARE_DEFAULT MAG_AUTODETECT
 
 
-#define MAG_HARDWARE_DEFAULT MAG_NONE
 
-const compassConfig_t pgResetTemplate_compassConfig __attribute__ ((section(".pg_resetdata"), used, aligned(2))) = { .mag_align = ALIGN_DEFAULT, .mag_hardware = MAG_NONE, .mag_declination = 0, .magCalibrationTimeLimit = 30 }
+const compassConfig_t pgResetTemplate_compassConfig __attribute__ ((section(".pg_resetdata"), used, aligned(2))) = { .mag_align = ALIGN_DEFAULT, .mag_hardware = MAG_AUTODETECT, .mag_declination = 0, .magCalibrationTimeLimit = 30 }
 
 
 
 
  ;
+
+
+
+static uint8_t magInit = 0;
+static uint8_t magUpdatedAtLeastOnce = 0;
+
+_Bool compassDetect(magDev_t *dev, magSensor_e magHardwareToUse)
+{
+    magSensor_e magHardware = MAG_NONE;
+    requestedSensors[SENSOR_INDEX_MAG] = magHardwareToUse;
+
+
+    const hmc5883Config_t *hmc5883Config = 0;
+
+
+    static const hmc5883Config_t nazeHmc5883Config_v1_v4 = {
+            .intTag = ((((1) + 1) << 4) | (12))
+    };
+    static const hmc5883Config_t nazeHmc5883Config_v5 = {
+            .intTag = ((((2) + 1) << 4) | (14))
+    };
+    if (hardwareRevision < NAZE32_REV5) {
+        hmc5883Config = &nazeHmc5883Config_v1_v4;
+    } else {
+        hmc5883Config = &nazeHmc5883Config_v5;
+    }
+
+
+
+    static const hmc5883Config_t extiHmc5883Config = {
+        .intTag = ((((2) + 1) << 4) | (14))
+    };
+
+    hmc5883Config = &extiHmc5883Config;
+
+
+
+
+    dev->magAlign = ALIGN_DEFAULT;
+
+    switch (magHardwareToUse) {
+    case MAG_AUTODETECT:
+    case MAG_HMC5883:
+
+        if (hmc5883lDetect(dev, hmc5883Config)) {
+
+            dev->magAlign = CW180_DEG;
+
+            magHardware = MAG_HMC5883;
+            break;
+        }
+
+
+        if (magHardwareToUse != MAG_AUTODETECT) {
+            break;
+        }
+
+    case MAG_AK8975:
+# 142 "./src/main/sensors/compass.c"
+        if (magHardwareToUse != MAG_AUTODETECT) {
+            break;
+        }
+
+    case MAG_AK8963:
+# 157 "./src/main/sensors/compass.c"
+        if (magHardwareToUse != MAG_AUTODETECT) {
+            break;
+        }
+
+    case MAG_GPS:
+
+        if (gpsMagDetect(dev)) {
+
+
+
+            magHardware = MAG_GPS;
+            break;
+        }
+
+
+        if (magHardwareToUse != MAG_AUTODETECT) {
+            break;
+        }
+
+    case MAG_MAG3110:
+# 187 "./src/main/sensors/compass.c"
+        if (magHardwareToUse != MAG_AUTODETECT) {
+            break;
+        }
+
+    case MAG_IST8310:
+# 202 "./src/main/sensors/compass.c"
+        if (magHardwareToUse != MAG_AUTODETECT) {
+            break;
+        }
+
+    case MAG_QMC5883:
+
+        if (qmc5883Detect(dev)) {
+
+
+
+            magHardware = MAG_QMC5883;
+            break;
+        }
+
+
+        if (magHardwareToUse != MAG_AUTODETECT) {
+            break;
+        }
+
+    case MAG_FAKE:
+
+
+
+
+
+
+
+        if (magHardwareToUse != MAG_AUTODETECT) {
+            break;
+        }
+
+    case MAG_NONE:
+        magHardware = MAG_NONE;
+        break;
+    }
+
+    addBootlogEvent6(BOOT_EVENT_MAG_DETECTION, BOOT_EVENT_FLAGS_NONE, magHardware, 0, 0, 0);
+
+    if (magHardware == MAG_NONE) {
+        sensorsClear(SENSOR_MAG);
+        return 0;
+    }
+
+    detectedSensors[SENSOR_INDEX_MAG] = magHardware;
+    sensorsSet(SENSOR_MAG);
+    return 1;
+}
+
+_Bool compassInit(void)
+{
+
+    mag.dev.bus = *gyroSensorBus();
+    if (!compassDetect(&mag.dev, compassConfig()->mag_hardware)) {
+        return 0;
+    }
+
+    ledSet(1, 1);
+    const _Bool ret = mag.dev.init(&mag.dev);
+    ledSet(1, 0);
+    if (ret) {
+        const int deg = compassConfig()->mag_declination / 100;
+        const int min = compassConfig()->mag_declination % 100;
+        mag.magneticDeclination = (deg + ((float)min * (1.0f / 60.0f))) * 10;
+        magInit = 1;
+    } else {
+        addBootlogEvent2(BOOT_EVENT_MAG_INIT_FAILED, BOOT_EVENT_FLAGS_ERROR);
+        sensorsClear(SENSOR_MAG);
+    }
+    if (compassConfig()->mag_align != ALIGN_DEFAULT) {
+        mag.dev.magAlign = compassConfig()->mag_align;
+    }
+
+    return ret;
+}
+
+_Bool compassIsHealthy(void)
+{
+    return (mag.magADC[X] != 0) || (mag.magADC[Y] != 0) || (mag.magADC[Z] != 0);
+}
+
+_Bool compassIsReady(void)
+{
+    return magUpdatedAtLeastOnce;
+}
+
+void compassUpdate(timeUs_t currentTimeUs)
+{
+    static sensorCalibrationState_t calState;
+    static timeUs_t calStartedAt = 0;
+    static int16_t magPrev[3];
+
+
+    if ((compassConfig()->magZero.raw[X] == 0) && (compassConfig()->magZero.raw[Y] == 0) && (compassConfig()->magZero.raw[Z] == 0)) {
+        (stateFlags &= ~(COMPASS_CALIBRATED));
+    }
+    else {
+        (stateFlags |= (COMPASS_CALIBRATED));
+    }
+
+    if (!mag.dev.read(&mag.dev)) {
+        mag.magADC[X] = 0;
+        mag.magADC[Y] = 0;
+        mag.magADC[Z] = 0;
+        return;
+    }
+
+    for (int axis = 0; axis < 3; axis++) {
+        mag.magADC[axis] = mag.dev.magADCRaw[axis];
+    }
+
+    if ((stateFlags & (CALIBRATE_MAG))) {
+        calStartedAt = currentTimeUs;
+
+        for (int axis = 0; axis < 3; axis++) {
+            compassConfigMutable()->magZero.raw[axis] = 0;
+            magPrev[axis] = 0;
+        }
+
+        beeper(BEEPER_ACTION_SUCCESS);
+
+        sensorCalibrationResetState(&calState);
+        (stateFlags &= ~(CALIBRATE_MAG));
+    }
+
+    if (magInit) {
+        mag.magADC[X] -= compassConfig()->magZero.raw[X];
+        mag.magADC[Y] -= compassConfig()->magZero.raw[Y];
+        mag.magADC[Z] -= compassConfig()->magZero.raw[Z];
+    }
+
+    if (calStartedAt != 0) {
+        if ((currentTimeUs - calStartedAt) < (compassConfig()->magCalibrationTimeLimit * 1000000)) {
+            ledToggle(0);
+
+            float diffMag = 0;
+            float avgMag = 0;
+
+            for (int axis = 0; axis < 3; axis++) {
+                diffMag += (mag.magADC[axis] - magPrev[axis]) * (mag.magADC[axis] - magPrev[axis]);
+                avgMag += (mag.magADC[axis] + magPrev[axis]) * (mag.magADC[axis] + magPrev[axis]) / 4.0f;
+            }
+
+
+            if ((avgMag > 0.01f) && ((diffMag / avgMag) > (0.14f * 0.14f))) {
+                sensorCalibrationPushSampleForOffsetCalculation(&calState, mag.magADC);
+
+                for (int axis = 0; axis < 3; axis++) {
+                    magPrev[axis] = mag.magADC[axis];
+                }
+            }
+        } else {
+            float magZerof[3];
+            sensorCalibrationSolveForOffset(&calState, magZerof);
+
+            for (int axis = 0; axis < 3; axis++) {
+                compassConfigMutable()->magZero.raw[axis] = lrintf(magZerof[axis]);
+            }
+
+            calStartedAt = 0;
+            saveConfigAndNotify();
+        }
+    }
+
+    alignSensors(mag.magADC, mag.dev.magAlign);
+
+    magUpdatedAtLeastOnce = 1;
+}

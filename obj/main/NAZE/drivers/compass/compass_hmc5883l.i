@@ -370,7 +370,7 @@
 #define NAZE 1
 #define __FORKNAME__ "inav"
 #define __TARGET__ "NAZE"
-#define __REVISION__ "3d51ccc"
+#define __REVISION__ "8d7eea1"
 # 1 "./src/main/drivers/compass/compass_hmc5883l.c"
 # 18 "./src/main/drivers/compass/compass_hmc5883l.c"
 # 1 "/usr/lib/gcc/arm-none-eabi/4.9.3/include/stdbool.h" 1 3 4
@@ -14096,6 +14096,11 @@ extern void assert_param(int val);
 #define BARO 
 #define USE_BARO_MS5611 
 #define USE_BARO_BMP280 
+
+#define MAG 
+#define USE_MAG_HMC5883 
+#define USE_MAG_QMC5883 
+#define MAG_HMC5883_ALIGN CW180_DEG
 # 116 "./src/main/target/NAZE/target.h"
 #define SOFTSERIAL_1_RX_PIN PA6
 #define SOFTSERIAL_1_TX_PIN PA7
@@ -14104,26 +14109,26 @@ extern void assert_param(int val);
 
 #define USE_I2C 
 #define I2C_DEVICE (I2CDEV_2)
-# 168 "./src/main/target/NAZE/target.h"
-#define USE_ADC 
-#define ADC_CHANNEL_1_PIN PB1
-#define ADC_CHANNEL_2_PIN PA4
-#define ADC_CHANNEL_3_PIN PA1
-#define CURRENT_METER_ADC_CHANNEL ADC_CHN_1
-#define VBAT_ADC_CHANNEL ADC_CHN_2
-#define RSSI_ADC_CHANNEL ADC_CHN_3
-# 184 "./src/main/target/NAZE/target.h"
+# 176 "./src/main/target/NAZE/target.h"
+#define NAV_AUTO_MAG_DECLINATION 
+#define NAV_GPS_GLITCH_DETECTION 
+
+
+
+
+
+
 #define USE_SERIALRX_SPEKTRUM 
 #undef USE_SERIALRX_IBUS
-#define SPEKTRUM_BIND 
-#define BIND_PIN PA3
+
+
 
 
 
 #define TARGET_MOTOR_COUNT 6
 
-#define DEFAULT_FEATURES FEATURE_VBAT
-#define DEFAULT_RX_FEATURE FEATURE_RX_PPM
+
+
 
 
 #define MAX_PWM_OUTPUT_PORTS 10
@@ -14137,3 +14142,2072 @@ extern void assert_param(int val);
 #define USED_TIMERS ( TIM_N(1) | TIM_N(2) | TIM_N(3) | TIM_N(4) )
 # 79 "./src/main/platform.h" 2
 # 24 "./src/main/drivers/compass/compass_hmc5883l.c" 2
+
+
+
+# 1 "./src/main/build/debug.h" 1
+# 18 "./src/main/build/debug.h"
+#define DEBUG16_VALUE_COUNT 4
+extern int16_t debug[4];
+extern uint8_t debugMode;
+
+#define DEBUG_SET(mode,index,value) {if (debugMode == (mode)) {debug[(index)] = (value);}}
+
+#define DEBUG_SECTION_TIMES 
+
+
+# 1 "./src/main/common/time.h" 1
+# 18 "./src/main/common/time.h"
+       
+
+
+
+
+
+
+typedef int32_t timeDelta_t;
+
+typedef uint32_t timeMs_t ;
+
+
+typedef uint64_t timeUs_t;
+#define TIMEUS_MAX UINT64_MAX
+
+
+
+
+
+static inline timeDelta_t cmpTimeUs(timeUs_t a, timeUs_t b) { return (timeDelta_t)(a - b); }
+# 28 "./src/main/build/debug.h" 2
+extern timeUs_t sectionTimes[2][4];
+
+#define TIME_SECTION_BEGIN(index) { extern timeUs_t sectionTimes[2][4]; sectionTimes[0][index] = micros(); }
+
+
+
+
+#define TIME_SECTION_END(index) { extern timeUs_t sectionTimes[2][4]; sectionTimes[1][index] = micros(); debug[index] = sectionTimes[1][index] - sectionTimes[0][index]; }
+# 47 "./src/main/build/debug.h"
+typedef enum {
+    DEBUG_NONE,
+    DEBUG_GYRO,
+    DEBUG_NOTCH,
+    DEBUG_NAV_LANDING_DETECTOR,
+    DEBUG_FW_CLIMB_RATE_TO_ALTITUDE,
+    DEBUG_RANGEFINDER,
+    DEBUG_RANGEFINDER_QUALITY,
+    DEBUG_PITOT,
+    DEBUG_COUNT
+} debugType_e;
+# 28 "./src/main/drivers/compass/compass_hmc5883l.c" 2
+
+# 1 "./src/main/common/axis.h" 1
+# 18 "./src/main/common/axis.h"
+       
+
+typedef enum {
+    X = 0,
+    Y,
+    Z
+} axis_e;
+
+#define XYZ_AXIS_COUNT 3
+
+
+typedef enum {
+    FD_ROLL = 0,
+    FD_PITCH,
+    FD_YAW
+} flight_dynamics_index_t;
+
+#define FLIGHT_DYNAMICS_INDEX_COUNT 3
+
+typedef enum {
+    AI_ROLL = 0,
+    AI_PITCH,
+} angle_index_t;
+
+#define ANGLE_INDEX_COUNT 2
+# 30 "./src/main/drivers/compass/compass_hmc5883l.c" 2
+# 1 "./src/main/common/maths.h" 1
+# 18 "./src/main/common/maths.h"
+       
+
+
+#define sq(x) ((x)*(x))
+
+
+
+#define FAST_MATH 
+
+
+
+#define M_PIf 3.14159265358979323846f
+#define M_LN2f 0.69314718055994530942f
+#define M_Ef 2.71828182845904523536f
+
+#define RAD (M_PIf / 180.0f)
+
+#define DEGREES_TO_CENTIDEGREES(angle) ((angle) * 100)
+#define CENTIDEGREES_TO_DEGREES(angle) ((angle) / 100)
+
+#define CENTIDEGREES_TO_DECIDEGREES(angle) ((angle) / 10)
+#define DECIDEGREES_TO_CENTIDEGREES(angle) ((angle) * 10)
+
+#define DEGREES_TO_DECIDEGREES(angle) ((angle) * 10)
+#define DECIDEGREES_TO_DEGREES(angle) ((angle) / 10)
+
+#define DEGREES_PER_DEKADEGREE 10
+#define DEGREES_TO_DEKADEGREES(angle) ((angle) / DEGREES_PER_DEKADEGREE)
+#define DEKADEGREES_TO_DEGREES(angle) ((angle) * DEGREES_PER_DEKADEGREE)
+
+#define DEGREES_TO_RADIANS(angle) ((angle) * RAD)
+#define RADIANS_TO_DEGREES(angle) ((angle) / RAD)
+#define DECIDEGREES_TO_RADIANS(angle) (((angle) / 10.0f) * RAD)
+#define RADIANS_TO_DECIDEGREES(angle) (((angle) * 10.0f) / RAD)
+
+#define RADIANS_TO_CENTIDEGREES(angle) (((angle) * 100.0f) / RAD)
+#define CENTIDEGREES_TO_RADIANS(angle) (((angle) / 100.0f) * RAD)
+
+
+#define _CHOOSE2(binoper,lexpr,lvar,rexpr,rvar) ( __extension__ ({ __typeof__(lexpr) lvar = (lexpr); __typeof__(rexpr) rvar = (rexpr); lvar binoper rvar ? lvar : rvar; }))
+
+
+
+
+
+#define _CHOOSE_VAR2(prefix,unique) prefix ##unique
+#define _CHOOSE_VAR(prefix,unique) _CHOOSE_VAR2(prefix, unique)
+#define _CHOOSE(binoper,lexpr,rexpr) _CHOOSE2( binoper, lexpr, _CHOOSE_VAR(_left, __COUNTER__), rexpr, _CHOOSE_VAR(_right, __COUNTER__) )
+
+
+
+
+
+#define MIN(a,b) _CHOOSE(<, a, b)
+#define MAX(a,b) _CHOOSE(>, a, b)
+
+#define _ABS_II(x,var) ( __extension__ ({ __typeof__(x) var = (x); var < 0 ? -var : var; }))
+
+
+
+
+#define _ABS_I(x,var) _ABS_II(x, var)
+#define ABS(x) _ABS_I(x, _CHOOSE_VAR(_abs, __COUNTER__))
+
+typedef struct stdev_s
+{
+    float m_oldM, m_newM, m_oldS, m_newS;
+    int m_n;
+} stdev_t;
+
+
+typedef struct fp_vector {
+    float X;
+    float Y;
+    float Z;
+} t_fp_vector_def;
+
+typedef union {
+    float A[3];
+    t_fp_vector_def V;
+} t_fp_vector;
+
+
+
+typedef struct fp_angles {
+    float roll;
+    float pitch;
+    float yaw;
+} fp_angles_def;
+
+typedef union {
+    float raw[3];
+    fp_angles_def angles;
+} fp_angles_t;
+
+typedef struct filterWithBufferSample_s {
+    float value;
+    uint32_t timestamp;
+} filterWithBufferSample_t;
+
+typedef struct filterWithBufferState_s {
+    uint16_t filter_size;
+    uint16_t sample_index;
+    filterWithBufferSample_t * samples;
+} filterWithBufferState_t;
+
+typedef struct {
+    float XtY[4];
+    float XtX[4][4];
+} sensorCalibrationState_t;
+
+void sensorCalibrationResetState(sensorCalibrationState_t * state);
+void sensorCalibrationPushSampleForOffsetCalculation(sensorCalibrationState_t * state, int32_t sample[3]);
+void sensorCalibrationPushSampleForScaleCalculation(sensorCalibrationState_t * state, int axis, int32_t sample[3], int target);
+void sensorCalibrationSolveForOffset(sensorCalibrationState_t * state, float result[3]);
+void sensorCalibrationSolveForScale(sensorCalibrationState_t * state, float result[3]);
+
+int gcd(int num, int denom);
+int32_t applyDeadband(int32_t value, int32_t deadband);
+
+int constrain(int amt, int low, int high);
+float constrainf(float amt, float low, float high);
+
+void devClear(stdev_t *dev);
+void devPush(stdev_t *dev, float x);
+float devVariance(stdev_t *dev);
+float devStandardDeviation(stdev_t *dev);
+float degreesToRadians(int16_t degrees);
+
+int scaleRange(int x, int srcMin, int srcMax, int destMin, int destMax);
+float scaleRangef(float x, float srcMin, float srcMax, float destMin, float destMax);
+
+void normalizeV(struct fp_vector *src, struct fp_vector *dest);
+
+void rotateV(struct fp_vector *v, fp_angles_t *delta);
+void buildRotationMatrix(fp_angles_t *delta, float matrix[3][3]);
+
+int32_t wrap_18000(int32_t angle);
+int32_t wrap_36000(int32_t angle);
+
+int32_t quickMedianFilter3(int32_t * v);
+int32_t quickMedianFilter5(int32_t * v);
+int32_t quickMedianFilter7(int32_t * v);
+int32_t quickMedianFilter9(int32_t * v);
+
+
+float sin_approx(float x);
+float cos_approx(float x);
+float atan2_approx(float y, float x);
+float acos_approx(float x);
+#define tan_approx(x) (sin_approx(x) / cos_approx(x))
+# 177 "./src/main/common/maths.h"
+void arraySubInt32(int32_t *dest, int32_t *array1, int32_t *array2, int count);
+
+float bellCurve(const float x, const float curveWidth);
+# 31 "./src/main/drivers/compass/compass_hmc5883l.c" 2
+
+# 1 "./src/main/drivers/time.h" 1
+# 18 "./src/main/drivers/time.h"
+       
+
+
+
+
+
+void delayMicroseconds(timeUs_t us);
+void delay(timeMs_t ms);
+
+timeUs_t micros(void);
+timeUs_t microsISR(void);
+timeMs_t millis(void);
+
+uint32_t ticks(void);
+timeDelta_t ticks_diff_us(uint32_t begin, uint32_t end);
+# 33 "./src/main/drivers/compass/compass_hmc5883l.c" 2
+# 1 "./src/main/drivers/nvic.h" 1
+
+       
+
+
+
+#define NVIC_PRIO_MAX NVIC_BUILD_PRIORITY(0, 1)
+#define NVIC_PRIO_TIMER NVIC_BUILD_PRIORITY(1, 1)
+#define NVIC_PRIO_BARO_EXTI NVIC_BUILD_PRIORITY(0x0f, 0x0f)
+#define NVIC_PRIO_SONAR_EXTI NVIC_BUILD_PRIORITY(2, 0)
+#define NVIC_PRIO_TRANSPONDER_DMA NVIC_BUILD_PRIORITY(3, 0)
+#define NVIC_PRIO_MPU_INT_EXTI NVIC_BUILD_PRIORITY(0x0f, 0x0f)
+#define NVIC_PRIO_MAG_INT_EXTI NVIC_BUILD_PRIORITY(0x0f, 0x0f)
+#define NVIC_PRIO_WS2811_DMA NVIC_BUILD_PRIORITY(1, 2)
+#define NVIC_PRIO_SERIALUART1_TXDMA NVIC_BUILD_PRIORITY(1, 1)
+#define NVIC_PRIO_SERIALUART1_RXDMA NVIC_BUILD_PRIORITY(1, 1)
+#define NVIC_PRIO_SERIALUART1 NVIC_BUILD_PRIORITY(1, 1)
+#define NVIC_PRIO_SERIALUART2_TXDMA NVIC_BUILD_PRIORITY(1, 0)
+#define NVIC_PRIO_SERIALUART2_RXDMA NVIC_BUILD_PRIORITY(1, 1)
+#define NVIC_PRIO_SERIALUART2 NVIC_BUILD_PRIORITY(1, 2)
+#define NVIC_PRIO_SERIALUART3_TXDMA NVIC_BUILD_PRIORITY(1, 0)
+#define NVIC_PRIO_SERIALUART3_RXDMA NVIC_BUILD_PRIORITY(1, 1)
+#define NVIC_PRIO_SERIALUART3 NVIC_BUILD_PRIORITY(1, 2)
+#define NVIC_PRIO_SERIALUART4_TXDMA NVIC_BUILD_PRIORITY(1, 0)
+#define NVIC_PRIO_SERIALUART4_RXDMA NVIC_BUILD_PRIORITY(1, 1)
+#define NVIC_PRIO_SERIALUART4 NVIC_BUILD_PRIORITY(1, 2)
+#define NVIC_PRIO_SERIALUART5_TXDMA NVIC_BUILD_PRIORITY(1, 0)
+#define NVIC_PRIO_SERIALUART5_RXDMA NVIC_BUILD_PRIORITY(1, 1)
+#define NVIC_PRIO_SERIALUART5 NVIC_BUILD_PRIORITY(1, 2)
+#define NVIC_PRIO_SERIALUART6_TXDMA NVIC_BUILD_PRIORITY(1, 0)
+#define NVIC_PRIO_SERIALUART6_RXDMA NVIC_BUILD_PRIORITY(1, 1)
+#define NVIC_PRIO_SERIALUART6 NVIC_BUILD_PRIORITY(1, 2)
+#define NVIC_PRIO_SERIALUART7_TXDMA NVIC_BUILD_PRIORITY(1, 0)
+#define NVIC_PRIO_SERIALUART7_RXDMA NVIC_BUILD_PRIORITY(1, 1)
+#define NVIC_PRIO_SERIALUART7 NVIC_BUILD_PRIORITY(1, 2)
+#define NVIC_PRIO_SERIALUART8_TXDMA NVIC_BUILD_PRIORITY(1, 0)
+#define NVIC_PRIO_SERIALUART8_RXDMA NVIC_BUILD_PRIORITY(1, 1)
+#define NVIC_PRIO_SERIALUART8 NVIC_BUILD_PRIORITY(1, 2)
+#define NVIC_PRIO_I2C_ER NVIC_BUILD_PRIORITY(0, 0)
+#define NVIC_PRIO_I2C_EV NVIC_BUILD_PRIORITY(0, 0)
+#define NVIC_PRIO_USB NVIC_BUILD_PRIORITY(2, 0)
+#define NVIC_PRIO_USB_WUP NVIC_BUILD_PRIORITY(1, 0)
+#define NVIC_PRIO_SONAR_ECHO NVIC_BUILD_PRIORITY(0x0f, 0x0f)
+#define NVIC_PRIO_MPU_DATA_READY NVIC_BUILD_PRIORITY(0x0f, 0x0f)
+#define NVIC_PRIO_MAG_DATA_READY NVIC_BUILD_PRIORITY(0x0f, 0x0f)
+#define NVIC_PRIO_CALLBACK NVIC_BUILD_PRIORITY(0x0f, 0x0f)
+#define NVIC_PRIO_MAX7456_DMA NVIC_BUILD_PRIORITY(3, 0)
+# 56 "./src/main/drivers/nvic.h"
+#define NVIC_PRIORITY_GROUPING NVIC_PriorityGroup_2
+#define NVIC_BUILD_PRIORITY(base,sub) (((((base)<<(4-(7-(NVIC_PRIORITY_GROUPING>>8))))|((sub)&(0x0f>>(7-(NVIC_PRIORITY_GROUPING>>8)))))<<4)&0xf0)
+#define NVIC_PRIORITY_BASE(prio) (((prio)>>(4-(7-(NVIC_PRIORITY_GROUPING>>8))))>>4)
+#define NVIC_PRIORITY_SUB(prio) (((prio)&(0x0f>>(7-(NVIC_PRIORITY_GROUPING>>8))))>>4)
+# 34 "./src/main/drivers/compass/compass_hmc5883l.c" 2
+# 1 "./src/main/drivers/io.h" 1
+       
+
+
+
+
+
+# 1 "./src/main/drivers/resource.h" 1
+
+       
+
+#define RESOURCE_INDEX(x) (x + 1)
+
+typedef enum {
+    OWNER_FREE = 0,
+    OWNER_PWMINPUT,
+    OWNER_PPMINPUT,
+    OWNER_MOTOR,
+    OWNER_SERVO,
+    OWNER_SOFTSERIAL,
+    OWNER_ADC,
+    OWNER_SERIAL,
+    OWNER_PINDEBUG,
+    OWNER_TIMER,
+    OWNER_RANGEFINDER,
+    OWNER_SYSTEM,
+    OWNER_SPI,
+    OWNER_I2C,
+    OWNER_SDCARD,
+    OWNER_FLASH,
+    OWNER_USB,
+    OWNER_BEEPER,
+    OWNER_OSD,
+    OWNER_BARO,
+    OWNER_MPU,
+    OWNER_INVERTER,
+    OWNER_LED_STRIP,
+    OWNER_LED,
+    OWNER_RX,
+    OWNER_TX,
+    OWNER_SOFTSPI,
+    OWNER_RX_SPI,
+    OWNER_VTX,
+    OWNER_TOTAL_COUNT
+} resourceOwner_t;
+
+extern const char * const ownerNames[OWNER_TOTAL_COUNT];
+
+
+
+typedef enum {
+    RESOURCE_NONE = 0,
+    RESOURCE_INPUT, RESOURCE_OUTPUT, RESOURCE_IO,
+    RESOURCE_TIMER,
+    RESOURCE_UART_TX, RESOURCE_UART_RX, RESOURCE_UART_TXRX,
+    RESOURCE_EXTI,
+    RESOURCE_I2C_SCL, RESOURCE_I2C_SDA,
+    RESOURCE_SPI_SCK, RESOURCE_SPI_MOSI, RESOURCE_SPI_MISO, RESOURCE_SPI_CS,
+    RESOURCE_ADC_CH1, RESOURCE_ADC_CH2, RESOURCE_ADC_CH3, RESOURCE_ADC_CH4,
+    RESOURCE_RX_CE,
+    RESOURCE_TOTAL_COUNT
+} resourceType_t;
+
+extern const char * const resourceNames[RESOURCE_TOTAL_COUNT];
+# 8 "./src/main/drivers/io.h" 2
+
+# 1 "./src/main/drivers/io_types.h" 1
+       
+
+
+
+
+
+typedef uint8_t ioTag_t;
+typedef void* IO_t;
+
+
+#define IOTAG_NONE ((ioTag_t)0)
+
+
+#define IO_NONE ((IO_t)0)
+# 28 "./src/main/drivers/io_types.h"
+typedef uint8_t ioConfig_t;
+# 10 "./src/main/drivers/io.h" 2
+
+
+
+
+
+
+#define IO_TAG(pinid) DEFIO_TAG(pinid)
+
+
+
+
+#define IO_CONFIG(mode,speed) ((mode) | (speed))
+
+#define IOCFG_OUT_PP IO_CONFIG(GPIO_Mode_Out_PP, GPIO_Speed_2MHz)
+#define IOCFG_OUT_OD IO_CONFIG(GPIO_Mode_Out_OD, GPIO_Speed_2MHz)
+#define IOCFG_AF_PP IO_CONFIG(GPIO_Mode_AF_PP, GPIO_Speed_2MHz)
+#define IOCFG_AF_OD IO_CONFIG(GPIO_Mode_AF_OD, GPIO_Speed_2MHz)
+#define IOCFG_IPD IO_CONFIG(GPIO_Mode_IPD, GPIO_Speed_2MHz)
+#define IOCFG_IPU IO_CONFIG(GPIO_Mode_IPU, GPIO_Speed_2MHz)
+#define IOCFG_IN_FLOATING IO_CONFIG(GPIO_Mode_IN_FLOATING, GPIO_Speed_2MHz)
+# 79 "./src/main/drivers/io.h"
+# 1 "./src/main/drivers/io_def.h" 1
+       
+
+# 1 "./src/main/common/utils.h" 1
+# 18 "./src/main/common/utils.h"
+       
+
+# 1 "/usr/lib/gcc/arm-none-eabi/4.9.3/include/stddef.h" 1 3 4
+# 21 "./src/main/common/utils.h" 2
+
+
+#define ARRAYLEN(x) (sizeof(x) / sizeof((x)[0]))
+#define ARRAYEND(x) (&(x)[ARRAYLEN(x)])
+
+#define CONST_CAST(type,value) ((type)(value))
+
+#define CONCAT_HELPER(x,y) x ## y
+#define CONCAT(x,y) CONCAT_HELPER(x, y)
+
+#define STR_HELPER(x) #x
+#define STR(x) STR_HELPER(x)
+
+#define EXPAND_I(x) x
+#define EXPAND(x) EXPAND_I(x)
+
+
+#define UNUSED(x) (void)(x)
+
+#define BUILD_BUG_ON(condition) ((void)sizeof(char[1 - 2*!!(condition)]))
+
+#define BIT(x) (1 << (x))
+
+#define STATIC_ASSERT(condition,name) typedef char assert_failed_ ## name [(condition) ? 1 : -1 ] __attribute__((unused))
+
+
+
+
+
+#define BITCOUNT(x) (((BX_(x)+(BX_(x)>>4)) & 0x0F0F0F0F) % 255)
+#define BX_(x) ((x) - (((x)>>1)&0x77777777) - (((x)>>2)&0x33333333) - (((x)>>3)&0x11111111))
+
+
+
+
+
+
+
+#define LOG2_8BIT(v) (8 - 90/(((v)/4+14)|1) - 2/((v)/2+1))
+#define LOG2_16BIT(v) (8*((v)>255) + LOG2_8BIT((v) >>8*((v)>255)))
+#define LOG2_32BIT(v) (16*((v)>65535L) + LOG2_16BIT((v)*1L >>16*((v)>65535L)))
+#define LOG2_64BIT(v) (32*((v)/2L>>31 > 0) + LOG2_32BIT((v)*1L >>16*((v)/2L>>31 > 0) >>16*((v)/2L>>31 > 0)))
+# 74 "./src/main/common/utils.h"
+#define container_of(ptr,type,member) ( __extension__ ({ const typeof( ((type *)0)->member ) *__mptr = (ptr); (type *)( (char *)__mptr - offsetof(type,member) );}))
+
+
+
+static inline int16_t cmp16(uint16_t a, uint16_t b) { return a-b; }
+static inline int32_t cmp32(uint32_t a, uint32_t b) { return a-b; }
+# 88 "./src/main/common/utils.h"
+void * memcpy_fn ( void * destination, const void * source, size_t num ) asm("memcpy");
+# 97 "./src/main/common/utils.h"
+#define FALLTHROUGH do {} while(0)
+# 4 "./src/main/drivers/io_def.h" 2
+
+
+
+#define DEFIO_TAG(pinid) CONCAT(DEFIO_TAG__, pinid)
+#define DEFIO_TAG__NONE 0
+#define DEFIO_TAG_E(pinid) CONCAT(DEFIO_TAG_E__, pinid)
+#define DEFIO_TAG_E__NONE 0
+
+
+
+
+
+#define DEFIO_REC(pinid) CONCAT(DEFIO_REC__, pinid)
+#define DEFIO_REC__NONE NULL
+
+#define DEFIO_IO(pinid) (IO_t)DEFIO_REC(pinid)
+
+
+
+#define DEFIO_REC_INDEXED(idx) (ioRecs + (idx))
+
+
+#define DEFIO_TAG_MAKE(gpioid,pin) ((((gpioid) + 1) << 4) | (pin))
+#define DEFIO_TAG_ISEMPTY(tag) (!(tag))
+#define DEFIO_TAG_GPIOID(tag) (((tag) >> 4) - 1)
+#define DEFIO_TAG_PIN(tag) ((tag) & 0x0f)
+
+
+
+
+# 1 "./src/main/drivers/io_def_generated.h" 1
+       
+
+
+
+
+
+
+
+#define DEFIO_PORT_A_USED_MASK TARGET_IO_PORTA
+#define DEFIO_PORT_A_USED_COUNT BITCOUNT(DEFIO_PORT_A_USED_MASK)
+
+
+
+
+#define DEFIO_PORT_A_OFFSET (0)
+
+
+#define DEFIO_PORT_B_USED_MASK TARGET_IO_PORTB
+#define DEFIO_PORT_B_USED_COUNT BITCOUNT(DEFIO_PORT_B_USED_MASK)
+
+
+
+
+#define DEFIO_PORT_B_OFFSET (DEFIO_PORT_A_USED_COUNT)
+
+
+#define DEFIO_PORT_C_USED_MASK TARGET_IO_PORTC
+#define DEFIO_PORT_C_USED_COUNT BITCOUNT(DEFIO_PORT_C_USED_MASK)
+
+
+
+
+#define DEFIO_PORT_C_OFFSET (DEFIO_PORT_A_USED_COUNT+DEFIO_PORT_B_USED_COUNT)
+
+
+
+
+
+#define DEFIO_PORT_D_USED_MASK 0
+#define DEFIO_PORT_D_USED_COUNT 0
+
+#define DEFIO_PORT_D_OFFSET (DEFIO_PORT_A_USED_COUNT+DEFIO_PORT_B_USED_COUNT+DEFIO_PORT_C_USED_COUNT)
+
+
+
+
+
+#define DEFIO_PORT_E_USED_MASK 0
+#define DEFIO_PORT_E_USED_COUNT 0
+
+#define DEFIO_PORT_E_OFFSET (DEFIO_PORT_A_USED_COUNT+DEFIO_PORT_B_USED_COUNT+DEFIO_PORT_C_USED_COUNT+DEFIO_PORT_D_USED_COUNT)
+
+
+
+
+
+#define DEFIO_PORT_F_USED_MASK 0
+#define DEFIO_PORT_F_USED_COUNT 0
+
+#define DEFIO_PORT_F_OFFSET (DEFIO_PORT_A_USED_COUNT+DEFIO_PORT_B_USED_COUNT+DEFIO_PORT_C_USED_COUNT+DEFIO_PORT_D_USED_COUNT+DEFIO_PORT_E_USED_COUNT)
+
+
+
+
+
+#define DEFIO_PORT_G_USED_MASK 0
+#define DEFIO_PORT_G_USED_COUNT 0
+
+#define DEFIO_PORT_G_OFFSET (DEFIO_PORT_A_USED_COUNT+DEFIO_PORT_B_USED_COUNT+DEFIO_PORT_C_USED_COUNT+DEFIO_PORT_D_USED_COUNT+DEFIO_PORT_E_USED_COUNT+DEFIO_PORT_F_USED_COUNT)
+
+
+
+
+#define DEFIO_GPIOID__A 0
+#define DEFIO_GPIOID__B 1
+#define DEFIO_GPIOID__C 2
+#define DEFIO_GPIOID__D 3
+#define DEFIO_GPIOID__E 4
+#define DEFIO_GPIOID__F 5
+#define DEFIO_GPIOID__G 6
+
+
+
+
+
+#define DEFIO_TAG__PA0 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 0)
+#define DEFIO_TAG_E__PA0 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 0)
+#define DEFIO_REC__PA0 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_A_USED_MASK & (BIT(0) - 1)) + 0)
+
+
+
+
+
+
+#define DEFIO_TAG__PA1 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 1)
+#define DEFIO_TAG_E__PA1 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 1)
+#define DEFIO_REC__PA1 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_A_USED_MASK & (BIT(1) - 1)) + 0)
+
+
+
+
+
+
+#define DEFIO_TAG__PA2 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 2)
+#define DEFIO_TAG_E__PA2 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 2)
+#define DEFIO_REC__PA2 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_A_USED_MASK & (BIT(2) - 1)) + 0)
+
+
+
+
+
+
+#define DEFIO_TAG__PA3 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 3)
+#define DEFIO_TAG_E__PA3 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 3)
+#define DEFIO_REC__PA3 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_A_USED_MASK & (BIT(3) - 1)) + 0)
+
+
+
+
+
+
+#define DEFIO_TAG__PA4 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 4)
+#define DEFIO_TAG_E__PA4 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 4)
+#define DEFIO_REC__PA4 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_A_USED_MASK & (BIT(4) - 1)) + 0)
+
+
+
+
+
+
+#define DEFIO_TAG__PA5 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 5)
+#define DEFIO_TAG_E__PA5 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 5)
+#define DEFIO_REC__PA5 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_A_USED_MASK & (BIT(5) - 1)) + 0)
+
+
+
+
+
+
+#define DEFIO_TAG__PA6 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 6)
+#define DEFIO_TAG_E__PA6 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 6)
+#define DEFIO_REC__PA6 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_A_USED_MASK & (BIT(6) - 1)) + 0)
+
+
+
+
+
+
+#define DEFIO_TAG__PA7 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 7)
+#define DEFIO_TAG_E__PA7 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 7)
+#define DEFIO_REC__PA7 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_A_USED_MASK & (BIT(7) - 1)) + 0)
+
+
+
+
+
+
+#define DEFIO_TAG__PA8 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 8)
+#define DEFIO_TAG_E__PA8 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 8)
+#define DEFIO_REC__PA8 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_A_USED_MASK & (BIT(8) - 1)) + 0)
+
+
+
+
+
+
+#define DEFIO_TAG__PA9 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 9)
+#define DEFIO_TAG_E__PA9 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 9)
+#define DEFIO_REC__PA9 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_A_USED_MASK & (BIT(9) - 1)) + 0)
+
+
+
+
+
+
+#define DEFIO_TAG__PA10 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 10)
+#define DEFIO_TAG_E__PA10 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 10)
+#define DEFIO_REC__PA10 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_A_USED_MASK & (BIT(10) - 1)) + 0)
+
+
+
+
+
+
+#define DEFIO_TAG__PA11 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 11)
+#define DEFIO_TAG_E__PA11 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 11)
+#define DEFIO_REC__PA11 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_A_USED_MASK & (BIT(11) - 1)) + 0)
+
+
+
+
+
+
+#define DEFIO_TAG__PA12 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 12)
+#define DEFIO_TAG_E__PA12 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 12)
+#define DEFIO_REC__PA12 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_A_USED_MASK & (BIT(12) - 1)) + 0)
+
+
+
+
+
+
+#define DEFIO_TAG__PA13 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 13)
+#define DEFIO_TAG_E__PA13 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 13)
+#define DEFIO_REC__PA13 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_A_USED_MASK & (BIT(13) - 1)) + 0)
+
+
+
+
+
+
+#define DEFIO_TAG__PA14 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 14)
+#define DEFIO_TAG_E__PA14 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 14)
+#define DEFIO_REC__PA14 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_A_USED_MASK & (BIT(14) - 1)) + 0)
+
+
+
+
+
+
+#define DEFIO_TAG__PA15 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 15)
+#define DEFIO_TAG_E__PA15 DEFIO_TAG_MAKE(DEFIO_GPIOID__A, 15)
+#define DEFIO_REC__PA15 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_A_USED_MASK & (BIT(15) - 1)) + 0)
+
+
+
+
+
+
+#define DEFIO_TAG__PB0 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 0)
+#define DEFIO_TAG_E__PB0 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 0)
+#define DEFIO_REC__PB0 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_B_USED_MASK & (BIT(0) - 1)) + DEFIO_PORT_A_USED_COUNT)
+
+
+
+
+
+
+#define DEFIO_TAG__PB1 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 1)
+#define DEFIO_TAG_E__PB1 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 1)
+#define DEFIO_REC__PB1 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_B_USED_MASK & (BIT(1) - 1)) + DEFIO_PORT_A_USED_COUNT)
+
+
+
+
+
+
+#define DEFIO_TAG__PB2 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 2)
+#define DEFIO_TAG_E__PB2 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 2)
+#define DEFIO_REC__PB2 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_B_USED_MASK & (BIT(2) - 1)) + DEFIO_PORT_A_USED_COUNT)
+
+
+
+
+
+
+#define DEFIO_TAG__PB3 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 3)
+#define DEFIO_TAG_E__PB3 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 3)
+#define DEFIO_REC__PB3 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_B_USED_MASK & (BIT(3) - 1)) + DEFIO_PORT_A_USED_COUNT)
+
+
+
+
+
+
+#define DEFIO_TAG__PB4 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 4)
+#define DEFIO_TAG_E__PB4 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 4)
+#define DEFIO_REC__PB4 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_B_USED_MASK & (BIT(4) - 1)) + DEFIO_PORT_A_USED_COUNT)
+
+
+
+
+
+
+#define DEFIO_TAG__PB5 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 5)
+#define DEFIO_TAG_E__PB5 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 5)
+#define DEFIO_REC__PB5 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_B_USED_MASK & (BIT(5) - 1)) + DEFIO_PORT_A_USED_COUNT)
+
+
+
+
+
+
+#define DEFIO_TAG__PB6 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 6)
+#define DEFIO_TAG_E__PB6 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 6)
+#define DEFIO_REC__PB6 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_B_USED_MASK & (BIT(6) - 1)) + DEFIO_PORT_A_USED_COUNT)
+
+
+
+
+
+
+#define DEFIO_TAG__PB7 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 7)
+#define DEFIO_TAG_E__PB7 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 7)
+#define DEFIO_REC__PB7 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_B_USED_MASK & (BIT(7) - 1)) + DEFIO_PORT_A_USED_COUNT)
+
+
+
+
+
+
+#define DEFIO_TAG__PB8 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 8)
+#define DEFIO_TAG_E__PB8 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 8)
+#define DEFIO_REC__PB8 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_B_USED_MASK & (BIT(8) - 1)) + DEFIO_PORT_A_USED_COUNT)
+
+
+
+
+
+
+#define DEFIO_TAG__PB9 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 9)
+#define DEFIO_TAG_E__PB9 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 9)
+#define DEFIO_REC__PB9 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_B_USED_MASK & (BIT(9) - 1)) + DEFIO_PORT_A_USED_COUNT)
+
+
+
+
+
+
+#define DEFIO_TAG__PB10 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 10)
+#define DEFIO_TAG_E__PB10 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 10)
+#define DEFIO_REC__PB10 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_B_USED_MASK & (BIT(10) - 1)) + DEFIO_PORT_A_USED_COUNT)
+
+
+
+
+
+
+#define DEFIO_TAG__PB11 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 11)
+#define DEFIO_TAG_E__PB11 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 11)
+#define DEFIO_REC__PB11 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_B_USED_MASK & (BIT(11) - 1)) + DEFIO_PORT_A_USED_COUNT)
+
+
+
+
+
+
+#define DEFIO_TAG__PB12 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 12)
+#define DEFIO_TAG_E__PB12 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 12)
+#define DEFIO_REC__PB12 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_B_USED_MASK & (BIT(12) - 1)) + DEFIO_PORT_A_USED_COUNT)
+
+
+
+
+
+
+#define DEFIO_TAG__PB13 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 13)
+#define DEFIO_TAG_E__PB13 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 13)
+#define DEFIO_REC__PB13 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_B_USED_MASK & (BIT(13) - 1)) + DEFIO_PORT_A_USED_COUNT)
+
+
+
+
+
+
+#define DEFIO_TAG__PB14 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 14)
+#define DEFIO_TAG_E__PB14 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 14)
+#define DEFIO_REC__PB14 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_B_USED_MASK & (BIT(14) - 1)) + DEFIO_PORT_A_USED_COUNT)
+
+
+
+
+
+
+#define DEFIO_TAG__PB15 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 15)
+#define DEFIO_TAG_E__PB15 DEFIO_TAG_MAKE(DEFIO_GPIOID__B, 15)
+#define DEFIO_REC__PB15 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_B_USED_MASK & (BIT(15) - 1)) + DEFIO_PORT_A_USED_COUNT)
+# 378 "./src/main/drivers/io_def_generated.h"
+#define DEFIO_TAG__PC0 defio_error_PC0_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PC0 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PC0 defio_error_PC0_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PC1 defio_error_PC1_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PC1 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PC1 defio_error_PC1_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PC2 defio_error_PC2_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PC2 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PC2 defio_error_PC2_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PC3 defio_error_PC3_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PC3 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PC3 defio_error_PC3_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PC4 defio_error_PC4_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PC4 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PC4 defio_error_PC4_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PC5 defio_error_PC5_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PC5 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PC5 defio_error_PC5_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PC6 defio_error_PC6_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PC6 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PC6 defio_error_PC6_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PC7 defio_error_PC7_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PC7 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PC7 defio_error_PC7_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PC8 defio_error_PC8_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PC8 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PC8 defio_error_PC8_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PC9 defio_error_PC9_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PC9 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PC9 defio_error_PC9_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PC10 defio_error_PC10_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PC10 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PC10 defio_error_PC10_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PC11 defio_error_PC11_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PC11 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PC11 defio_error_PC11_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PC12 defio_error_PC12_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PC12 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PC12 defio_error_PC12_is_not_supported_on_TARGET
+
+
+#define DEFIO_TAG__PC13 DEFIO_TAG_MAKE(DEFIO_GPIOID__C, 13)
+#define DEFIO_TAG_E__PC13 DEFIO_TAG_MAKE(DEFIO_GPIOID__C, 13)
+#define DEFIO_REC__PC13 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_C_USED_MASK & (BIT(13) - 1)) + DEFIO_PORT_A_USED_COUNT+DEFIO_PORT_B_USED_COUNT)
+
+
+
+
+
+
+#define DEFIO_TAG__PC14 DEFIO_TAG_MAKE(DEFIO_GPIOID__C, 14)
+#define DEFIO_TAG_E__PC14 DEFIO_TAG_MAKE(DEFIO_GPIOID__C, 14)
+#define DEFIO_REC__PC14 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_C_USED_MASK & (BIT(14) - 1)) + DEFIO_PORT_A_USED_COUNT+DEFIO_PORT_B_USED_COUNT)
+
+
+
+
+
+
+#define DEFIO_TAG__PC15 DEFIO_TAG_MAKE(DEFIO_GPIOID__C, 15)
+#define DEFIO_TAG_E__PC15 DEFIO_TAG_MAKE(DEFIO_GPIOID__C, 15)
+#define DEFIO_REC__PC15 DEFIO_REC_INDEXED(BITCOUNT(DEFIO_PORT_C_USED_MASK & (BIT(15) - 1)) + DEFIO_PORT_A_USED_COUNT+DEFIO_PORT_B_USED_COUNT)
+# 522 "./src/main/drivers/io_def_generated.h"
+#define DEFIO_TAG__PD0 defio_error_PD0_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PD0 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PD0 defio_error_PD0_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PD1 defio_error_PD1_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PD1 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PD1 defio_error_PD1_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PD2 defio_error_PD2_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PD2 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PD2 defio_error_PD2_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PD3 defio_error_PD3_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PD3 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PD3 defio_error_PD3_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PD4 defio_error_PD4_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PD4 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PD4 defio_error_PD4_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PD5 defio_error_PD5_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PD5 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PD5 defio_error_PD5_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PD6 defio_error_PD6_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PD6 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PD6 defio_error_PD6_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PD7 defio_error_PD7_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PD7 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PD7 defio_error_PD7_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PD8 defio_error_PD8_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PD8 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PD8 defio_error_PD8_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PD9 defio_error_PD9_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PD9 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PD9 defio_error_PD9_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PD10 defio_error_PD10_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PD10 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PD10 defio_error_PD10_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PD11 defio_error_PD11_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PD11 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PD11 defio_error_PD11_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PD12 defio_error_PD12_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PD12 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PD12 defio_error_PD12_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PD13 defio_error_PD13_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PD13 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PD13 defio_error_PD13_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PD14 defio_error_PD14_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PD14 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PD14 defio_error_PD14_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PD15 defio_error_PD15_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PD15 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PD15 defio_error_PD15_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PE0 defio_error_PE0_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PE0 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PE0 defio_error_PE0_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PE1 defio_error_PE1_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PE1 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PE1 defio_error_PE1_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PE2 defio_error_PE2_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PE2 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PE2 defio_error_PE2_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PE3 defio_error_PE3_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PE3 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PE3 defio_error_PE3_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PE4 defio_error_PE4_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PE4 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PE4 defio_error_PE4_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PE5 defio_error_PE5_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PE5 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PE5 defio_error_PE5_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PE6 defio_error_PE6_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PE6 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PE6 defio_error_PE6_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PE7 defio_error_PE7_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PE7 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PE7 defio_error_PE7_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PE8 defio_error_PE8_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PE8 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PE8 defio_error_PE8_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PE9 defio_error_PE9_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PE9 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PE9 defio_error_PE9_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PE10 defio_error_PE10_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PE10 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PE10 defio_error_PE10_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PE11 defio_error_PE11_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PE11 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PE11 defio_error_PE11_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PE12 defio_error_PE12_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PE12 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PE12 defio_error_PE12_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PE13 defio_error_PE13_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PE13 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PE13 defio_error_PE13_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PE14 defio_error_PE14_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PE14 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PE14 defio_error_PE14_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PE15 defio_error_PE15_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PE15 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PE15 defio_error_PE15_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PF0 defio_error_PF0_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PF0 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PF0 defio_error_PF0_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PF1 defio_error_PF1_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PF1 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PF1 defio_error_PF1_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PF2 defio_error_PF2_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PF2 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PF2 defio_error_PF2_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PF3 defio_error_PF3_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PF3 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PF3 defio_error_PF3_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PF4 defio_error_PF4_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PF4 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PF4 defio_error_PF4_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PF5 defio_error_PF5_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PF5 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PF5 defio_error_PF5_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PF6 defio_error_PF6_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PF6 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PF6 defio_error_PF6_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PF7 defio_error_PF7_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PF7 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PF7 defio_error_PF7_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PF8 defio_error_PF8_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PF8 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PF8 defio_error_PF8_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PF9 defio_error_PF9_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PF9 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PF9 defio_error_PF9_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PF10 defio_error_PF10_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PF10 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PF10 defio_error_PF10_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PF11 defio_error_PF11_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PF11 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PF11 defio_error_PF11_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PF12 defio_error_PF12_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PF12 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PF12 defio_error_PF12_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PF13 defio_error_PF13_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PF13 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PF13 defio_error_PF13_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PF14 defio_error_PF14_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PF14 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PF14 defio_error_PF14_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PF15 defio_error_PF15_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PF15 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PF15 defio_error_PF15_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PG0 defio_error_PG0_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PG0 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PG0 defio_error_PG0_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PG1 defio_error_PG1_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PG1 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PG1 defio_error_PG1_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PG2 defio_error_PG2_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PG2 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PG2 defio_error_PG2_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PG3 defio_error_PG3_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PG3 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PG3 defio_error_PG3_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PG4 defio_error_PG4_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PG4 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PG4 defio_error_PG4_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PG5 defio_error_PG5_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PG5 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PG5 defio_error_PG5_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PG6 defio_error_PG6_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PG6 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PG6 defio_error_PG6_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PG7 defio_error_PG7_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PG7 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PG7 defio_error_PG7_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PG8 defio_error_PG8_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PG8 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PG8 defio_error_PG8_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PG9 defio_error_PG9_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PG9 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PG9 defio_error_PG9_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PG10 defio_error_PG10_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PG10 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PG10 defio_error_PG10_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PG11 defio_error_PG11_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PG11 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PG11 defio_error_PG11_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PG12 defio_error_PG12_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PG12 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PG12 defio_error_PG12_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PG13 defio_error_PG13_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PG13 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PG13 defio_error_PG13_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PG14 defio_error_PG14_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PG14 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PG14 defio_error_PG14_is_not_supported_on_TARGET
+
+
+
+
+
+
+#define DEFIO_TAG__PG15 defio_error_PG15_is_not_supported_on_TARGET
+#define DEFIO_TAG_E__PG15 DEFIO_TAG_E__NONE
+#define DEFIO_REC__PG15 defio_error_PG15_is_not_supported_on_TARGET
+
+
+
+#define DEFIO_IO_USED_COUNT (DEFIO_PORT_A_USED_COUNT+DEFIO_PORT_B_USED_COUNT+DEFIO_PORT_C_USED_COUNT+DEFIO_PORT_D_USED_COUNT+DEFIO_PORT_E_USED_COUNT+DEFIO_PORT_F_USED_COUNT+DEFIO_PORT_G_USED_COUNT)
+# 1121 "./src/main/drivers/io_def_generated.h"
+#define DEFIO_PORT_USED_COUNT 3
+#define DEFIO_PORT_USED_LIST DEFIO_PORT_A_USED_MASK,DEFIO_PORT_B_USED_MASK,DEFIO_PORT_C_USED_MASK
+#define DEFIO_PORT_OFFSET_LIST DEFIO_PORT_A_OFFSET,DEFIO_PORT_B_OFFSET,DEFIO_PORT_C_OFFSET
+# 35 "./src/main/drivers/io_def.h" 2
+# 80 "./src/main/drivers/io.h" 2
+
+_Bool IORead(IO_t io);
+void IOWrite(IO_t io, _Bool value);
+void IOHi(IO_t io);
+void IOLo(IO_t io);
+void IOToggle(IO_t io);
+
+void IOInit(IO_t io, resourceOwner_t owner, resourceType_t resource, uint8_t index);
+void IORelease(IO_t io);
+resourceOwner_t IOGetOwner(IO_t io);
+resourceType_t IOGetResources(IO_t io);
+IO_t IOGetByTag(ioTag_t tag);
+
+void IOConfigGPIO(IO_t io, ioConfig_t cfg);
+
+
+
+
+void IOInitGlobal(void);
+# 35 "./src/main/drivers/compass/compass_hmc5883l.c" 2
+# 1 "./src/main/drivers/exti.h" 1
+# 19 "./src/main/drivers/exti.h"
+       
+
+
+
+
+typedef struct extiConfig_s {
+    ioTag_t tag;
+} extiConfig_t;
+
+typedef struct extiCallbackRec_s extiCallbackRec_t;
+typedef void extiHandlerCallback(extiCallbackRec_t *self);
+
+struct extiCallbackRec_s {
+    extiHandlerCallback *fn;
+};
+
+void EXTIInit(void);
+
+void EXTIHandlerInit(extiCallbackRec_t *cb, extiHandlerCallback *fn);
+
+
+
+void EXTIConfig(IO_t io, extiCallbackRec_t *cb, int irqPriority, EXTITrigger_TypeDef trigger);
+
+void EXTIRelease(IO_t io);
+void EXTIEnable(IO_t io, _Bool enable);
+# 36 "./src/main/drivers/compass/compass_hmc5883l.c" 2
+# 1 "./src/main/drivers/bus_i2c.h" 1
+# 18 "./src/main/drivers/bus_i2c.h"
+       
+
+
+
+
+
+
+#define I2C_TIMEOUT (10000)
+
+
+# 1 "./src/main/drivers/rcc_types.h" 1
+       
+
+typedef uint8_t rccPeriphTag_t;
+# 29 "./src/main/drivers/bus_i2c.h" 2
+
+
+
+
+
+typedef enum {
+    I2C_SPEED_100KHZ = 2,
+    I2C_SPEED_200KHZ = 3,
+    I2C_SPEED_400KHZ = 0,
+    I2C_SPEED_800KHZ = 1,
+} I2CSpeed;
+
+typedef enum I2CDevice {
+    I2CINVALID = -1,
+    I2CDEV_1 = 0,
+    I2CDEV_2,
+    I2CDEV_3,
+
+
+
+    I2CDEV_COUNT
+} I2CDevice;
+
+typedef struct i2cDevice_s {
+    I2C_TypeDef *dev;
+    ioTag_t scl;
+    ioTag_t sda;
+    rccPeriphTag_t rcc;
+    I2CSpeed speed;
+
+
+
+
+
+} i2cDevice_t;
+
+void i2cSetSpeed(uint8_t speed);
+void i2cInit(I2CDevice device);
+_Bool i2cWriteBuffer(I2CDevice device, uint8_t addr_, uint8_t reg_, uint8_t len_, uint8_t *data);
+_Bool i2cWrite(I2CDevice device, uint8_t addr_, uint8_t reg, uint8_t data);
+_Bool i2cRead(I2CDevice device, uint8_t addr_, uint8_t reg, uint8_t len, uint8_t* buf);
+
+uint16_t i2cGetErrorCounter(void);
+# 37 "./src/main/drivers/compass/compass_hmc5883l.c" 2
+# 1 "./src/main/drivers/light_led.h" 1
+# 18 "./src/main/drivers/light_led.h"
+       
+
+#define LED_NUMBER 3
+
+
+
+#define LED0_TOGGLE ledToggle(0)
+#define LED0_OFF ledSet(0, false)
+#define LED0_ON ledSet(0, true)
+
+
+
+
+
+
+
+#define LED1_TOGGLE ledToggle(1)
+#define LED1_OFF ledSet(1, false)
+#define LED1_ON ledSet(1, true)
+# 48 "./src/main/drivers/light_led.h"
+#define LED2_TOGGLE do {} while (0)
+#define LED2_OFF do {} while (0)
+#define LED2_ON do {} while (0)
+
+
+void ledInit(_Bool alternative_led);
+void ledToggle(int led);
+void ledSet(int led, _Bool state);
+# 38 "./src/main/drivers/compass/compass_hmc5883l.c" 2
+
+# 1 "./src/main/drivers/logging.h" 1
+# 18 "./src/main/drivers/logging.h"
+       
+
+# 1 "./src/main/drivers/logging_codes.h" 1
+# 18 "./src/main/drivers/logging_codes.h"
+       
+
+typedef enum {
+    BOOT_EVENT_FLAGS_NONE = 0,
+    BOOT_EVENT_FLAGS_WARNING = 1 << 0,
+    BOOT_EVENT_FLAGS_ERROR = 1 << 1,
+
+    BOOT_EVENT_FLAGS_PARAM16 = 1 << 14,
+    BOOT_EVENT_FLAGS_PARAM32 = 1 << 15
+} bootLogFlags_e;
+
+typedef enum {
+    BOOT_EVENT_CONFIG_LOADED = 0,
+    BOOT_EVENT_SYSTEM_INIT_DONE = 1,
+    BOOT_EVENT_PWM_INIT_DONE = 2,
+    BOOT_EVENT_EXTRA_BOOT_DELAY = 3,
+    BOOT_EVENT_SENSOR_INIT_DONE = 4,
+    BOOT_EVENT_GPS_INIT_DONE = 5,
+    BOOT_EVENT_LEDSTRIP_INIT_DONE = 6,
+    BOOT_EVENT_TELEMETRY_INIT_DONE = 7,
+    BOOT_EVENT_SYSTEM_READY = 8,
+    BOOT_EVENT_GYRO_DETECTION = 9,
+    BOOT_EVENT_ACC_DETECTION = 10,
+    BOOT_EVENT_BARO_DETECTION = 11,
+    BOOT_EVENT_MAG_DETECTION = 12,
+    BOOT_EVENT_RANGEFINDER_DETECTION = 13,
+    BOOT_EVENT_MAG_INIT_FAILED = 14,
+    BOOT_EVENT_HMC5883L_READ_OK_COUNT = 15,
+    BOOT_EVENT_HMC5883L_READ_FAILED = 16,
+    BOOT_EVENT_HMC5883L_SATURATION = 17,
+    BOOT_EVENT_TIMER_CH_SKIPPED = 18,
+    BOOT_EVENT_TIMER_CH_MAPPED = 19,
+    BOOT_EVENT_PITOT_DETECTION = 20,
+    BOOT_EVENT_HARDWARE_IO_CONFLICT = 21,
+
+    BOOT_EVENT_CODE_COUNT
+} bootLogEventCode_e;
+# 21 "./src/main/drivers/logging.h" 2
+
+typedef struct bootLogEntry_s {
+    uint32_t timestamp;
+    uint16_t eventCode;
+    uint16_t eventFlags;
+    union {
+        uint16_t u16[4];
+        uint32_t u32[2];
+    } params;
+} bootLogEntry_t;
+
+void initBootlog(void);
+int getBootlogEventCount(void);
+bootLogEntry_t * getBootlogEvent(int index);
+const char * getBootlogEventDescription(bootLogEventCode_e eventCode);
+void addBootlogEvent2(bootLogEventCode_e eventCode, bootLogFlags_e eventFlags);
+void addBootlogEvent4(bootLogEventCode_e eventCode, bootLogFlags_e eventFlags, uint32_t param1, uint32_t param2);
+void addBootlogEvent6(bootLogEventCode_e eventCode, bootLogFlags_e eventFlags, uint16_t param1, uint16_t param2, uint16_t param3, uint16_t param4);
+# 40 "./src/main/drivers/compass/compass_hmc5883l.c" 2
+
+# 1 "./src/main/drivers/sensor.h" 1
+# 18 "./src/main/drivers/sensor.h"
+       
+
+
+
+
+
+
+typedef enum {
+    ALIGN_DEFAULT = 0,
+    CW0_DEG = 1,
+    CW90_DEG = 2,
+    CW180_DEG = 3,
+    CW270_DEG = 4,
+    CW0_DEG_FLIP = 5,
+    CW90_DEG_FLIP = 6,
+    CW180_DEG_FLIP = 7,
+    CW270_DEG_FLIP = 8
+} sensor_align_e;
+
+typedef union busDevice_u {
+    struct deviceSpi_s {
+        IO_t csnPin;
+    } spi;
+    struct deviceI2C_s {
+        uint8_t address;
+    } i2c;
+} busDevice_t;
+
+typedef _Bool (*sensorInitFuncPtr)(void);
+typedef _Bool (*sensorReadFuncPtr)(int16_t *data);
+typedef _Bool (*sensorInterruptFuncPtr)(void);
+struct accDev_s;
+typedef void (*sensorAccInitFuncPtr)(struct accDev_s *acc);
+typedef _Bool (*sensorAccReadFuncPtr)(struct accDev_s *acc);
+struct gyroDev_s;
+typedef void (*sensorGyroInitFuncPtr)(struct gyroDev_s *gyro);
+typedef _Bool (*sensorGyroReadFuncPtr)(struct gyroDev_s *gyro);
+typedef _Bool (*sensorGyroUpdateFuncPtr)(struct gyroDev_s *gyro);
+typedef _Bool (*sensorGyroReadDataFuncPtr)(struct gyroDev_s *gyro, int16_t *data);
+typedef _Bool (*sensorGyroInterruptStatusFuncPtr)(struct gyroDev_s *gyro);
+struct magDev_s;
+typedef _Bool (*sensorMagInitFuncPtr)(struct magDev_s *mag);
+typedef _Bool (*sensorMagReadFuncPtr)(struct magDev_s *mag);
+# 42 "./src/main/drivers/compass/compass_hmc5883l.c" 2
+# 1 "./src/main/drivers/compass/compass.h" 1
+# 18 "./src/main/drivers/compass/compass.h"
+       
+
+
+
+typedef struct magDev_s {
+    sensorMagInitFuncPtr init;
+    sensorMagReadFuncPtr read;
+    busDevice_t bus;
+    sensor_align_e magAlign;
+    int16_t magADCRaw[3];
+} magDev_t;
+
+
+#define MAG_I2C_INSTANCE I2C_DEVICE
+# 43 "./src/main/drivers/compass/compass_hmc5883l.c" 2
+
+# 1 "./src/main/drivers/compass/compass_hmc5883l.h" 1
+# 18 "./src/main/drivers/compass/compass_hmc5883l.h"
+       
+
+
+
+typedef struct hmc5883Config_s {
+    ioTag_t intTag;
+} hmc5883Config_t;
+
+_Bool hmc5883lDetect(magDev_t* mag, const hmc5883Config_t *hmc5883ConfigToUse);
+# 45 "./src/main/drivers/compass/compass_hmc5883l.c" 2
+# 108 "./src/main/drivers/compass/compass_hmc5883l.c"
+#define MAG_ADDRESS 0x1E
+#define MAG_DATA_REGISTER 0x03
+
+#define HMC58X3_R_CONFA 0
+#define HMC58X3_R_CONFB 1
+#define HMC58X3_R_MODE 2
+#define HMC58X3_X_SELF_TEST_GAUSS (+1.16f)
+#define HMC58X3_Y_SELF_TEST_GAUSS (+1.16f)
+#define HMC58X3_Z_SELF_TEST_GAUSS (+1.08f)
+#define SELF_TEST_LOW_LIMIT (243.0f / 390.0f)
+#define SELF_TEST_HIGH_LIMIT (575.0f / 390.0f)
+#define HMC_POS_BIAS 1
+#define HMC_NEG_BIAS 2
+
+static float magGain[3] = { 1.0f, 1.0f, 1.0f };
+
+static const hmc5883Config_t *hmc5883Config = ((void *)0);
+
+
+
+static IO_t intIO;
+static extiCallbackRec_t hmc5883_extiCallbackRec;
+
+static void hmc5883_extiHandler(extiCallbackRec_t* cb)
+{
+    (void)(cb);
+# 148 "./src/main/drivers/compass/compass_hmc5883l.c"
+}
+
+
+static void hmc5883lConfigureDataReadyInterruptHandling(void)
+{
+
+
+    if (!(hmc5883Config->intTag)) {
+        return;
+    }
+    intIO = IOGetByTag(hmc5883Config->intTag);
+
+
+
+
+
+
+
+    EXTIHandlerInit(&hmc5883_extiCallbackRec, hmc5883_extiHandler);
+    EXTIConfig(intIO, &hmc5883_extiCallbackRec, (((((0x0f)<<(4-(7-(((uint32_t)0x500)>>8))))|((0x0f)&(0x0f>>(7-(((uint32_t)0x500)>>8)))))<<4)&0xf0), EXTI_Trigger_Rising);
+    EXTIEnable(intIO, 1);
+
+}
+
+static _Bool hmc5883lRead(magDev_t* magDev)
+{
+    uint8_t buf[6];
+
+    _Bool ack = i2cRead((I2CDEV_2), 0x1E, 0x03, 6, buf);
+    if (!ack) {
+        magDev->magADCRaw[X] = 0;
+        magDev->magADCRaw[Y] = 0;
+        magDev->magADCRaw[Z] = 0;
+        return 0;
+    }
+
+
+    magDev->magADCRaw[X] = (int16_t)(buf[0] << 8 | buf[1]) * magGain[X];
+    magDev->magADCRaw[Z] = (int16_t)(buf[2] << 8 | buf[3]) * magGain[Z];
+    magDev->magADCRaw[Y] = (int16_t)(buf[4] << 8 | buf[5]) * magGain[Y];
+
+    return 1;
+}
+
+#define INITIALISATION_MAX_READ_FAILURES 5
+static _Bool hmc5883lInit(magDev_t* magDev)
+{
+    int32_t xyz_total[3] = { 0, 0, 0 };
+    _Bool bret = 1;
+
+    delay(50);
+    i2cWrite((I2CDEV_2), 0x1E, 0, 0x18 + 1);
+
+
+    i2cWrite((I2CDEV_2), 0x1E, 1, 0x80);
+    delay(100);
+    hmc5883lRead(magDev);
+
+    int validSamples1 = 0;
+    int failedSamples1 = 0;
+    int saturatedSamples1 = 0;
+    while (validSamples1 < 10 && failedSamples1 < 5) {
+        i2cWrite((I2CDEV_2), 0x1E, 2, 1);
+        delay(70);
+        if (hmc5883lRead(magDev)) {
+
+            if (-4096 >= ( __extension__ ({ __typeof__(magDev->magADCRaw[X]) _left2 = (magDev->magADCRaw[X]); __typeof__(( __extension__ ({ __typeof__(magDev->magADCRaw[Y]) _left0 = (magDev->magADCRaw[Y]); __typeof__(magDev->magADCRaw[Z]) _right1 = (magDev->magADCRaw[Z]); _left0 < _right1 ? _left0 : _right1; }))) _right3 = (( __extension__ ({ __typeof__(magDev->magADCRaw[Y]) _left0 = (magDev->magADCRaw[Y]); __typeof__(magDev->magADCRaw[Z]) _right1 = (magDev->magADCRaw[Z]); _left0 < _right1 ? _left0 : _right1; }))); _left2 < _right3 ? _left2 : _right3; }))) {
+                ++saturatedSamples1;
+                ++failedSamples1;
+            } else {
+                ++validSamples1;
+
+                xyz_total[X] += magDev->magADCRaw[X];
+                xyz_total[Y] += magDev->magADCRaw[Y];
+                xyz_total[Z] += magDev->magADCRaw[Z];
+
+            }
+        } else {
+            ++failedSamples1;
+        }
+        ledToggle(1);
+    }
+
+
+    i2cWrite((I2CDEV_2), 0x1E, 0, 0x18 + 2);
+    int validSamples2 = 0;
+    int failedSamples2 = 0;
+    int saturatedSamples2 = 0;
+    while (validSamples2 < 10 && failedSamples2 < 5) {
+        i2cWrite((I2CDEV_2), 0x1E, 2, 1);
+        delay(70);
+        if (hmc5883lRead(magDev)) {
+
+            if (-4096 >= ( __extension__ ({ __typeof__(magDev->magADCRaw[X]) _left6 = (magDev->magADCRaw[X]); __typeof__(( __extension__ ({ __typeof__(magDev->magADCRaw[Y]) _left4 = (magDev->magADCRaw[Y]); __typeof__(magDev->magADCRaw[Z]) _right5 = (magDev->magADCRaw[Z]); _left4 < _right5 ? _left4 : _right5; }))) _right7 = (( __extension__ ({ __typeof__(magDev->magADCRaw[Y]) _left4 = (magDev->magADCRaw[Y]); __typeof__(magDev->magADCRaw[Z]) _right5 = (magDev->magADCRaw[Z]); _left4 < _right5 ? _left4 : _right5; }))); _left6 < _right7 ? _left6 : _right7; }))) {
+                ++saturatedSamples2;
+                ++failedSamples2;
+            } else {
+                ++validSamples2;
+
+                xyz_total[X] -= magDev->magADCRaw[X];
+                xyz_total[Y] -= magDev->magADCRaw[Y];
+                xyz_total[Z] -= magDev->magADCRaw[Z];
+            }
+        } else {
+            ++failedSamples2;
+        }
+        ledToggle(1);
+    }
+
+    if (failedSamples1 >= 5 || failedSamples2 >= 5) {
+        addBootlogEvent4(BOOT_EVENT_HMC5883L_READ_OK_COUNT, BOOT_EVENT_FLAGS_NONE, validSamples1, validSamples2);
+        addBootlogEvent4(BOOT_EVENT_HMC5883L_READ_FAILED, BOOT_EVENT_FLAGS_WARNING, failedSamples1, failedSamples2);
+        bret = 0;
+    }
+    if (saturatedSamples1 > 0 || saturatedSamples2 > 0) {
+        addBootlogEvent4(BOOT_EVENT_HMC5883L_SATURATION, BOOT_EVENT_FLAGS_WARNING, saturatedSamples1, saturatedSamples2);
+    }
+
+    if (bret) {
+        magGain[X] = fabsf(440.0f * (+1.16f) * 2.0f * 10.0f / xyz_total[X]);
+        magGain[Y] = fabsf(440.0f * (+1.16f) * 2.0f * 10.0f / xyz_total[Y]);
+        magGain[Z] = fabsf(440.0f * (+1.08f) * 2.0f * 10.0f / xyz_total[Z]);
+    } else {
+
+        magGain[X] = 1.0f;
+        magGain[Y] = 1.0f;
+        magGain[Z] = 1.0f;
+    }
+
+
+    i2cWrite((I2CDEV_2), 0x1E, 0, 0x78);
+    i2cWrite((I2CDEV_2), 0x1E, 1, 0x20);
+    i2cWrite((I2CDEV_2), 0x1E, 2, 0x00);
+    delay(100);
+
+    hmc5883lConfigureDataReadyInterruptHandling();
+
+    return bret;
+}
+
+#define DETECTION_MAX_RETRY_COUNT 5
+_Bool hmc5883lDetect(magDev_t* magDev, const hmc5883Config_t *hmc5883ConfigToUse)
+{
+    hmc5883Config = hmc5883ConfigToUse;
+
+    for (int retryCount = 0; retryCount < 5; retryCount++) {
+        uint8_t sig = 0;
+        _Bool ack = i2cRead((I2CDEV_2), 0x1E, 0x0A, 1, &sig);
+        if (ack && sig == 'H') {
+            magDev->init = hmc5883lInit;
+            magDev->read = hmc5883lRead;
+
+            return 1;
+        }
+
+        delay(10);
+    }
+
+    return 0;
+}

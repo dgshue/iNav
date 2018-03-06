@@ -14,27 +14,27 @@
 	.file	"runtime_config.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.409bac1b70b97e65,"",%progbits
+	.section	.gnu.lto_.profile.48eb8bb3478b1056,"",%progbits
 	.ascii	"x\234cf```a\200\000F\206P\033\000\001Z\000\232"
 	.text
-	.section	.gnu.lto_.jmpfuncs.409bac1b70b97e65,"",%progbits
+	.section	.gnu.lto_.jmpfuncs.48eb8bb3478b1056,"",%progbits
 	.ascii	"x\234cf\300\016\354\2404;\003##c=#\323G&\306\213\263"
 	.ascii	"\2265\363\277`\372\311\304\300\310\300\270\234Q\212"
 	.ascii	"\201\011\"\005f3\203\330\254 \202\015D\26030p\000u\003"
 	.ascii	"\000\222\245\011\373"
 	.text
-	.section	.gnu.lto_.inline.409bac1b70b97e65,"",%progbits
+	.section	.gnu.lto_.inline.48eb8bb3478b1056,"",%progbits
 	.ascii	"x\234cf\300\016VBiv\006\006n~FF\006F\006\006&\236\007"
 	.ascii	"\261\014l\013\344\231@\342L\334\014@1&\006\036\001\210"
 	.ascii	"$3\\\222\351\002?\013B\0053\003\033+P\035\333\007=\270"
 	.ascii	"VVL!6\006v6\2509pa\2309\354\014,\314@\345@.\\9\007\203"
 	.ascii	"\014'P\310\250)\023.\304\000\000\220\\\020\310"
 	.text
-	.section	.gnu.lto_.pureconst.409bac1b70b97e65,"",%progbits
+	.section	.gnu.lto_.pureconst.48eb8bb3478b1056,"",%progbits
 	.ascii	"x\234cf``\340g\200\000v\006\011&\011f\026V\0116\011"
 	.ascii	"v\026\016\026\000\006p\000\245"
 	.text
-	.section	.gnu.lto_enableFlightMode.409bac1b70b97e65,"",%progbits
+	.section	.gnu.lto_enableFlightMode.48eb8bb3478b1056,"",%progbits
 	.ascii	"x\234\215Q\337K\223a\024>\317\373~\373\332t\220t9\350"
 	.ascii	"\007\211\354*'\364\017t\331_\320m\214\2511r\023\264"
 	.ascii	".\207\357\334\242\256\"ve\226\375$\265\037N\2554\215"
@@ -68,7 +68,7 @@
 	.ascii	"\031>\325\032\"+\022\354=mww\265\237\010v\375\001\272"
 	.ascii	"\325\011\305"
 	.text
-	.section	.gnu.lto_disableFlightMode.409bac1b70b97e65,"",%progbits
+	.section	.gnu.lto_disableFlightMode.48eb8bb3478b1056,"",%progbits
 	.ascii	"x\234\215Q]k\023Q\020\235\231\273\331$&`\3611\340\007"
 	.ascii	"\226\222'\233\202\177\300G\177\201\257\022\322V\202"
 	.ascii	"M\012\255>\206\3364\353\307\223H\236j\265~T\324\372"
@@ -102,7 +102,7 @@
 	.ascii	"d\374D4\326w42\030\357\217\036\353\216\200\021\013\017"
 	.ascii	"\0377\007\007z\217\204\007\376\000?#\027\370"
 	.text
-	.section	.gnu.lto_sensors.409bac1b70b97e65,"",%progbits
+	.section	.gnu.lto_sensors.48eb8bb3478b1056,"",%progbits
 	.ascii	"x\234eO\315+\304Q\024\275\347\276\337\374L\331\310r"
 	.ascii	"6\244\220\232\314\037`\343O\360\037H\023\2324\243\014"
 	.ascii	"K\315\033\246XH\232\225\362\261 \214\257\031fe(\206"
@@ -125,7 +125,7 @@
 	.ascii	"\010w\205\"\201\236```(2\030\012ww\006\373#=\241\336"
 	.ascii	"\326 9\341\256h\3377\315?\214\302"
 	.text
-	.section	.gnu.lto_sensorsSet.409bac1b70b97e65,"",%progbits
+	.section	.gnu.lto_sensorsSet.48eb8bb3478b1056,"",%progbits
 	.ascii	"x\234u\220KK\202Q\020\206\347\235\363\371!\270\211V"
 	.ascii	"\342\246(J\332\350_h\325\337\210\220\012\011\015\272"
 	.ascii	",\305c\031\264\210(WF\227E\021\331\315n\253\\Y\020\264"
@@ -147,7 +147,7 @@
 	.ascii	"\306\006\373#\243\361\241\350p(BNl`|\344\013\273\304"
 	.ascii	"\225%"
 	.text
-	.section	.gnu.lto_sensorsClear.409bac1b70b97e65,"",%progbits
+	.section	.gnu.lto_sensorsClear.48eb8bb3478b1056,"",%progbits
 	.ascii	"x\234uP\313+\304Q\024>\337\271\277\337\230\232\215\254"
 	.ascii	"4\033R\310f\346_\260\362oH\023\2324\243<\226\232;c\310"
 	.ascii	"J\314Jy,H\306k\030Vd1lXx$\0135\211\322(vD\215\361\210"
@@ -169,7 +169,7 @@
 	.ascii	"\373\302\221\366\326Pw\264#\334\031\010\221\023i\353"
 	.ascii	"\355\372\004\006c\236\320"
 	.text
-	.section	.gnu.lto_sensorsMask.409bac1b70b97e65,"",%progbits
+	.section	.gnu.lto_sensorsMask.48eb8bb3478b1056,"",%progbits
 	.ascii	"x\234eN=K\003Q\020\334\331\223\343$\215X\246Q\253\353"
 	.ascii	"r\277\305_ r\030\275\"'D-C\336\205+\254D\203E\304\017"
 	.ascii	"l\304\370\025!\251\264\262L\343\211\010\036Xh\023A;"
@@ -186,7 +186,7 @@
 	.ascii	"\251\202\267R\366\275\322|\020zE\337+\257\205\253Ai"
 	.ascii	"a\316_\016\213\301b\301\247\037\222Bd\335"
 	.text
-	.section	.gnu.lto_getFlightModeForTelemetry.409bac1b70b97e65,"",%progbits
+	.section	.gnu.lto_getFlightModeForTelemetry.48eb8bb3478b1056,"",%progbits
 	.ascii	"x\234e\222\333KTQ\024\306\327\332\373\334\317\200\022"
 	.ascii	"=\330y\350\362$A8/]\210\376\230.S\206\017\032\230=\212"
 	.ascii	"gt\212\036\"+\354\202\227\"0\323\232\234\264\264l\024"
@@ -228,7 +228,7 @@
 	.ascii	"\011WF\302\265\347j\352\252\252O\035\215\234\251\251"
 	.ascii	"\254:]\021\201\277B\340w\015"
 	.text
-	.section	.gnu.lto_.symbol_nodes.409bac1b70b97e65,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.48eb8bb3478b1056,"",%progbits
 	.ascii	"x\234U\215\273\015\203P\024C\317\2737\217 1\001\323"
 	.ascii	"\232\0212\001\"R\226\240\313\227\374$\246\240\246K\037"
 	.ascii	"\241P\344\272\261d\037\331\016\364\254\262+\202\335"
@@ -237,12 +237,12 @@
 	.ascii	"u\302\226\327|\304\027Oo\264\375\0014M\211S1}\306\344"
 	.ascii	"Vq\030\346\232/5f4P"
 	.text
-	.section	.gnu.lto_.refs.409bac1b70b97e65,"",%progbits
+	.section	.gnu.lto_.refs.48eb8bb3478b1056,"",%progbits
 	.ascii	"x\234%\212A\016\3000\014\302LH\273h\017\332\377\237"
 	.ascii	"6\324\372\200\221\300\300\307\305\240\260\320\270N}"
 	.ascii	"\320+\323\252\225P\273\366qg\211''~\032\263\000\265"
 	.text
-	.section	.gnu.lto_.decls.409bac1b70b97e65,"",%progbits
+	.section	.gnu.lto_.decls.48eb8bb3478b1056,"",%progbits
 	.ascii	"x\234\215WkPT\311\025\276}\233y\202\003\376\210\032"
 	.ascii	"\252Rjm\326\212Y\225\224\273\251l~\305Y\005\305\302"
 	.ascii	"\201\300\220Te\177L!\214J\005\3010\343\017S\225\324"
@@ -394,7 +394,7 @@
 	.ascii	"\310\2245\314\212\036w\330\271\221\321\253\371\267\327"
 	.ascii	"\202\225\026\313\002\027\340\277\224\012\205\257"
 	.text
-	.section	.gnu.lto_.symtab.409bac1b70b97e65,"",%progbits
+	.section	.gnu.lto_.symtab.48eb8bb3478b1056,"",%progbits
 	.ascii	"enableFlightMode\000\000\000\000\000\000\000\000\000"
 	.ascii	"\000\000\000\362\000\000\000flightModeFlags\000\000"
 	.ascii	"\000\000\000\000\000\000\000\000\000\0000\001\000\000"

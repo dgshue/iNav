@@ -370,7 +370,7 @@
 #define NAZE 1
 #define __FORKNAME__ "inav"
 #define __TARGET__ "NAZE"
-#define __REVISION__ "3d51ccc"
+#define __REVISION__ "8d7eea1"
 # 1 "./src/main/drivers/compass/compass_qmc5883l.c"
 # 25 "./src/main/drivers/compass/compass_qmc5883l.c"
 # 1 "/usr/lib/gcc/arm-none-eabi/4.9.3/include/stdbool.h" 1 3 4
@@ -14096,6 +14096,11 @@ extern void assert_param(int val);
 #define BARO 
 #define USE_BARO_MS5611 
 #define USE_BARO_BMP280 
+
+#define MAG 
+#define USE_MAG_HMC5883 
+#define USE_MAG_QMC5883 
+#define MAG_HMC5883_ALIGN CW180_DEG
 # 116 "./src/main/target/NAZE/target.h"
 #define SOFTSERIAL_1_RX_PIN PA6
 #define SOFTSERIAL_1_TX_PIN PA7
@@ -14104,26 +14109,26 @@ extern void assert_param(int val);
 
 #define USE_I2C 
 #define I2C_DEVICE (I2CDEV_2)
-# 168 "./src/main/target/NAZE/target.h"
-#define USE_ADC 
-#define ADC_CHANNEL_1_PIN PB1
-#define ADC_CHANNEL_2_PIN PA4
-#define ADC_CHANNEL_3_PIN PA1
-#define CURRENT_METER_ADC_CHANNEL ADC_CHN_1
-#define VBAT_ADC_CHANNEL ADC_CHN_2
-#define RSSI_ADC_CHANNEL ADC_CHN_3
-# 184 "./src/main/target/NAZE/target.h"
+# 176 "./src/main/target/NAZE/target.h"
+#define NAV_AUTO_MAG_DECLINATION 
+#define NAV_GPS_GLITCH_DETECTION 
+
+
+
+
+
+
 #define USE_SERIALRX_SPEKTRUM 
 #undef USE_SERIALRX_IBUS
-#define SPEKTRUM_BIND 
-#define BIND_PIN PA3
+
+
 
 
 
 #define TARGET_MOTOR_COUNT 6
 
-#define DEFAULT_FEATURES FEATURE_VBAT
-#define DEFAULT_RX_FEATURE FEATURE_RX_PPM
+
+
 
 
 #define MAX_PWM_OUTPUT_PORTS 10
@@ -14137,3 +14142,830 @@ extern void assert_param(int val);
 #define USED_TIMERS ( TIM_N(1) | TIM_N(2) | TIM_N(3) | TIM_N(4) )
 # 79 "./src/main/platform.h" 2
 # 31 "./src/main/drivers/compass/compass_qmc5883l.c" 2
+
+
+
+# 1 "./src/main/build/build_config.h" 1
+# 18 "./src/main/build/build_config.h"
+       
+
+#define BUILD_BUG_ON(condition) ((void)sizeof(char[1 - 2*!!(condition)]))
+# 29 "./src/main/build/build_config.h"
+#define STATIC_UNIT_TESTED static
+#define STATIC_INLINE_UNIT_TESTED static inline
+#define INLINE_UNIT_TESTED inline
+#define UNIT_TESTED 
+
+
+
+
+
+#define REQUIRE_CC_ARM_PRINTF_SUPPORT 
+#define REQUIRE_PRINTF_LONG_SUPPORT 
+# 35 "./src/main/drivers/compass/compass_qmc5883l.c" 2
+
+# 1 "./src/main/common/axis.h" 1
+# 18 "./src/main/common/axis.h"
+       
+
+typedef enum {
+    X = 0,
+    Y,
+    Z
+} axis_e;
+
+#define XYZ_AXIS_COUNT 3
+
+
+typedef enum {
+    FD_ROLL = 0,
+    FD_PITCH,
+    FD_YAW
+} flight_dynamics_index_t;
+
+#define FLIGHT_DYNAMICS_INDEX_COUNT 3
+
+typedef enum {
+    AI_ROLL = 0,
+    AI_PITCH,
+} angle_index_t;
+
+#define ANGLE_INDEX_COUNT 2
+# 37 "./src/main/drivers/compass/compass_qmc5883l.c" 2
+# 1 "./src/main/common/maths.h" 1
+# 18 "./src/main/common/maths.h"
+       
+
+
+#define sq(x) ((x)*(x))
+
+
+
+#define FAST_MATH 
+
+
+
+#define M_PIf 3.14159265358979323846f
+#define M_LN2f 0.69314718055994530942f
+#define M_Ef 2.71828182845904523536f
+
+#define RAD (M_PIf / 180.0f)
+
+#define DEGREES_TO_CENTIDEGREES(angle) ((angle) * 100)
+#define CENTIDEGREES_TO_DEGREES(angle) ((angle) / 100)
+
+#define CENTIDEGREES_TO_DECIDEGREES(angle) ((angle) / 10)
+#define DECIDEGREES_TO_CENTIDEGREES(angle) ((angle) * 10)
+
+#define DEGREES_TO_DECIDEGREES(angle) ((angle) * 10)
+#define DECIDEGREES_TO_DEGREES(angle) ((angle) / 10)
+
+#define DEGREES_PER_DEKADEGREE 10
+#define DEGREES_TO_DEKADEGREES(angle) ((angle) / DEGREES_PER_DEKADEGREE)
+#define DEKADEGREES_TO_DEGREES(angle) ((angle) * DEGREES_PER_DEKADEGREE)
+
+#define DEGREES_TO_RADIANS(angle) ((angle) * RAD)
+#define RADIANS_TO_DEGREES(angle) ((angle) / RAD)
+#define DECIDEGREES_TO_RADIANS(angle) (((angle) / 10.0f) * RAD)
+#define RADIANS_TO_DECIDEGREES(angle) (((angle) * 10.0f) / RAD)
+
+#define RADIANS_TO_CENTIDEGREES(angle) (((angle) * 100.0f) / RAD)
+#define CENTIDEGREES_TO_RADIANS(angle) (((angle) / 100.0f) * RAD)
+
+
+#define _CHOOSE2(binoper,lexpr,lvar,rexpr,rvar) ( __extension__ ({ __typeof__(lexpr) lvar = (lexpr); __typeof__(rexpr) rvar = (rexpr); lvar binoper rvar ? lvar : rvar; }))
+
+
+
+
+
+#define _CHOOSE_VAR2(prefix,unique) prefix ##unique
+#define _CHOOSE_VAR(prefix,unique) _CHOOSE_VAR2(prefix, unique)
+#define _CHOOSE(binoper,lexpr,rexpr) _CHOOSE2( binoper, lexpr, _CHOOSE_VAR(_left, __COUNTER__), rexpr, _CHOOSE_VAR(_right, __COUNTER__) )
+
+
+
+
+
+#define MIN(a,b) _CHOOSE(<, a, b)
+#define MAX(a,b) _CHOOSE(>, a, b)
+
+#define _ABS_II(x,var) ( __extension__ ({ __typeof__(x) var = (x); var < 0 ? -var : var; }))
+
+
+
+
+#define _ABS_I(x,var) _ABS_II(x, var)
+#define ABS(x) _ABS_I(x, _CHOOSE_VAR(_abs, __COUNTER__))
+
+typedef struct stdev_s
+{
+    float m_oldM, m_newM, m_oldS, m_newS;
+    int m_n;
+} stdev_t;
+
+
+typedef struct fp_vector {
+    float X;
+    float Y;
+    float Z;
+} t_fp_vector_def;
+
+typedef union {
+    float A[3];
+    t_fp_vector_def V;
+} t_fp_vector;
+
+
+
+typedef struct fp_angles {
+    float roll;
+    float pitch;
+    float yaw;
+} fp_angles_def;
+
+typedef union {
+    float raw[3];
+    fp_angles_def angles;
+} fp_angles_t;
+
+typedef struct filterWithBufferSample_s {
+    float value;
+    uint32_t timestamp;
+} filterWithBufferSample_t;
+
+typedef struct filterWithBufferState_s {
+    uint16_t filter_size;
+    uint16_t sample_index;
+    filterWithBufferSample_t * samples;
+} filterWithBufferState_t;
+
+typedef struct {
+    float XtY[4];
+    float XtX[4][4];
+} sensorCalibrationState_t;
+
+void sensorCalibrationResetState(sensorCalibrationState_t * state);
+void sensorCalibrationPushSampleForOffsetCalculation(sensorCalibrationState_t * state, int32_t sample[3]);
+void sensorCalibrationPushSampleForScaleCalculation(sensorCalibrationState_t * state, int axis, int32_t sample[3], int target);
+void sensorCalibrationSolveForOffset(sensorCalibrationState_t * state, float result[3]);
+void sensorCalibrationSolveForScale(sensorCalibrationState_t * state, float result[3]);
+
+int gcd(int num, int denom);
+int32_t applyDeadband(int32_t value, int32_t deadband);
+
+int constrain(int amt, int low, int high);
+float constrainf(float amt, float low, float high);
+
+void devClear(stdev_t *dev);
+void devPush(stdev_t *dev, float x);
+float devVariance(stdev_t *dev);
+float devStandardDeviation(stdev_t *dev);
+float degreesToRadians(int16_t degrees);
+
+int scaleRange(int x, int srcMin, int srcMax, int destMin, int destMax);
+float scaleRangef(float x, float srcMin, float srcMax, float destMin, float destMax);
+
+void normalizeV(struct fp_vector *src, struct fp_vector *dest);
+
+void rotateV(struct fp_vector *v, fp_angles_t *delta);
+void buildRotationMatrix(fp_angles_t *delta, float matrix[3][3]);
+
+int32_t wrap_18000(int32_t angle);
+int32_t wrap_36000(int32_t angle);
+
+int32_t quickMedianFilter3(int32_t * v);
+int32_t quickMedianFilter5(int32_t * v);
+int32_t quickMedianFilter7(int32_t * v);
+int32_t quickMedianFilter9(int32_t * v);
+
+
+float sin_approx(float x);
+float cos_approx(float x);
+float atan2_approx(float y, float x);
+float acos_approx(float x);
+#define tan_approx(x) (sin_approx(x) / cos_approx(x))
+# 177 "./src/main/common/maths.h"
+void arraySubInt32(int32_t *dest, int32_t *array1, int32_t *array2, int count);
+
+float bellCurve(const float x, const float curveWidth);
+# 38 "./src/main/drivers/compass/compass_qmc5883l.c" 2
+# 1 "./src/main/common/utils.h" 1
+# 18 "./src/main/common/utils.h"
+       
+
+# 1 "/usr/lib/gcc/arm-none-eabi/4.9.3/include/stddef.h" 1 3 4
+# 21 "./src/main/common/utils.h" 2
+
+
+#define ARRAYLEN(x) (sizeof(x) / sizeof((x)[0]))
+#define ARRAYEND(x) (&(x)[ARRAYLEN(x)])
+
+#define CONST_CAST(type,value) ((type)(value))
+
+#define CONCAT_HELPER(x,y) x ## y
+#define CONCAT(x,y) CONCAT_HELPER(x, y)
+
+#define STR_HELPER(x) #x
+#define STR(x) STR_HELPER(x)
+
+#define EXPAND_I(x) x
+#define EXPAND(x) EXPAND_I(x)
+
+
+#define UNUSED(x) (void)(x)
+
+#define BUILD_BUG_ON(condition) ((void)sizeof(char[1 - 2*!!(condition)]))
+
+#define BIT(x) (1 << (x))
+
+#define STATIC_ASSERT(condition,name) typedef char assert_failed_ ## name [(condition) ? 1 : -1 ] __attribute__((unused))
+
+
+
+
+
+#define BITCOUNT(x) (((BX_(x)+(BX_(x)>>4)) & 0x0F0F0F0F) % 255)
+#define BX_(x) ((x) - (((x)>>1)&0x77777777) - (((x)>>2)&0x33333333) - (((x)>>3)&0x11111111))
+
+
+
+
+
+
+
+#define LOG2_8BIT(v) (8 - 90/(((v)/4+14)|1) - 2/((v)/2+1))
+#define LOG2_16BIT(v) (8*((v)>255) + LOG2_8BIT((v) >>8*((v)>255)))
+#define LOG2_32BIT(v) (16*((v)>65535L) + LOG2_16BIT((v)*1L >>16*((v)>65535L)))
+#define LOG2_64BIT(v) (32*((v)/2L>>31 > 0) + LOG2_32BIT((v)*1L >>16*((v)/2L>>31 > 0) >>16*((v)/2L>>31 > 0)))
+# 74 "./src/main/common/utils.h"
+#define container_of(ptr,type,member) ( __extension__ ({ const typeof( ((type *)0)->member ) *__mptr = (ptr); (type *)( (char *)__mptr - offsetof(type,member) );}))
+
+
+
+static inline int16_t cmp16(uint16_t a, uint16_t b) { return a-b; }
+static inline int32_t cmp32(uint32_t a, uint32_t b) { return a-b; }
+# 88 "./src/main/common/utils.h"
+void * memcpy_fn ( void * destination, const void * source, size_t num ) asm("memcpy");
+# 97 "./src/main/common/utils.h"
+#define FALLTHROUGH do {} while(0)
+# 39 "./src/main/drivers/compass/compass_qmc5883l.c" 2
+
+# 1 "./src/main/drivers/time.h" 1
+# 18 "./src/main/drivers/time.h"
+       
+
+
+
+# 1 "./src/main/common/time.h" 1
+# 18 "./src/main/common/time.h"
+       
+
+
+
+
+
+
+typedef int32_t timeDelta_t;
+
+typedef uint32_t timeMs_t ;
+
+
+typedef uint64_t timeUs_t;
+#define TIMEUS_MAX UINT64_MAX
+
+
+
+
+
+static inline timeDelta_t cmpTimeUs(timeUs_t a, timeUs_t b) { return (timeDelta_t)(a - b); }
+# 23 "./src/main/drivers/time.h" 2
+
+void delayMicroseconds(timeUs_t us);
+void delay(timeMs_t ms);
+
+timeUs_t micros(void);
+timeUs_t microsISR(void);
+timeMs_t millis(void);
+
+uint32_t ticks(void);
+timeDelta_t ticks_diff_us(uint32_t begin, uint32_t end);
+# 41 "./src/main/drivers/compass/compass_qmc5883l.c" 2
+# 1 "./src/main/drivers/gpio.h" 1
+# 18 "./src/main/drivers/gpio.h"
+       
+
+
+
+
+typedef enum
+{
+    Mode_AIN = 0x0,
+    Mode_IN_FLOATING = 0x04,
+    Mode_IPD = 0x28,
+    Mode_IPU = 0x48,
+    Mode_Out_OD = 0x14,
+    Mode_Out_PP = 0x10,
+    Mode_AF_OD = 0x1C,
+    Mode_AF_PP = 0x18
+} GPIO_Mode;
+# 84 "./src/main/drivers/gpio.h"
+typedef enum
+{
+    Speed_10MHz = 1,
+    Speed_2MHz,
+    Speed_50MHz
+} GPIO_Speed;
+
+typedef enum
+{
+    Pin_0 = 0x0001,
+    Pin_1 = 0x0002,
+    Pin_2 = 0x0004,
+    Pin_3 = 0x0008,
+    Pin_4 = 0x0010,
+    Pin_5 = 0x0020,
+    Pin_6 = 0x0040,
+    Pin_7 = 0x0080,
+    Pin_8 = 0x0100,
+    Pin_9 = 0x0200,
+    Pin_10 = 0x0400,
+    Pin_11 = 0x0800,
+    Pin_12 = 0x1000,
+    Pin_13 = 0x2000,
+    Pin_14 = 0x4000,
+    Pin_15 = 0x8000,
+    Pin_All = 0xFFFF
+} GPIO_Pin;
+
+typedef struct
+{
+    uint16_t pin;
+    GPIO_Mode mode;
+    GPIO_Speed speed;
+} gpio_config_t;
+# 130 "./src/main/drivers/gpio.h"
+static inline void digitalHi(GPIO_TypeDef *p, uint16_t i) { p->BSRR = i; }
+static inline void digitalLo(GPIO_TypeDef *p, uint16_t i) { p->BRR = i; }
+
+static inline void digitalToggle(GPIO_TypeDef *p, uint16_t i) { p->ODR ^= i; }
+static inline uint16_t digitalIn(GPIO_TypeDef *p, uint16_t i) { return p->IDR & i; }
+
+
+
+
+void gpioInit(GPIO_TypeDef *gpio, gpio_config_t *config);
+void gpioExtiLineConfig(uint8_t portsrc, uint8_t pinsrc);
+void gpioPinRemapConfig(uint32_t remap, _Bool enable);
+# 42 "./src/main/drivers/compass/compass_qmc5883l.c" 2
+# 1 "./src/main/drivers/bus_i2c.h" 1
+# 18 "./src/main/drivers/bus_i2c.h"
+       
+
+
+
+
+
+
+#define I2C_TIMEOUT (10000)
+
+# 1 "./src/main/drivers/io_types.h" 1
+       
+
+
+
+
+
+typedef uint8_t ioTag_t;
+typedef void* IO_t;
+
+
+#define IOTAG_NONE ((ioTag_t)0)
+
+
+#define IO_NONE ((IO_t)0)
+# 28 "./src/main/drivers/io_types.h"
+typedef uint8_t ioConfig_t;
+# 28 "./src/main/drivers/bus_i2c.h" 2
+# 1 "./src/main/drivers/rcc_types.h" 1
+       
+
+typedef uint8_t rccPeriphTag_t;
+# 29 "./src/main/drivers/bus_i2c.h" 2
+
+
+
+
+
+typedef enum {
+    I2C_SPEED_100KHZ = 2,
+    I2C_SPEED_200KHZ = 3,
+    I2C_SPEED_400KHZ = 0,
+    I2C_SPEED_800KHZ = 1,
+} I2CSpeed;
+
+typedef enum I2CDevice {
+    I2CINVALID = -1,
+    I2CDEV_1 = 0,
+    I2CDEV_2,
+    I2CDEV_3,
+
+
+
+    I2CDEV_COUNT
+} I2CDevice;
+
+typedef struct i2cDevice_s {
+    I2C_TypeDef *dev;
+    ioTag_t scl;
+    ioTag_t sda;
+    rccPeriphTag_t rcc;
+    I2CSpeed speed;
+
+
+
+
+
+} i2cDevice_t;
+
+void i2cSetSpeed(uint8_t speed);
+void i2cInit(I2CDevice device);
+_Bool i2cWriteBuffer(I2CDevice device, uint8_t addr_, uint8_t reg_, uint8_t len_, uint8_t *data);
+_Bool i2cWrite(I2CDevice device, uint8_t addr_, uint8_t reg, uint8_t data);
+_Bool i2cRead(I2CDevice device, uint8_t addr_, uint8_t reg, uint8_t len, uint8_t* buf);
+
+uint16_t i2cGetErrorCounter(void);
+# 43 "./src/main/drivers/compass/compass_qmc5883l.c" 2
+
+# 1 "./src/main/sensors/boardalignment.h" 1
+# 18 "./src/main/sensors/boardalignment.h"
+       
+
+# 1 "./src/main/config/parameter_group.h" 1
+# 18 "./src/main/config/parameter_group.h"
+       
+
+
+
+
+
+
+typedef uint16_t pgn_t;
+
+
+typedef enum {
+    PGRF_NONE = 0,
+    PGRF_CLASSIFICATON_BIT = (1 << 0)
+} pgRegistryFlags_e;
+
+typedef enum {
+    PGR_PGN_MASK = 0x0fff,
+    PGR_PGN_VERSION_MASK = 0xf000,
+    PGR_SIZE_MASK = 0x0fff,
+    PGR_SIZE_SYSTEM_FLAG = 0x0000,
+    PGR_SIZE_PROFILE_FLAG = 0x8000
+} pgRegistryInternal_e;
+
+
+typedef void (pgResetFunc)(void * , int );
+
+typedef struct pgRegistry_s {
+    pgn_t pgn;
+    uint16_t size;
+    uint8_t *address;
+    uint8_t *copy;
+    uint8_t **ptr;
+    union {
+        void *ptr;
+        pgResetFunc *fn;
+    } reset;
+} pgRegistry_t;
+
+static inline uint16_t pgN(const pgRegistry_t* reg) {return reg->pgn & PGR_PGN_MASK;}
+static inline uint8_t pgVersion(const pgRegistry_t* reg) {return (uint8_t)(reg->pgn >> 12);}
+static inline uint16_t pgSize(const pgRegistry_t* reg) {return reg->size & PGR_SIZE_MASK;}
+static inline uint16_t pgIsSystem(const pgRegistry_t* reg) {return (reg->size & PGR_SIZE_PROFILE_FLAG) == 0;}
+static inline uint16_t pgIsProfile(const pgRegistry_t* reg) {return (reg->size & PGR_SIZE_PROFILE_FLAG) == PGR_SIZE_PROFILE_FLAG;}
+
+#define PG_PACKED __attribute__((packed))
+# 73 "./src/main/config/parameter_group.h"
+extern const pgRegistry_t __pg_registry_start[];
+extern const pgRegistry_t __pg_registry_end[];
+#define PG_REGISTER_ATTRIBUTES __attribute__ ((section(".pg_registry"), used, aligned(4)))
+
+extern const uint8_t __pg_resetdata_start[];
+extern const uint8_t __pg_resetdata_end[];
+#define PG_RESETDATA_ATTRIBUTES __attribute__ ((section(".pg_resetdata"), used, aligned(2)))
+
+
+#define PG_REGISTRY_SIZE (__pg_registry_end - __pg_registry_start)
+
+
+#define PG_FOREACH(_name) for (const pgRegistry_t *(_name) = __pg_registry_start; (_name) < __pg_registry_end; _name++)
+
+
+#define PG_FOREACH_PROFILE(_name) PG_FOREACH(_name) if (pgIsSystem(_name)) continue; else
+# 97 "./src/main/config/parameter_group.h"
+#define PG_RESET_CURRENT(_name) do { extern const pgRegistry_t _name ##_Registry; pgResetCurrent(&_name ## _Registry); } while (0)
+
+
+
+
+
+
+
+#define PG_DECLARE(_type,_name) extern _type _name ## _System; extern _type _name ## _Copy; static inline const _type* _name(void) { return &_name ## _System; } static inline _type* _name ## Mutable(void) { return &_name ## _System; } struct _dummy
+# 114 "./src/main/config/parameter_group.h"
+#define PG_DECLARE_ARRAY(_type,_size,_name) extern _type _name ## _SystemArray[_size]; extern _type _name ## _CopyArray[_size]; static inline const _type* _name(int _index) { return &_name ## _SystemArray[_index]; } static inline _type* _name ## Mutable(int _index) { return &_name ## _SystemArray[_index]; } static inline _type (* _name ## _array(void))[_size] { return &_name ## _SystemArray; } struct _dummy
+# 124 "./src/main/config/parameter_group.h"
+#define PG_DECLARE_PROFILE(_type,_name) extern _type *_name ## _ProfileCurrent; static inline const _type* _name(void) { return _name ## _ProfileCurrent; } static inline _type* _name ## Mutable(void) { return _name ## _ProfileCurrent; } struct _dummy
+# 133 "./src/main/config/parameter_group.h"
+#define PG_REGISTER_I(_type,_name,_pgn,_version,_reset) _type _name ## _System; _type _name ## _Copy; extern const pgRegistry_t _name ## _Registry; const pgRegistry_t _name ##_Registry PG_REGISTER_ATTRIBUTES = { .pgn = _pgn | (_version << 12), .size = sizeof(_type) | PGR_SIZE_SYSTEM_FLAG, .address = (uint8_t*)&_name ## _System, .copy = (uint8_t*)&_name ## _Copy, .ptr = 0, _reset, }
+# 148 "./src/main/config/parameter_group.h"
+#define PG_REGISTER(_type,_name,_pgn,_version) PG_REGISTER_I(_type, _name, _pgn, _version, .reset = {.ptr = 0})
+
+
+
+#define PG_REGISTER_WITH_RESET_FN(_type,_name,_pgn,_version) extern void pgResetFn_ ## _name(_type *); PG_REGISTER_I(_type, _name, _pgn, _version, .reset = {.fn = (pgResetFunc*)&pgResetFn_ ## _name })
+
+
+
+
+#define PG_REGISTER_WITH_RESET_TEMPLATE(_type,_name,_pgn,_version) extern const _type pgResetTemplate_ ## _name; PG_REGISTER_I(_type, _name, _pgn, _version, .reset = {.ptr = (void*)&pgResetTemplate_ ## _name})
+
+
+
+
+
+#define PG_REGISTER_ARRAY_I(_type,_size,_name,_pgn,_version,_reset) _type _name ## _SystemArray[_size]; _type _name ## _CopyArray[_size]; extern const pgRegistry_t _name ##_Registry; const pgRegistry_t _name ## _Registry PG_REGISTER_ATTRIBUTES = { .pgn = _pgn | (_version << 12), .size = (sizeof(_type) * _size) | PGR_SIZE_SYSTEM_FLAG, .address = (uint8_t*)&_name ## _SystemArray, .copy = (uint8_t*)&_name ## _CopyArray, .ptr = 0, _reset, }
+# 177 "./src/main/config/parameter_group.h"
+#define PG_REGISTER_ARRAY(_type,_size,_name,_pgn,_version) PG_REGISTER_ARRAY_I(_type, _size, _name, _pgn, _version, .reset = {.ptr = 0})
+
+
+
+#define PG_REGISTER_ARRAY_WITH_RESET_FN(_type,_size,_name,_pgn,_version) extern void pgResetFn_ ## _name(_type *); PG_REGISTER_ARRAY_I(_type, _size, _name, _pgn, _version, .reset = {.fn = (pgResetFunc*)&pgResetFn_ ## _name})
+# 198 "./src/main/config/parameter_group.h"
+#define _PG_PROFILE_CURRENT_DECL(_type,_name) _type *_name ## _ProfileCurrent;
+
+
+
+
+#define PG_REGISTER_PROFILE_I(_type,_name,_pgn,_version,_reset) STATIC_UNIT_TESTED _type _name ## _Storage[MAX_PROFILE_COUNT]; STATIC_UNIT_TESTED _type _name ## _CopyStorage[MAX_PROFILE_COUNT]; _PG_PROFILE_CURRENT_DECL(_type, _name) extern const pgRegistry_t _name ## _Registry; const pgRegistry_t _name ## _Registry PG_REGISTER_ATTRIBUTES = { .pgn = _pgn | (_version << 12), .size = sizeof(_type) | PGR_SIZE_PROFILE_FLAG, .address = (uint8_t*)&_name ## _Storage, .copy = (uint8_t*)&_name ## _CopyStorage, .ptr = (uint8_t **)&_name ## _ProfileCurrent, _reset, }
+# 218 "./src/main/config/parameter_group.h"
+#define PG_REGISTER_PROFILE(_type,_name,_pgn,_version) PG_REGISTER_PROFILE_I(_type, _name, _pgn, _version, .reset = {.ptr = 0})
+
+
+
+#define PG_REGISTER_PROFILE_WITH_RESET_FN(_type,_name,_pgn,_version) extern void pgResetFn_ ## _name(_type *); PG_REGISTER_PROFILE_I(_type, _name, _pgn, _version, .reset = {.fn = (pgResetFunc*)&pgResetFn_ ## _name})
+
+
+
+
+#define PG_REGISTER_PROFILE_WITH_RESET_TEMPLATE(_type,_name,_pgn,_version) extern const _type pgResetTemplate_ ## _name; PG_REGISTER_PROFILE_I(_type, _name, _pgn, _version, .reset = {.ptr = (void*)&pgResetTemplate_ ## _name})
+
+
+
+
+
+
+
+#define PG_RESET_TEMPLATE(_type,_name,...) const _type pgResetTemplate_ ## _name PG_RESETDATA_ATTRIBUTES = { __VA_ARGS__ }
+
+
+
+
+
+const pgRegistry_t* pgFind(pgn_t pgn);
+
+void pgLoad(const pgRegistry_t* reg, int profileIndex, const void *from, int size, int version);
+int pgStore(const pgRegistry_t* reg, void *to, int size, uint8_t profileIndex);
+void pgResetAll(int profileCount);
+void pgResetCurrent(const pgRegistry_t *reg);
+_Bool pgResetCopy(void *copy, pgn_t pgn);
+void pgReset(const pgRegistry_t* reg, int profileIndex);
+void pgActivateProfile(int profileIndex);
+# 21 "./src/main/sensors/boardalignment.h" 2
+
+typedef struct boardAlignment_s {
+    int16_t rollDeciDegrees;
+    int16_t pitchDeciDegrees;
+    int16_t yawDeciDegrees;
+} boardAlignment_t;
+
+extern boardAlignment_t boardAlignment_System; extern boardAlignment_t boardAlignment_Copy; static inline const boardAlignment_t* boardAlignment(void) { return &boardAlignment_System; } static inline boardAlignment_t* boardAlignmentMutable(void) { return &boardAlignment_System; } struct _dummy;
+
+void alignSensors(int32_t *dest, uint8_t rotation);
+void initBoardAlignment(void);
+void updateBoardAlignment(int16_t roll, int16_t pitch);
+# 45 "./src/main/drivers/compass/compass_qmc5883l.c" 2
+# 1 "./src/main/sensors/sensors.h" 1
+# 18 "./src/main/sensors/sensors.h"
+       
+
+typedef enum {
+    SENSOR_INDEX_GYRO = 0,
+    SENSOR_INDEX_ACC,
+    SENSOR_INDEX_BARO,
+    SENSOR_INDEX_MAG,
+    SENSOR_INDEX_RANGEFINDER,
+    SENSOR_INDEX_PITOT,
+    SENSOR_INDEX_COUNT
+} sensorIndex_e;
+
+typedef struct int16_flightDynamicsTrims_s {
+    int16_t roll;
+    int16_t pitch;
+    int16_t yaw;
+} flightDynamicsTrims_def_t;
+
+typedef union flightDynamicsTrims_u {
+    int16_t raw[3];
+    flightDynamicsTrims_def_t values;
+} flightDynamicsTrims_t;
+
+#define CALIBRATING_GYRO_CYCLES 1000
+#define CALIBRATING_ACC_CYCLES 400
+
+
+typedef enum {
+    SENSOR_GYRO = 1 << 0,
+    SENSOR_ACC = 1 << 1,
+    SENSOR_BARO = 1 << 2,
+    SENSOR_MAG = 1 << 3,
+    SENSOR_RANGEFINDER = 1 << 4,
+    SENSOR_PITOT = 1 << 5,
+    SENSOR_GPS = 1 << 6,
+    SENSOR_GPSMAG = 1 << 7,
+} sensors_e;
+
+extern uint8_t requestedSensors[SENSOR_INDEX_COUNT];
+extern uint8_t detectedSensors[SENSOR_INDEX_COUNT];
+# 46 "./src/main/drivers/compass/compass_qmc5883l.c" 2
+
+# 1 "./src/main/drivers/sensor.h" 1
+# 18 "./src/main/drivers/sensor.h"
+       
+
+
+
+
+
+
+typedef enum {
+    ALIGN_DEFAULT = 0,
+    CW0_DEG = 1,
+    CW90_DEG = 2,
+    CW180_DEG = 3,
+    CW270_DEG = 4,
+    CW0_DEG_FLIP = 5,
+    CW90_DEG_FLIP = 6,
+    CW180_DEG_FLIP = 7,
+    CW270_DEG_FLIP = 8
+} sensor_align_e;
+
+typedef union busDevice_u {
+    struct deviceSpi_s {
+        IO_t csnPin;
+    } spi;
+    struct deviceI2C_s {
+        uint8_t address;
+    } i2c;
+} busDevice_t;
+
+typedef _Bool (*sensorInitFuncPtr)(void);
+typedef _Bool (*sensorReadFuncPtr)(int16_t *data);
+typedef _Bool (*sensorInterruptFuncPtr)(void);
+struct accDev_s;
+typedef void (*sensorAccInitFuncPtr)(struct accDev_s *acc);
+typedef _Bool (*sensorAccReadFuncPtr)(struct accDev_s *acc);
+struct gyroDev_s;
+typedef void (*sensorGyroInitFuncPtr)(struct gyroDev_s *gyro);
+typedef _Bool (*sensorGyroReadFuncPtr)(struct gyroDev_s *gyro);
+typedef _Bool (*sensorGyroUpdateFuncPtr)(struct gyroDev_s *gyro);
+typedef _Bool (*sensorGyroReadDataFuncPtr)(struct gyroDev_s *gyro, int16_t *data);
+typedef _Bool (*sensorGyroInterruptStatusFuncPtr)(struct gyroDev_s *gyro);
+struct magDev_s;
+typedef _Bool (*sensorMagInitFuncPtr)(struct magDev_s *mag);
+typedef _Bool (*sensorMagReadFuncPtr)(struct magDev_s *mag);
+# 48 "./src/main/drivers/compass/compass_qmc5883l.c" 2
+# 1 "./src/main/drivers/compass/compass.h" 1
+# 18 "./src/main/drivers/compass/compass.h"
+       
+
+
+
+typedef struct magDev_s {
+    sensorMagInitFuncPtr init;
+    sensorMagReadFuncPtr read;
+    busDevice_t bus;
+    sensor_align_e magAlign;
+    int16_t magADCRaw[3];
+} magDev_t;
+
+
+#define MAG_I2C_INSTANCE I2C_DEVICE
+# 49 "./src/main/drivers/compass/compass_qmc5883l.c" 2
+
+# 1 "./src/main/drivers/compass/compass_qmc5883l.h" 1
+# 25 "./src/main/drivers/compass/compass_qmc5883l.h"
+       
+
+_Bool qmc5883Detect(magDev_t *mag);
+# 51 "./src/main/drivers/compass/compass_qmc5883l.c" 2
+
+#define QMC5883L_MAG_I2C_ADDRESS 0x0D
+
+
+#define QMC5883L_REG_CONF1 0x09
+#define QMC5883L_REG_CONF2 0x0A
+
+
+#define QMC5883L_ODR_10HZ (0x00 << 2)
+#define QMC5883L_ODR_50HZ (0x01 << 2)
+#define QMC5883L_ODR_100HZ (0x02 << 2)
+#define QMC5883L_ODR_200HZ (0x03 << 2)
+
+
+#define QMC5883L_MODE_STANDBY 0x00
+#define QMC5883L_MODE_CONTINUOUS 0x01
+
+#define QMC5883L_RNG_2G (0x00 << 4)
+#define QMC5883L_RNG_8G (0x01 << 4)
+
+#define QMC5883L_OSR_512 (0x00 << 6)
+#define QMC5883L_OSR_256 (0x01 << 6)
+#define QMC5883L_OSR_128 (0x10 << 6)
+#define QMC5883L_OSR_64 (0x11 << 6)
+
+#define QMC5883L_RST 0x80
+
+#define QMC5883L_REG_DATA_OUTPUT_X 0x00
+#define QMC5883L_REG_STATUS 0x06
+
+#define QMC5883L_REG_ID 0x0D
+#define QMC5883_ID_VAL 0xFF
+
+static _Bool qmc5883Init(magDev_t *magDev)
+{
+    (void)(magDev);
+
+    _Bool ack = 1;
+
+    ack = ack && i2cWrite((I2CDEV_2), 0x0D, 0x0B, 0x01);
+
+
+    ack = ack && i2cWrite((I2CDEV_2), 0x0D, 0x09, 0x01 | (0x03 << 2) | (0x00 << 6) | (0x01 << 4));
+
+    if (!ack) {
+        return 0;
+    }
+
+    return 1;
+}
+
+static _Bool qmc5883Read(magDev_t *magDev)
+{
+    uint8_t status;
+    uint8_t buf[6];
+
+
+    magDev->magADCRaw[X] = 0;
+    magDev->magADCRaw[Y] = 0;
+    magDev->magADCRaw[Z] = 0;
+
+    _Bool ack = i2cRead((I2CDEV_2), 0x0D, 0x06, 1, &status);
+    if (!ack || (status & 0x04) == 0) {
+        return 0;
+    }
+
+    ack = i2cRead((I2CDEV_2), 0x0D, 0x00, 6, buf);
+    if (!ack) {
+        return 0;
+    }
+
+    magDev->magADCRaw[X] = (int16_t)(buf[1] << 8 | buf[0]);
+    magDev->magADCRaw[Y] = (int16_t)(buf[3] << 8 | buf[2]);
+    magDev->magADCRaw[Z] = (int16_t)(buf[5] << 8 | buf[4]);
+
+    return 1;
+}
+
+#define DETECTION_MAX_RETRY_COUNT 5
+_Bool qmc5883Detect(magDev_t *magDev)
+{
+
+    i2cWrite((I2CDEV_2), 0x0D, 0x0A, 0x80);
+    delay(20);
+
+    for (int retryCount = 0; retryCount < 5; retryCount++) {
+        uint8_t sig = 0;
+        _Bool ack = i2cRead((I2CDEV_2), 0x0D, 0x0D, 1, &sig);
+        if (ack && sig == 0xFF) {
+            magDev->init = qmc5883Init;
+            magDev->read = qmc5883Read;
+            return 1;
+        }
+    }
+
+    return 0;
+}

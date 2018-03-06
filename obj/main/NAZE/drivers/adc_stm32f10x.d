@@ -27,15 +27,7 @@ obj/main/NAZE/drivers/adc_stm32f10x.o: src/main/drivers/adc_stm32f10x.c \
  lib/main/STM32F10x_StdPeriph_Driver/inc/stm32f10x_usart.h \
  lib/main/STM32F10x_StdPeriph_Driver/inc/stm32f10x_wwdg.h \
  lib/main/STM32F10x_StdPeriph_Driver/inc/misc.h src/main/target/common.h \
- src/main/target/NAZE/target.h src/main/build/build_config.h \
- src/main/drivers/time.h src/main/common/time.h src/main/drivers/sensor.h \
- src/main/drivers/io_types.h src/main/drivers/accgyro/accgyro.h \
- src/main/common/axis.h src/main/drivers/exti.h \
- src/main/drivers/accgyro/accgyro_mpu.h src/main/drivers/adc.h \
- src/main/drivers/adc_impl.h src/main/drivers/rcc_types.h \
- src/main/drivers/io.h src/main/drivers/resource.h \
- src/main/drivers/io_def.h src/main/common/utils.h \
- src/main/drivers/io_def_generated.h src/main/drivers/rcc.h
+ src/main/target/NAZE/target.h
 
 src/main/platform.h:
 
@@ -96,39 +88,3 @@ lib/main/STM32F10x_StdPeriph_Driver/inc/misc.h:
 src/main/target/common.h:
 
 src/main/target/NAZE/target.h:
-
-src/main/build/build_config.h:
-
-src/main/drivers/time.h:
-
-src/main/common/time.h:
-
-src/main/drivers/sensor.h:
-
-src/main/drivers/io_types.h:
-
-src/main/drivers/accgyro/accgyro.h:
-
-src/main/common/axis.h:
-
-src/main/drivers/exti.h:
-
-src/main/drivers/accgyro/accgyro_mpu.h:
-
-src/main/drivers/adc.h:
-
-src/main/drivers/adc_impl.h:
-
-src/main/drivers/rcc_types.h:
-
-src/main/drivers/io.h:
-
-src/main/drivers/resource.h:
-
-src/main/drivers/io_def.h:
-
-src/main/common/utils.h:
-
-src/main/drivers/io_def_generated.h:
-
-src/main/drivers/rcc.h:

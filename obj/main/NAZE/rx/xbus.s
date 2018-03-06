@@ -14,26 +14,26 @@
 	.file	"xbus.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.6e5b1d31f1f35e16,"",%progbits
+	.section	.gnu.lto_.profile.268125085407f5c6,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.inline.6e5b1d31f1f35e16,"",%progbits
+	.section	.gnu.lto_.inline.268125085407f5c6,"",%progbits
 	.ascii	"x\234cf\300\016\230\340,\000\000\234\000\006"
 	.text
-	.section	.gnu.lto_.pureconst.6e5b1d31f1f35e16,"",%progbits
+	.section	.gnu.lto_.pureconst.268125085407f5c6,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.symbol_nodes.6e5b1d31f1f35e16,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.268125085407f5c6,"",%progbits
 	.ascii	"x\234cf```b\200\001\000\000L\000\006"
 	.text
-	.section	.gnu.lto_.refs.6e5b1d31f1f35e16,"",%progbits
+	.section	.gnu.lto_.refs.268125085407f5c6,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.decls.6e5b1d31f1f35e16,"",%progbits
+	.section	.gnu.lto_.decls.268125085407f5c6,"",%progbits
 	.ascii	"x\234cf``P\001\342\377@\000\244\030\030\2418\200\201"
 	.ascii	"\000\000\000\3208\004v"
 	.text
-	.section	.gnu.lto_.symtab.6e5b1d31f1f35e16,"",%progbits
+	.section	.gnu.lto_.symtab.268125085407f5c6,"",%progbits
 	.text
 	.section	.gnu.lto_.opts,"",%progbits
 	.ascii	"'-fno-trapv' '-mthumb' '-mcpu=cortex-m3' '-ggdb3' '"

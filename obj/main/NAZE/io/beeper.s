@@ -14,11 +14,11 @@
 	.file	"beeper.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.2b0f46a7017bcfec,"",%progbits
+	.section	.gnu.lto_.profile.a085d4ff58c24a63,"",%progbits
 	.ascii	"x\234cf```c\200\000F\206\315\314\373\030\001\004\364"
 	.ascii	"\001\200"
 	.text
-	.section	.gnu.lto_.jmpfuncs.2b0f46a7017bcfec,"",%progbits
+	.section	.gnu.lto_.jmpfuncs.a085d4ff58c24a63,"",%progbits
 	.ascii	"x\234m\216\273\012\302P\020Dw\366b\2101p\361Q\371\031"
 	.ascii	"\376\234e\004k\321\332\316\306\367\343\003\354\024+"
 	.ascii	"\213\220/H\012\013[\261\262sw\023D\301[\354\302\234"
@@ -31,7 +31,7 @@
 	.ascii	"\235e|';I\336\213\332$ji\341\266\216\216D\276\001\322"
 	.ascii	"\351;\235"
 	.text
-	.section	.gnu.lto_.inline.2b0f46a7017bcfec,"",%progbits
+	.section	.gnu.lto_.inline.a085d4ff58c24a63,"",%progbits
 	.ascii	"x\234cf\300\016v1Bhn\006\006Q9F\006&\225%\333\230\031"
 	.ascii	"\330\026\3103\201\004Y\031D\245\030\231\0312>21\336"
 	.ascii	"\177r\376\"\307\013\246\237L@\011\306\345\214R\014\014"
@@ -48,11 +48,11 @@
 	.ascii	"#\311u\360\241\312\211\000\305\200F\301\002\034\004"
 	.ascii	"\000\010'(\347"
 	.text
-	.section	.gnu.lto_.pureconst.2b0f46a7017bcfec,"",%progbits
+	.section	.gnu.lto_.pureconst.a085d4ff58c24a63,"",%progbits
 	.ascii	"x\234cf``\020g\200\000n\006IV\0116\011NI.\011\036\011"
 	.ascii	"~IA\026!\006a\006\021\006\000\022\355\001X"
 	.text
-	.section	.gnu.lto_beeper.part.0.2b0f46a7017bcfec,"",%progbits
+	.section	.gnu.lto_beeper.part.0.a085d4ff58c24a63,"",%progbits
 	.ascii	"x\234\215T\335O\\U\020?s\316\375\334\273K\301\210\022"
 	.ascii	"\036\304\2044\304\304v\343\003\306D\037L\374C\014\302"
 	.ascii	">\220\330\326\3206>\030\322\013\273\266$m\012\022\255"
@@ -118,7 +118,7 @@
 	.ascii	"\332S\021\310\333\033x3P\276/P\361Z\331\356\212\312"
 	.ascii	"\212\262}\001\273<\363\004\225\377\002\021h\242y"
 	.text
-	.section	.gnu.lto_beeper.2b0f46a7017bcfec,"",%progbits
+	.section	.gnu.lto_beeper.a085d4ff58c24a63,"",%progbits
 	.ascii	"x\234mR\333K\024Q\030\377\276sf\317\314^]}\250m\037"
 	.ascii	"2\020Y\204p{\252\307\202\376\022s\347\301H\015\365U"
 	.ascii	"<\343n!\024i\366\"i\221E^\262\326\312.\336\036\026\362"
@@ -157,7 +157,7 @@
 	.ascii	"\202V\337\2300K\233\315\013fm\213\2318[\323\220\250"
 	.ascii	"K\324\264\230\177\001\020\224,\""
 	.text
-	.section	.gnu.lto_beeperSilence.2b0f46a7017bcfec,"",%progbits
+	.section	.gnu.lto_beeperSilence.a085d4ff58c24a63,"",%progbits
 	.ascii	"x\234u\222KK\002a\024\206\277\367\233\324\361F\321&"
 	.ascii	"\363\017\270\323\177\320_\3507\224\270h\321\005[\213"
 	.ascii	"c\032\264\012\241M\320eQD\226\245\226\335\013\232e\253"
@@ -182,7 +182,7 @@
 	.ascii	"9\2028?4\301P04\033\015\207&\307&\246B\023\323\241\361"
 	.ascii	"Hd&\022\015\206\331\017|#\376\372"
 	.text
-	.section	.gnu.lto_beeperProcessCommand.2b0f46a7017bcfec,"",%progbits
+	.section	.gnu.lto_beeperProcessCommand.a085d4ff58c24a63,"",%progbits
 	.ascii	"x\234\225TMO\023Q\024}\367M\347\303v\332i\313\207\310"
 	.ascii	"\206\215\221\0254q\351\202_at\253\020\026,\374\010\306"
 	.ascii	"%aj\033tcC\032E\202_a\241\202(\210Z\020\021-(\"Q1\204"
@@ -226,7 +226,7 @@
 	.ascii	"\376\267W\206\216\325\327\204\016\035\254;\034\252;"
 	.ascii	"\022\252\256\255=Z[_Y\303\376\0024M\356\273"
 	.text
-	.section	.gnu.lto_beeperConfirmationBeeps.2b0f46a7017bcfec,"",%progbits
+	.section	.gnu.lto_beeperConfirmationBeeps.a085d4ff58c24a63,"",%progbits
 	.ascii	"x\234\225\224\331K\324Q\024\307\317\367\376\266\031"
 	.ascii	"g@\211 \031\210\002+\011\244y\355\261\350\265\247\376"
 	.ascii	"\202J|\230\007\263\305\036\245\237:i\005\225\332\202"
@@ -274,7 +274,7 @@
 	.ascii	"HAxk^\336\366\274\235kr\311/\263\015\005\273\267\025"
 	.ascii	"\"b\347n\214\344G\012\277\002gd\235n"
 	.text
-	.section	.gnu.lto_beeperGpsStatus.2b0f46a7017bcfec,"",%progbits
+	.section	.gnu.lto_beeperGpsStatus.a085d4ff58c24a63,"",%progbits
 	.ascii	"x\234\225T[oTU\024^\337>s.s\316\300L\332\2002&\362@"
 	.ascii	"\2641Z&\341E\037|\3617\370\013\204\364\241\017^\202"
 	.ascii	">\322p\346\"`\202\322\024\253\015\027\203\211\205\322"
@@ -328,7 +328,7 @@
 	.ascii	"A\336\366Sk3\357n\334\220y\363\215\326\2672\255og\326"
 	.ascii	"\267\264\274\323\262q\355\006B\353\277\263\313(\364"
 	.text
-	.section	.gnu.lto_beeperUpdate.2b0f46a7017bcfec,"",%progbits
+	.section	.gnu.lto_beeperUpdate.a085d4ff58c24a63,"",%progbits
 	.ascii	"x\234\225VYSTW\020>}fe6fe\225\035\025E\035\305\207$"
 	.ascii	"o\376\210\344\007D\213\007\037D\013\223\312\223\345"
 	.ascii	"\305\231\250\025\227\020\022S\226\232\244\224h\210\373"
@@ -419,7 +419,7 @@
 	.ascii	"1\367\242\367kk\253k\336{{\361\222\352w\226\233j\226"
 	.ascii	"~\360\017jtt\037"
 	.text
-	.section	.gnu.lto_getArmingBeepTimeMicros.2b0f46a7017bcfec,"",%progbits
+	.section	.gnu.lto_getArmingBeepTimeMicros.a085d4ff58c24a63,"",%progbits
 	.ascii	"x\234cf\300\004R@\374\035\210%\201\230\221\231\201\221"
 	.ascii	"i\3029\006\206F\016&FF\020\203\201\221\241\236\211\261"
 	.ascii	"\236\361%\323G&\306\235\353\276\234\345~\301\364\223"
@@ -437,7 +437,7 @@
 	.ascii	"\213\222\365s\0233\363\3643\363\365\223RS\013R\213\364"
 	.ascii	"\222\031\000\361\217b@"
 	.text
-	.section	.gnu.lto_beeperModeForTableIndex.2b0f46a7017bcfec,"",%progbits
+	.section	.gnu.lto_beeperModeForTableIndex.a085d4ff58c24a63,"",%progbits
 	.ascii	"x\234ePAKTQ\024>\337\271\367\275\306\306 \202\014\036"
 	.ascii	"\030!\210\010\352[\364\007\372!-*\233\305,\312\260\215"
 	.ascii	"-\304;\343`-\012\207\0223\"ZD\326dj)\205F\320,\\$4\205"
@@ -464,7 +464,7 @@
 	.ascii	"W\303tOx)\225\272\226\352\355\352&\223\276\334\367\007"
 	.ascii	"\246k\261o"
 	.text
-	.section	.gnu.lto_beeperNameForTableIndex.2b0f46a7017bcfec,"",%progbits
+	.section	.gnu.lto_beeperNameForTableIndex.a085d4ff58c24a63,"",%progbits
 	.ascii	"x\234eP\317K\233A\020\235\267\273\337g4\026E\220B\240"
 	.ascii	"\320\213\010\202~\227^\013\376!^\254\346\220\203mQ\004"
 	.ascii	"/\342&\015m\016-\206*\022\221\322b\251\032\255?KE{1"
@@ -492,7 +492,7 @@
 	.ascii	"\310s/\362\302{\026\016\277\014w6\265\221\216\264\367"
 	.ascii	"\334\000\261\032\264\243"
 	.text
-	.section	.gnu.lto_beeperTableEntryCount.2b0f46a7017bcfec,"",%progbits
+	.section	.gnu.lto_beeperTableEntryCount.a085d4ff58c24a63,"",%progbits
 	.ascii	"x\234cf\300\004R@\274\001\210%\201\230\221\231\201\221"
 	.ascii	"i\3029\006\206F\016&FF\020\203\201\221\241\236\211\261"
 	.ascii	"\236\361%\323G&\306\235\353\276\234\345~\301\364\223"
@@ -507,7 +507,7 @@
 	.ascii	")\004j\023\327\323/.J\326\317M\314\314\323\317\314\327"
 	.ascii	"OJM-H-\322Kf\000\000\237\300J="
 	.text
-	.section	.gnu.lto_.symbol_nodes.2b0f46a7017bcfec,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.a085d4ff58c24a63,"",%progbits
 	.ascii	"x\234U\316]O\023Q\020\006\340w\316\364,\273ea\013\210"
 	.ascii	"\005n\274\002\304\217\3378\265bEQ\302\037\200\224MM"
 	.ascii	"\370\035\244\351eM\204\204\013.\024\335VA\374\000\301"
@@ -532,7 +532,7 @@
 	.ascii	"\363</!{Q\347\3446\226w]\\Dg\267(w\016\234\371-\007"
 	.ascii	"E=S#47\2073\270\002\324\241\316\212"
 	.text
-	.section	.gnu.lto_.refs.2b0f46a7017bcfec,"",%progbits
+	.section	.gnu.lto_.refs.a085d4ff58c24a63,"",%progbits
 	.ascii	"x\234%\215I\016\302@\020\003m\367\220\011\351\220\225"
 	.ascii	",\020v\020\342\002\342\373\374\216 |\260\352\342\262"
 	.ascii	"\001\370\340\237\010\321\300\005\224\201\005\265\241"
@@ -543,7 +543,7 @@
 	.ascii	"\330\302:h\202\335\241\007\253'\343\013\366f\215\212"
 	.ascii	"l@c;\027\276\325k\007\034"
 	.text
-	.section	.gnu.lto_.decls.2b0f46a7017bcfec,"",%progbits
+	.section	.gnu.lto_.decls.a085d4ff58c24a63,"",%progbits
 	.ascii	"x\234\245|\013XTI\226f\336\214\314\004\222$\261\264"
 	.ascii	"\212\352qz\026\333\236q{zk\332\232\236\331\376f\277"
 	.ascii	"og\247)\245Jk|T\003V\277f\226\241\224*\371Z\241\032"
@@ -1198,7 +1198,7 @@
 	.ascii	"\376\006{\373\372y\022\317\257\367C\371\215j\377>\237"
 	.ascii	"\2575h\242w=V\310\017\377\027h\363\036&"
 	.text
-	.section	.gnu.lto_.symtab.2b0f46a7017bcfec,"",%progbits
+	.section	.gnu.lto_.symtab.a085d4ff58c24a63,"",%progbits
 	.ascii	"beeperTable\000\000\000\000\000\000\000\000\000\000"
 	.ascii	"\000\000\340\002\000\000beeper\000\000\000\000\000\000"
 	.ascii	"\000\000\000\000\000\000Z\001\000\000beeperSilence\000"

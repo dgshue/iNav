@@ -14,10 +14,10 @@
 	.file	"rc_modes.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.abe4e2cc39f36646,"",%progbits
+	.section	.gnu.lto_.profile.470f8a92e3f4ec8c,"",%progbits
 	.ascii	"x\234cf```c\200\000F\206\023LK\030\001\005\021\001z"
 	.text
-	.section	.gnu.lto_.jmpfuncs.abe4e2cc39f36646,"",%progbits
+	.section	.gnu.lto_.jmpfuncs.470f8a92e3f4ec8c,"",%progbits
 	.ascii	"x\234m\220?K\003A\020\305\347\315\336%\027\217HD+\033"
 	.ascii	"\005?d\252p\213\210\010\242\210\240\004$\202\215\177"
 	.ascii	"\222\0305'\026\371\004v\"\327\330\211`aa\241\220\004"
@@ -36,7 +36,7 @@
 	.ascii	"7\027B\327R\242\313`\213\310W7\375:[\344\327\022yZ\274"
 	.ascii	"\305\312\366I_\"{l\005"
 	.text
-	.section	.gnu.lto_.inline.abe4e2cc39f36646,"",%progbits
+	.section	.gnu.lto_.inline.470f8a92e3f4ec8c,"",%progbits
 	.ascii	"x\234mP;n\0021\020}3\236e\035\026\363\221\262\244\240"
 	.ascii	"\240A!J\032\252\344\026{#$:\240\333\"\242\246\312\011"
 	.ascii	"\"\321q\206=\000\007\240\244\241\243\310x\215\027\244"
@@ -52,11 +52,11 @@
 	.ascii	"h\200\374\225X\247\205\370\331\372\213\371m\013q\303"
 	.ascii	"\315\005\177\327\343(T"
 	.text
-	.section	.gnu.lto_.pureconst.abe4e2cc39f36646,"",%progbits
+	.section	.gnu.lto_.pureconst.470f8a92e3f4ec8c,"",%progbits
 	.ascii	"x\234cf``\020g\200\000n\006I&If\026V\026v\011N\011."
 	.ascii	"InV^I\001IA)\000\017\310\001W"
 	.text
-	.section	.gnu.lto_isRangeActive.part.0.abe4e2cc39f36646,"",%progbits
+	.section	.gnu.lto_isRangeActive.part.0.470f8a92e3f4ec8c,"",%progbits
 	.ascii	"x\234\225R]hTW\020>\337\271\177\373\353n\022\220\272"
 	.ascii	"\024\024\322\020\204$\013},\264\010}\321w)\276\311\262"
 	.ascii	"\256\255\240+\304*B\011\236\315nk\036T4\017UL\265H\020"
@@ -108,7 +108,7 @@
 	.ascii	"\334\326u\371M\271\335Vs&\377~.\226\365]\357e\266\356"
 	.ascii	"\314\275\000/\001\272\303"
 	.text
-	.section	.gnu.lto_isRangeActive.abe4e2cc39f36646,"",%progbits
+	.section	.gnu.lto_isRangeActive.470f8a92e3f4ec8c,"",%progbits
 	.ascii	"x\234\215\222\337KTQ\020\307\317w\316\275\327u\335p"
 	.ascii	"\351\251\226\260@D\002u\301? \202^\352\037\3505\266"
 	.ascii	"u\373\001\272\201\"\370\"\036m\245\036D\312'1,D\242"
@@ -142,7 +142,7 @@
 	.ascii	"8\021\211\307c\215\207\342\015\2616\2739\022?\036\013"
 	.ascii	"D\213\241\303\221\306\326\330o\017\177\373\213"
 	.text
-	.section	.gnu.lto_isUsingSticksForArming.abe4e2cc39f36646,"",%progbits
+	.section	.gnu.lto_isUsingSticksForArming.470f8a92e3f4ec8c,"",%progbits
 	.ascii	"x\234cf\300\004R@|\025\210\245\201\230\221\231\201\221"
 	.ascii	"i\3029\006\206F\016&FF\020\203\201\221\241\236\211\261"
 	.ascii	"\236\361%\323G&\3063;\377]fT_\332\320\320\364a\322\333"
@@ -158,7 +158,7 @@
 	.ascii	"\231\222z\372\305E\311\372\271\211\231y\372i\311\372"
 	.ascii	"E\311\361\271\371)\251\305z\311\014\000\0005T\360"
 	.text
-	.section	.gnu.lto_isUsingNavigationModes.abe4e2cc39f36646,"",%progbits
+	.section	.gnu.lto_isUsingNavigationModes.470f8a92e3f4ec8c,"",%progbits
 	.ascii	"x\234eN\315JBa\020\2353\027\345B\233p\227=\200\004\341"
 	.ascii	"}\225\336@\344\226\340B\005]\213s\345.ZE\264U\333EZ"
 	.ascii	"P\270l\223\332:\212\220\010\204tc\220\253\022\027!\242"
@@ -174,7 +174,7 @@
 	.ascii	"\316\346\275\214\357\025\375T\256pxTJ\372\364\013V\257"
 	.ascii	"U["
 	.text
-	.section	.gnu.lto_IS_RC_MODE_ACTIVE.abe4e2cc39f36646,"",%progbits
+	.section	.gnu.lto_IS_RC_MODE_ACTIVE.470f8a92e3f4ec8c,"",%progbits
 	.ascii	"x\234eN\273K\202Q\024?\277\363\245\010\016ESIK\204H"
 	.ascii	"\020~\253ck\177Ac\224V4\230\240K\313\207\367\023\245"
 	.ascii	"\246\250-\350\261Dd/\3551E\213C\364\200H\302@\010\265"
@@ -195,7 +195,7 @@
 	.ascii	"4h\206G\247\246\315\211\240\031\015\216\204#\241\361"
 	.ascii	"\230?H\216\261\310\314P\350\013\015&\207\254"
 	.text
-	.section	.gnu.lto_isAirmodeActive.abe4e2cc39f36646,"",%progbits
+	.section	.gnu.lto_isAirmodeActive.470f8a92e3f4ec8c,"",%progbits
 	.ascii	"x\234e\220M+\204Q\024\307\317\377<\356\363<\203\244"
 	.ascii	"\311\306\243l()y>\203o\340\033H\203\262@XOs1\305J6\226"
 	.ascii	"\354\274\216\227X\214\310bl%\222w1J3b\241\214)z\222"
@@ -218,7 +218,7 @@
 	.ascii	"\357j\355\354\366;\"~_\244\245\253\247\255\275\2771"
 	.ascii	"B\037\371<\217\206"
 	.text
-	.section	.gnu.lto_rcModeUpdate.abe4e2cc39f36646,"",%progbits
+	.section	.gnu.lto_rcModeUpdate.470f8a92e3f4ec8c,"",%progbits
 	.ascii	"x\234e\220;K\302Q\030\306\337\347\375\213I\022D\223"
 	.ascii	"ICC\346\246_\240\241\251\241\265\017\020b\006\015\032"
 	.ascii	"\250\320$\036\305 \032\302\232\214\262\206\212\256j"
@@ -240,7 +240,7 @@
 	.ascii	"o,\344\035\365{\303\376\341\340\370H \342\361\223-\024"
 	.ascii	"\230\030\212\372\242\201\037\230\313\201C"
 	.text
-	.section	.gnu.lto_isModeActivationConditionPresent.abe4e2cc39f36646,"",%progbits
+	.section	.gnu.lto_isModeActivationConditionPresent.470f8a92e3f4ec8c,"",%progbits
 	.ascii	"x\234\235T]lL[\024\336\337\332\347Ogn5\2240\221\270"
 	.ascii	"7CD\256\232W\211\027\257\036<\213'\221\266\302\0037"
 	.ascii	"\251\373\340E\354v\206x\272~\"\376\353'\202\372+\325"
@@ -290,7 +290,7 @@
 	.ascii	"\243\242r\305\314r\345\310\307\334\012{\351\362\212"
 	.ascii	"\312\225\316\302`\030)z\211\372\010K\232\365\364"
 	.text
-	.section	.gnu.lto_updateActivatedModes.abe4e2cc39f36646,"",%progbits
+	.section	.gnu.lto_updateActivatedModes.470f8a92e3f4ec8c,"",%progbits
 	.ascii	"x\234\235ViLTW\024\276\347>fa\336l(\233\203\3246\330"
 	.ascii	"\360K'\246\211m\372\253\211I\033MLL\372\247\351\037"
 	.ascii	"C\220\246\244\021R\244\325\376 >\030\252$\265\025I\323"
@@ -387,7 +387,7 @@
 	.ascii	"F!x\032\350\373\314\210\240o\247'\244'\375\003\362\220"
 	.ascii	"_C"
 	.text
-	.section	.gnu.lto_updateUsedModeActivationConditionFlags.abe4e2cc39f36646,"",%progbits
+	.section	.gnu.lto_updateUsedModeActivationConditionFlags.470f8a92e3f4ec8c,"",%progbits
 	.ascii	"x\234\235UMP[U\024\276\347\276\344\345%/$\221\220R3"
 	.ascii	"\250Ut\330H\263p\351\316\245;W]\270\3508\024\307.Zg"
 	.ascii	"`\343\206\351\243\211\3108S\3130\266R\224*\235\321R"
@@ -455,7 +455,7 @@
 	.ascii	"\354?\030z\263*TS\265\367\300\333\373\252kwW1\373\376"
 	.ascii	"\203\373\252\337Q\367\212G!\267\267\330\337\367>4\251"
 	.text
-	.section	.gnu.lto_configureModeActivationCondition.abe4e2cc39f36646,"",%progbits
+	.section	.gnu.lto_configureModeActivationCondition.470f8a92e3f4ec8c,"",%progbits
 	.ascii	"x\234\245T\355oSU\030?\277s\333\333k_\\3X\034\025\023"
 	.ascii	"\023\\\320\204\321\030\277\372\201\304\370\201\350\007"
 	.ascii	"\377\003\322t5\220\254\325l\030\370\262p\373\262A\242"
@@ -514,7 +514,7 @@
 	.ascii	"\331\376\312\216\260\036\212T\361\264e\033\207\213\021"
 	.ascii	"n\025\377\000k\211\300\320"
 	.text
-	.section	.gnu.lto_.symbol_nodes.abe4e2cc39f36646,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.470f8a92e3f4ec8c,"",%progbits
 	.ascii	"x\234U\215MN\002A\020\205\277\356\246\231\031p\0247"
 	.ascii	"(n\270\004\307\362\016E\330\230\350\306\013hP9\202^"
 	.ascii	"\300\020wb\342^\005D\374a\374\027c\\\030gzXL\327\346"
@@ -532,14 +532,14 @@
 	.ascii	"\334\232\325:\223\354m\252\375\255\244\311?\223\362"
 	.ascii	"\220\265"
 	.text
-	.section	.gnu.lto_.refs.abe4e2cc39f36646,"",%progbits
+	.section	.gnu.lto_.refs.470f8a92e3f4ec8c,"",%progbits
 	.ascii	"x\234%\3121\022\302@\020\003AI\273>/\234|6\006SD\304"
 	.ascii	"|\216\377\247P0\325\341\004\2007\376\361+\030HrB#g\225"
 	.ascii	"xf1:\034p\203\253-\360$\317p\307\270c}\260^\265i\020"
 	.ascii	"\316\337q\302\350\034\013\363`{\346\205\026\235t\247"
 	.ascii	"w\355Zu\325M\326\201\017\275\304\003y"
 	.text
-	.section	.gnu.lto_.decls.abe4e2cc39f36646,"",%progbits
+	.section	.gnu.lto_.decls.470f8a92e3f4ec8c,"",%progbits
 	.ascii	"x\234\215Z\011XTW\226\256\373n\025\024E\001iM\2334\275"
 	.ascii	"HL\332Nf\322\232\255\323\3353\363M$\210\2214\212\001"
 	.ascii	"Lo3\037A(\015_+\330Pv'3_\177\363XE\\\330dS\331\\AvP"
@@ -941,7 +941,7 @@
 	.ascii	"6;@\365\206\321\350\211\266V\031\225 \355it_7&\262\322"
 	.ascii	"\030c\323\036\265\373\266\235\252\377\007\004o\314\003"
 	.text
-	.section	.gnu.lto_.symtab.abe4e2cc39f36646,"",%progbits
+	.section	.gnu.lto_.symtab.470f8a92e3f4ec8c,"",%progbits
 	.ascii	"isRangeActive\000\000\000\000\000\000\000\000\000\000"
 	.ascii	"\000\000Q\001\000\000isUsingSticksForArming\000\000"
 	.ascii	"\000\000\000\000\000\000\000\000\000\000T\001\000\000"

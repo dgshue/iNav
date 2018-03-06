@@ -14,10 +14,10 @@
 	.file	"pid.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_.profile.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234cf```c\200\000F\2063\274;\331\000\005q\001\243"
 	.text
-	.section	.gnu.lto_.jmpfuncs.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_.jmpfuncs.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234\215T[OSA\020\336\331=\247=\"\261\211\227\210%"
 	.ascii	"\032\265\304\030%\341\305?\343\273\377\301'rN,\211\215"
 	.ascii	"\022k46\250\021|\001\255ZD\260\210\342\245\212h5\304"
@@ -56,7 +56,7 @@
 	.ascii	"\277\272\244\037\366D\020\364\222@F\245\277\327\370"
 	.ascii	"\227n"
 	.text
-	.section	.gnu.lto_.inline.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_.inline.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234\225T\277kSQ\024\376\316}7y/i\222\227\246&\306"
 	.ascii	"`\333\244\206R\243\024qq*tr\222@\377\000\305\261n\035"
 	.ascii	"\\\\$(\376\002\261\031\272\330)HEp\023\004)8T\004QP"
@@ -93,13 +93,13 @@
 	.ascii	"3\025\011O\036\341q\305\233\241p4-\370O\205Q\374\366"
 	.ascii	"\242\340%\011}\310\347\036\177\001nK\334\010"
 	.text
-	.section	.gnu.lto_.pureconst.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_.pureconst.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234%\301\313\012@P\030\205\321\277\316\0213%\362\355"
 	.ascii	"]NnI\230x\377\2273\260V\212\2107~DNU\255\306-\235z\006"
 	.ascii	"\217\306\2625Q4\263\260\262\261spr\345[\217>n\"\004"
 	.ascii	"\324"
 	.text
-	.section	.gnu.lto_pidBank.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_pidBank.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234uR\317k\023A\024~\337\314\356f\323V\033<\225\202"
 	.ascii	"\305[O\355\236E\374C<\212\242\015\250\210z\015\235\244"
 	.ascii	"\201z\220R\202\207\210V-T\255\251M\255Z\265Mj\202\010"
@@ -132,7 +132,7 @@
 	.ascii	"\370\261}\336\341\275\341#\336\201C\341\203='\274\243"
 	.ascii	"\341\375\335=\364\007?^?\255"
 	.text
-	.section	.gnu.lto_calculateMultirotorTPAFactor.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_calculateMultirotorTPAFactor.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234\215TYO\023Q\024\276\347\316\332\205\266\200\340"
 	.ascii	"\202[\202\206\370\200}\327\007\337\374\023>!F%q!Hb|"
 	.ascii	"P\246\264\251\230(Q\202FR\327\304\005EqAQ)*\232hx\020"
@@ -184,7 +184,7 @@
 	.ascii	"-[\213\375\205\005\233V\3473Gqa\336\372\274\374\342"
 	.ascii	"\235E?\001gq\354\335"
 	.text
-	.section	.gnu.lto_calculateFixedWingTPAFactor.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_calculateFixedWingTPAFactor.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234\215T\355OSW\030?\317\271\267\367\336\322\322\026"
 	.ascii	"0\010\275PM\334bL\304\306}\331\177\260\177b\237\020"
 	.ascii	"\243\222\2503\310\227} \336\322\246\272d\032\323\241"
@@ -243,7 +243,7 @@
 	.ascii	"o\253\376\254\272\246\376\213\272\377\000\006\354\200"
 	.ascii	"("
 	.text
-	.section	.gnu.lto_pidApplyFixedWingRateController.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_pidApplyFixedWingRateController.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234\235WklTE\024\2363w\367\356\263\017\300\226>\244"
 	.ascii	"\255\274j\301\265\362\262B\010\225\210\200\377L\324"
 	.ascii	"\304\230(\202\242\222\210\232\202\321?\304\333\207["
@@ -359,7 +359,7 @@
 	.ascii	"9\212ptgQ\321\323E\366\247\026?w\367\275\213\213\226"
 	.ascii	":p0w.\215b`<\301\254\013\026.Z6\365\037s\363-\026"
 	.text
-	.section	.gnu.lto_getHeadingHoldState.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_getHeadingHoldState.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234mS\337kTG\024>\337\314\275w\357\335\335dC\351C"
 	.ascii	"]A\244\021B\261\270>X\372\350\253\357\376\001u5j\003"
 	.ascii	"m(5\010}\010\336\335\015\321\007QI\005\0235&\022\324"
@@ -411,7 +411,7 @@
 	.ascii	"\372\226d\313f\373\253\344\306m_\276\005\233\022\254"
 	.ascii	"\034"
 	.text
-	.section	.gnu.lto_calcHorizonRateMagnitude.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_calcHorizonRateMagnitude.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234\215TmL[U\030>\357\271\275\275\245\005\012\010"
 	.ascii	"\014\301\250\011&\373\305\252.1D\177,&\372\303D\023"
 	.ascii	"\243&\376\234\010ekd`\240\373\341\224\354\226/qn\223"
@@ -487,7 +487,7 @@
 	.ascii	"\214\033\363\354\271\316\227\265\215\205\224z\375\277"
 	.ascii	"!g\007\355"
 	.text
-	.section	.gnu.lto_pidRcCommandToAngle.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_pidRcCommandToAngle.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234mQMk\023Q\024\275\347M\222I\233\030\213\253\222"
 	.ascii	"l\024\014\305Mg+]\271\365g\204\210:\330F\261YtS:\265"
 	.ascii	"\305\004\224\266\250\213\252\370\205Z\277\323\330\252"
@@ -520,7 +520,7 @@
 	.ascii	"`\177\326N\357\213\365\245\006vf\322\275v&\225\265\367"
 	.ascii	"g\376\002\024\255\012u"
 	.text
-	.section	.gnu.lto_pidLevel.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_pidLevel.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234\225VmP\224U\024\276\347\276\373%\013\273(\210"
 	.ascii	"\010\004(_\202.\233\375\361GM\365\243f\032g\372\223"
 	.ascii	"M\323\364+RB&\323\006\261\251f\034_\004A\035F\031\322"
@@ -623,7 +623,7 @@
 	.ascii	"A\342\371\355\254\254\005Yo\245g8\305\2146\313\325Q"
 	.ascii	"N\231\313\376\0038O\243\313"
 	.text
-	.section	.gnu.lto_pidTurnAssistant.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_pidTurnAssistant.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234\245XiTTW\022~u{\205f\323qA\010\032\005#j\0205"
 	.ascii	"\306%\236\270\304%\213\343\321\270\3041\023\347\204"
 	.ascii	"(\243\234q\311A\346O&\036\037\213\210Q\224!\321QL\""
@@ -767,7 +767,7 @@
 	.ascii	"\374\331s\243Cf:?!\3171Q\261qs\306\306F\315\213\366"
 	.ascii	"\020p\216\362_\217\333\020\371"
 	.text
-	.section	.gnu.lto_pidApplySetpointRateLimiting.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_pidApplySetpointRateLimiting.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234uS]l\223U\030>\3179\337_\327v-$$\3134`\202\013"
 	.ascii	"Yp4\301\033.\345\216\013/LLL\214\027\272L\224&`\014"
 	.ascii	"\233\2117\313NG\375\271\000\\\200\030\022\206n\232\271"
@@ -820,7 +820,7 @@
 	.ascii	"acC\303\346\255O&\267%\233\226\310\332\"\376\003\235"
 	.ascii	"\013\005\363"
 	.text
-	.section	.gnu.lto_pidApplyMulticopterRateController.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_pidApplyMulticopterRateController.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234\225Y\011XU\325\026>{\237;2^f\224Ds\236\210\034"
 	.ascii	"\313\317\324\206g\243\345+\315\262\362\313Y\351S2D_"
 	.ascii	"V\332Q\360\252\245iTF\251\011\371L\315)R1\024\355\346"
@@ -1020,7 +1020,7 @@
 	.ascii	"\212\376\365\021#'\367 \331\323\207;\343\245\377\001"
 	.ascii	"\326\2716L"
 	.text
-	.section	.gnu.lto_updatePIDCoefficients.part.0.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_updatePIDCoefficients.part.0.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234\235Xkp\025U\022>}\346>\346\276o\236\204\304H "
 	.ascii	"\011Q\311%F\250\265V\177l\355\037k\177mY\245\277\364"
 	.ascii	"\207Ea\251\224\212\026\360\303\252]\212\311\203\020"
@@ -1137,7 +1137,7 @@
 	.ascii	"\271\213^Y\340\235\363\332\274\205O>\376W\027]\177\003"
 	.ascii	"\271\3062z"
 	.text
-	.section	.gnu.lto_updatePIDCoefficients.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_updatePIDCoefficients.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234u\222KkSA\024\307\317\231\271\217<\333\242\210"
 	.ascii	"m\005-T\351\312\336\205\033?\201+?\202\233\030Q\203"
 	.ascii	"\257R\263\015\2314\267\324\225\204\240\320\252\365\205"
@@ -1174,7 +1174,7 @@
 	.ascii	"q,\0249n\034<\0329t8j\364E\016\364\206\301\033\355\013"
 	.ascii	"\355\011\205\243'\372\377\001\272p<\032"
 	.text
-	.section	.gnu.lto_pidInit.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_pidInit.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234\215U\357O\233U\024\276\347\276o\177SZV\004Vb4"
 	.ascii	"a\311\022\023\326D\277\230\375\005\373\264\277\300/"
 	.ascii	"\313\214\216D\247\021?\370\205\360v\353\330>8 H\026"
@@ -1236,7 +1236,7 @@
 	.ascii	"y\341\245\272\027\017\274\036y\265\356\371]\373\205"
 	.ascii	"\271\357\215\272\372\"\273\007\304\337<\372\263\207"
 	.text
-	.section	.gnu.lto_pidResetErrorAccumulators.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_pidResetErrorAccumulators.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234}R\317KTQ\024>\337\271o\236\317F\030)\210afa0\201"
 	.ascii	"\264\320\267k\341_\320\256\277A\214j\240\"\262E\033"
 	.ascii	"\361\3168YmR\264\205\225\006-Dkr4M\313h1\222\344,\324"
@@ -1270,7 +1270,7 @@
 	.ascii	"\344\231\263\227\335\213\311S\215-d5_I\266\376\004\023"
 	.ascii	"#\376\375"
 	.text
-	.section	.gnu.lto_pidAngleToRcCommand.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_pidAngleToRcCommand.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234e\221\317k\023Q\020\307g\346m6\011IK\360$\315\305"
 	.ascii	"\203\241\227\322\334\365\322C/\376\021\036B\272\306"
 	.ascii	"\205t\225\266\210\227\322g-IA\320R{H+\376\240\022\177"
@@ -1303,7 +1303,7 @@
 	.ascii	";\275N\326\355ur\003\2163\330\336\2379\177\302\313\346"
 	.ascii	"]/3\344\236\361\376\002d\206\353\314"
 	.text
-	.section	.gnu.lto_pidRateToRcCommand.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_pidRateToRcCommand.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234eQMkSQ\020\2353\357\345\275~\270(\256l\262P\214"
 	.ascii	"\241\012\322\200+\227]\270p)\372\013B\375\012X\321\332"
 	.ascii	"\205\233\322\333$\266YI\260P*\212\266\210\244U\233\306"
@@ -1333,7 +1333,7 @@
 	.ascii	"\307O\237K\2369\333\027\277\220<\331\331Mno\242\357"
 	.ascii	"\324\221c'l\215-=\211\313\307\003\374\033\231f\346\324"
 	.text
-	.section	.gnu.lto_pidRcCommandToRate.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_pidRcCommandToRate.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234eQKkSQ\020\236\231ss\023\222.\202+\233,Tb,\005"
 	.ascii	"i\\\272\354\302\205K\321_\020\342+hE\332,\334\224\236"
 	.ascii	"&\261\355\306\022EJ}\240-Uj|\2441U\213\256\242\013\271"
@@ -1366,7 +1366,7 @@
 	.ascii	"\276L:u\302\350Mf\216\004{\222g\016r\334w\340\320?\327"
 	.ascii	"\261\367\340"
 	.text
-	.section	.gnu.lto_schedulePidGainsUpdate.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_schedulePidGainsUpdate.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234cf\300\004R@|\017J32302M8\307\300\320\310\301\304"
 	.ascii	"\310\010b002\32431\3263\276d\372\310\3048\341\300\352"
 	.ascii	"\031\334\352K\033\032\032>\\\232+\331*\361\223\211\201"
@@ -1383,7 +1383,7 @@
 	.ascii	"\375\264\234\314\364\214\022\375\202\314\024\275d\006"
 	.ascii	"\000\"\246YT"
 	.text
-	.section	.gnu.lto_updateHeadingHoldTarget.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_updateHeadingHoldTarget.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234ePMKBA\024\275gF\354\205-\244U\330\252@\334\371"
 	.ascii	"\372\011\375\222H\264\364AIT[q\236H\004E\270(y\364\265"
 	.ascii	"\211\310\2624h\323\362\355\003\243Z<\010*\020\205\202"
@@ -1403,7 +1403,7 @@
 	.ascii	"\313\330m,n\256,'\315\305\204\2255\347\027\254tf\325"
 	.ascii	"\\\262R\361$\015e\346\022)+\233\376\001\277\247y\""
 	.text
-	.section	.gnu.lto_resetHeadingHoldTarget.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_resetHeadingHoldTarget.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234mQ\317KTQ\024>\337\2753\317'#$\255bf\021(b+g\335"
 	.ascii	"\256\376\012w\241\216\246\003*\241m\007\357\014S\004"
 	.ascii	"E\272\220\361U\026\224\204S\346\214\366\313\301\325"
@@ -1431,7 +1431,7 @@
 	.ascii	"\231\276\370\364T\">1\230\234\214_\036O\216\216]\215"
 	.ascii	"_I\016\367%\250mldp899\372\017\336T\332g"
 	.text
-	.section	.gnu.lto_getHeadingHoldTarget.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_getHeadingHoldTarget.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234eN=K\003Q\020\334\331\007\307\241W\004+\311\037"
 	.ascii	"H\227\373M\222\240\036\250\210\332\206\274\013W\244"
 	.ascii	"\012AR$~!h0j\324_ X\245\021\374\300\"`\241 \027\320"
@@ -1448,7 +1448,7 @@
 	.ascii	"\36777\012\376\352B\260\346/\256\004K\313[\376zP\314"
 	.ascii	"\027\350\017\330\241b\245"
 	.text
-	.section	.gnu.lto_pidHeadingHold.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_pidHeadingHold.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234uU]LTG\024\2363\367\356\335\005v\331\345O\376\312"
 	.ascii	"\006\352\003M\032\334\207>7\276\266I\323\207\276\324"
 	.ascii	"\244i\023\"TIP\033\364\251\011\361.P\340\201\002A\253"
@@ -1525,7 +1525,7 @@
 	.ascii	"\374\234w\262\217\344\232r\013\012\016\025\374O\370"
 	.ascii	"~\366/j\356\000\302"
 	.text
-	.section	.gnu.lto_pidController.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_pidController.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234\225W{P\224\327\025\277\347~\337\276\027v\227\345"
 	.ascii	"\265\370\010*\0265\302\2521\243C;\323\177\373O\247c"
 	.ascii	"\333\231f&\177\2644Z\245\223bK\350\214\323\251\223\217"
@@ -1654,7 +1654,7 @@
 	.ascii	"\312\302\237\343\312O\363\227\027\026\024\377y\3512"
 	.ascii	"\213\356\365?\224HmO"
 	.text
-	.section	.gnu.lto_.symbol_nodes.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234U\221\333oTU\024\306\277\357\354\236\316\000\205"
 	.ascii	")\303\014\323S\240X\252\210\351$$\035\250\210\267\377"
 	.ascii	"\304w\377\212U\307c\213\255\266\330j\253@\247\345p\274"
@@ -1700,7 +1700,7 @@
 	.ascii	"\376\264\0115$\2137w\231\372\200\235O\023\212Ht\356"
 	.ascii	"z\204\346\312\372A\374\007bW\265'"
 	.text
-	.section	.gnu.lto_.refs.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_.refs.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234\035\220\333jSQ\024E\307\234{\237\223\354\334z"
 	.ascii	"\222bb\272\222jj\233clm\275A\265 \376\232 \202\277\340"
 	.ascii	"\347\024\252 \352\203\377\340\253\277 \236\270`\301"
@@ -1720,7 +1720,7 @@
 	.ascii	"\021\323S\307\316q\216^9\256\0357\371\312\317\374\334"
 	.ascii	"\366%\377\000B` ]"
 	.text
-	.section	.gnu.lto_.decls.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_.decls.af46eb128d4a639b,"",%progbits
 	.ascii	"x\234\265}\011XT\331\225p\335\272\265Q\024\320\255\266"
 	.ascii	"m\333\311\337\306\316\370g\262\264\235\236\3713\311"
 	.ascii	"\227\314\237t\272\323I\367t&N\307\311:3\204@\251\244"
@@ -2538,7 +2538,7 @@
 	.ascii	"C\204Z\027\306\026+(VI0~\016v\343\261\235\252^\250z"
 	.ascii	"\013\272\342\325z\261\372\377\001(,\016\341"
 	.text
-	.section	.gnu.lto_.symtab.d2534f7ef7c5c33,"",%progbits
+	.section	.gnu.lto_.symtab.af46eb128d4a639b,"",%progbits
 	.ascii	"pidProfile_ProfileCurrent\000\000\004\000\004\000\000"
 	.ascii	"\000\000\000\000\000q\002\000\000axisPID\000\000\004"
 	.ascii	"\000\006\000\000\000\000\000\000\000\251\002\000\000"

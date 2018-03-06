@@ -14,23 +14,23 @@
 	.file	"rcc.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.1823953f0ec78ed6,"",%progbits
+	.section	.gnu.lto_.profile.b003f95ca424d5b1,"",%progbits
 	.ascii	"x\234cf```a\200\000F\006\037U\000\0011\000z"
 	.text
-	.section	.gnu.lto_.jmpfuncs.1823953f0ec78ed6,"",%progbits
+	.section	.gnu.lto_.jmpfuncs.b003f95ca424d5b1,"",%progbits
 	.ascii	"x\234cf\300\016,\2404\023\003\023##s=3\023\003\003s"
 	.ascii	"9#\210\217J3\202\245\231\320\205\031\000r\225\003\301"
 	.text
-	.section	.gnu.lto_.inline.1823953f0ec78ed6,"",%progbits
+	.section	.gnu.lto_.inline.b003f95ca424d5b1,"",%progbits
 	.ascii	"x\234cf\300\016R\2414\023\003\203\270\020##\003#\003"
 	.ascii	"\0033\220\313\266@\236\211AlC.\013H\216\231\007(?\301"
 	.ascii	"o\202\037&\203\221A\210\037I\327\034\240.\241\011~8"
 	.ascii	"t1\000\000o\304\015x"
 	.text
-	.section	.gnu.lto_.pureconst.1823953f0ec78ed6,"",%progbits
+	.section	.gnu.lto_.pureconst.b003f95ca424d5b1,"",%progbits
 	.ascii	"x\234cf```e\200\000&\006\011F\011\000\000\361\000<"
 	.text
-	.section	.gnu.lto_RCC_ClockCmd.1823953f0ec78ed6,"",%progbits
+	.section	.gnu.lto_RCC_ClockCmd.b003f95ca424d5b1,"",%progbits
 	.ascii	"x\234u\222\337K\223Q\030\307\317s\316\373\276\333p\226"
 	.ascii	"d\0275\002\0033\013\304]x\021\335\365\027xcW\335\215"
 	.ascii	"9L\302\220)\211\027\342\2735\227`\376H\003\255(\314"
@@ -76,7 +76,7 @@
 	.ascii	"\342yG\2019\327U\226W\352(u\211RG\201R\344(\271\364"
 	.ascii	"\017Mss;"
 	.text
-	.section	.gnu.lto_RCC_ResetCmd.1823953f0ec78ed6,"",%progbits
+	.section	.gnu.lto_RCC_ResetCmd.b003f95ca424d5b1,"",%progbits
 	.ascii	"x\234uR[KTQ\024\336\337\331\347\314\205\231H\202\036"
 	.ascii	"\032\202\0023\011\302y\360\241\327\240\367\010\352\017"
 	.ascii	"\014\343`\026\206\214\222\370 \236\231fL\010/Y\220\025"
@@ -117,7 +117,7 @@
 	.ascii	"\323\201\312\263\025\276\212\200\254\360\025\353\245"
 	.ascii	"\276\362\213\177\000\006\206N\317"
 	.text
-	.section	.gnu.lto_.symbol_nodes.1823953f0ec78ed6,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.b003f95ca424d5b1,"",%progbits
 	.ascii	"x\234M\310;\016\2030\024D\321k?\214\262+\2266.Ph\351"
 	.ascii	"\221\"\226\302\307\220\316;\212\024PR\274if\316\030"
 	.ascii	"0\361O\354\004c\005\211\327\374 .(\370#\354(\376\016"
@@ -125,10 +125,10 @@
 	.ascii	"Z\375pw\244\334\035Z\312Y\223\205D\377\256\211/\360"
 	.ascii	"9*\001"
 	.text
-	.section	.gnu.lto_.refs.1823953f0ec78ed6,"",%progbits
+	.section	.gnu.lto_.refs.b003f95ca424d5b1,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.decls.1823953f0ec78ed6,"",%progbits
+	.section	.gnu.lto_.decls.b003f95ca424d5b1,"",%progbits
 	.ascii	"x\234\235\225[LTG\030\307\317\234\263\270\313\272\254"
 	.ascii	"\276\210\226\244\021\322\206\304D9\025\372`\2326\255"
 	.ascii	"\240\2666\325PW\237\372\260Yw\217eSX\310\356\301\324"
@@ -209,7 +209,7 @@
 	.ascii	"Qj\370j\304\366\252\323\010\206\272\374\037\210\333"
 	.ascii	"\367P"
 	.text
-	.section	.gnu.lto_.symtab.1823953f0ec78ed6,"",%progbits
+	.section	.gnu.lto_.symtab.b003f95ca424d5b1,"",%progbits
 	.ascii	"RCC_ClockCmd\000\000\000\000\000\000\000\000\000\000"
 	.ascii	"\000\000\302\000\000\000RCC_ResetCmd\000\000\000\000"
 	.ascii	"\000\000\000\000\000\000\000\000\304\000\000\000RCC"

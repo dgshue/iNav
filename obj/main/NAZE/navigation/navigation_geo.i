@@ -370,7 +370,7 @@
 #define NAZE 1
 #define __FORKNAME__ "inav"
 #define __TARGET__ "NAZE"
-#define __REVISION__ "3d51ccc"
+#define __REVISION__ "8d7eea1"
 # 1 "./src/main/navigation/navigation_geo.c"
 # 18 "./src/main/navigation/navigation_geo.c"
 # 1 "/usr/lib/gcc/arm-none-eabi/4.9.3/include/stdbool.h" 1 3 4
@@ -14095,6 +14095,11 @@ extern void assert_param(int val);
 #define BARO 
 #define USE_BARO_MS5611 
 #define USE_BARO_BMP280 
+
+#define MAG 
+#define USE_MAG_HMC5883 
+#define USE_MAG_QMC5883 
+#define MAG_HMC5883_ALIGN CW180_DEG
 # 116 "./src/main/target/NAZE/target.h"
 #define SOFTSERIAL_1_RX_PIN PA6
 #define SOFTSERIAL_1_TX_PIN PA7
@@ -14103,26 +14108,26 @@ extern void assert_param(int val);
 
 #define USE_I2C 
 #define I2C_DEVICE (I2CDEV_2)
-# 168 "./src/main/target/NAZE/target.h"
-#define USE_ADC 
-#define ADC_CHANNEL_1_PIN PB1
-#define ADC_CHANNEL_2_PIN PA4
-#define ADC_CHANNEL_3_PIN PA1
-#define CURRENT_METER_ADC_CHANNEL ADC_CHN_1
-#define VBAT_ADC_CHANNEL ADC_CHN_2
-#define RSSI_ADC_CHANNEL ADC_CHN_3
-# 184 "./src/main/target/NAZE/target.h"
+# 176 "./src/main/target/NAZE/target.h"
+#define NAV_AUTO_MAG_DECLINATION 
+#define NAV_GPS_GLITCH_DETECTION 
+
+
+
+
+
+
 #define USE_SERIALRX_SPEKTRUM 
 #undef USE_SERIALRX_IBUS
-#define SPEKTRUM_BIND 
-#define BIND_PIN PA3
+
+
 
 
 
 #define TARGET_MOTOR_COUNT 6
 
-#define DEFAULT_FEATURES FEATURE_VBAT
-#define DEFAULT_RX_FEATURE FEATURE_RX_PPM
+
+
 
 
 #define MAX_PWM_OUTPUT_PORTS 10
@@ -16498,7 +16503,97 @@ void enableFixedWingLaunchController(timeUs_t currentTimeUs);
 _Bool isFixedWingLaunchFinishedOrAborted(void);
 void applyFixedWingLaunchController(timeUs_t currentTimeUs);
 # 45 "./src/main/navigation/navigation_geo.c" 2
-# 136 "./src/main/navigation/navigation_geo.c"
+
+
+
+
+
+#define SAMPLING_RES 10.0f
+#define SAMPLING_MIN_LAT -60.0f
+#define SAMPLING_MAX_LAT 60.0f
+#define SAMPLING_MIN_LON -180.0f
+#define SAMPLING_MAX_LON 180.0f
+
+static const int8_t declination_table[13][37] =
+ {
+    { 46, 45, 44, 42, 41, 40, 38, 36, 33, 28, 23, 16, 10, 4, -1, -5, -9, -14, -19, -26, -33, -40, -48, -55, -61, -66, -71, -74, -75, -72, -61, -25, 22, 40, 45, 47, 46 },
+    { 30, 30, 30, 30, 29, 29, 29, 29, 27, 24, 18, 11, 3, -3, -9, -12, -15, -17, -21, -26, -32, -39, -45, -51, -55, -57, -56, -53, -44, -31, -14, 0, 13, 21, 26, 29, 30 },
+    { 21, 22, 22, 22, 22, 22, 22, 22, 21, 18, 13, 5, -3, -11, -17, -20, -21, -22, -23, -25, -29, -35, -40, -44, -45, -44, -40, -32, -22, -12, -3, 3, 9, 14, 18, 20, 21 },
+    { 16, 17, 17, 17, 17, 17, 16, 16, 16, 13, 8, 0, -9, -16, -21, -24, -25, -25, -23, -20, -21, -24, -28, -31, -31, -29, -24, -17, -9, -3, 0, 4, 7, 10, 13, 15, 16 },
+    { 12, 13, 13, 13, 13, 13, 12, 12, 11, 9, 3, -4, -12, -19, -23, -24, -24, -22, -17, -12, -9, -10, -13, -17, -18, -16, -13, -8, -3, 0, 1, 3, 6, 8, 10, 12, 12 },
+    { 10, 10, 10, 10, 10, 10, 10, 9, 9, 6, 0, -6, -14, -20, -22, -22, -19, -15, -10, -6, -2, -2, -4, -7, -8, -8, -7, -4, 0, 1, 1, 2, 4, 6, 8, 10, 10 },
+    { 9, 9, 9, 9, 9, 9, 8, 8, 7, 4, -1, -8, -15, -19, -20, -18, -14, -9, -5, -2, 0, 1, 0, -2, -3, -4, -3, -2, 0, 0, 0, 1, 3, 5, 7, 8, 9 },
+    { 8, 8, 8, 9, 9, 9, 8, 8, 6, 2, -3, -9, -15, -18, -17, -14, -10, -6, -2, 0, 1, 2, 2, 0, -1, -1, -2, -1, 0, 0, 0, 0, 1, 3, 5, 7, 8 },
+    { 8, 9, 9, 10, 10, 10, 10, 8, 5, 0, -5, -11, -15, -16, -15, -12, -8, -4, -1, 0, 2, 3, 2, 1, 0, 0, 0, 0, 0, -1, -2, -2, -1, 0, 3, 6, 8 },
+    { 6, 9, 10, 11, 12, 12, 11, 9, 5, 0, -7, -12, -15, -15, -13, -10, -7, -3, 0, 1, 2, 3, 3, 3, 2, 1, 0, 0, -1, -3, -4, -5, -5, -2, 0, 3, 6 },
+    { 5, 8, 11, 13, 15, 15, 14, 11, 5, -1, -9, -14, -17, -16, -14, -11, -7, -3, 0, 1, 3, 4, 5, 5, 5, 4, 3, 1, -1, -4, -7, -8, -8, -6, -2, 1, 5 },
+    { 4, 8, 12, 15, 17, 18, 16, 12, 5, -3, -12, -18, -20, -19, -16, -13, -8, -4, -1, 1, 4, 6, 8, 9, 9, 9, 7, 3, -1, -6, -10, -12, -11, -9, -5, 0, 4 },
+    { 3, 9, 14, 17, 20, 21, 19, 14, 4, -8, -19, -25, -26, -25, -21, -17, -12, -7, -2, 1, 5, 9, 13, 15, 16, 16, 13, 7, 0, -7, -12, -15, -14, -11, -6, -1, 3 },
+};
+
+static float get_lookup_table_val(unsigned lat_index, unsigned lon_index)
+{
+    return declination_table[lat_index][lon_index];
+}
+
+float geoCalculateMagDeclination(const gpsLocation_t * llh)
+{
+
+
+
+
+
+    const float lat = llh->lat / 10000000.0f;
+    const float lon = llh->lon / 10000000.0f;
+
+    if (lat < -90.0f || lat > 90.0f ||
+        lon < -180.0f || lon > 180.0f) {
+        return 0.0f;
+    }
+
+
+    int min_lat = (int)(lat / 10.0f) * 10.0f;
+    int min_lon = (int)(lon / 10.0f) * 10.0f;
+
+
+
+
+
+
+    if (lat <= -60.0f) {
+        min_lat = -60.0f;
+    }
+
+    if (lat >= 60.0f) {
+        min_lat = (int)(lat / 10.0f) * 10.0f - 10.0f;
+    }
+
+    if (lon <= -180.0f) {
+        min_lon = -180.0f;
+    }
+
+    if (lon >= 180.0f) {
+        min_lon = (int)(lon / 10.0f) * 10.0f - 10.0f;
+    }
+
+
+    const unsigned min_lat_index = (-(-60.0f) + min_lat) / 10.0f;
+    const unsigned min_lon_index = (-(-180.0f) + min_lon) / 10.0f;
+
+    const float declination_sw = get_lookup_table_val(min_lat_index, min_lon_index);
+    const float declination_se = get_lookup_table_val(min_lat_index, min_lon_index + 1);
+    const float declination_ne = get_lookup_table_val(min_lat_index + 1, min_lon_index + 1);
+    const float declination_nw = get_lookup_table_val(min_lat_index + 1, min_lon_index);
+
+
+
+    const float declination_min = ((lon - min_lon) / 10.0f) * (declination_se - declination_sw) + declination_sw;
+    const float declination_max = ((lon - min_lon) / 10.0f) * (declination_ne - declination_nw) + declination_nw;
+
+    return ((lat - min_lat) / 10.0f) * (declination_max - declination_min) + declination_min;
+}
+
+
 void geoSetOrigin(gpsOrigin_s * origin, const gpsLocation_t * llh, geoOriginResetMode_e resetMode)
 {
     if (resetMode == GEO_ORIGIN_SET) {

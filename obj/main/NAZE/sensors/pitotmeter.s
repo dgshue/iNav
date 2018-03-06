@@ -14,23 +14,23 @@
 	.file	"pitotmeter.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.a22e4f98425a1429,"",%progbits
+	.section	.gnu.lto_.profile.1153dda5cee71ed5,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.inline.a22e4f98425a1429,"",%progbits
+	.section	.gnu.lto_.inline.1153dda5cee71ed5,"",%progbits
 	.ascii	"x\234cf\300\016\230\340,\000\000\234\000\006"
 	.text
-	.section	.gnu.lto_.pureconst.a22e4f98425a1429,"",%progbits
+	.section	.gnu.lto_.pureconst.1153dda5cee71ed5,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.symbol_nodes.a22e4f98425a1429,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.1153dda5cee71ed5,"",%progbits
 	.ascii	"x\234cf``\340b\200\002\326\263\014\014\013\231\352\031"
 	.ascii	"\030\000\014K\002\002"
 	.text
-	.section	.gnu.lto_.refs.a22e4f98425a1429,"",%progbits
+	.section	.gnu.lto_.refs.1153dda5cee71ed5,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.decls.a22e4f98425a1429,"",%progbits
+	.section	.gnu.lto_.decls.1153dda5cee71ed5,"",%progbits
 	.ascii	"x\234\205UmL[e\024\276\247o\271\264\327\0123\260\217"
 	.ascii	"\360\213@B\320\2605~\304?\376\320dF\377)\211\361\227"
 	.ascii	"&\265\266Wi\002\205\264\027\014\277|W\306@!\012\030"
@@ -101,7 +101,7 @@
 	.ascii	"\214E1Z,\2217\203\325\341z\243H\226\355;3\271e\247\273"
 	.ascii	"\360\177\231\270\365\010\230M\370\017\001\374\244z"
 	.text
-	.section	.gnu.lto_.symtab.a22e4f98425a1429,"",%progbits
+	.section	.gnu.lto_.symtab.1153dda5cee71ed5,"",%progbits
 	.ascii	"pitot\000\000\004\000\024\000\000\000\000\000\000\000"
 	.ascii	"\345\000\000\000"
 	.text

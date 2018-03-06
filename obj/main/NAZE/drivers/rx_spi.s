@@ -14,26 +14,26 @@
 	.file	"rx_spi.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.ff481d35ff91b96,"",%progbits
+	.section	.gnu.lto_.profile.ea711a780718789f,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.inline.ff481d35ff91b96,"",%progbits
+	.section	.gnu.lto_.inline.ea711a780718789f,"",%progbits
 	.ascii	"x\234cf\300\016\230\340,\000\000\234\000\006"
 	.text
-	.section	.gnu.lto_.pureconst.ff481d35ff91b96,"",%progbits
+	.section	.gnu.lto_.pureconst.ea711a780718789f,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.symbol_nodes.ff481d35ff91b96,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.ea711a780718789f,"",%progbits
 	.ascii	"x\234cf```b\200\001\000\000L\000\006"
 	.text
-	.section	.gnu.lto_.refs.ff481d35ff91b96,"",%progbits
+	.section	.gnu.lto_.refs.ea711a780718789f,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.decls.ff481d35ff91b96,"",%progbits
+	.section	.gnu.lto_.decls.ea711a780718789f,"",%progbits
 	.ascii	"x\234cf``P\001\342\377@\000\244\030\030\2418\200\201"
 	.ascii	"\000\000\000\3208\004v"
 	.text
-	.section	.gnu.lto_.symtab.ff481d35ff91b96,"",%progbits
+	.section	.gnu.lto_.symtab.ea711a780718789f,"",%progbits
 	.text
 	.section	.gnu.lto_.opts,"",%progbits
 	.ascii	"'-fno-trapv' '-mthumb' '-mcpu=cortex-m3' '-ggdb3' '"

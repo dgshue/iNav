@@ -14,26 +14,26 @@
 	.file	"rx_nrf24l01.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.3223ba15bd1fa56a,"",%progbits
+	.section	.gnu.lto_.profile.1040b770455cf197,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.inline.3223ba15bd1fa56a,"",%progbits
+	.section	.gnu.lto_.inline.1040b770455cf197,"",%progbits
 	.ascii	"x\234cf\300\016\230\340,\000\000\234\000\006"
 	.text
-	.section	.gnu.lto_.pureconst.3223ba15bd1fa56a,"",%progbits
+	.section	.gnu.lto_.pureconst.1040b770455cf197,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.symbol_nodes.3223ba15bd1fa56a,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.1040b770455cf197,"",%progbits
 	.ascii	"x\234cf```b\200\001\000\000L\000\006"
 	.text
-	.section	.gnu.lto_.refs.3223ba15bd1fa56a,"",%progbits
+	.section	.gnu.lto_.refs.1040b770455cf197,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.decls.3223ba15bd1fa56a,"",%progbits
+	.section	.gnu.lto_.decls.1040b770455cf197,"",%progbits
 	.ascii	"x\234cf``P\001\342\377@\000\244\030\030\2418\200\201"
 	.ascii	"\000\000\000\3208\004v"
 	.text
-	.section	.gnu.lto_.symtab.3223ba15bd1fa56a,"",%progbits
+	.section	.gnu.lto_.symtab.1040b770455cf197,"",%progbits
 	.text
 	.section	.gnu.lto_.opts,"",%progbits
 	.ascii	"'-fno-trapv' '-mthumb' '-mcpu=cortex-m3' '-ggdb3' '"

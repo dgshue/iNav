@@ -14,10 +14,10 @@
 	.file	"hardware_revision.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.7cb81e0f4323a4d8,"",%progbits
+	.section	.gnu.lto_.profile.e8f40f6e14f8a0ee,"",%progbits
 	.ascii	"x\234cf```e\200\000F\206]\214\236\000\003\003\001\016"
 	.text
-	.section	.gnu.lto_.jmpfuncs.7cb81e0f4323a4d8,"",%progbits
+	.section	.gnu.lto_.jmpfuncs.e8f40f6e14f8a0ee,"",%progbits
 	.ascii	"x\234cf\300\016\366CiV f\0021\230\301lF \217\351#\023"
 	.ascii	"\343\314\365\3753\371_0\375dbh\370\320\320\300\302\300"
 	.ascii	"\270\234Q\212\001$1c\366\317}\354 \011\306\377\214\014"
@@ -27,7 +27,7 @@
 	.ascii	"h\335j\230^\210b\220\374\333\277\217^3\203\344Yt\030"
 	.ascii	"\030\327\000E\331\201\032\001\002\365/\232"
 	.text
-	.section	.gnu.lto_.inline.7cb81e0f4323a4d8,"",%progbits
+	.section	.gnu.lto_.inline.e8f40f6e14f8a0ee,"",%progbits
 	.ascii	"x\234cf\300\0166AiV\006\006vVF\006&\216'&\014l\013\344"
 	.ascii	"\231@bL\014\034\302@!\226\005\362p!F.\22087\220`f\340"
 	.ascii	"b\007J\362\335\362\207K\262r\230|e\000\212\351\314\331"
@@ -35,11 +35,11 @@
 	.ascii	"\025\004S0\016+\037\003\003\013\222\016\210$H\003#\003"
 	.ascii	";\003\033\310ql\037\364\340\3462\000\0000n\020\035"
 	.text
-	.section	.gnu.lto_.pureconst.7cb81e0f4323a4d8,"",%progbits
+	.section	.gnu.lto_.pureconst.e8f40f6e14f8a0ee,"",%progbits
 	.ascii	"x\234cf``\340f\200\000V\006\011&\011f\011V\011v\026"
 	.ascii	"\000\003\354\000\211"
 	.text
-	.section	.gnu.lto_updateHardwareRevision.part.0.7cb81e0f4323a4d8,"",%progbits
+	.section	.gnu.lto_updateHardwareRevision.part.0.e8f40f6e14f8a0ee,"",%progbits
 	.ascii	"x\234u\2171H[Q\024\206\357\177\356{14*\332)\004\244"
 	.ascii	"C\006)\226<w\207\"X\272uqs\221\220<\332\014\265\362"
 	.ascii	"\014u\022o\364\025\034D\304IZ\253\210H\324X\323t)]J"
@@ -65,7 +65,7 @@
 	.ascii	"\366\206\035\273\323\261\337\306zbo\272B\021Q\037\265"
 	.ascii	"\343v$nG\333\273cm,G\354kV\310\257\372"
 	.text
-	.section	.gnu.lto_updateHardwareRevision.7cb81e0f4323a4d8,"",%progbits
+	.section	.gnu.lto_updateHardwareRevision.e8f40f6e14f8a0ee,"",%progbits
 	.ascii	"x\234e\216M(DQ\030\206\277\367;\327$\243\011\253I\311"
 	.ascii	"\302b\022\315\225\205\255\024\331\331\330\331L\323\314"
 	.ascii	"\215Y\370\351\232X\311\301(\013\211\235\024\2224\376"
@@ -88,7 +88,7 @@
 	.ascii	"\015\333V\310\266Fb\303\261\301\201`\204*\243V\334\212"
 	.ascii	"\304\255h\367P\254]\311\021\353\033\326F\217\343"
 	.text
-	.section	.gnu.lto_detectHardwareRevision.7cb81e0f4323a4d8,"",%progbits
+	.section	.gnu.lto_detectHardwareRevision.e8f40f6e14f8a0ee,"",%progbits
 	.ascii	"x\234}\221OH\024a\030\306\337\347\375f\306M\205\215"
 	.ascii	".B\320\331\203\350x\366 t\350&\322\271Kl\266\324\036"
 	.ascii	"R\030EO\3427\272\007/\245x\222\374sj\313\262\335\265"
@@ -116,7 +116,7 @@
 	.ascii	"\307}\011/\371\320K\366\246\272S]\235M\035t\012\263"
 	.ascii	"^\313'"
 	.text
-	.section	.gnu.lto_detectSpiDevice.7cb81e0f4323a4d8,"",%progbits
+	.section	.gnu.lto_detectSpiDevice.e8f40f6e14f8a0ee,"",%progbits
 	.ascii	"x\234\215V[L\224G\024\2363\377\376\313*\227En\302\226"
 	.ascii	"\246\004h\254\321\262\306\2446}\360\241M\232\246/M\372"
 	.ascii	"\332\027C\305V\222\026\015\322\032\037\210\003\254\212"
@@ -192,7 +192,7 @@
 	.ascii	"++m;\323v}\224\3033\263,\357}\220\276g\347\266\314\214"
 	.ascii	"\177\0010\233=%"
 	.text
-	.section	.gnu.lto_selectMPUIntExtiConfigByHardwareRevision.7cb81e0f4323a4d8,"",%progbits
+	.section	.gnu.lto_selectMPUIntExtiConfigByHardwareRevision.e8f40f6e14f8a0ee,"",%progbits
 	.ascii	"x\234eP\317/\234Q\024\275\347\276o\306\024Q\261\264"
 	.ascii	"j\272\261h\370\026\376\000\261\260\365\007t\323\014"
 	.ascii	"&5\213\222|\244V\223ycFb\345WD>?\303B\253\332\016\242"
@@ -216,7 +216,7 @@
 	.ascii	"\353\3376\270\255Q\257\245+\352\305\336y\261\217\361"
 	.ascii	"\216x{[M3\375\003\031m\2353"
 	.text
-	.section	.gnu.lto_.symbol_nodes.7cb81e0f4323a4d8,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.e8f40f6e14f8a0ee,"",%progbits
 	.ascii	"x\234U\212MN\302P\024F\317\273\257Oj\265\302\224\021"
 	.ascii	"Kp\005\256\3556\246\221)\033\320@\323\225 \342\037\264"
 	.ascii	"\302\0124\351\204\304\260\004b_\353\340q''\347\236\317"
@@ -229,13 +229,13 @@
 	.ascii	"L\310\247\236)eu\034\373\336t\274\"\257{\226\035\333"
 	.ascii	"\335\3768\346\017\311cX\235"
 	.text
-	.section	.gnu.lto_.refs.7cb81e0f4323a4d8,"",%progbits
+	.section	.gnu.lto_.refs.e8f40f6e14f8a0ee,"",%progbits
 	.ascii	"x\234%\312\261\021\300 \014\004\301\223\336z\303\320"
 	.ascii	"\201\023Z\240\377\352\200\361&\227\234\200\305/!\016"
 	.ascii	"I<\267\021U\025N\334\360\300\037\236z\317\223M\331\305"
 	.ascii	"\006\031\211\000\362"
 	.text
-	.section	.gnu.lto_.decls.7cb81e0f4323a4d8,"",%progbits
+	.section	.gnu.lto_.decls.e8f40f6e14f8a0ee,"",%progbits
 	.ascii	"x\234\265XkT\024G\026\356\352bx\014\343\350\011\253"
 	.ascii	"q9kT\262\313\232\227(\032\343\236\315n\\\321$\232\030"
 	.ascii	"\215\230\354#?X\224Q\347\034\005\226\031\335\270\277"
@@ -430,7 +430,7 @@
 	.ascii	"N\032\366\361@\303\336x\001\303\306\377\341\277\036"
 	.ascii	"\340C\241"
 	.text
-	.section	.gnu.lto_.symtab.7cb81e0f4323a4d8,"",%progbits
+	.section	.gnu.lto_.symtab.e8f40f6e14f8a0ee,"",%progbits
 	.ascii	"hardwareRevision\000\000\000\000\000\000\000\000\000"
 	.ascii	"\000\000\000<\001\000\000updateHardwareRevision\000"
 	.ascii	"\000\000\000\000\000\000\000\000\000\000\000\001\001"

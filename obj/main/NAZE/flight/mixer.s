@@ -14,11 +14,11 @@
 	.file	"mixer.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.1981947ef4f57b0b,"",%progbits
+	.section	.gnu.lto_.profile.bf529622a95daf8,"",%progbits
 	.ascii	"x\234cf```c\200\000F\206\357\254\027\231\001\0062\001"
 	.ascii	"\333"
 	.text
-	.section	.gnu.lto_.jmpfuncs.1981947ef4f57b0b,"",%progbits
+	.section	.gnu.lto_.jmpfuncs.bf529622a95daf8,"",%progbits
 	.ascii	"x\234cf\300\016\336Ai~ f\002bF\006\006fFF\306zV\006"
 	.ascii	"\006v\006\006NF\020`.\007Jp\201\345x\230\200\334\372"
 	.ascii	"z \213\027\310g\372\310\304\270\250\351\344q\226\027"
@@ -28,7 +28,7 @@
 	.ascii	"\305\011\266I\200\201q%P\202\031\342tT\012\252\011\312"
 	.ascii	"\303!\012\000|\330\034\330"
 	.text
-	.section	.gnu.lto_.inline.1981947ef4f57b0b,"",%progbits
+	.section	.gnu.lto_.inline.bf529622a95daf8,"",%progbits
 	.ascii	"x\234cf\300\016x\230 4?\003\003\033+#\003\023\333\007"
 	.ascii	"=\006\266\005\362`Q&\006%E\240\220\331\241w\214p1F."
 	.ascii	" \301\314\003dL\360cf\340\324\002\312\363\314y\305\002"
@@ -45,12 +45,12 @@
 	.ascii	"v&\2062\260f\024\005\014`\005\0140\001\006\000\265\031"
 	.ascii	"B\022"
 	.text
-	.section	.gnu.lto_.pureconst.1981947ef4f57b0b,"",%progbits
+	.section	.gnu.lto_.pureconst.bf529622a95daf8,"",%progbits
 	.ascii	"x\234cf``\220g\200\000~\006\011&If\006V\026v\026N\006"
 	.ascii	".V\036)^\011AI\021\0111\011q\011\011\011I\011\000\033"
 	.ascii	"\225\001\363"
 	.text
-	.section	.gnu.lto_mixerUpdateStateFlags.part.0.1981947ef4f57b0b,"",%progbits
+	.section	.gnu.lto_mixerUpdateStateFlags.part.0.bf529622a95daf8,"",%progbits
 	.ascii	"x\234uPMK\033Q\024}\347NfLI\027\305\225\006\212\322"
 	.ascii	",\\X\314_\360'\270\352^\304\217\200va\273\350&\370\242"
 	.ascii	"S*.4\004)\212\337\210\250\215\306F\241\320\322E\026"
@@ -76,7 +76,7 @@
 	.ascii	"\035\351\215=\217\016\014\307\006\207^FGb\257\372G\273"
 	.ascii	"\372\224\351%\377\000'*\270\222"
 	.text
-	.section	.gnu.lto_mixerUpdateStateFlags.1981947ef4f57b0b,"",%progbits
+	.section	.gnu.lto_mixerUpdateStateFlags.bf529622a95daf8,"",%progbits
 	.ascii	"x\234\235UMOSA\024\235;\357\273-\245H\232\000F4\262"
 	.ascii	"\320\215v\313\306\277a\242\256\324\370A\".\320\005\033"
 	.ascii	"\342\253T\243\033bH4\250 \230hDA\024\024\025D\251\210"
@@ -128,7 +128,7 @@
 	.ascii	":T\261;T\276\263\354`h\357\201\262}\373\017\207\312"
 	.ascii	"\313*\367Tl\336\31541\371\003\021\202\226\361"
 	.text
-	.section	.gnu.lto_findMixer.1981947ef4f57b0b,"",%progbits
+	.section	.gnu.lto_findMixer.bf529622a95daf8,"",%progbits
 	.ascii	"x\234uS\315KTQ\024?\347\336\36753\022\022\330b \012"
 	.ascii	"DDP\337\302]-\352\037h\333>\314j \013\254\240\215xg"
 	.ascii	"\034\254\205\340`~\022Be\226\346W\232\331\370\261\230"
@@ -169,7 +169,7 @@
 	.ascii	"\300\371\013W\355\312\300\365\212\252\322r\3608\233"
 	.ascii	"S\227\317V\210@\340;\247g;\007"
 	.text
-	.section	.gnu.lto_getMotorCount.1981947ef4f57b0b,"",%progbits
+	.section	.gnu.lto_getMotorCount.bf529622a95daf8,"",%progbits
 	.ascii	"x\234cf\300\004R@|\015\210e\200\230\221\231\201\221"
 	.ascii	"i\3029\006\206F\016&FF\020\203\201\221\241\236\211\261"
 	.ascii	"\236\361%\323G&\3063;\377]fT_\332\320\320\364\341\323"
@@ -185,7 +185,7 @@
 	.ascii	"\311\372\271\211\231y\372i9\231\351\031%\372\271\231"
 	.ascii	"\025\251Ez\311\014\000\355\336VH"
 	.text
-	.section	.gnu.lto_mixerIsOutputSaturated.1981947ef4f57b0b,"",%progbits
+	.section	.gnu.lto_mixerIsOutputSaturated.bf529622a95daf8,"",%progbits
 	.ascii	"x\234cf\300\004R@|\015\210e\200\230\221\231\201\221"
 	.ascii	"i\3029\006\206F\016&FF\020\203\201\221\241\236\211\261"
 	.ascii	"\236\361%\323G&\3063;\377]fT_\332\320\320\364\341\320"
@@ -201,7 +201,7 @@
 	.ascii	"\304\314<\375\264\234\314\364\214\022\375\334\314\212"
 	.ascii	"\324\"\275d\006\000\211QU\325"
 	.text
-	.section	.gnu.lto_isMixerEnabled.1981947ef4f57b0b,"",%progbits
+	.section	.gnu.lto_isMixerEnabled.bf529622a95daf8,"",%progbits
 	.ascii	"x\234e\220OK\033Q\024\305\357\271/\011\321\270(]\024"
 	.ascii	"\031\020\205 A\020\363\015J\277@?\204\250\255\201FA"
 	.ascii	"]\270\021\237vJ\273\252\022Jq\243\245Ji\2556\021])."
@@ -226,7 +226,7 @@
 	.ascii	"\316D_\374\331\213\304\363\336\241x21\3343\320\321E"
 	.ascii	"u~\361\264\277\273'\350W\177\0015\220\227\377"
 	.text
-	.section	.gnu.lto_getFlyingPlatformType.1981947ef4f57b0b,"",%progbits
+	.section	.gnu.lto_getFlyingPlatformType.bf529622a95daf8,"",%progbits
 	.ascii	"x\234eQ\317KTQ\024>\337\271\357\275\231t\244\241U\014"
 	.ascii	"D\321,\\\351l\372\037\352\177h\025\322\217\201ta-\332"
 	.ascii	"\014\336\261\027\271\222\220\210\310j\210\2224mlL\005"
@@ -258,7 +258,7 @@
 	.ascii	"\336\256\\\367\261|O\356\304\351\374\311Sgs\335\371"
 	.ascii	"s\307{;\273\310\215\202\037\3428\326_"
 	.text
-	.section	.gnu.lto_mixerLoadMix.1981947ef4f57b0b,"",%progbits
+	.section	.gnu.lto_mixerLoadMix.bf529622a95daf8,"",%progbits
 	.ascii	"x\234\215T\357O\\E\024\235;\263\357\307\262\013\273"
 	.ascii	"P~\271\304h\262n\372\0110\306T\375\346?\340? \237\024"
 	.ascii	"[%JM\240&\215I\323\307\262\202\032S\033\222\022\332"
@@ -320,7 +320,7 @@
 	.ascii	"Z\363\256W\033\237a\260\331\322k\324\360\017\244\203"
 	.ascii	"!\016"
 	.text
-	.section	.gnu.lto_mixerResetDisarmedMotors.1981947ef4f57b0b,"",%progbits
+	.section	.gnu.lto_mixerResetDisarmedMotors.bf529622a95daf8,"",%progbits
 	.ascii	"x\234m\223\333KTQ\024\306\327\267\367\234\313\\\314"
 	.ascii	"\241\247\032\310\014\003\237t\036\373cz\012\3512\240"
 	.ascii	"=X\017\021\210gtJ\237B\204B\260\002\303\320\362\232"
@@ -359,7 +359,7 @@
 	.ascii	"\336\344\204#\245\321[\225e\321\212+\261\233\321k\345"
 	.ascii	"\261\3537nG+bw\256V\226\226\021b\177\001\224\375R\375"
 	.text
-	.section	.gnu.lto_mixerUsePWMIOConfiguration.1981947ef4f57b0b,"",%progbits
+	.section	.gnu.lto_mixerUsePWMIOConfiguration.bf529622a95daf8,"",%progbits
 	.ascii	"x\234\235WYP\224W\026\276\347\376\275\377\335t\003\202"
 	.ascii	",\006\265pK\014`\246\246\246&\017\226O\363\230\247y"
 	.ascii	"\233\207\241&\006'T%f\212\230\251T\252\254\374\320\255"
@@ -479,7 +479,7 @@
 	.ascii	"\222\025\253\226X\213\313H\377\031Kq\351\312\027J^O"
 	.ascii	"\352\351E\361\177\036\203\021\366"
 	.text
-	.section	.gnu.lto_writeMotors.1981947ef4f57b0b,"",%progbits
+	.section	.gnu.lto_writeMotors.bf529622a95daf8,"",%progbits
 	.ascii	"x\234m\222\313kSA\024\306\3177s_\311\215X\\\370\010"
 	.ascii	"h\205\010]\331\013.\375\017\374\033\\I\361\021\260."
 	.ascii	"\252\0137\2417m4\256\244\004\224B\253 (\255V\023\237"
@@ -513,7 +513,7 @@
 	.ascii	"\234\355\353\011z\217e\317\004'NgO\236:\027\364f\317"
 	.ascii	"\037\357\353\356!d\177\001Fd\367#"
 	.text
-	.section	.gnu.lto_writeAllMotors.1981947ef4f57b0b,"",%progbits
+	.section	.gnu.lto_writeAllMotors.bf529622a95daf8,"",%progbits
 	.ascii	"x\234mRKk\023Q\024\276\337\2753\223\311\003\032\\\370"
 	.ascii	"\010\250\225X\272\353\374\004\335\372\033\\I\361\021"
 	.ascii	"0.\252\0137\241\223\207\332\225\224@K\261\265\">Z[\233"
@@ -548,7 +548,7 @@
 	.ascii	"{\027|w\240z\232o\250\303:\331\325iE\017ENXG\216G\216"
 	.ascii	"\036;eE#\247\017wut\012\031\355D\344'\247H\015\265"
 	.text
-	.section	.gnu.lto_stopMotors.1981947ef4f57b0b,"",%progbits
+	.section	.gnu.lto_stopMotors.bf529622a95daf8,"",%progbits
 	.ascii	"x\234m\222\317k\023Q\020\307\347;\373\366\207I\253A"
 	.ascii	"P4H\020/\275\330.x\357\277\"H\361G\300z\250\036\274"
 	.ascii	"\204\276\324\025\025D*H-T\013\212b5\332j\265=\365\220"
@@ -578,7 +578,7 @@
 	.ascii	"\223\247\316\205\243\345\363\307\307\206F\350\017\272"
 	.ascii	"\267\352\361"
 	.text
-	.section	.gnu.lto_stopPwmAllMotors.1981947ef4f57b0b,"",%progbits
+	.section	.gnu.lto_stopPwmAllMotors.bf529622a95daf8,"",%progbits
 	.ascii	"x\234eO\261J\003A\024|\363\356\214\007i$\225\006k\323"
 	.ascii	"\345>\307N\220\240\346\300XD\013\233#{rB*\0116\011h"
 	.ascii	"\354B\022#\212\344\007\256K\247\250\205 \242M\004\355"
@@ -595,7 +595,7 @@
 	.ascii	"ZJ2\262yw\267\\pK\353\336\216\273\271\355m\025\367\334"
 	.ascii	"\222\267\277Q\316\027\350\027?\210bG"
 	.text
-	.section	.gnu.lto_mixTable.1981947ef4f57b0b,"",%progbits
+	.section	.gnu.lto_mixTable.bf529622a95daf8,"",%progbits
 	.ascii	"x\234\245[\011xU\325\361\277sn\226\227\215\004\220-"
 	.ascii	"\262\007\010{\330\021d\261\265\255\255\237\266~\266"
 	.ascii	"\365\263Uk\321\202b\021,F\213\255\376}YH\202 K\330\002"
@@ -989,7 +989,7 @@
 	.ascii	"\207\303\307\232\265`\032B\273\036\352wO\365\273\027"
 	.ascii	"\341\366\376_\345\245Q "
 	.text
-	.section	.gnu.lto_.symbol_nodes.1981947ef4f57b0b,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.bf529622a95daf8,"",%progbits
 	.ascii	"x\234U\220IS\023Q\024\205\317\351\227\016\031!\201\220"
 	.ascii	"\020Qq\370\011q@~\213\277\301\277pc\214\240\250\010"
 	.ascii	"\2508\002!\264\023Z\272`\341\302\215E\245\312\215\305"
@@ -1020,7 +1020,7 @@
 	.ascii	"\253\357\317\351\230\325\237\366\320\031T_Yc\024\215"
 	.ascii	"\377|\335\0154\277\236\305\036\"\257\003a"
 	.text
-	.section	.gnu.lto_.refs.1981947ef4f57b0b,"",%progbits
+	.section	.gnu.lto_.refs.bf529622a95daf8,"",%progbits
 	.ascii	"x\234\035\220Kk\024Q\020\205\277s\272\323c\322I\367"
 	.ascii	"\314\\[Mz&\0235\306gb\342\013\361\327)J\020\011\352"
 	.ascii	"B\021\027\006q!\270\020\\\212+7\342c\023\320\215\202"
@@ -1043,7 +1043,7 @@
 	.ascii	"\012~m\357w\337\007\262C\256}\330\007\263E\227^\362"
 	.ascii	"\221l\331\225W|\224\377Y\222<\244"
 	.text
-	.section	.gnu.lto_.decls.1981947ef4f57b0b,"",%progbits
+	.section	.gnu.lto_.decls.bf529622a95daf8,"",%progbits
 	.ascii	"x\234\315}\011TU\331\225(\367\2357\001\217\207C\225"
 	.ascii	"Ue%\035c\245\375I~:UI\345\327O\377_\253S\306\262RV\254"
 	.ascii	"\322\250\225T\272{5M\204*I\253\330\200IU\257\237\364"
@@ -1824,7 +1824,7 @@
 	.ascii	"\006>'\017:\327\332\350\271\323k3\254v`\346\341\351"
 	.ascii	"\352\263\300\332\210\376?}\005\206\375"
 	.text
-	.section	.gnu.lto_.symtab.1981947ef4f57b0b,"",%progbits
+	.section	.gnu.lto_.symtab.bf529622a95daf8,"",%progbits
 	.ascii	"mixerUpdateStateFlags\000\000\000\000\000\000\000\000"
 	.ascii	"\000\000\000\000\274\000\000\000findMixer\000\000\000"
 	.ascii	"\000\000\000\000\000\000\000\000\000E\001\000\000ge"

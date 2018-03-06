@@ -27,7 +27,14 @@ obj/main/NAZE/drivers/compass/compass_qmc5883l.o: \
  lib/main/STM32F10x_StdPeriph_Driver/inc/stm32f10x_usart.h \
  lib/main/STM32F10x_StdPeriph_Driver/inc/stm32f10x_wwdg.h \
  lib/main/STM32F10x_StdPeriph_Driver/inc/misc.h src/main/target/common.h \
- src/main/target/NAZE/target.h
+ src/main/target/NAZE/target.h src/main/build/build_config.h \
+ src/main/common/axis.h src/main/common/maths.h src/main/common/utils.h \
+ src/main/drivers/time.h src/main/common/time.h src/main/drivers/gpio.h \
+ src/main/drivers/bus_i2c.h src/main/drivers/io_types.h \
+ src/main/drivers/rcc_types.h src/main/sensors/boardalignment.h \
+ src/main/config/parameter_group.h src/main/sensors/sensors.h \
+ src/main/drivers/sensor.h src/main/drivers/compass/compass.h \
+ src/main/drivers/compass/compass_qmc5883l.h
 
 src/main/platform.h:
 
@@ -88,3 +95,35 @@ lib/main/STM32F10x_StdPeriph_Driver/inc/misc.h:
 src/main/target/common.h:
 
 src/main/target/NAZE/target.h:
+
+src/main/build/build_config.h:
+
+src/main/common/axis.h:
+
+src/main/common/maths.h:
+
+src/main/common/utils.h:
+
+src/main/drivers/time.h:
+
+src/main/common/time.h:
+
+src/main/drivers/gpio.h:
+
+src/main/drivers/bus_i2c.h:
+
+src/main/drivers/io_types.h:
+
+src/main/drivers/rcc_types.h:
+
+src/main/sensors/boardalignment.h:
+
+src/main/config/parameter_group.h:
+
+src/main/sensors/sensors.h:
+
+src/main/drivers/sensor.h:
+
+src/main/drivers/compass/compass.h:
+
+src/main/drivers/compass/compass_qmc5883l.h:

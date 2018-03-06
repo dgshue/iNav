@@ -14,15 +14,15 @@
 	.file	"pwmdriver_i2c.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.bf354ea0d6e7a00d,"",%progbits
+	.section	.gnu.lto_.profile.d2fba4f6cfb7f596,"",%progbits
 	.ascii	"x\234cf```a\200\000F\206\030-\000\001V\000\217"
 	.text
-	.section	.gnu.lto_.jmpfuncs.bf354ea0d6e7a00d,"",%progbits
+	.section	.gnu.lto_.jmpfuncs.d2fba4f6cfb7f596,"",%progbits
 	.ascii	"x\234cf\300\016\364\2404+\0203\201\030\365\014\014\314"
 	.ascii	"@.\023##3##\023s9P\210\271\234\021,\316\301\300\000"
 	.ascii	"a0\000\000<\035\002\307"
 	.text
-	.section	.gnu.lto_.inline.bf354ea0d6e7a00d,"",%progbits
+	.section	.gnu.lto_.inline.d2fba4f6cfb7f596,"",%progbits
 	.ascii	"x\234cf\300\016j\2404+\003\003\033+#\003\023\333\007"
 	.ascii	"=\006\266\005\362L 1&\006\001Y\240\220\300\235,\270"
 	.ascii	"\020#\027\220`\021\000\022\314\014,\314@I\246\013\374"
@@ -30,11 +30,11 @@
 	.ascii	"\3748\030\004\244\200rB_\232\030\341\222 s\030'\370"
 	.ascii	"1\000\0002/\015\236"
 	.text
-	.section	.gnu.lto_.pureconst.bf354ea0d6e7a00d,"",%progbits
+	.section	.gnu.lto_.pureconst.d2fba4f6cfb7f596,"",%progbits
 	.ascii	"x\234cf``\340f\200\000V\006\011&\011f\026V\011\016\011"
 	.ascii	"\000\003\236\000\212"
 	.text
-	.section	.gnu.lto_pwmDriverInitialize.part.0.bf354ea0d6e7a00d,"",%progbits
+	.section	.gnu.lto_pwmDriverInitialize.part.0.d2fba4f6cfb7f596,"",%progbits
 	.ascii	"x\234uP=K\003A\024|\363\366\022\016\322\210\225X\210"
 	.ascii	"]\032\315\201?D\374\007\"\321\342\212\030\211\240U\310"
 	.ascii	"\236\246\260\222\220J\360\243\023\243\211\361/\\\037"
@@ -54,7 +54,7 @@
 	.ascii	"\367\012+\376\272\347\027\275\215\355\302j\311\337Z"
 	.ascii	"+-\373\013\371\\\236\276\001\0219\177\005"
 	.text
-	.section	.gnu.lto_pwmDriverInitialize.bf354ea0d6e7a00d,"",%progbits
+	.section	.gnu.lto_pwmDriverInitialize.d2fba4f6cfb7f596,"",%progbits
 	.ascii	"x\234m\222\317k\023A\024\307\337wfw\273fS\023\004\021"
 	.ascii	"<\004o=\245\013\236\375\003<z\367 \022=\344P\225\010"
 	.ascii	"z(\241\273&\007ORr\022\374q\321\332\3324\215\255Z\177"
@@ -86,7 +86,7 @@
 	.ascii	"\305\363\341\205\313\023gJ\305KgK\247\212G\013\343\005"
 	.ascii	"\372\013bY!I"
 	.text
-	.section	.gnu.lto_isPwmDriverEnabled.bf354ea0d6e7a00d,"",%progbits
+	.section	.gnu.lto_isPwmDriverEnabled.d2fba4f6cfb7f596,"",%progbits
 	.ascii	"x\234cf\300\004R@|\005\210\025\200\230\221\231\201\221"
 	.ascii	"i\3029\006\206F\016&FF\020\203\201\221\241\236\211\261"
 	.ascii	"\236\361%\323G&\3063;\377]fT_\332\320\320\364a\322\313"
@@ -102,7 +102,7 @@
 	.ascii	"\304\314<\375\314|\375\202\362\334\224\242\314\262\324"
 	.ascii	"\242\370L\243d\275d\006\000\332sU\311"
 	.text
-	.section	.gnu.lto_pwmDriverSetPulse.bf354ea0d6e7a00d,"",%progbits
+	.section	.gnu.lto_pwmDriverSetPulse.d2fba4f6cfb7f596,"",%progbits
 	.ascii	"x\234mQ\317KTQ\024>\337\271\363\236OGBZ\316\"h1\230"
 	.ascii	"\241>\360/p\333\256\275\213\210q\250\201\034c\014k#"
 	.ascii	"\336'\023\264\212\241M\321/\027QcN3j?\334\025\217VE"
@@ -132,7 +132,7 @@
 	.ascii	"\207\363\247\334c\371\342\221\023G\177\003\323\\\317"
 	.ascii	"\256"
 	.text
-	.section	.gnu.lto_pwmDriverSync.bf354ea0d6e7a00d,"",%progbits
+	.section	.gnu.lto_pwmDriverSync.d2fba4f6cfb7f596,"",%progbits
 	.ascii	"x\234\225RKk\024A\020\256\257zf2\343\006\224\034\003"
 	.ascii	"1\336\342%\031\321?\342=\007\221\325\303\036\242\262"
 	.ascii	"\202\236Bz\334=x\222\260\247\240\306\213\230\327\232"
@@ -162,7 +162,7 @@
 	.ascii	"P\250Wp\367\017\204g\213\371p\350x\341TX8\035\2369?"
 	.ascii	"t\242X8w\262x\254p8?\220\247\037\260\302\036\030"
 	.text
-	.section	.gnu.lto_.symbol_nodes.bf354ea0d6e7a00d,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.d2fba4f6cfb7f596,"",%progbits
 	.ascii	"x\234U\2149\016\0021\020\004\313c\033\034\362\030\376"
 	.ascii	"\327\204\204\004\244\240\2057\220\360\010\226\373\224"
 	.ascii	"\010\340!\010,\034x'iUWk<\360\244\234=\020LZ\220\334"
@@ -172,13 +172,13 @@
 	.ascii	"j\276\240~\315W\224*\366\006\357\3650\030\323\327\307"
 	.ascii	"\021b\311\304*'_\373s=\246"
 	.text
-	.section	.gnu.lto_.refs.bf354ea0d6e7a00d,"",%progbits
+	.section	.gnu.lto_.refs.d2fba4f6cfb7f596,"",%progbits
 	.ascii	"x\234%\310\321\021\200 \014D\301w\227\000\011jY\366"
 	.ascii	"\337\222\316\260\237\033\300\313a\320/\206\231b\205"
 	.ascii	"r\240\222\266\202\224\307\331\\\336\276|\373\231u\206"
 	.ascii	"Nz\252K\275\371\0002\270\001L"
 	.text
-	.section	.gnu.lto_.decls.bf354ea0d6e7a00d,"",%progbits
+	.section	.gnu.lto_.decls.d2fba4f6cfb7f596,"",%progbits
 	.ascii	"x\234\215V}PT\327\025\177\367\275\005v\037\313\207b"
 	.ascii	"\265\345\217\210d\206\211\035\003\211m\235\344\237\352"
 	.ascii	"$\255\255\235i\307N\246\223N\332\314\316fy&;\003\013"
@@ -311,7 +311,7 @@
 	.ascii	"V\355\210~8Wd|\242\325m\215\327\006\202l\213lI\222\210"
 	.ascii	"\277\361\263>|\357\375\377\002]u6W"
 	.text
-	.section	.gnu.lto_.symtab.bf354ea0d6e7a00d,"",%progbits
+	.section	.gnu.lto_.symtab.d2fba4f6cfb7f596,"",%progbits
 	.ascii	"pwmDriverInitialize\000\000\000\000\000\000\000\000"
 	.ascii	"\000\000\000\000\257\000\000\000isPwmDriverEnabled\000"
 	.ascii	"\000\000\000\000\000\000\000\000\000\000\000\270\000"

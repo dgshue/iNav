@@ -370,7 +370,7 @@
 #define NAZE 1
 #define __FORKNAME__ "inav"
 #define __TARGET__ "NAZE"
-#define __REVISION__ "3d51ccc"
+#define __REVISION__ "8d7eea1"
 # 1 "./src/main/fc/cli.c"
 # 18 "./src/main/fc/cli.c"
 # 1 "/usr/lib/gcc/arm-none-eabi/4.9.3/include/stdbool.h" 1 3 4
@@ -14958,6 +14958,11 @@ extern void assert_param(int val);
 #define BARO 
 #define USE_BARO_MS5611 
 #define USE_BARO_BMP280 
+
+#define MAG 
+#define USE_MAG_HMC5883 
+#define USE_MAG_QMC5883 
+#define MAG_HMC5883_ALIGN CW180_DEG
 # 116 "./src/main/target/NAZE/target.h"
 #define SOFTSERIAL_1_RX_PIN PA6
 #define SOFTSERIAL_1_TX_PIN PA7
@@ -14966,26 +14971,26 @@ extern void assert_param(int val);
 
 #define USE_I2C 
 #define I2C_DEVICE (I2CDEV_2)
-# 168 "./src/main/target/NAZE/target.h"
-#define USE_ADC 
-#define ADC_CHANNEL_1_PIN PB1
-#define ADC_CHANNEL_2_PIN PA4
-#define ADC_CHANNEL_3_PIN PA1
-#define CURRENT_METER_ADC_CHANNEL ADC_CHN_1
-#define VBAT_ADC_CHANNEL ADC_CHN_2
-#define RSSI_ADC_CHANNEL ADC_CHN_3
-# 184 "./src/main/target/NAZE/target.h"
+# 176 "./src/main/target/NAZE/target.h"
+#define NAV_AUTO_MAG_DECLINATION 
+#define NAV_GPS_GLITCH_DETECTION 
+
+
+
+
+
+
 #define USE_SERIALRX_SPEKTRUM 
 #undef USE_SERIALRX_IBUS
-#define SPEKTRUM_BIND 
-#define BIND_PIN PA3
+
+
 
 
 
 #define TARGET_MOTOR_COUNT 6
 
-#define DEFAULT_FEATURES FEATURE_VBAT
-#define DEFAULT_RX_FEATURE FEATURE_RX_PPM
+
+
 
 
 #define MAX_PWM_OUTPUT_PORTS 10
@@ -18639,7 +18644,7 @@ uint32_t sensorsMask(void);
 #define CLIVALUE_MAX_NAME_LENGTH 30
 #define CLIVALUE_ENCODED_NAME_MAX_BYTES 5
 #define CLIVALUE_ENCODED_NAME_USES_BYTE_INDEXING 
-#define CLIVALUE_TABLE_COUNT 245
+#define CLIVALUE_TABLE_COUNT 244
 typedef uint8_t clivalue_offset_t;
 #define CLIVALUE_PGN_COUNT 27
 typedef int16_t clivalue_min_t;
@@ -18662,6 +18667,7 @@ enum {
  TABLE_GYRO_LPF,
  TABLE_I2C_SPEED,
  TABLE_LTM_RATES,
+ TABLE_MAG_HARDWARE,
  TABLE_MOTOR_PWM_PROTOCOL,
  TABLE_NAV_RTH_ALT_MODE,
  TABLE_NAV_USER_CONTROL_MODE,
@@ -18686,6 +18692,7 @@ extern const char *table_gps_sbas_mode[];
 extern const char *table_gyro_lpf[];
 extern const char *table_i2c_speed[];
 extern const char *table_ltm_rates[];
+extern const char *table_mag_hardware[];
 extern const char *table_motor_pwm_protocol[];
 extern const char *table_nav_rth_alt_mode[];
 extern const char *table_nav_user_control_mode[];
@@ -20768,7 +20775,7 @@ typedef enum {
     TASK_GPS,
 
 
-
+    TASK_COMPASS,
 
 
     TASK_BARO,
@@ -21508,7 +21515,16 @@ static const char * const *sensorHardwareNames[] = {
         table_acc_hardware,
 
         table_baro_hardware,
-# 194 "./src/main/fc/cli.c"
+
+
+        table_mag_hardware,
+
+
+
+
+
+
+
 };
 
 static void cliPrint(const char *str)
@@ -21744,7 +21760,7 @@ static void dumpPgValue(const clivalue_t *value, uint8_t dumpMask)
 
 static void dumpAllValues(uint16_t valueSection, uint8_t dumpMask)
 {
-    for (uint32_t i = 0; i < 245; i++) {
+    for (uint32_t i = 0; i < 244; i++) {
         const clivalue_t *value = &cliValueTable[i];
         bufWriterFlush(cliWriter);
         if ((value->type & (0x30)) == valueSection) {
@@ -23049,7 +23065,7 @@ static void cliGet(char *cmdline)
     int matchedCommands = 0;
     char name[30];
 
-    for (uint32_t i = 0; i < 245; i++) {
+    for (uint32_t i = 0; i < 244; i++) {
         val = &cliValueTable[i];
         if (clivalue_name_contains(val, name, cmdline)) {
             cliPrintf("%s = ", name);
@@ -23081,7 +23097,7 @@ static void cliSet(char *cmdline)
 
     if (len == 0 || (len == 1 && cmdline[0] == '*')) {
         cliPrintLine("Current settings:");
-        for (uint32_t i = 0; i < 245; i++) {
+        for (uint32_t i = 0; i < 244; i++) {
             val = &cliValueTable[i];
             clivalue_get_name(val, name);
             cliPrintf("%s = ", name);
@@ -23103,7 +23119,7 @@ static void cliSet(char *cmdline)
             eqptr++;
         }
 
-        for (uint32_t i = 0; i < 245; i++) {
+        for (uint32_t i = 0; i < 244; i++) {
             val = &cliValueTable[i];
 
             if (clivalue_name_exact_match(val, name, cmdline, variableNameLength)) {
@@ -23222,31 +23238,7 @@ static void cliStatus(char *cmdline)
     cliPrintLinef("Stack size: %d, Stack address: 0x%x", stackTotalSize(), stackHighMem());
 
     cliPrintLinef("I2C Errors: %d, config size: %d, max available config: %d", i2cErrorCounter, getEEPROMConfigSize(), &__config_end - &__config_start);
-
-
-    static char * adcFunctions[] = { "BATTERY", "RSSI", "CURRENT", "AIRSPEED" };
-    cliPrintLine("ADC channel usage:");
-    for (int i = 0; i < ADC_FUNCTION_COUNT; i++) {
-        cliPrintf("  %8s :", adcFunctions[i]);
-
-        cliPrint(" configured = ");
-        if (adcChannelConfig()->adcFunctionChannel[i] == ADC_CHN_NONE) {
-            cliPrint("none");
-        }
-        else {
-            cliPrintf("ADC %d", adcChannelConfig()->adcFunctionChannel[i]);
-        }
-
-        cliPrint(", used = ");
-        if (adcGetFunctionChannelAllocation(i) == ADC_CHN_NONE) {
-            cliPrintLine("none");
-        }
-        else {
-            cliPrintLinef("ADC %d", adcGetFunctionChannelAllocation(i));
-        }
-    }
-
-
+# 2394 "./src/main/fc/cli.c"
     cliPrintf("System load: %d", averageSystemLoadPercent);
 
 

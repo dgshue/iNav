@@ -14,11 +14,11 @@
 	.file	"pwm_mapping.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.7adef4546eec5d82,"",%progbits
+	.section	.gnu.lto_.profile.901955d0934014fc,"",%progbits
 	.ascii	"x\234cf```c\200\000F\206\357\314\263\231\000\005\277"
 	.ascii	"\001\242"
 	.text
-	.section	.gnu.lto_.jmpfuncs.7adef4546eec5d82,"",%progbits
+	.section	.gnu.lto_.jmpfuncs.901955d0934014fc,"",%progbits
 	.ascii	"x\234}\221\275N\002Q\020\205\347\314\205\205(\211\211"
 	.ascii	"&\026T&<\205O\246\015Y\022\032\033\244U\023\241SD\005"
 	.ascii	"a\037\001+)\010!\306\022\215\026\264\024\024\204h\234"
@@ -36,7 +36,7 @@
 	.ascii	"\371Y\341\254\220\236r\362[\243\242\215\274Xr>D\353"
 	.ascii	"u\364\266\243\324\340\224\020)\342\027\355\310p\277"
 	.text
-	.section	.gnu.lto_.inline.7adef4546eec5d82,"",%progbits
+	.section	.gnu.lto_.inline.901955d0934014fc,"",%progbits
 	.ascii	"x\234cf\300\016B\030!4\013\003\0033\023#\003\023\220"
 	.ascii	"\311\266@\036D\001\331\302\362@\021\216-Jp!f\036\006"
 	.ascii	"\006\306\011~\330)\220rF\240\031\304kaa\370\305\270"
@@ -45,11 +45,11 @@
 	.ascii	"%\261\360\020J\361+f\346\001\332\214\251\010\2070\013"
 	.ascii	"/8t\210\022\004\372\032\344\015\000Vx7\342"
 	.text
-	.section	.gnu.lto_.pureconst.7adef4546eec5d82,"",%progbits
+	.section	.gnu.lto_.pureconst.901955d0934014fc,"",%progbits
 	.ascii	"x\234cf``\340d\200\000\026\006\006&\011f\011\026I\000"
 	.ascii	"\002\012\000c"
 	.text
-	.section	.gnu.lto_pwmGetOutputConfiguration.7adef4546eec5d82,"",%progbits
+	.section	.gnu.lto_pwmGetOutputConfiguration.901955d0934014fc,"",%progbits
 	.ascii	"x\234cf\300\004R@\374\003\210\225\201\230\221\231\201"
 	.ascii	"\221i\3029\006\206F\016&FF\020\203\201\221\241\236\211"
 	.ascii	"\261\236\361%\323G&\306\235\353\276\234\345~\301\364"
@@ -69,7 +69,7 @@
 	.ascii	"\362\334\370\334\304\202\202\314\274t\275d\006\000\037"
 	.ascii	"\356j\015"
 	.text
-	.section	.gnu.lto_CheckGPIOPin.7adef4546eec5d82,"",%progbits
+	.section	.gnu.lto_CheckGPIOPin.901955d0934014fc,"",%progbits
 	.ascii	"x\234u\222\317k\023Q\020\307g\346\355\276$\335\244\011"
 	.ascii	"\036sRl\251Bm\374\013\244\370\027\370\037H\250\022r"
 	.ascii	"H\215\251\350\251\364Y\003\355\305\"^\374\005\036\324"
@@ -103,7 +103,7 @@
 	.ascii	"\312\035\316\245\363\371lo\246\253\007\324\211t\306"
 	.ascii	"\312\344\263\307\024\027~\001\300@\372N"
 	.text
-	.section	.gnu.lto_CheckGPIOPinSource.7adef4546eec5d82,"",%progbits
+	.section	.gnu.lto_CheckGPIOPinSource.901955d0934014fc,"",%progbits
 	.ascii	"x\234uQMOSQ\020\235\231\373\336m\341\265\264\272\354"
 	.ascii	"J#\004L\220\372\013\014\361\027\370\017L\203\246\351"
 	.ascii	"\242X\213\321\025\341\012M`\201\306\270\361+q\243D\005"
@@ -138,7 +138,7 @@
 	.ascii	"S\351\303\351D&\223\352Mv\365\200:\221HZ\311L\352\230"
 	.ascii	"\342\203_K\340\0013"
 	.text
-	.section	.gnu.lto_pwmInit.7adef4546eec5d82,"",%progbits
+	.section	.gnu.lto_pwmInit.901955d0934014fc,"",%progbits
 	.ascii	"x\234\235Z\011pUE\026\355\356\367\363\263/\004\022\310"
 	.ascii	"'\254I\010{\330\021\035\007\267\031\307q\306\261\034"
 	.ascii	"k\250\321*\225A\024Ja\230\250\003Z:|B\330d\013\373\032"
@@ -413,7 +413,7 @@
 	.ascii	"\357\247\272\336\377pH\377\250\367\336\353\374\262y"
 	.ascii	"\000:\272\324\350\370?\031\015y\203"
 	.text
-	.section	.gnu.lto_.symbol_nodes.7adef4546eec5d82,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.901955d0934014fc,"",%progbits
 	.ascii	"x\234U\215\271N\303@\024E\317\314\263cg%%\037\301\277"
 	.ascii	"\345\023^\012W\024\010\321\203\"a\321\"!AA\203\220\034"
 	.ascii	"\026C\014\204\240\220\002)\205{:\350\002^\022i2\315"
@@ -429,7 +429,7 @@
 	.ascii	"!9\253Jq\371bS\256\026\003\361\332D\327e\026\037\337"
 	.ascii	",\006\374\0030\223\205-"
 	.text
-	.section	.gnu.lto_.refs.7adef4546eec5d82,"",%progbits
+	.section	.gnu.lto_.refs.901955d0934014fc,"",%progbits
 	.ascii	"x\234%\313\261\313\201Q\030\206\361\373~\275g0\310\374"
 	.ascii	"\225\314JF}\345\317\263\353+\021!ePV}H6\261(&\203U$"
 	.ascii	"\231D\006\031\344*\247~\347z\236S'!i\247\357\261\"\373"
@@ -440,7 +440,7 @@
 	.ascii	"\016\272\354=\3641\300\220\267\177:\242cL0e\237a\316"
 	.ascii	"\274p\344\215\365\001+\251\"{"
 	.text
-	.section	.gnu.lto_.decls.7adef4546eec5d82,"",%progbits
+	.section	.gnu.lto_.decls.901955d0934014fc,"",%progbits
 	.ascii	"x\234\325{iPTi\266 7\277L\226$\001Kkk{)\253\372\215"
 	.ascii	"\321]\257^Ye-\257:\246g\272\020P\251\026\241\001\273"
 	.ascii	"^\315\213\030\036\245\251\305k\004\033\260\272\252'"
@@ -931,7 +931,7 @@
 	.ascii	"S\355\276\363\237^\265\033\201Db\261X\371\362\312\373"
 	.ascii	"\177\000\274~A\021"
 	.text
-	.section	.gnu.lto_.symtab.7adef4546eec5d82,"",%progbits
+	.section	.gnu.lto_.symtab.901955d0934014fc,"",%progbits
 	.ascii	"pwmGetOutputConfiguration\000\000\000\000\000\000\000"
 	.ascii	"\000\000\000\000\000\370\001\000\000CheckGPIOPin\000"
 	.ascii	"\000\000\000\000\000\000\000\000\000\000\000\032\002"

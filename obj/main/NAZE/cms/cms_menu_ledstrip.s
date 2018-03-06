@@ -14,26 +14,26 @@
 	.file	"cms_menu_ledstrip.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.be5cd67bf32261ab,"",%progbits
+	.section	.gnu.lto_.profile.e0e7b7eb7a06f6bb,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.inline.be5cd67bf32261ab,"",%progbits
+	.section	.gnu.lto_.inline.e0e7b7eb7a06f6bb,"",%progbits
 	.ascii	"x\234cf\300\016\230\340,\000\000\234\000\006"
 	.text
-	.section	.gnu.lto_.pureconst.be5cd67bf32261ab,"",%progbits
+	.section	.gnu.lto_.pureconst.e0e7b7eb7a06f6bb,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.symbol_nodes.be5cd67bf32261ab,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.e0e7b7eb7a06f6bb,"",%progbits
 	.ascii	"x\234cf```b\200\001\000\000L\000\006"
 	.text
-	.section	.gnu.lto_.refs.be5cd67bf32261ab,"",%progbits
+	.section	.gnu.lto_.refs.e0e7b7eb7a06f6bb,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.decls.be5cd67bf32261ab,"",%progbits
+	.section	.gnu.lto_.decls.e0e7b7eb7a06f6bb,"",%progbits
 	.ascii	"x\234cf``P\001\342\377@\000\244\030\030\2418\200\201"
 	.ascii	"\000\000\000\3208\004v"
 	.text
-	.section	.gnu.lto_.symtab.be5cd67bf32261ab,"",%progbits
+	.section	.gnu.lto_.symtab.e0e7b7eb7a06f6bb,"",%progbits
 	.text
 	.section	.gnu.lto_.opts,"",%progbits
 	.ascii	"'-fno-trapv' '-mthumb' '-mcpu=cortex-m3' '-ggdb3' '"

@@ -14,23 +14,23 @@
 	.file	"rangefinder.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.104e8f1df21ce5da,"",%progbits
+	.section	.gnu.lto_.profile.316a2e1888e80709,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.inline.104e8f1df21ce5da,"",%progbits
+	.section	.gnu.lto_.inline.316a2e1888e80709,"",%progbits
 	.ascii	"x\234cf\300\016\230\340,\000\000\234\000\006"
 	.text
-	.section	.gnu.lto_.pureconst.104e8f1df21ce5da,"",%progbits
+	.section	.gnu.lto_.pureconst.316a2e1888e80709,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.symbol_nodes.104e8f1df21ce5da,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.316a2e1888e80709,"",%progbits
 	.ascii	"x\234cf``\340b\200\002\326\313\014\014\013\231\352\031"
 	.ascii	"\030\000\014{\002\010"
 	.text
-	.section	.gnu.lto_.refs.104e8f1df21ce5da,"",%progbits
+	.section	.gnu.lto_.refs.316a2e1888e80709,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.decls.104e8f1df21ce5da,"",%progbits
+	.section	.gnu.lto_.decls.316a2e1888e80709,"",%progbits
 	.ascii	"x\234\225VoPTU\024\177\367\335e\027\036\0338PI|\311"
 	.ascii	"lb\264\321\266\177\323\247f\262\264\232>T\214YSS3\333"
 	.ascii	"\266\373\312\327,om\337Cs\372\320\0230\011\310IJ\022"
@@ -136,7 +136,7 @@
 	.ascii	"\\+EG\226\340\\$H\262Ct\362\341}\014`#i\211\027%\317"
 	.ascii	"\015\244\023\015\342\377\241\235\314?\3728w9"
 	.text
-	.section	.gnu.lto_.symtab.104e8f1df21ce5da,"",%progbits
+	.section	.gnu.lto_.symtab.316a2e1888e80709,"",%progbits
 	.ascii	"rangefinder\000\000\004\0004\000\000\000\000\000\000"
 	.ascii	"\000\016\001\000\000"
 	.text

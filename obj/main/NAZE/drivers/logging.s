@@ -14,24 +14,24 @@
 	.file	"logging.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.d5073e68a787c677,"",%progbits
+	.section	.gnu.lto_.profile.5a264a53d7e8439a,"",%progbits
 	.ascii	"x\234cf```a\200\000F\006>v\000\000\227\000\036"
 	.text
-	.section	.gnu.lto_.jmpfuncs.d5073e68a787c677,"",%progbits
+	.section	.gnu.lto_.jmpfuncs.5a264a53d7e8439a,"",%progbits
 	.ascii	"x\234cf\300\016\214\2414;\003##\003\003\0201100\203"
 	.ascii	"\230,L \222\201\225\205\221\021\314```ccd\204s\200\000"
 	.ascii	"\000\023i\000o"
 	.text
-	.section	.gnu.lto_.inline.d5073e68a787c677,"",%progbits
+	.section	.gnu.lto_.inline.5a264a53d7e8439a,"",%progbits
 	.ascii	"x\234cf\300\016\032\2404;\003\0033\023#\003\023\220"
 	.ascii	"\311\266@\036D10b\2100a\2100c\210\260`\210\260b\210"
 	.ascii	"\260a\2100\000\000\255\333\006I"
 	.text
-	.section	.gnu.lto_.pureconst.d5073e68a787c677,"",%progbits
+	.section	.gnu.lto_.pureconst.5a264a53d7e8439a,"",%progbits
 	.ascii	"x\234cf``\340g\200\000v\006\006F\006&\006f\006\026\006"
 	.ascii	"V\0066\006\000\002\236\000/"
 	.text
-	.section	.gnu.lto_getBootlogEventDescription.d5073e68a787c677,"",%progbits
+	.section	.gnu.lto_getBootlogEventDescription.5a264a53d7e8439a,"",%progbits
 	.ascii	"x\234cf\300\004R@\374\014\2105\201\230\221\231\201\221"
 	.ascii	"i\3029\006\206F\016&FF\020\203\201\221\241\236\211\261"
 	.ascii	"\236\361%\323G&\306\235\353\276\234\345~\301\364\223"
@@ -49,7 +49,7 @@
 	.ascii	"\311OO\317\314K\327Kf\340L-K\315+q\316OI\005\000\347"
 	.ascii	"Vb$"
 	.text
-	.section	.gnu.lto_initBootlog.d5073e68a787c677,"",%progbits
+	.section	.gnu.lto_initBootlog.5a264a53d7e8439a,"",%progbits
 	.ascii	"x\234cf\300\004R@\\\004\304\362@\314\310\314\300\310"
 	.ascii	"4\341\034\003C#\007\023##\210\301\300\310P\317\304X"
 	.ascii	"\317\370\222\351#\023\343\204\003\253gp\253/mhh\370"
@@ -60,7 +60,7 @@
 	.ascii	"2\347\011\023#H\010\250@VO\277\270(Y?713O?\245(\263"
 	.ascii	",\265\250X?'?==3/]/\231\001\000\251\2611\345"
 	.text
-	.section	.gnu.lto_getBootlogEventCount.d5073e68a787c677,"",%progbits
+	.section	.gnu.lto_getBootlogEventCount.5a264a53d7e8439a,"",%progbits
 	.ascii	"x\234cf\300\004R@<\007\210\345\201\230\221\231\201\221"
 	.ascii	"i\3029\006\206F\016&FF\020\203\201\221\241\236\211\261"
 	.ascii	"\236\361%\323G&\306\235\353\276\234\345~\301\364\223"
@@ -74,7 +74,7 @@
 	.ascii	"\305E\311\372\271\211\231y\372)E\231e\251E\305\3729"
 	.ascii	"\371\351\351\231y\351z\311\014\000\311\355C\035"
 	.text
-	.section	.gnu.lto_getBootlogEvent.d5073e68a787c677,"",%progbits
+	.section	.gnu.lto_getBootlogEvent.5a264a53d7e8439a,"",%progbits
 	.ascii	"x\234cf\300\004R@\374\002\210U\201\230\221\231\201\221"
 	.ascii	"i\3029\006\206F\016&FF\020\203\201\221\241\236\211\261"
 	.ascii	"\236\361%\323G&\306\235\353\276\234\345~\301\364\223"
@@ -91,7 +91,7 @@
 	.ascii	"(\263,\265\250X?'?==3/]/\231\20153/%\265\002\0009\377"
 	.ascii	"aJ"
 	.text
-	.section	.gnu.lto_addBootlogEvent2.d5073e68a787c677,"",%progbits
+	.section	.gnu.lto_addBootlogEvent2.5a264a53d7e8439a,"",%progbits
 	.ascii	"x\234eOMKBQ\020\2353\327\304\262@Z\311\203\240\215H"
 	.ascii	"\021\276M?@\010\372\001\375\003\321\307C0\005\015\267"
 	.ascii	"\336\302\366B\233>\226\025}XV\033\327\356\203\202\204"
@@ -110,7 +110,7 @@
 	.ascii	"\331)\226\354\\\301u\263y7\221\246I\247\354\3447V\012"
 	.ascii	"\031gj\274\255\346Rn\351\017\313\270m1"
 	.text
-	.section	.gnu.lto_addBootlogEvent4.d5073e68a787c677,"",%progbits
+	.section	.gnu.lto_addBootlogEvent4.5a264a53d7e8439a,"",%progbits
 	.ascii	"x\234m\220KKBQ\024\205\367>G/\231\005\322H\204\240\211"
 	.ascii	"H\021]\012\2325\220\202h\334?\020\023\021\312B\303\251"
 	.ascii	"7\261y\350\304jh\321\303\362Q!\344\310a\320\203\350"
@@ -135,7 +135,7 @@
 	.ascii	"\304\002\341\305\211\371\231@\247\334&g}\301\250\262"
 	.ascii	"\340\213\370\346\206\3151\362\003{W\244b"
 	.text
-	.section	.gnu.lto_addBootlogEvent6.d5073e68a787c677,"",%progbits
+	.section	.gnu.lto_addBootlogEvent6.5a264a53d7e8439a,"",%progbits
 	.ascii	"x\234m\221\313K\202A\024\305\347\316\230d&H+\021\202"
 	.ascii	"6\322\203Hz\355Z\010A\213V\321\177 *\"\244\205\206["
 	.ascii	"\2772\013\"BpS\026\005=(\265R{HK\203vED\241V\213\250"
@@ -161,16 +161,16 @@
 	.ascii	"\2411\263\335\243\2340\273\315\316n!=Bz\205\364\375"
 	.ascii	"\001\265\373\300\325"
 	.text
-	.section	.gnu.lto_.symbol_nodes.d5073e68a787c677,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.5a264a53d7e8439a,"",%progbits
 	.ascii	"x\234U\310\273\025\200 \024D\301\313\003=\266l\264-"
 	.ascii	"P\001\307V\374\222Q\223\211\201;\341d`\345\023;\202"
 	.ascii	":@\242m\013q\240dq\242\260\270P\266\270Q\261x\320d\321"
 	.ascii	"\321\374\017^p\203\"\343"
 	.text
-	.section	.gnu.lto_.refs.d5073e68a787c677,"",%progbits
+	.section	.gnu.lto_.refs.5a264a53d7e8439a,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.decls.d5073e68a787c677,"",%progbits
+	.section	.gnu.lto_.decls.5a264a53d7e8439a,"",%progbits
 	.ascii	"x\234\215W{PSW\032\277\347\236\000!\004\264j\255\233"
 	.ascii	"\235\266\324\3562\355N+mm\035g\377iS\210\026\213\201"
 	.ascii	"\206\330\256\323\231\246(YeF\301\205\330\031\377\273"
@@ -348,7 +348,7 @@
 	.ascii	"\251\027\177<o\022\305\334O\246\206\206\205I\313\232"
 	.ascii	"\000|:\036\230\367?#\036\340\344"
 	.text
-	.section	.gnu.lto_.symtab.d5073e68a787c677,"",%progbits
+	.section	.gnu.lto_.symtab.5a264a53d7e8439a,"",%progbits
 	.ascii	"getBootlogEventDescription\000\000\000\000\000\000\000"
 	.ascii	"\000\000\000\000\000\377\000\000\000initBootlog\000"
 	.ascii	"\000\000\000\000\000\000\000\000\000\000\000\002\001"

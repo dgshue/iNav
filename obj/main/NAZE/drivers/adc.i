@@ -370,7 +370,7 @@
 #define NAZE 1
 #define __FORKNAME__ "inav"
 #define __TARGET__ "NAZE"
-#define __REVISION__ "3d51ccc"
+#define __REVISION__ "8d7eea1"
 # 1 "./src/main/drivers/adc.c"
 # 18 "./src/main/drivers/adc.c"
 # 1 "/usr/lib/gcc/arm-none-eabi/4.9.3/include/stdbool.h" 1 3 4
@@ -14028,6 +14028,11 @@ extern void assert_param(int val);
 #define BARO 
 #define USE_BARO_MS5611 
 #define USE_BARO_BMP280 
+
+#define MAG 
+#define USE_MAG_HMC5883 
+#define USE_MAG_QMC5883 
+#define MAG_HMC5883_ALIGN CW180_DEG
 # 116 "./src/main/target/NAZE/target.h"
 #define SOFTSERIAL_1_RX_PIN PA6
 #define SOFTSERIAL_1_TX_PIN PA7
@@ -14036,26 +14041,26 @@ extern void assert_param(int val);
 
 #define USE_I2C 
 #define I2C_DEVICE (I2CDEV_2)
-# 168 "./src/main/target/NAZE/target.h"
-#define USE_ADC 
-#define ADC_CHANNEL_1_PIN PB1
-#define ADC_CHANNEL_2_PIN PA4
-#define ADC_CHANNEL_3_PIN PA1
-#define CURRENT_METER_ADC_CHANNEL ADC_CHN_1
-#define VBAT_ADC_CHANNEL ADC_CHN_2
-#define RSSI_ADC_CHANNEL ADC_CHN_3
-# 184 "./src/main/target/NAZE/target.h"
+# 176 "./src/main/target/NAZE/target.h"
+#define NAV_AUTO_MAG_DECLINATION 
+#define NAV_GPS_GLITCH_DETECTION 
+
+
+
+
+
+
 #define USE_SERIALRX_SPEKTRUM 
 #undef USE_SERIALRX_IBUS
-#define SPEKTRUM_BIND 
-#define BIND_PIN PA3
+
+
 
 
 
 #define TARGET_MOTOR_COUNT 6
 
-#define DEFAULT_FEATURES FEATURE_VBAT
-#define DEFAULT_RX_FEATURE FEATURE_RX_PPM
+
+
 
 
 #define MAX_PWM_OUTPUT_PORTS 10
@@ -15584,115 +15589,9 @@ uint8_t adcChannelByTag(ioTag_t ioTag);
 
 
 #define ADC_CHANNEL_4_INSTANCE ADC_INSTANCE
-
-
-
-
-static int adcFunctionMap[ADC_FUNCTION_COUNT];
-adc_config_t adcConfig[ADC_CHN_COUNT];
-volatile uint16_t adcValues[ADCDEV_COUNT][ADC_CHN_COUNT];
-
-uint8_t adcChannelByTag(ioTag_t ioTag)
+# 176 "./src/main/drivers/adc.c"
+uint16_t adcGetChannel(uint8_t channel)
 {
-    for (uint8_t i = 0; i < (sizeof(adcTagMap) / sizeof((adcTagMap)[0])); i++) {
-        if (ioTag == adcTagMap[i].tag)
-            return adcTagMap[i].channel;
-    }
+    (void)(channel);
     return 0;
-}
-
-int adcGetFunctionChannelAllocation(uint8_t function)
-{
-    return adcFunctionMap[function];
-}
-
-_Bool adcIsFunctionAssigned(uint8_t function)
-{
-
-    return (adcFunctionMap[function] != ADC_CHN_NONE);
-}
-
-uint16_t adcGetChannel(uint8_t function)
-{
-    int channel = adcFunctionMap[function];
-    if (channel == ADC_CHN_NONE)
-        return 0;
-
-    if (adcConfig[channel].adcDevice != ADCINVALID && adcConfig[channel].enabled) {
-        return adcValues[adcConfig[channel].adcDevice][adcConfig[channel].dmaIndex];
-    } else {
-        return 0;
-    }
-}
-
-static _Bool isChannelInUse(int channel)
-{
-    for (int i = 0; i < ADC_FUNCTION_COUNT; i++) {
-        if (adcFunctionMap[i] == channel)
-            return 1;
-    }
-
-    return 0;
-}
-
-
-static void disableChannelMapping(int channel)
-{
-    for (int i = 0; i < ADC_FUNCTION_COUNT; i++) {
-        if (adcFunctionMap[i] == channel) {
-            adcFunctionMap[i] = ADC_CHN_NONE;
-        }
-    }
-}
-
-
-void adcInit(drv_adc_config_t *init)
-{
-    memset(&adcConfig, 0, sizeof(adcConfig));
-
-
-    for (int i = 0; i < ADC_FUNCTION_COUNT; i++) {
-        if (init->adcFunctionChannel[i] >= ADC_CHN_1 && init->adcFunctionChannel[i] <= ADC_CHN_MAX) {
-            adcFunctionMap[i] = init->adcFunctionChannel[i];
-        }
-        else {
-            adcFunctionMap[i] = ADC_CHN_NONE;
-        }
-    }
-
-
-    if (isChannelInUse(ADC_CHN_1)) {
-        adcConfig[ADC_CHN_1].adcDevice = adcDeviceByInstance(((ADC_TypeDef *) ((((uint32_t)0x40000000) + 0x10000) + 0x2400)));
-        if (adcConfig[ADC_CHN_1].adcDevice != ADCINVALID) {
-            adcConfig[ADC_CHN_1].tag = ((((1) + 1) << 4) | (1));
-        }
-    }
-
-
-
-
-
-    if (isChannelInUse(ADC_CHN_2)) {
-        adcConfig[ADC_CHN_2].adcDevice = adcDeviceByInstance(((ADC_TypeDef *) ((((uint32_t)0x40000000) + 0x10000) + 0x2400)));
-        if (adcConfig[ADC_CHN_2].adcDevice != ADCINVALID) {
-            adcConfig[ADC_CHN_2].tag = ((((0) + 1) << 4) | (4));
-        }
-    }
-
-
-
-
-
-    if (isChannelInUse(ADC_CHN_3)) {
-        adcConfig[ADC_CHN_3].adcDevice = adcDeviceByInstance(((ADC_TypeDef *) ((((uint32_t)0x40000000) + 0x10000) + 0x2400)));
-        if (adcConfig[ADC_CHN_3].adcDevice != ADCINVALID) {
-            adcConfig[ADC_CHN_3].tag = ((((0) + 1) << 4) | (1));
-        }
-    }
-# 167 "./src/main/drivers/adc.c"
-    disableChannelMapping(ADC_CHN_4);
-
-
-
-    adcHardwareInit(init);
 }

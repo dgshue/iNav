@@ -14,11 +14,11 @@
 	.file	"io_pca9685.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.33216732d957afa6,"",%progbits
+	.section	.gnu.lto_.profile.25dffcf05e3c158e,"",%progbits
 	.ascii	"x\234cf```c\200\000F\206\223L\315\214\000\004\323\001"
 	.ascii	"Z"
 	.text
-	.section	.gnu.lto_.jmpfuncs.33216732d957afa6,"",%progbits
+	.section	.gnu.lto_.jmpfuncs.25dffcf05e3c158e,"",%progbits
 	.ascii	"x\234m\220\275n\302@\020\204w\366\034\201\261\224P\363"
 	.ascii	"\030\324\024\274\025\245\221\242\024\244\243\215\020"
 	.ascii	"\210\306\374C\"\245\361SDTi\202h@A\242\212\250\240@"
@@ -34,7 +34,7 @@
 	.ascii	"7\376\272\237\306j\336\374\004\204w)\004b\356!\337U"
 	.ascii	"\222\024\022\343\303=\361\005\203\217dz"
 	.text
-	.section	.gnu.lto_.inline.33216732d957afa6,"",%progbits
+	.section	.gnu.lto_.inline.25dffcf05e3c158e,"",%progbits
 	.ascii	"x\234\225QK\016\001A\020}U\335\332\014b|\023DH\330;"
 	.ascii	"\202#\270\005\267\221p\003;\013\013[\313\211\220H\220"
 	.ascii	"\210\225#X\262\264S=\315\004\221\210N\272\253\252\253"
@@ -49,11 +49,11 @@
 	.ascii	"\037\315\356|(\213m\232\262\025\361d\256\270\317\026"
 	.ascii	"\")c&\334_\336\001\320\2354\036"
 	.text
-	.section	.gnu.lto_.pureconst.33216732d957afa6,"",%progbits
+	.section	.gnu.lto_.pureconst.25dffcf05e3c158e,"",%progbits
 	.ascii	"x\234cf``\020f\200\000N\006\011F\011&\011f\011\026\011"
 	.ascii	"v\011N\011.\011n\011\000\013\344\001'"
 	.text
-	.section	.gnu.lto_pca9685setPWMOn.part.0.33216732d957afa6,"",%progbits
+	.section	.gnu.lto_pca9685setPWMOn.part.0.25dffcf05e3c158e,"",%progbits
 	.ascii	"x\234\205\220\313k\023Q\024\306\357w\356\274L\213\026"
 	.ascii	"\227\263\022$\024\241$n\024\335e\353\316\377@J\232E"
 	.ascii	"\026&\222@\021\241\364\246\255E7R,V\351\302.\324\252"
@@ -85,7 +85,7 @@
 	.ascii	"\0379\224\312\252D9W\032,\036+\014\344NS\261\360\007"
 	.ascii	"\266\233\343\021"
 	.text
-	.section	.gnu.lto_pca9685setPWMOn.33216732d957afa6,"",%progbits
+	.section	.gnu.lto_pca9685setPWMOn.25dffcf05e3c158e,"",%progbits
 	.ascii	"x\234ePMK[Q\020\2353\367\275\207D\301\320e\026\"H\020"
 	.ascii	"A\362DP\352\316mw\376\003\221\230E\026MJ\002\342F\274"
 	.ascii	"\321\010]\025\241\213\226R\332E\361+\321\304]Ahy\025"
@@ -110,7 +110,7 @@
 	.ascii	"Yrjl\364\361H\"I\221|*7\223}\222\231N\315r6\363\037"
 	.ascii	"\202\260\223G"
 	.text
-	.section	.gnu.lto_pca9685setPWMOff.part.1.33216732d957afa6,"",%progbits
+	.section	.gnu.lto_pca9685setPWMOff.part.1.25dffcf05e3c158e,"",%progbits
 	.ascii	"x\234\205QMkSA\024\2353\363^\362\222WLq\231\225 \241"
 	.ascii	"\010%\301\205\242\273l\335\365\037HIS\310\302F\022("
 	.ascii	"nJ'm\361\013\224\"\332j\026f\241\365\253i\372\341\307"
@@ -143,7 +143,7 @@
 	.ascii	"\211xJ\204\363\351\334x\366\314\330H\372\202\312\216"
 	.ascii	"\216\376\002f\321\365\246"
 	.text
-	.section	.gnu.lto_pca9685setPWMOff.33216732d957afa6,"",%progbits
+	.section	.gnu.lto_pca9685setPWMOff.25dffcf05e3c158e,"",%progbits
 	.ascii	"x\234ePMK[Q\020\2353\367\275\207h\300\3402\013\021$"
 	.ascii	"H\261\344Q\241\322\356\334v\347?\020\211\021\262\320"
 	.ascii	"H\002\326\215x\243\021D\332\342N\353B\027\"~'\332\356"
@@ -168,7 +168,7 @@
 	.ascii	"\371\352e\"I\365\271Tv8\363f\260/5b2\375\375ONj\221"
 	.ascii	"z"
 	.text
-	.section	.gnu.lto_pca9685sync.33216732d957afa6,"",%progbits
+	.section	.gnu.lto_pca9685sync.25dffcf05e3c158e,"",%progbits
 	.ascii	"x\234\215T\333K\224Q\020\2379\337\325\335\265U\251\036"
 	.ascii	"|\250H$\212r{\251\354\251\236\202\336\372\003\202\260"
 	.ascii	"\315\007\241\254\224\242\036\244o\335M{\022\223\240"
@@ -220,7 +220,7 @@
 	.ascii	"\275\341\255\205\353\213\267\024\356\301\"cS\301\346"
 	.ascii	"\322\345\277\000\022\224\311\014"
 	.text
-	.section	.gnu.lto_pca9685setServoPulse.33216732d957afa6,"",%progbits
+	.section	.gnu.lto_pca9685setServoPulse.25dffcf05e3c158e,"",%progbits
 	.ascii	"x\234\225\223\313KTQ\034\307\317\357\234;3\327\231\321"
 	.ascii	"\244\225(D\020\"Ax\027\221$\264p\025\264\353?\010\323"
 	.ascii	"Y\010\2452C\322F<\363\210\\H\231\213J\263,z8i\216ce"
@@ -261,7 +261,7 @@
 	.ascii	"?VX\306\234>\217\267\246\352Te\271\347\242\255\372\302"
 	.ascii	"9\237\347\017W\001\205\027"
 	.text
-	.section	.gnu.lto_pca9685setPWMFreq.33216732d957afa6,"",%progbits
+	.section	.gnu.lto_pca9685setPWMFreq.25dffcf05e3c158e,"",%progbits
 	.ascii	"x\234}R\335K\024q\024\275\3677\34386\233JO2=$,bO.\024"
 	.ascii	"E=D>\365o\304\262m\260`e\273`O\342\250\253\233=\344"
 	.ascii	"\307\223h\030R\332\207\356j\246\231f5\364`J_\210\324"
@@ -298,7 +298,7 @@
 	.ascii	"\2412\037\250\247\203\376\363Fe\320\037\362y+\374U\336"
 	.ascii	"\212\277\361\200I!"
 	.text
-	.section	.gnu.lto_pca9685Initialize.part.2.33216732d957afa6,"",%progbits
+	.section	.gnu.lto_pca9685Initialize.part.2.25dffcf05e3c158e,"",%progbits
 	.ascii	"x\234uSKOSA\024>g\346\336\333B\0134n4\335h\322\0051"
 	.ascii	"\022\272\222h\342\302\277\340/0\244\250i\214\217@\342"
 	.ascii	"\2160\224\"\350\302\030Vh\010\276\342\013\220\372\000"
@@ -337,7 +337,7 @@
 	.ascii	"\257\251\015\2369R[\347\017\236:|:P\275\277j\337\336"
 	.ascii	"\312\000\310\352\300qY\027<\206\301?R'Vx"
 	.text
-	.section	.gnu.lto_pca9685Initialize.33216732d957afa6,"",%progbits
+	.section	.gnu.lto_pca9685Initialize.25dffcf05e3c158e,"",%progbits
 	.ascii	"x\234m\220\313k\023Q\024\306\317w\356$\246\246\325\340"
 	.ascii	"\252DP!\213\240H\263(\006\305\215\377\211\204D$\210"
 	.ascii	"\017\022p\027r\233\244X7E\334\030E\255\017|F\333\252"
@@ -368,7 +368,7 @@
 	.ascii	"\261\344\251H\"\225<{,\225\216$O\037=\023\217\035\212"
 	.ascii	"\036<\320\027'\025\213\237P\351\344\361_\262e\340l"
 	.text
-	.section	.gnu.lto_.symbol_nodes.33216732d957afa6,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.25dffcf05e3c158e,"",%progbits
 	.ascii	"x\234U\217=N\0031\020F\237g\262\220u\022\256\300\005"
 	.ascii	"(\323s-\272I\021A\233\013\200\302*G\010\005\355j!\374"
 	.ascii	"\206\037\221\036\244\224\234\001a{\267XO\363\364=}3"
@@ -382,12 +382,12 @@
 	.ascii	"zG\2258a\377\035\316\371\222:1\364\"GG4\211\236\352"
 	.ascii	"f\312?\264\332le"
 	.text
-	.section	.gnu.lto_.refs.33216732d957afa6,"",%progbits
+	.section	.gnu.lto_.refs.25dffcf05e3c158e,"",%progbits
 	.ascii	"x\234%\305\301\021\000\020\024C\301\227\361C.(B\377"
 	.ascii	"=2c/\333\200\303W\205M\037x\251\357w\2444\245\024\223"
 	.ascii	"\310\223\013\022\037\000\317"
 	.text
-	.section	.gnu.lto_.decls.33216732d957afa6,"",%progbits
+	.section	.gnu.lto_.decls.25dffcf05e3c158e,"",%progbits
 	.ascii	"x\234\215V{P\024G\036\236\236^`w@A/\207\336\246.\301"
 	.ascii	"2!1\247\020\365\316h\325\235\361\316\344RZ\027\365."
 	.ascii	"\227GU\352\212BX\317\255\342\225\335\305*\357\237\014"
@@ -534,7 +534,7 @@
 	.ascii	"\275\227\242\357\267\350\203\017\026\376\017\005`\336"
 	.ascii	"\345"
 	.text
-	.section	.gnu.lto_.symtab.33216732d957afa6,"",%progbits
+	.section	.gnu.lto_.symtab.25dffcf05e3c158e,"",%progbits
 	.ascii	"pca9685setPWMOn\000\000\000\000\000\000\000\000\000"
 	.ascii	"\000\000\000\342\000\000\000pca9685setPWMOff\000\000"
 	.ascii	"\000\000\000\000\000\000\000\000\000\000\351\000\000"

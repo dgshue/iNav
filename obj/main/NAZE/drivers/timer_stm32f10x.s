@@ -14,14 +14,14 @@
 	.file	"timer_stm32f10x.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.833bd01edfd2771d,"",%progbits
+	.section	.gnu.lto_.profile.7ed8688d555a5f8e,"",%progbits
 	.ascii	"x\234cf```a\200\000F\006iI\000\000\303\000="
 	.text
-	.section	.gnu.lto_.jmpfuncs.833bd01edfd2771d,"",%progbits
+	.section	.gnu.lto_.jmpfuncs.7ed8688d555a5f8e,"",%progbits
 	.ascii	"x\234cf\300\016\004\2404\023\0033###{}}=\220\002\362"
 	.ascii	"\001\016\353\001\243"
 	.text
-	.section	.gnu.lto_.inline.833bd01edfd2771d,"",%progbits
+	.section	.gnu.lto_.inline.7ed8688d555a5f8e,"",%progbits
 	.ascii	"x\234cf\300\016\326Ci&\006\006)~Fv\306\214\217L\214"
 	.ascii	"\215\313v\367\260\277`\372\011\024c`\\\316(\305\300"
 	.ascii	"\230\011\241@\222K\246N[\303\012\226\344``\\\001\221"
@@ -32,10 +32,10 @@
 	.ascii	"|\321\027\001\271\215\221\201\031h*\023\314P\020\000"
 	.ascii	"\000\234\263 \034"
 	.text
-	.section	.gnu.lto_.pureconst.833bd01edfd2771d,"",%progbits
+	.section	.gnu.lto_.pureconst.7ed8688d555a5f8e,"",%progbits
 	.ascii	"x\234cf```e\200\000&\006)F\006\000\000\337\000&"
 	.text
-	.section	.gnu.lto_TIM_SelectOCxM_NoDisable.833bd01edfd2771d,"",%progbits
+	.section	.gnu.lto_TIM_SelectOCxM_NoDisable.7ed8688d555a5f8e,"",%progbits
 	.ascii	"x\234\215T[LTW\024=\373\234\373\232\007\016B\004$JL"
 	.ascii	",\305\037\035\265_\3751&66&5\366\243\377\306\010F\222"
 	.ascii	"B\033 F\277\274\003S\210\306\264J\002\241\032j\253U"
@@ -91,7 +91,7 @@
 	.ascii	"\272\365\333C\0306\256\331\272\251\274\274\344\353 "
 	.ascii	"\2557\254Y\377Mq\211\252*\373\366\037\247\236\034\261"
 	.text
-	.section	.gnu.lto_timerClockDivisor.833bd01edfd2771d,"",%progbits
+	.section	.gnu.lto_timerClockDivisor.7ed8688d555a5f8e,"",%progbits
 	.ascii	"x\234eO=K\003Q\020\334\331\027\016!\242by\225M8E\311"
 	.ascii	"\371\361\007\374'*I\204\024\261\270\004\261\313\213"
 	.ascii	"\346\007h\010(6)D\215\337\340U\261\272J,\214 \026Z\210"
@@ -109,15 +109,15 @@
 	.ascii	"\006\371\325\\P\364K\371B.X(\226\012s\263\3133\323k"
 	.ascii	"\351\014\031\221\376\000\366sb\213"
 	.text
-	.section	.gnu.lto_.symbol_nodes.833bd01edfd2771d,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.7ed8688d555a5f8e,"",%progbits
 	.ascii	"x\234cf``\320a\200\002\246C\014\365\014\014\023\316"
 	.ascii	"10\324\3273\314[\300\301\300t\230\241\236\021Y\200\365"
 	.ascii	" \003\303B&\240\"\000\030\322\013\344"
 	.text
-	.section	.gnu.lto_.refs.833bd01edfd2771d,"",%progbits
+	.section	.gnu.lto_.refs.7ed8688d555a5f8e,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.decls.833bd01edfd2771d,"",%progbits
+	.section	.gnu.lto_.decls.7ed8688d555a5f8e,"",%progbits
 	.ascii	"x\234\325XmP\024G\032\336\236\336\225\335eYrz1\236\371"
 	.ascii	"\020I\235e\274\304U0\306T]\325%\267x9\353\212\234\001"
 	.ascii	"s\177\356\3526\210\233s\353\024\274eM\231\177\203\020"
@@ -284,7 +284,7 @@
 	.ascii	"\220\205\356\0254\260\375\375\\\201M\212\377\003\004"
 	.ascii	"n`4"
 	.text
-	.section	.gnu.lto_.symtab.833bd01edfd2771d,"",%progbits
+	.section	.gnu.lto_.symtab.7ed8688d555a5f8e,"",%progbits
 	.ascii	"TIM_SelectOCxM_NoDisable\000\000\000\000\000\000\000"
 	.ascii	"\000\000\000\000\000\034\001\000\000timerClockDivis"
 	.ascii	"or\000\000\000\000\000\000\000\000\000\000\000\000("

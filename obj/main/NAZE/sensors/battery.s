@@ -14,10 +14,10 @@
 	.file	"battery.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.91859dd980838a,"",%progbits
+	.section	.gnu.lto_.profile.c69121b200bdc5de,"",%progbits
 	.ascii	"x\234cf```c\200\000F\206\375\314w\031\001\005b\001\253"
 	.text
-	.section	.gnu.lto_.jmpfuncs.91859dd980838a,"",%progbits
+	.section	.gnu.lto_.jmpfuncs.c69121b200bdc5de,"",%progbits
 	.ascii	"x\234m\217\275jBA\020\205\347\314\352\345\212\277U\002"
 	.ascii	"\2666>Q\236\300w\260\022\005\011\2442U\022H!\244\361"
 	.ascii	"/F-lS\211\265\210\215\020\202\212)\004m\002)\242\022"
@@ -33,7 +33,7 @@
 	.ascii	"p\023\202\356\247\365o\337\202{\207\203#\364\364\247"
 	.ascii	"#\230 Q\202"
 	.text
-	.section	.gnu.lto_.inline.91859dd980838a,"",%progbits
+	.section	.gnu.lto_.inline.c69121b200bdc5de,"",%progbits
 	.ascii	"x\234cf\300\016\374\031!4'\003\003\217,##\003\220\313"
 	.ascii	"$\364a)3\003\333\002y&\220\004\023\203\250>D\234\231"
 	.ascii	"\343\200\035D\230e\201<\013H\216\231\207\201\201q\202"
@@ -45,11 +45,11 @@
 	.ascii	"1\010)\003\305E>\254@\250e\345\003*\002\372\220A\034"
 	.ascii	"\024\034\014L\002\027:\261H\302\031\014\000$5#\321"
 	.text
-	.section	.gnu.lto_.pureconst.91859dd980838a,"",%progbits
+	.section	.gnu.lto_.pureconst.c69121b200bdc5de,"",%progbits
 	.ascii	"x\234cf``\020f\200\000N\006\026&\0116\011n\026\036\011"
 	.ascii	"^\026>\0111\011q\011\000\012\266\001#"
 	.text
-	.section	.gnu.lto_batteryAdcToVoltage.91859dd980838a,"",%progbits
+	.section	.gnu.lto_batteryAdcToVoltage.c69121b200bdc5de,"",%progbits
 	.ascii	"x\234\215R\321K\323Q\024\276\337\375m\277\375\346\246"
 	.ascii	"\333|k\020\026!B\244\373\017\242\177\305D\260\207\014"
 	.ascii	"6_z\020\357l\271\236\"cD\230\245Q\321JSs\265\212\036"
@@ -84,7 +84,7 @@
 	.ascii	"\031\214\304\372\007c\347\242\261\310\351\336\241\241"
 	.ascii	"\376\350\371\236>a\321\331\037v42^"
 	.text
-	.section	.gnu.lto_updateBatteryVoltage.91859dd980838a,"",%progbits
+	.section	.gnu.lto_updateBatteryVoltage.c69121b200bdc5de,"",%progbits
 	.ascii	"x\234uRMHTQ\024>\337}\343\233if\374\241\345H$\350\340"
 	.ascii	"\316\331\266l\021\355#\241m\223\314BP\013g\010Z\014"
 	.ascii	"\336\321arS\231D\232VdQ\216i\243\231V\332\337P-\202"
@@ -123,7 +123,7 @@
 	.ascii	"\237\344}eum\350@\250&\022tKt8X{\242&\364\013\202\262"
 	.ascii	"T\020"
 	.text
-	.section	.gnu.lto_batteryUpdate.91859dd980838a,"",%progbits
+	.section	.gnu.lto_batteryUpdate.c69121b200bdc5de,"",%progbits
 	.ascii	"x\234\225W[STG\020\236\236\263{\366v\366\002\273\213"
 	.ascii	"\200\022\255R\304\212\002\032S\336\252L\345!oyK\345"
 	.ascii	"\017\250\305\203Uj\252\204JU\036\214\207\213\227<\030"
@@ -227,7 +227,7 @@
 	.ascii	"?wNQQ\301\342o\362\3461\367\327(\1779\177a\301g\005"
 	.ascii	"\013\212\346X\347\025,XP\370?2\036\273\371"
 	.text
-	.section	.gnu.lto_getBatteryState.91859dd980838a,"",%progbits
+	.section	.gnu.lto_getBatteryState.c69121b200bdc5de,"",%progbits
 	.ascii	"x\234cf\300\004R@|\035\210\345\201\230\221\231\201\221"
 	.ascii	"i\3029\006\206F\016&FF\020\203\201\221\241\236\211\261"
 	.ascii	"\236\361%\323G&\3063;\377]fT_\332\320\320\364\341\320"
@@ -244,7 +244,7 @@
 	.ascii	"3\363\364\213S\363\212\363\213\212\365\223\022KJR\213"
 	.ascii	"*\365\222\031\000`nX\014"
 	.text
-	.section	.gnu.lto_batteryInit.91859dd980838a,"",%progbits
+	.section	.gnu.lto_batteryInit.c69121b200bdc5de,"",%progbits
 	.ascii	"x\234u\221\317J\002Q\024\306\317wG'\301E\321J\202h\351"
 	.ascii	"\316Y\366\020=\205\211\213\026\0318nZ\2103e\320*\304"
 	.ascii	"U\364\027\202\312\262\324\264\332&=@!-\202\202\2020"
@@ -266,7 +266,7 @@
 	.ascii	"\307#\332lx&\246\351\321\230>\027\327\265\351p\"\021"
 	.ascii	"\215\317\207\"\364\015\260\217\300w"
 	.text
-	.section	.gnu.lto_currentSensorToCentiamps.91859dd980838a,"",%progbits
+	.section	.gnu.lto_currentSensorToCentiamps.c69121b200bdc5de,"",%progbits
 	.ascii	"x\234uR[KTQ\024^k\3573g\316\3149\312\320[B$\230\370"
 	.ascii	"\222\316/(z\355\017\364n\346\203\340%\034\011z\020\267"
 	.ascii	"6XO!2D\027\273hI\2326\232\225\245 \031d\012y!\012\005"
@@ -302,7 +302,7 @@
 	.ascii	"\274\241\241\262\376lY\005H:\013\327TUWW\235\251\253"
 	.ascii	"n\210\375\000F\027/\355"
 	.text
-	.section	.gnu.lto_currentMeterUpdate.91859dd980838a,"",%progbits
+	.section	.gnu.lto_currentMeterUpdate.c69121b200bdc5de,"",%progbits
 	.ascii	"x\234\235VmP\224U\024\276\347\276\273\357\273_\"\242"
 	.ascii	"\"\002*\262\":\003\254::\375\351G\375\351O3\365\243"
 	.ascii	"\351G?\311pj\306\264\201m\246~8\276\300\372A\031\352"
@@ -403,7 +403,7 @@
 	.ascii	"7\257 o\340\364-o\256\367\343\202\177\000\265\022\361"
 	.ascii	"G"
 	.text
-	.section	.gnu.lto_calculateBatteryPercentage.91859dd980838a,"",%progbits
+	.section	.gnu.lto_calculateBatteryPercentage.c69121b200bdc5de,"",%progbits
 	.ascii	"x\234uRAO\023Q\020\236\231\335\356n[\240KCMl$\036<\020"
 	.ascii	"\015\260\177\300\037#\002\007\017b\322r\361\320\360"
 	.ascii	"Z\032\361d\014\242\036@/jDQ\020T\324\2331\361F4\006"
@@ -437,7 +437,7 @@
 	.ascii	"CAqp\250x\251P\014\316\367\015\017\017\026.\367\366"
 	.ascii	"\303?\236F@v"
 	.text
-	.section	.gnu.lto_calculateBatteryCapacityRemainingPercentage.91859dd980838a,"",%progbits
+	.section	.gnu.lto_calculateBatteryCapacityRemainingPercentage.c69121b200bdc5de,"",%progbits
 	.ascii	"x\234uR\317KTQ\024>\337}\323\314\233\0379C\273\236E"
 	.ascii	"\201\013\011\324!Z\267\352\017\251it\341\"\013g6.\304"
 	.ascii	"\3534\250\233\304\314\222\312\204\240h\312\322\374\221"
@@ -473,7 +473,7 @@
 	.ascii	"\276\3355\361Tc2~,Q\337\020O\3255\244\2167\246\342G"
 	.ascii	"\023\351t]cSM\222\242^z(q\"\221\254O7\375\004Us)\004"
 	.text
-	.section	.gnu.lto_.symbol_nodes.91859dd980838a,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.c69121b200bdc5de,"",%progbits
 	.ascii	"x\234U\2159K\003Q\024\205\277y/\223\214Y&\332h\341\022"
 	.ascii	"SY\010vv\376\267\033$\250h#\226\202\022\343\370?D\202"
 	.ascii	"X\2106\026\356\353\030\267\270\357\205\342\274\027\204"
@@ -493,7 +493,7 @@
 	.ascii	"\333\241\243\375\022\301\334\220\356.\323\230\216\272"
 	.ascii	"z\312\004\246;bu\262U\342\017O\370\235\310"
 	.text
-	.section	.gnu.lto_.refs.91859dd980838a,"",%progbits
+	.section	.gnu.lto_.refs.c69121b200bdc5de,"",%progbits
 	.ascii	"x\234%\216\331J\003A\024D\353\334\356\236;=\031\223"
 	.ascii	"Ig1\213\202\004\227\240(A\015H@\377]|\360;\374\023["
 	.ascii	"\254\247\202\003\247*H\372\321\177\202\204\011\027}"
@@ -506,7 +506,7 @@
 	.ascii	"X\274\307\245\022\"\250MUd\365'Z\304\2606lc+\375\002"
 	.ascii	"\222\326\014L"
 	.text
-	.section	.gnu.lto_.decls.91859dd980838a,"",%progbits
+	.section	.gnu.lto_.decls.c69121b200bdc5de,"",%progbits
 	.ascii	"x\234\245z\011XTI\226nFFB&I\002n\245\365x\335\257\324"
 	.ascii	"\352r\272{z\312^\352Uw\277\257\277W\205\210UXn\015\330"
 	.ascii	"]\275|C\321\220\245\314 2\220V\215o\276\372\346\262"
@@ -956,7 +956,7 @@
 	.ascii	"\226N\265Pa\3014c\204l\205T\310\026\320\377/\200\314"
 	.ascii	"|\233"
 	.text
-	.section	.gnu.lto_.symtab.91859dd980838a,"",%progbits
+	.section	.gnu.lto_.symtab.c69121b200bdc5de,"",%progbits
 	.ascii	"batteryAdcToVoltage\000\000\000\000\000\000\000\000"
 	.ascii	"\000\000\000\000!\001\000\000batteryConfig_System\000"
 	.ascii	"\000\004\000\016\000\000\000\000\000\000\000\270\001"

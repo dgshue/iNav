@@ -14,10 +14,10 @@
 	.file	"barometer.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.22555ca19b218a8f,"",%progbits
+	.section	.gnu.lto_.profile.c0757d3ad06bccad,"",%progbits
 	.ascii	"x\234cf```c\200\000F\206I\314{\031\001\004n\001^"
 	.text
-	.section	.gnu.lto_.jmpfuncs.22555ca19b218a8f,"",%progbits
+	.section	.gnu.lto_.jmpfuncs.c0757d3ad06bccad,"",%progbits
 	.ascii	"x\234u\220\273J\003Q\020\206\347\237\263\211\273\211"
 	.ascii	"Q\304\033\230g\310[X\373:Va\0036i\"v!\215\011(xI\314"
 	.ascii	"z\255\004\013\301\312\",>@,,\004A\214\"\270J\022g\316"
@@ -36,7 +36,7 @@
 	.ascii	"L\332=\002\273\030\247,\226\303\211]\354T\026#\232%"
 	.ascii	"\232\2234\357\356\272@\264(\351\023,\270\217\323"
 	.text
-	.section	.gnu.lto_.inline.22555ca19b218a8f,"",%progbits
+	.section	.gnu.lto_.inline.c0757d3ad06bccad,"",%progbits
 	.ascii	"x\234m\222\277J\003A\020\306\277\331\335\273\234gb\316"
 	.ascii	"h\"D1 \026\242h'X\371\010\276\205\250\017!\034\232\""
 	.ascii	"]R\212\010\246\020\215\377\320B\304F\010\330\331\350"
@@ -61,12 +61,12 @@
 	.ascii	"d\231\347^\327\177;G>\307\271\277\235F \005i;\273\004"
 	.ascii	"\3371\251sl"
 	.text
-	.section	.gnu.lto_.pureconst.22555ca19b218a8f,"",%progbits
+	.section	.gnu.lto_.pureconst.c0757d3ad06bccad,"",%progbits
 	.ascii	"x\234cf``\220d\200\000\036\006\011\026\011V\011n\011"
 	.ascii	"^\011>\011A\011a\026\021\011Q\0111\026q\006\000\027"
 	.ascii	"\265\001\262"
 	.text
-	.section	.gnu.lto_applyBarometerMedianFilter.22555ca19b218a8f,"",%progbits
+	.section	.gnu.lto_applyBarometerMedianFilter.c0757d3ad06bccad,"",%progbits
 	.ascii	"x\234\225T_L[e\024\377\316w\333{oo\013%#\233\206\030"
 	.ascii	"gD\344\305\254\306\304L\237\360\305\007\343\203F\037"
 	.ascii	"\214O\206\215\306,\2212[6\227\030\344\3226\310\0031"
@@ -133,7 +133,7 @@
 	.ascii	"\336\357v\036\334Ws\300\223\205\335\225\301r|\315/U"
 	.ascii	"\356\361<\374/)\271\317L"
 	.text
-	.section	.gnu.lto_pressureToAltitude.22555ca19b218a8f,"",%progbits
+	.section	.gnu.lto_pressureToAltitude.c0757d3ad06bccad,"",%progbits
 	.ascii	"x\234e\220MK[Q\020\206\347\235{s\023\010Uqi\026\225"
 	.ascii	"\202\010\"\346/\270\360G\270\350F\345.\\\370\301\275"
 	.ascii	"u\341Br4\022\305\205\244\222\326v\241Fl\261~EKu\241"
@@ -160,7 +160,7 @@
 	.ascii	"<?\332\330\340\265\265\270\257\\\257\246\211B\355\236"
 	.ascii	"\353\373\035\236{\007\270\360\273k"
 	.text
-	.section	.gnu.lto_performBaroCalibrationCycle.22555ca19b218a8f,"",%progbits
+	.section	.gnu.lto_performBaroCalibrationCycle.c0757d3ad06bccad,"",%progbits
 	.ascii	"x\234\215T\335O\223g\024\177\316\363~\266o\245|\304"
 	.ascii	"5\352\205\313\334\302\205A\342n\226-Y\274Zv\273d\177"
 	.ascii	"\200\202\353\305.\204\344\355\270$<\245\015\351\005"
@@ -218,7 +218,7 @@
 	.ascii	"\216D\032\334\360{\256[\357\032\273kj#;\377\005\363"
 	.ascii	"\000C\266"
 	.text
-	.section	.gnu.lto_baroUpdate.part.0.22555ca19b218a8f,"",%progbits
+	.section	.gnu.lto_baroUpdate.part.0.c0757d3ad06bccad,"",%progbits
 	.ascii	"x\234\215\222\317KTQ\024\307\317\367\334\367\236\243"
 	.ascii	"c$-\335T\270\020\241q\026m\202\202\376\026\223\201Z"
 	.ascii	"\2500\323V\274\243\003J\213\212pa\277\244\026\22556"
@@ -249,7 +249,7 @@
 	.ascii	"\223}=\347\372\223\231T\177f \235I\236\351I\017\364"
 	.ascii	"\245\316\247\322\335\275\364\007\221\232*\245"
 	.text
-	.section	.gnu.lto_baroUpdate.22555ca19b218a8f,"",%progbits
+	.section	.gnu.lto_baroUpdate.c0757d3ad06bccad,"",%progbits
 	.ascii	"x\234\215\225[O\023A\024\307\347\314^[J)\310E\361\376"
 	.ascii	"`\2101\265\217\232\350W\360\311\370\001\220\220\350"
 	.ascii	"\003\222\200/>4l\245F\023/\230\342\003^c\014\"*\002"
@@ -301,7 +301,7 @@
 	.ascii	"y\012r\017\036\362\024\347\037*.,*\366\354\317-*,\310"
 	.ascii	"?\234_\264=\217\375\005\323\361\207\314"
 	.text
-	.section	.gnu.lto_baroDetect.22555ca19b218a8f,"",%progbits
+	.section	.gnu.lto_baroDetect.c0757d3ad06bccad,"",%progbits
 	.ascii	"x\234uU\333O\034U\030?\337\231\313\3162\263\027*h\335"
 	.ascii	"hkl\220\230\264\335\370\326\007\037\372\340\203\177"
 	.ascii	"\200\376\001Xx\360\241%Y\214>\221\316\302B\253\315\002"
@@ -370,7 +370,7 @@
 	.ascii	"\007%\221\335\373\230R\\\362a.1\336.\212\024\177T\024"
 	.ascii	")y\247\364\335\262\022\313\315\371\027\017\302\231*"
 	.text
-	.section	.gnu.lto_baroInit.22555ca19b218a8f,"",%progbits
+	.section	.gnu.lto_baroInit.c0757d3ad06bccad,"",%progbits
 	.ascii	"x\234mPMK\033Q\024\275\347\276\311\030\265\305 ]\224"
 	.ascii	"Y(]\211`\234Eq\243\277Fm\026.TH\272\015\276h\204n\332"
 	.ascii	"J\272k\253+\277\265Zc\021\004\027\371\001b\021\025Q"
@@ -396,7 +396,7 @@
 	.ascii	"[\375T\262\333\357\355\354\351\363S\211\276T\1772\345"
 	.ascii	"wu&\373{\023\257\023\311\326n\272\003\266Y\301j"
 	.text
-	.section	.gnu.lto_baroIsCalibrationComplete.22555ca19b218a8f,"",%progbits
+	.section	.gnu.lto_baroIsCalibrationComplete.c0757d3ad06bccad,"",%progbits
 	.ascii	"x\234cf\300\004R@|\015\210\025\201\230\221\231\201\221"
 	.ascii	"i\3029\006\206F\016&FF\020\203\201\221\241\236\211\261"
 	.ascii	"\236\361%\323G&\3063;\377]fT_\332\320\320\364a\322\375"
@@ -411,7 +411,7 @@
 	.ascii	"\314p\217\221\021j \330FF\220M@\246\274\236~qQ\262~"
 	.ascii	"nbf\236~qj^q~Q\261~RbQ~njIj\221^2\003\000$\245W\334"
 	.text
-	.section	.gnu.lto_baroStartCalibration.22555ca19b218a8f,"",%progbits
+	.section	.gnu.lto_baroStartCalibration.c0757d3ad06bccad,"",%progbits
 	.ascii	"x\234m\220\317JBA\024\306\317w\246\256\027\334D+i\221"
 	.ascii	"\324\306\235\367Mz\0073\027-T\270\267\2558\267\014Z"
 	.ascii	"\211\011A\320\037h\021Y\226\372\010w\321\242U\021.\202"
@@ -430,7 +430,7 @@
 	.ascii	"\362\344x\322\361\334\264\223Mm\347\034/\223\363\362"
 	.ascii	"\256\347l\246\334|6\263\223q\223i\372\005\377&\213t"
 	.text
-	.section	.gnu.lto_baroCalculateAltitude.22555ca19b218a8f,"",%progbits
+	.section	.gnu.lto_baroCalculateAltitude.c0757d3ad06bccad,"",%progbits
 	.ascii	"x\234\215SMo\022a\020\236y\367\243\013\013\330xlb\325"
 	.ascii	"SM\014\335\037`\214\177\302?\3206\034<\264M\300+\351"
 	.ascii	"\"\244\361`\264!\034l\254\246\036T\264\025\244X\224"
@@ -466,7 +466,7 @@
 	.ascii	"\034\0331\002\276\221\300\250?`\014\016\370G\207}\307"
 	.ascii	"}\376\376!\370\005/\012{\255"
 	.text
-	.section	.gnu.lto_baroGetLatestAltitude.22555ca19b218a8f,"",%progbits
+	.section	.gnu.lto_baroGetLatestAltitude.c0757d3ad06bccad,"",%progbits
 	.ascii	"x\234e\216\275J\003Q\020\205\347\314\206%\020\020\021"
 	.ascii	"l\322\250Ul\222}\004_\302\027\210a\013\213$\260k\033"
 	.ascii	"rWR\244\322\020R(\3766b41\001\005A\253\2246*b!(h\023"
@@ -484,7 +484,7 @@
 	.ascii	"\345\220r\"\343\370^\316\311g\347\013\216\357\026\374"
 	.ascii	"\242\347;sY\257\230w\027\\/\223\243\037\337\211o\217"
 	.text
-	.section	.gnu.lto_baroIsHealthy.22555ca19b218a8f,"",%progbits
+	.section	.gnu.lto_baroIsHealthy.c0757d3ad06bccad,"",%progbits
 	.ascii	"x\234eM\275\016\001a\020\334\331\013\221\\AT\242\021"
 	.ascii	"\032\221\210{&\344\012\005\227\334\351}\376\372\223"
 	.ascii	"\2504*\177\225Zw\017 \022\221PQ\010\011\035Q)8\373\325"
@@ -497,7 +497,7 @@
 	.ascii	"eJ\226\347V\255z\271\326\260<\273\3419\256gU\312\256"
 	.ascii	"S\267\233\266[\252\322\017=\037?\352"
 	.text
-	.section	.gnu.lto_.symbol_nodes.22555ca19b218a8f,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.c0757d3ad06bccad,"",%progbits
 	.ascii	"x\234U\217MO\023Q\024\206\237\271gng\3721c\021Y\020"
 	.ascii	"E>~C\377\026\277\3414,Z\023\222\306?\200\251\322\215"
 	.ascii	"\373.tkjP\012\005\004\224\017\005Z[5FwM\227\204\271"
@@ -519,7 +519,7 @@
 	.ascii	"\247 \361S\306\255\311\242\314\305\274s\353\037-\321"
 	.ascii	"q\\\260\214\336\324d\301g\344r\357\000\267\222\261\024"
 	.text
-	.section	.gnu.lto_.refs.22555ca19b218a8f,"",%progbits
+	.section	.gnu.lto_.refs.c0757d3ad06bccad,"",%progbits
 	.ascii	"x\234%\215\313\016\2030\020\003\355]p\226\220\362\010"
 	.ascii	"\205\002\375\177\3657\033\011\313\007\317\301\032\007"
 	.ascii	"\360\303\223\001 i\202\317\260\225\376!O\363\213~\223"
@@ -528,7 +528,7 @@
 	.ascii	"l\\n[Q\233\316\270!\323\336\014cv\355\015\250\016\352"
 	.ascii	"1\004\333Y\205Gs\373e\325n;\361\007\341L\005("
 	.text
-	.section	.gnu.lto_.decls.22555ca19b218a8f,"",%progbits
+	.section	.gnu.lto_.decls.c0757d3ad06bccad,"",%progbits
 	.ascii	"x\234\225{\011TT\331\271n\355\263\017P\024\005\330\332"
 	.ascii	"m\033\372\031\207\316e%w%\255\335\271\335\351\265n\257"
 	.ascii	"\327M#\032\215S\224N\322/\311\253\320R*\011\002\015"
@@ -1000,7 +1000,7 @@
 	.ascii	"\212\342ms6W\"\001\202c\265\331\333\327C\367\377\001"
 	.ascii	"\217\373\322\262"
 	.text
-	.section	.gnu.lto_.symtab.22555ca19b218a8f,"",%progbits
+	.section	.gnu.lto_.symtab.c0757d3ad06bccad,"",%progbits
 	.ascii	"baro\000\000\004\000$\000\000\000\000\000\000\000\303"
 	.ascii	"\001\000\000baroUpdate\000\000\000\000\000\000\000\000"
 	.ascii	"\000\000\000\000{\001\000\000baroDetect\000\000\000"

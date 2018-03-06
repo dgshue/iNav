@@ -14,23 +14,23 @@
 	.file	"fc_hardfaults.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.ce1ed11e16fea5c4,"",%progbits
+	.section	.gnu.lto_.profile.8240166cc9cc44da,"",%progbits
 	.ascii	"x\234cf```a\200\000F\0065n\000\000\313\000:"
 	.text
-	.section	.gnu.lto_.jmpfuncs.ce1ed11e16fea5c4,"",%progbits
+	.section	.gnu.lto_.jmpfuncs.8240166cc9cc44da,"",%progbits
 	.ascii	"x\234cf\300\016t\2414#\020311*K10}db\274\377\344\374"
 	.ascii	"E\216\027L?\231@2\313\031\245@R*@\022\314f`\000\000"
 	.ascii	"\336\003\010\205"
 	.text
-	.section	.gnu.lto_.inline.ce1ed11e16fea5c4,"",%progbits
+	.section	.gnu.lto_.inline.8240166cc9cc44da,"",%progbits
 	.ascii	"x\234cf\300\016\324\2414#\003\003\257\014#\003\023\307"
 	.ascii	"\001;\006\026\006&\220\0203\017\003\210\001\245\030"
 	.ascii	"\271@b\000/\323\001\221"
 	.text
-	.section	.gnu.lto_.pureconst.ce1ed11e16fea5c4,"",%progbits
+	.section	.gnu.lto_.pureconst.8240166cc9cc44da,"",%progbits
 	.ascii	"x\234cf```f\200\000F\006\023\000\000\224\000<"
 	.text
-	.section	.gnu.lto_HardFault_Handler.ce1ed11e16fea5c4,"",%progbits
+	.section	.gnu.lto_HardFault_Handler.8240166cc9cc44da,"",%progbits
 	.ascii	"x\234}RKk\023Q\024>\337\2713\223\261\211 \202Rf\241"
 	.ascii	"H\204\"H\263\024\334\271q'.\374\001\022\323\024\013"
 	.ascii	"jp\222.Co\222)t\245iE\250\324\007.\304j\355C\213\012"
@@ -60,17 +60,17 @@
 	.ascii	"g\207\207\374\354\300\261B\272\220=\234\363\217\344"
 	.ascii	"\0129?\377\023\317\301\320\232"
 	.text
-	.section	.gnu.lto_.symbol_nodes.ce1ed11e16fea5c4,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.8240166cc9cc44da,"",%progbits
 	.ascii	"x\234cf``\010`\200\002\246s\014\365\014\014\023\316"
 	.ascii	"10\324\3273\314[\300\302\300z\236\201A\240\236\201\361"
 	.ascii	"\"C=#D\234\241\241\201\203\201\361\002C=\023\022\237"
 	.ascii	"\031\010\22702301\034y\370\017L?\001\322\014\000WU\025"
 	.ascii	"/"
 	.text
-	.section	.gnu.lto_.refs.ce1ed11e16fea5c4,"",%progbits
+	.section	.gnu.lto_.refs.8240166cc9cc44da,"",%progbits
 	.ascii	"x\234cf```c\200\000F bb\000\000\000\251\000\016"
 	.text
-	.section	.gnu.lto_.decls.ce1ed11e16fea5c4,"",%progbits
+	.section	.gnu.lto_.decls.8240166cc9cc44da,"",%progbits
 	.ascii	"x\234\205R]l\014Q\024\276gf\333\355\216\325VB+\373@"
 	.ascii	"C\322DR\235\027\017\336\010\011\"!D<y\230lwG;\311v\267"
 	.ascii	"f\246\302\333m\321-A\253A\177\"\262B\351\237\376\320"
@@ -121,7 +121,7 @@
 	.ascii	"#\311\330m\310\212az\221\036\221\263\3205\325\334-\246"
 	.ascii	"\333T\347\377\321\250\346\327\030\350',\251\244\347"
 	.text
-	.section	.gnu.lto_.symtab.ce1ed11e16fea5c4,"",%progbits
+	.section	.gnu.lto_.symtab.8240166cc9cc44da,"",%progbits
 	.ascii	"HardFault_Handler\000\000\000\000\000\000\000\000\000"
 	.ascii	"\000\000\000\261\000\000\000systemState\000\000\002"
 	.ascii	"\000\000\000\000\000\000\000\000\000\302\000\000\000"

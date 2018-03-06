@@ -370,7 +370,7 @@
 #define NAZE 1
 #define __FORKNAME__ "inav"
 #define __TARGET__ "NAZE"
-#define __REVISION__ "3d51ccc"
+#define __REVISION__ "8d7eea1"
 # 1 "./src/main/fc/fc_init.c"
 # 18 "./src/main/fc/fc_init.c"
 # 1 "/usr/lib/gcc/arm-none-eabi/4.9.3/include/stdbool.h" 1 3 4
@@ -14028,6 +14028,11 @@ extern void assert_param(int val);
 #define BARO 
 #define USE_BARO_MS5611 
 #define USE_BARO_BMP280 
+
+#define MAG 
+#define USE_MAG_HMC5883 
+#define USE_MAG_QMC5883 
+#define MAG_HMC5883_ALIGN CW180_DEG
 # 116 "./src/main/target/NAZE/target.h"
 #define SOFTSERIAL_1_RX_PIN PA6
 #define SOFTSERIAL_1_TX_PIN PA7
@@ -14036,26 +14041,26 @@ extern void assert_param(int val);
 
 #define USE_I2C 
 #define I2C_DEVICE (I2CDEV_2)
-# 168 "./src/main/target/NAZE/target.h"
-#define USE_ADC 
-#define ADC_CHANNEL_1_PIN PB1
-#define ADC_CHANNEL_2_PIN PA4
-#define ADC_CHANNEL_3_PIN PA1
-#define CURRENT_METER_ADC_CHANNEL ADC_CHN_1
-#define VBAT_ADC_CHANNEL ADC_CHN_2
-#define RSSI_ADC_CHANNEL ADC_CHN_3
-# 184 "./src/main/target/NAZE/target.h"
+# 176 "./src/main/target/NAZE/target.h"
+#define NAV_AUTO_MAG_DECLINATION 
+#define NAV_GPS_GLITCH_DETECTION 
+
+
+
+
+
+
 #define USE_SERIALRX_SPEKTRUM 
 #undef USE_SERIALRX_IBUS
-#define SPEKTRUM_BIND 
-#define BIND_PIN PA3
+
+
 
 
 
 #define TARGET_MOTOR_COUNT 6
 
-#define DEFAULT_FEATURES FEATURE_VBAT
-#define DEFAULT_RX_FEATURE FEATURE_RX_PPM
+
+
 
 
 #define MAX_PWM_OUTPUT_PORTS 10
@@ -21040,21 +21045,7 @@ void init(void)
 
 
     addBootlogEvent2(BOOT_EVENT_SYSTEM_INIT_DONE, BOOT_EVENT_FLAGS_NONE);
-
-
-    if (feature(FEATURE_RX_SERIAL)) {
-        switch (rxConfig()->serialrx_provider) {
-            case SERIALRX_SPEKTRUM1024:
-            case SERIALRX_SPEKTRUM2048:
-
-
-
-                spektrumBind(rxConfigMutable());
-                break;
-        }
-    }
-
-
+# 233 "./src/main/fc/fc_init.c"
     delay(500);
 
     timerInit();
@@ -21156,34 +21147,7 @@ void init(void)
     updateHardwareRevision();
 # 419 "./src/main/fc/fc_init.c"
         i2cInit((I2CDEV_2));
-# 435 "./src/main/fc/fc_init.c"
-    drv_adc_config_t adc_params;
-    memset(&adc_params, 0, sizeof(adc_params));
-
-
-    if (feature(FEATURE_VBAT)) {
-        adc_params.adcFunctionChannel[ADC_BATTERY] = adcChannelConfig()->adcFunctionChannel[ADC_BATTERY];
-    }
-
-    if (feature(FEATURE_RSSI_ADC)) {
-        adc_params.adcFunctionChannel[ADC_RSSI] = adcChannelConfig()->adcFunctionChannel[ADC_RSSI];
-    }
-
-    if (feature(FEATURE_CURRENT_METER) && batteryConfig()->currentMeterType == CURRENT_SENSOR_ADC) {
-        adc_params.adcFunctionChannel[ADC_CURRENT] = adcChannelConfig()->adcFunctionChannel[ADC_CURRENT];
-    }
-
-
-
-
-
-
-
-    adcInit(&adc_params);
-
-
-
-
+# 462 "./src/main/fc/fc_init.c"
     if (!isMPUSoftReset()) {
         addBootlogEvent2(BOOT_EVENT_EXTRA_BOOT_DELAY, BOOT_EVENT_FLAGS_NONE);
 

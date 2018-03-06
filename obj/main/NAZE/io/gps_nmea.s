@@ -14,26 +14,26 @@
 	.file	"gps_nmea.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.66a549a3bee4928c,"",%progbits
+	.section	.gnu.lto_.profile.91a515c307cd2a56,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.inline.66a549a3bee4928c,"",%progbits
+	.section	.gnu.lto_.inline.91a515c307cd2a56,"",%progbits
 	.ascii	"x\234cf\300\016\230\340,\000\000\234\000\006"
 	.text
-	.section	.gnu.lto_.pureconst.66a549a3bee4928c,"",%progbits
+	.section	.gnu.lto_.pureconst.91a515c307cd2a56,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.symbol_nodes.66a549a3bee4928c,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.91a515c307cd2a56,"",%progbits
 	.ascii	"x\234cf```b\200\001\000\000L\000\006"
 	.text
-	.section	.gnu.lto_.refs.66a549a3bee4928c,"",%progbits
+	.section	.gnu.lto_.refs.91a515c307cd2a56,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.decls.66a549a3bee4928c,"",%progbits
+	.section	.gnu.lto_.decls.91a515c307cd2a56,"",%progbits
 	.ascii	"x\234cf``P\001\342\377@\000\244\030\030\2418\200\201"
 	.ascii	"\000\000\000\3208\004v"
 	.text
-	.section	.gnu.lto_.symtab.66a549a3bee4928c,"",%progbits
+	.section	.gnu.lto_.symtab.91a515c307cd2a56,"",%progbits
 	.text
 	.section	.gnu.lto_.opts,"",%progbits
 	.ascii	"'-fno-trapv' '-mthumb' '-mcpu=cortex-m3' '-ggdb3' '"

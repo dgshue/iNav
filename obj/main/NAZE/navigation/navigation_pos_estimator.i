@@ -370,7 +370,7 @@
 #define NAZE 1
 #define __FORKNAME__ "inav"
 #define __TARGET__ "NAZE"
-#define __REVISION__ "3d51ccc"
+#define __REVISION__ "8d7eea1"
 # 1 "./src/main/navigation/navigation_pos_estimator.c"
 # 18 "./src/main/navigation/navigation_pos_estimator.c"
 # 1 "/usr/lib/gcc/arm-none-eabi/4.9.3/include/stdbool.h" 1 3 4
@@ -14537,6 +14537,11 @@ extern void assert_param(int val);
 #define BARO 
 #define USE_BARO_MS5611 
 #define USE_BARO_BMP280 
+
+#define MAG 
+#define USE_MAG_HMC5883 
+#define USE_MAG_QMC5883 
+#define MAG_HMC5883_ALIGN CW180_DEG
 # 116 "./src/main/target/NAZE/target.h"
 #define SOFTSERIAL_1_RX_PIN PA6
 #define SOFTSERIAL_1_TX_PIN PA7
@@ -14545,26 +14550,26 @@ extern void assert_param(int val);
 
 #define USE_I2C 
 #define I2C_DEVICE (I2CDEV_2)
-# 168 "./src/main/target/NAZE/target.h"
-#define USE_ADC 
-#define ADC_CHANNEL_1_PIN PB1
-#define ADC_CHANNEL_2_PIN PA4
-#define ADC_CHANNEL_3_PIN PA1
-#define CURRENT_METER_ADC_CHANNEL ADC_CHN_1
-#define VBAT_ADC_CHANNEL ADC_CHN_2
-#define RSSI_ADC_CHANNEL ADC_CHN_3
-# 184 "./src/main/target/NAZE/target.h"
+# 176 "./src/main/target/NAZE/target.h"
+#define NAV_AUTO_MAG_DECLINATION 
+#define NAV_GPS_GLITCH_DETECTION 
+
+
+
+
+
+
 #define USE_SERIALRX_SPEKTRUM 
 #undef USE_SERIALRX_IBUS
-#define SPEKTRUM_BIND 
-#define BIND_PIN PA3
+
+
 
 
 
 #define TARGET_MOTOR_COUNT 6
 
-#define DEFAULT_FEATURES FEATURE_VBAT
-#define DEFAULT_RX_FEATURE FEATURE_RX_PPM
+
+
 
 
 #define MAX_PWM_OUTPUT_PORTS 10
@@ -18712,8 +18717,8 @@ typedef struct {
 typedef struct {
     timeUs_t lastUpdateTime;
 
-
-
+    _Bool glitchDetected;
+    _Bool glitchRecovery;
 
     t_fp_vector pos;
     t_fp_vector vel;
@@ -18854,7 +18859,52 @@ static timeUs_t getGPSDeltaTimeFilter(timeUs_t dTus)
     if (dTus >= 18000 && dTus <= 22000) return (1000000 / (50));
     return dTus;
 }
-# 312 "./src/main/navigation/navigation_pos_estimator.c"
+
+
+static _Bool detectGPSGlitch(timeUs_t currentTimeUs)
+{
+    static timeUs_t previousTime = 0;
+    static t_fp_vector lastKnownGoodPosition;
+    static t_fp_vector lastKnownGoodVelocity;
+
+    _Bool isGlitching = 0;
+
+    if (previousTime == 0) {
+        isGlitching = 0;
+    }
+    else {
+        t_fp_vector predictedGpsPosition;
+        float gpsDistance;
+        float dT = ((currentTimeUs - previousTime) * 1e-6f);
+
+
+        predictedGpsPosition.V.X = lastKnownGoodPosition.V.X + lastKnownGoodVelocity.V.X * dT;
+        predictedGpsPosition.V.Y = lastKnownGoodPosition.V.Y + lastKnownGoodVelocity.V.Y * dT;
+
+
+        gpsDistance = sqrtf(((predictedGpsPosition.V.X - lastKnownGoodPosition.V.X)*(predictedGpsPosition.V.X - lastKnownGoodPosition.V.X)) + ((predictedGpsPosition.V.Y - lastKnownGoodPosition.V.Y)*(predictedGpsPosition.V.Y - lastKnownGoodPosition.V.Y)));
+        if (gpsDistance <= (250.0f + 0.5f * 1000.0f * dT * dT)) {
+            isGlitching = 0;
+        }
+        else {
+            isGlitching = 1;
+        }
+    }
+
+    if (!isGlitching) {
+        previousTime = currentTimeUs;
+        lastKnownGoodPosition = posEstimator.gps.pos;
+        lastKnownGoodVelocity = posEstimator.gps.vel;
+    }
+
+    return isGlitching;
+}
+
+
+
+
+
+
 void onNewGPSData(void)
 {
     static timeUs_t lastGPSNewDataTime;
@@ -18879,7 +18929,19 @@ void onNewGPSData(void)
         if ((currentTimeUs - lastGPSNewDataTime) > ((1500) * 1000)) {
             isFirstGPSUpdate = 1;
         }
-# 349 "./src/main/navigation/navigation_pos_estimator.c"
+
+
+
+        static _Bool magDeclinationSet = 0;
+        if (positionEstimationConfig()->automatic_mag_declination && !magDeclinationSet) {
+            mag.magneticDeclination = geoCalculateMagDeclination(&newLLH) * 10.0f;
+            magDeclinationSet = 1;
+        }
+
+
+
+
+
         if (!posControl.gpsOrigin.valid) {
             geoSetOrigin(&posControl.gpsOrigin, &newLLH, GEO_ORIGIN_SET);
         }
@@ -18913,7 +18975,21 @@ void onNewGPSData(void)
                 else {
                     posEstimator.gps.vel.V.Z = (posEstimator.gps.vel.V.Z + (gpsSol.llh.alt - previousAlt) / dT) / 2.0f;
                 }
-# 397 "./src/main/navigation/navigation_pos_estimator.c"
+
+
+
+                if (detectGPSGlitch(currentTimeUs)) {
+                    posEstimator.gps.glitchRecovery = 0;
+                    posEstimator.gps.glitchDetected = 1;
+                }
+                else {
+
+                    posEstimator.gps.glitchRecovery = posEstimator.gps.glitchDetected;
+                    posEstimator.gps.glitchDetected = 0;
+                }
+
+
+
                 if (gpsSol.flags.validEPE) {
                     posEstimator.gps.eph = gpsSol.eph;
                     posEstimator.gps.epv = gpsSol.epv;
@@ -19341,7 +19417,18 @@ static void publishEstimatedTopic(timeUs_t currentTimeUs)
 
     }
 }
-# 894 "./src/main/navigation/navigation_pos_estimator.c"
+
+
+_Bool isGPSGlitchDetected(void)
+{
+    return posEstimator.gps.glitchDetected;
+}
+
+
+
+
+
+
 void initializePositionEstimator(void)
 {
     int axis;

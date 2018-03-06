@@ -14,23 +14,23 @@
 	.file	"target.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.1030201ea5a97e47,"",%progbits
+	.section	.gnu.lto_.profile.b9a9e31b8c9dca02,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.inline.1030201ea5a97e47,"",%progbits
+	.section	.gnu.lto_.inline.b9a9e31b8c9dca02,"",%progbits
 	.ascii	"x\234cf\300\016\230\340,\000\000\234\000\006"
 	.text
-	.section	.gnu.lto_.pureconst.1030201ea5a97e47,"",%progbits
+	.section	.gnu.lto_.pureconst.b9a9e31b8c9dca02,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.symbol_nodes.1030201ea5a97e47,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.b9a9e31b8c9dca02,"",%progbits
 	.ascii	"x\234cf``\340b\200\002\326\203\014\014\013\231\352\031"
 	.ascii	"\030\000\013\353\001\366"
 	.text
-	.section	.gnu.lto_.refs.1030201ea5a97e47,"",%progbits
+	.section	.gnu.lto_.refs.b9a9e31b8c9dca02,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.decls.1030201ea5a97e47,"",%progbits
+	.section	.gnu.lto_.decls.b9a9e31b8c9dca02,"",%progbits
 	.ascii	"x\234\325XkT\024G\026\236\352\032`f\030\206]\335\260"
 	.ascii	"\211\331]\225\234e\023\327\000\2421\346\234=g\223\005"
 	.ascii	"\363\370AN\026\334\375\261\177\010\221\321p\216\202"
@@ -214,7 +214,7 @@
 	.ascii	"f\275\301\343\353\317\376\265^\270v\337\250\370/\275"
 	.ascii	"*\235z"
 	.text
-	.section	.gnu.lto_.symtab.1030201ea5a97e47,"",%progbits
+	.section	.gnu.lto_.symtab.b9a9e31b8c9dca02,"",%progbits
 	.ascii	"timerHardware\000\000\000\000\000\000\000\000\000\000"
 	.ascii	"\000\000\202\001\000\000"
 	.text

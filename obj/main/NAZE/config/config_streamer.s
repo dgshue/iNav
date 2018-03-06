@@ -14,10 +14,10 @@
 	.file	"config_streamer.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.642122595ccf8236,"",%progbits
+	.section	.gnu.lto_.profile.add4a8e546b7f1be,"",%progbits
 	.ascii	"x\234cf```e\200\000F\206=\214Q\000\003\032\001!"
 	.text
-	.section	.gnu.lto_.jmpfuncs.642122595ccf8236,"",%progbits
+	.section	.gnu.lto_.jmpfuncs.add4a8e546b7f1be,"",%progbits
 	.ascii	"x\234m\214!\026\203@\014D\377$\264\340\260}X\256\300"
 	.ascii	"\335\220{\216\232Zz\202\036\001U\217\256\253E\365\241"
 	.ascii	"\332\354\203u\215H2\177&q\376\327\355\230\015&y\222"
@@ -26,7 +26,7 @@
 	.ascii	"8\016\373\373X^\312\266\006t\017\233\252\370\373o8\205"
 	.ascii	"N\347\334\012q\366\377Pg\014?\246\221\030\012"
 	.text
-	.section	.gnu.lto_.inline.642122595ccf8236,"",%progbits
+	.section	.gnu.lto_.inline.add4a8e546b7f1be,"",%progbits
 	.ascii	"x\234mP\261J\003A\024\234\367vs\273\227xxx\304@\032"
 	.ascii	"#\026\251lE\360\037\366\033R\236\177a\243\004-\334O"
 	.ascii	"\270\316FS)X\330i\255\330\331\011b\221V\260I\347\333"
@@ -44,11 +44,11 @@
 	.ascii	"\352:\027\225\200)\273\216\375,\247P\203w\006yWz\370"
 	.ascii	"\317[\267\203o\322n\007\217\221\361\007\203oB\205"
 	.text
-	.section	.gnu.lto_.pureconst.642122595ccf8236,"",%progbits
+	.section	.gnu.lto_.pureconst.add4a8e546b7f1be,"",%progbits
 	.ascii	"x\234cf``\020d\200\000\016\006)FI&\011f)\026)VV6)v)"
 	.ascii	"\000\011A\000\361"
 	.text
-	.section	.gnu.lto_write_word.part.0.642122595ccf8236,"",%progbits
+	.section	.gnu.lto_write_word.part.0.add4a8e546b7f1be,"",%progbits
 	.ascii	"x\234\225S\337K\024Q\024\276\337\2713\263\233?P\202"
 	.ascii	" \366\245`\023\221\322}\352-\250\377$\226m\013!\255"
 	.ascii	"\\\355M\274\253+\025Al*d\224\331\017\245R\3234\265\264"
@@ -84,7 +84,7 @@
 	.ascii	"\371\241\254\331\037\253\256\212\206+\242Ue\021\201"
 	.ascii	"\210y<|\270&j\305\252\303\3255\261\357\235\304C\335"
 	.text
-	.section	.gnu.lto_write_word.642122595ccf8236,"",%progbits
+	.section	.gnu.lto_write_word.add4a8e546b7f1be,"",%progbits
 	.ascii	"x\234}RQK\024Q\024\276\347\336\231\273\343\356\244\322"
 	.ascii	"K\260\204\005\233-R\272/\365\\\177\241_\020\333b!\244"
 	.ascii	"\205\253\275\211W]\323\010jI!\243\3142\245\322\\\323"
@@ -126,7 +126,7 @@
 	.ascii	"\370\324s\336\323\245\371\334_\342-)\365\377\004\252"
 	.ascii	"\033N\210"
 	.text
-	.section	.gnu.lto_config_streamer_init.642122595ccf8236,"",%progbits
+	.section	.gnu.lto_config_streamer_init.add4a8e546b7f1be,"",%progbits
 	.ascii	"x\234e\216OK\002Q\024\305\357\2713\016\202\201\021\004"
 	.ascii	"5\253\240\304V\372\025\372\010}\203\220\301\302\205"
 	.ascii	"\006\332V|S\022\265\011ie\2336\021\225\332\004\326\246"
@@ -146,7 +146,7 @@
 	.ascii	"\222\316rn1\263\3647\026\012+\371t*\233\316'\034\202"
 	.ascii	"\363\003/Pp\023"
 	.text
-	.section	.gnu.lto_config_streamer_start.642122595ccf8236,"",%progbits
+	.section	.gnu.lto_config_streamer_start.add4a8e546b7f1be,"",%progbits
 	.ascii	"x\234\225\222\335KTA\030\306\347\2319{\334\334\265\215"
 	.ascii	"\256d\003\011J$b\335\250.\272\354*\272\354?\010]\266"
 	.ascii	"\360B\003\267\253H<\353n\2247b\005!\231\005I_Z\352\372"
@@ -184,7 +184,7 @@
 	.ascii	"\025'W\207\343\221\323\325\341\262\312puiH d\224\227"
 	.ascii	"E\302F\244\342L\370\027\021\304HW"
 	.text
-	.section	.gnu.lto_config_streamer_write.642122595ccf8236,"",%progbits
+	.section	.gnu.lto_config_streamer_write.add4a8e546b7f1be,"",%progbits
 	.ascii	"x\234\225TIOTY\024\276\337\275o\250\011\252\"\352\242"
 	.ascii	"bw\233 !\016Ei\372\007\350\322M\357\334\033B\350\016"
 	.ascii	"\013\207\200+\023\365\025U\255\245iM\211.0\342\324h"
@@ -236,7 +236,7 @@
 	.ascii	"\213j\353\253j\004j\260\324h\250[^\253\226V/\373\002"
 	.ascii	"\347h\360\257"
 	.text
-	.section	.gnu.lto_config_streamer_status.642122595ccf8236,"",%progbits
+	.section	.gnu.lto_config_streamer_status.add4a8e546b7f1be,"",%progbits
 	.ascii	"x\234eO\277K\202Q\024\275\347\275\217\017A\373Ac\020"
 	.ascii	"4$\006\242\316m\215\375\001\355!b\341\240\201\266\373"
 	.ascii	">\263\241M\242 \010\011\014\311\254\224\242\202\232"
@@ -257,7 +257,7 @@
 	.ascii	"\015Fb\201\320bl>\262\320Os\211\245x8\030\015\307\375"
 	.ascii	"!B\350\027]\261{|"
 	.text
-	.section	.gnu.lto_config_streamer_flush.642122595ccf8236,"",%progbits
+	.section	.gnu.lto_config_streamer_flush.add4a8e546b7f1be,"",%progbits
 	.ascii	"x\234\225RKHTQ\030>\3379w\356\214\336q&\242\325@\022"
 	.ascii	"\224\330\203\353]\264m\321\262\366\355\303\006\013\027"
 	.ascii	"\032h\213 \3043j\257E1\230AP\026\245Ri\371~\344\364"
@@ -294,7 +294,7 @@
 	.ascii	"k\235\350\351\332\223\325\247r\333\361\3723uU\2255U"
 	.ascii	"u\025Q\201\350\037\376e^\250"
 	.text
-	.section	.gnu.lto_config_streamer_finish.642122595ccf8236,"",%progbits
+	.section	.gnu.lto_config_streamer_finish.add4a8e546b7f1be,"",%progbits
 	.ascii	"x\234u\220\317KTQ\024\307\317\367\334;o\206fJq9\220"
 	.ascii	"\264HF\250q\026-\332\266\354\017p/6X\270\320`t+\336"
 	.ascii	"qF\260M\210\2710\322\004M*\253\261\374\0214\253Y\264"
@@ -322,7 +322,7 @@
 	.ascii	"\222\211\266\346\326\366D\362v\373\315\326[\225\322"
 	.ascii	"\324\321\231jinkI5$\011\311\337\354Y\321B"
 	.text
-	.section	.gnu.lto_.symbol_nodes.642122595ccf8236,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.add4a8e546b7f1be,"",%progbits
 	.ascii	"x\234U\317M\016\301P\020\300\361\377{C[m\035\300\011"
 	.ascii	"\254\354\304\326\321F,\304\322\005\210\0107`\357\243"
 	.ascii	"\3523\316@b\353\012\3425H^g\367\377\315lF\200\216\341"
@@ -335,10 +335,10 @@
 	.ascii	"\227\025\343\326\257\226\0041\231\343\300\320\317\363"
 	.ascii	"@\302:\317e\233\017\033!VK"
 	.text
-	.section	.gnu.lto_.refs.642122595ccf8236,"",%progbits
+	.section	.gnu.lto_.refs.add4a8e546b7f1be,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.decls.642122595ccf8236,"",%progbits
+	.section	.gnu.lto_.decls.add4a8e546b7f1be,"",%progbits
 	.ascii	"x\234\215XiPTW\026~\367\335n\350nZ011)\252\246\202&"
 	.ascii	"a\222L\002\211\372c&\225\231\304\030\215\261\222\310"
 	.ascii	"\270Tf*3E\265\320H\327 \230\356f\234\314\257\007\210"
@@ -517,7 +517,7 @@
 	.ascii	"p;%<\324dX\031\252\017\364\012\010\326\031\377\007y"
 	.ascii	"\306E}"
 	.text
-	.section	.gnu.lto_.symtab.642122595ccf8236,"",%progbits
+	.section	.gnu.lto_.symtab.add4a8e546b7f1be,"",%progbits
 	.ascii	"config_streamer_init\000\000\000\000\000\000\000\000"
 	.ascii	"\000\000\000\000\366\000\000\000config_streamer_sta"
 	.ascii	"rt\000\000\000\000\000\000\000\000\000\000\000\000\374"

@@ -14,26 +14,26 @@
 	.file	"accgyro_spi_mpu6500.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.5a1e2c9104e46d5a,"",%progbits
+	.section	.gnu.lto_.profile.14381d20c63220f7,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.inline.5a1e2c9104e46d5a,"",%progbits
+	.section	.gnu.lto_.inline.14381d20c63220f7,"",%progbits
 	.ascii	"x\234cf\300\016\230\340,\000\000\234\000\006"
 	.text
-	.section	.gnu.lto_.pureconst.5a1e2c9104e46d5a,"",%progbits
+	.section	.gnu.lto_.pureconst.14381d20c63220f7,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.symbol_nodes.5a1e2c9104e46d5a,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.14381d20c63220f7,"",%progbits
 	.ascii	"x\234cf```b\200\001\000\000L\000\006"
 	.text
-	.section	.gnu.lto_.refs.5a1e2c9104e46d5a,"",%progbits
+	.section	.gnu.lto_.refs.14381d20c63220f7,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.decls.5a1e2c9104e46d5a,"",%progbits
+	.section	.gnu.lto_.decls.14381d20c63220f7,"",%progbits
 	.ascii	"x\234cf``P\001\342\377@\000\244\030\030\2418\200\201"
 	.ascii	"\000\000\000\3208\004v"
 	.text
-	.section	.gnu.lto_.symtab.5a1e2c9104e46d5a,"",%progbits
+	.section	.gnu.lto_.symtab.14381d20c63220f7,"",%progbits
 	.text
 	.section	.gnu.lto_.opts,"",%progbits
 	.ascii	"'-fno-trapv' '-mthumb' '-mcpu=cortex-m3' '-ggdb3' '"

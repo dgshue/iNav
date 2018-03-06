@@ -370,7 +370,7 @@
 #define NAZE 1
 #define __FORKNAME__ "inav"
 #define __TARGET__ "NAZE"
-#define __REVISION__ "3d51ccc"
+#define __REVISION__ "8d7eea1"
 # 1 "./src/main/fc/settings.c"
 # 1 "/usr/arm-none-eabi/include/string.h" 1 3
 
@@ -1971,7 +1971,7 @@ int sl_strncasecmp(const char * s1, const char * s2, int n);
 #define CLIVALUE_MAX_NAME_LENGTH 30
 #define CLIVALUE_ENCODED_NAME_MAX_BYTES 5
 #define CLIVALUE_ENCODED_NAME_USES_BYTE_INDEXING 
-#define CLIVALUE_TABLE_COUNT 245
+#define CLIVALUE_TABLE_COUNT 244
 typedef uint8_t clivalue_offset_t;
 #define CLIVALUE_PGN_COUNT 27
 typedef int16_t clivalue_min_t;
@@ -1994,6 +1994,7 @@ enum {
  TABLE_GYRO_LPF,
  TABLE_I2C_SPEED,
  TABLE_LTM_RATES,
+ TABLE_MAG_HARDWARE,
  TABLE_MOTOR_PWM_PROTOCOL,
  TABLE_NAV_RTH_ALT_MODE,
  TABLE_NAV_USER_CONTROL_MODE,
@@ -2018,6 +2019,7 @@ extern const char *table_gps_sbas_mode[];
 extern const char *table_gyro_lpf[];
 extern const char *table_i2c_speed[];
 extern const char *table_ltm_rates[];
+extern const char *table_mag_hardware[];
 extern const char *table_motor_pwm_protocol[];
 extern const char *table_nav_rth_alt_mode[];
 extern const char *table_nav_user_control_mode[];
@@ -14336,6 +14338,11 @@ extern void assert_param(int val);
 #define BARO 
 #define USE_BARO_MS5611 
 #define USE_BARO_BMP280 
+
+#define MAG 
+#define USE_MAG_HMC5883 
+#define USE_MAG_QMC5883 
+#define MAG_HMC5883_ALIGN CW180_DEG
 # 116 "./src/main/target/NAZE/target.h"
 #define SOFTSERIAL_1_RX_PIN PA6
 #define SOFTSERIAL_1_TX_PIN PA7
@@ -14344,26 +14351,26 @@ extern void assert_param(int val);
 
 #define USE_I2C 
 #define I2C_DEVICE (I2CDEV_2)
-# 168 "./src/main/target/NAZE/target.h"
-#define USE_ADC 
-#define ADC_CHANNEL_1_PIN PB1
-#define ADC_CHANNEL_2_PIN PA4
-#define ADC_CHANNEL_3_PIN PA1
-#define CURRENT_METER_ADC_CHANNEL ADC_CHN_1
-#define VBAT_ADC_CHANNEL ADC_CHN_2
-#define RSSI_ADC_CHANNEL ADC_CHN_3
-# 184 "./src/main/target/NAZE/target.h"
+# 176 "./src/main/target/NAZE/target.h"
+#define NAV_AUTO_MAG_DECLINATION 
+#define NAV_GPS_GLITCH_DETECTION 
+
+
+
+
+
+
 #define USE_SERIALRX_SPEKTRUM 
 #undef USE_SERIALRX_IBUS
-#define SPEKTRUM_BIND 
-#define BIND_PIN PA3
+
+
 
 
 
 #define TARGET_MOTOR_COUNT 6
 
-#define DEFAULT_FEATURES FEATURE_VBAT
-#define DEFAULT_RX_FEATURE FEATURE_RX_PPM
+
+
 
 
 #define MAX_PWM_OUTPUT_PORTS 10
@@ -14618,220 +14625,6 @@ int16_t gyroGetTemperature(void);
 int16_t gyroRateDps(int axis);
 _Bool gyroSyncCheckUpdate(void);
 # 5 "./src/main/fc/settings_generated.c" 2
-# 1 "./src/main/fc/config.h" 1
-# 18 "./src/main/fc/config.h"
-       
-
-
-
-# 1 "./src/main/common/time.h" 1
-# 18 "./src/main/common/time.h"
-       
-
-
-
-
-
-
-typedef int32_t timeDelta_t;
-
-typedef uint32_t timeMs_t ;
-
-
-typedef uint64_t timeUs_t;
-#define TIMEUS_MAX UINT64_MAX
-
-
-
-
-
-static inline timeDelta_t cmpTimeUs(timeUs_t a, timeUs_t b) { return (timeDelta_t)(a - b); }
-# 23 "./src/main/fc/config.h" 2
-
-# 1 "./src/main/drivers/adc.h" 1
-# 18 "./src/main/drivers/adc.h"
-       
-
-
-
-typedef enum {
-    ADC_BATTERY = 0,
-    ADC_RSSI = 1,
-    ADC_CURRENT = 2,
-    ADC_AIRSPEED = 3,
-    ADC_FUNCTION_COUNT
-} adcFunction_e;
-
-typedef enum {
-    ADC_CHN_NONE = 0,
-    ADC_CHN_1 = 1,
-    ADC_CHN_2,
-    ADC_CHN_3,
-    ADC_CHN_4,
-    ADC_CHN_MAX = ADC_CHN_4,
-    ADC_CHN_COUNT
-} adcChannel_e;
-
-typedef struct drv_adc_config_s {
-    uint8_t adcFunctionChannel[ADC_FUNCTION_COUNT];
-} drv_adc_config_t;
-
-void adcInit(drv_adc_config_t *init);
-uint16_t adcGetChannel(uint8_t channel);
-_Bool adcIsFunctionAssigned(uint8_t function);
-int adcGetFunctionChannelAllocation(uint8_t function);
-# 25 "./src/main/fc/config.h" 2
-# 1 "./src/main/drivers/rx_pwm.h" 1
-# 18 "./src/main/drivers/rx_pwm.h"
-       
-
-typedef enum {
-    INPUT_FILTERING_DISABLED = 0,
-    INPUT_FILTERING_ENABLED
-} inputFilteringMode_e;
-
-#define PPM_RCVR_TIMEOUT 0
-
-struct timerHardware_s;
-void ppmInConfig(const struct timerHardware_s *timerHardwarePtr, uint8_t motorPwmProtocol);
-
-void pwmInConfig(const struct timerHardware_s *timerHardwarePtr, uint8_t channel);
-uint16_t pwmRead(uint8_t channel);
-uint16_t ppmRead(uint8_t channel);
-
-_Bool isPPMDataBeingReceived(void);
-void resetPPMDataReceivedState(void);
-
-void pwmRxInit(inputFilteringMode_e inputFilteringMode);
-
-_Bool isPWMDataBeingReceived(void);
-# 26 "./src/main/fc/config.h" 2
-# 1 "./src/main/fc/stats.h" 1
-
-       
-# 16 "./src/main/fc/stats.h"
-#define statsOnArm() do {} while (0)
-#define statsOnDisarm() do {} while (0)
-# 27 "./src/main/fc/config.h" 2
-
-#define MAX_PROFILE_COUNT 3
-#define ONESHOT_FEATURE_CHANGED_DELAY_ON_BOOT_MS 1500
-#define MAX_NAME_LENGTH 16
-
-#define ACC_TASK_FREQUENCY_DEFAULT 500
-#define ACC_TASK_FREQUENCY_MIN 100
-#define ACC_TASK_FREQUENCY_MAX 1000
-#define ATTITUDE_TASK_FREQUENCY_DEFAULT 250
-#define ATTITUDE_TASK_FREQUENCY_MIN 100
-#define ATTITUDE_TASK_FREQUENCY_MAX 1000
-
-typedef enum {
-    ASYNC_MODE_NONE,
-    ASYNC_MODE_GYRO,
-    ASYNC_MODE_ALL
-} asyncMode_e;
-
-typedef enum {
-    FEATURE_RX_PPM = 1 << 0,
-    FEATURE_VBAT = 1 << 1,
-    FEATURE_UNUSED_1 = 1 << 2,
-    FEATURE_RX_SERIAL = 1 << 3,
-    FEATURE_MOTOR_STOP = 1 << 4,
-    FEATURE_SERVO_TILT = 1 << 5,
-    FEATURE_SOFTSERIAL = 1 << 6,
-    FEATURE_GPS = 1 << 7,
-    FEATURE_UNUSED_3 = 1 << 8,
-    FEATURE_UNUSED_4 = 1 << 9,
-    FEATURE_TELEMETRY = 1 << 10,
-    FEATURE_CURRENT_METER = 1 << 11,
-    FEATURE_3D = 1 << 12,
-    FEATURE_RX_PARALLEL_PWM = 1 << 13,
-    FEATURE_RX_MSP = 1 << 14,
-    FEATURE_RSSI_ADC = 1 << 15,
-    FEATURE_LED_STRIP = 1 << 16,
-    FEATURE_DASHBOARD = 1 << 17,
-    FEATURE_UNUSED_2 = 1 << 18,
-    FEATURE_BLACKBOX = 1 << 19,
-    FEATURE_CHANNEL_FORWARDING = 1 << 20,
-    FEATURE_TRANSPONDER = 1 << 21,
-    FEATURE_AIRMODE = 1 << 22,
-    FEATURE_SUPEREXPO_RATES = 1 << 23,
-    FEATURE_VTX = 1 << 24,
-    FEATURE_RX_SPI = 1 << 25,
-    FEATURE_SOFTSPI = 1 << 26,
-    FEATURE_PWM_SERVO_DRIVER = 1 << 27,
-    FEATURE_PWM_OUTPUT_ENABLE = 1 << 28,
-    FEATURE_OSD = 1 << 29,
-} features_e;
-
-typedef struct systemConfig_s {
-    uint16_t accTaskFrequency;
-    uint16_t attitudeTaskFrequency;
-    uint8_t current_profile_index;
-    uint8_t asyncMode;
-    uint8_t debug_mode;
-    uint8_t i2c_speed;
-    uint8_t cpuUnderclock;
-    uint8_t throttle_tilt_compensation_strength;
-    inputFilteringMode_e pwmRxInputFilteringMode;
-    char name[16 + 1];
-} systemConfig_t;
-
-extern systemConfig_t systemConfig_System; extern systemConfig_t systemConfig_Copy; static inline const systemConfig_t* systemConfig(void) { return &systemConfig_System; } static inline systemConfig_t* systemConfigMutable(void) { return &systemConfig_System; } struct _dummy;
-
-typedef struct beeperConfig_s {
-    uint32_t beeper_off_flags;
-    uint32_t preferred_beeper_off_flags;
-} beeperConfig_t;
-
-extern beeperConfig_t beeperConfig_System; extern beeperConfig_t beeperConfig_Copy; static inline const beeperConfig_t* beeperConfig(void) { return &beeperConfig_System; } static inline beeperConfig_t* beeperConfigMutable(void) { return &beeperConfig_System; } struct _dummy;
-
-typedef struct adcChannelConfig_s {
-    uint8_t adcFunctionChannel[ADC_FUNCTION_COUNT];
-} adcChannelConfig_t;
-
-extern adcChannelConfig_t adcChannelConfig_System; extern adcChannelConfig_t adcChannelConfig_Copy; static inline const adcChannelConfig_t* adcChannelConfig(void) { return &adcChannelConfig_System; } static inline adcChannelConfig_t* adcChannelConfigMutable(void) { return &adcChannelConfig_System; } struct _dummy;
-
-
-
-
-
-
-void beeperOffSet(uint32_t mask);
-void beeperOffSetAll(uint8_t beeperCount);
-void beeperOffClear(uint32_t mask);
-void beeperOffClearAll(void);
-uint32_t getBeeperOffMask(void);
-void setBeeperOffMask(uint32_t mask);
-uint32_t getPreferredBeeperOffMask(void);
-void setPreferredBeeperOffMask(uint32_t mask);
-
-void copyCurrentProfileToProfileSlot(uint8_t profileSlotIndex);
-
-void initEEPROM(void);
-void resetEEPROM(void);
-void readEEPROM(void);
-void writeEEPROM();
-void ensureEEPROMContainsValidData(void);
-
-void saveConfigAndNotify(void);
-void validateAndFixConfig(void);
-
-uint8_t getConfigProfile(void);
-_Bool setConfigProfile(uint8_t profileIndex);
-void setConfigProfileAndWriteEEPROM(uint8_t profileIndex);
-
-_Bool canSoftwareSerialBeUsed(void);
-void applyAndSaveBoardAlignmentDelta(int16_t roll, int16_t pitch);
-
-void createDefaultConfig(void);
-void resetConfigs(void);
-void targetConfiguration(void);
-
-uint32_t getPidUpdateRate(void);
-timeDelta_t getGyroUpdateRate(void);
-uint16_t getAccUpdateRate(void);
-# 6 "./src/main/fc/settings_generated.c" 2
 # 1 "./src/main/sensors/acceleration.h" 1
 # 18 "./src/main/sensors/acceleration.h"
        
@@ -15208,6 +15001,99 @@ void accInitFilters(void);
 _Bool accIsHealthy(void);
 _Bool accGetCalibrationAxisStatus(int axis);
 uint8_t accGetCalibrationAxisFlags(void);
+# 6 "./src/main/fc/settings_generated.c" 2
+# 1 "./src/main/sensors/compass.h" 1
+# 18 "./src/main/sensors/compass.h"
+       
+
+
+# 1 "./src/main/common/time.h" 1
+# 18 "./src/main/common/time.h"
+       
+
+
+
+
+
+
+typedef int32_t timeDelta_t;
+
+typedef uint32_t timeMs_t ;
+
+
+typedef uint64_t timeUs_t;
+#define TIMEUS_MAX UINT64_MAX
+
+
+
+
+
+static inline timeDelta_t cmpTimeUs(timeUs_t a, timeUs_t b) { return (timeDelta_t)(a - b); }
+# 22 "./src/main/sensors/compass.h" 2
+
+
+
+# 1 "./src/main/drivers/compass/compass.h" 1
+# 18 "./src/main/drivers/compass/compass.h"
+       
+
+
+
+typedef struct magDev_s {
+    sensorMagInitFuncPtr init;
+    sensorMagReadFuncPtr read;
+    busDevice_t bus;
+    sensor_align_e magAlign;
+    int16_t magADCRaw[3];
+} magDev_t;
+
+
+#define MAG_I2C_INSTANCE I2C_DEVICE
+# 26 "./src/main/sensors/compass.h" 2
+
+
+
+
+
+typedef enum {
+    MAG_NONE = 0,
+    MAG_AUTODETECT = 1,
+    MAG_HMC5883 = 2,
+    MAG_AK8975 = 3,
+    MAG_GPS = 4,
+    MAG_MAG3110 = 5,
+    MAG_AK8963 = 6,
+    MAG_IST8310 = 7,
+    MAG_QMC5883 = 8,
+    MAG_FAKE = 9,
+    MAG_MAX = MAG_FAKE
+} magSensor_e;
+
+typedef struct mag_s {
+    magDev_t dev;
+    float magneticDeclination;
+    int32_t magADC[3];
+} mag_t;
+
+extern mag_t mag;
+
+typedef struct compassConfig_s {
+    int16_t mag_declination;
+
+    sensor_align_e mag_align;
+    uint8_t mag_hardware;
+    flightDynamicsTrims_t magZero;
+    uint8_t __dummy_1;
+    uint8_t magCalibrationTimeLimit;
+} compassConfig_t;
+
+extern compassConfig_t compassConfig_System; extern compassConfig_t compassConfig_Copy; static inline const compassConfig_t* compassConfig(void) { return &compassConfig_System; } static inline compassConfig_t* compassConfigMutable(void) { return &compassConfig_System; } struct _dummy;
+
+_Bool compassDetect(magDev_t *dev, magSensor_e magHardwareToUse);
+_Bool compassInit(void);
+void compassUpdate(timeUs_t currentTimeUs);
+_Bool compassIsReady(void);
+_Bool compassIsHealthy(void);
 # 7 "./src/main/fc/settings_generated.c" 2
 # 1 "./src/main/sensors/barometer.h" 1
 # 18 "./src/main/sensors/barometer.h"
@@ -17389,7 +17275,198 @@ void initFrSkyTelemetry(void);
 void configureFrSkyTelemetryPort(void);
 void freeFrSkyTelemetryPort(void);
 # 26 "./src/main/fc/settings_generated.c" 2
+# 1 "./src/main/fc/config.h" 1
+# 18 "./src/main/fc/config.h"
+       
 
+
+
+
+
+# 1 "./src/main/drivers/adc.h" 1
+# 18 "./src/main/drivers/adc.h"
+       
+
+
+
+typedef enum {
+    ADC_BATTERY = 0,
+    ADC_RSSI = 1,
+    ADC_CURRENT = 2,
+    ADC_AIRSPEED = 3,
+    ADC_FUNCTION_COUNT
+} adcFunction_e;
+
+typedef enum {
+    ADC_CHN_NONE = 0,
+    ADC_CHN_1 = 1,
+    ADC_CHN_2,
+    ADC_CHN_3,
+    ADC_CHN_4,
+    ADC_CHN_MAX = ADC_CHN_4,
+    ADC_CHN_COUNT
+} adcChannel_e;
+
+typedef struct drv_adc_config_s {
+    uint8_t adcFunctionChannel[ADC_FUNCTION_COUNT];
+} drv_adc_config_t;
+
+void adcInit(drv_adc_config_t *init);
+uint16_t adcGetChannel(uint8_t channel);
+_Bool adcIsFunctionAssigned(uint8_t function);
+int adcGetFunctionChannelAllocation(uint8_t function);
+# 25 "./src/main/fc/config.h" 2
+# 1 "./src/main/drivers/rx_pwm.h" 1
+# 18 "./src/main/drivers/rx_pwm.h"
+       
+
+typedef enum {
+    INPUT_FILTERING_DISABLED = 0,
+    INPUT_FILTERING_ENABLED
+} inputFilteringMode_e;
+
+#define PPM_RCVR_TIMEOUT 0
+
+struct timerHardware_s;
+void ppmInConfig(const struct timerHardware_s *timerHardwarePtr, uint8_t motorPwmProtocol);
+
+void pwmInConfig(const struct timerHardware_s *timerHardwarePtr, uint8_t channel);
+uint16_t pwmRead(uint8_t channel);
+uint16_t ppmRead(uint8_t channel);
+
+_Bool isPPMDataBeingReceived(void);
+void resetPPMDataReceivedState(void);
+
+void pwmRxInit(inputFilteringMode_e inputFilteringMode);
+
+_Bool isPWMDataBeingReceived(void);
+# 26 "./src/main/fc/config.h" 2
+# 1 "./src/main/fc/stats.h" 1
+
+       
+# 16 "./src/main/fc/stats.h"
+#define statsOnArm() do {} while (0)
+#define statsOnDisarm() do {} while (0)
+# 27 "./src/main/fc/config.h" 2
+
+#define MAX_PROFILE_COUNT 3
+#define ONESHOT_FEATURE_CHANGED_DELAY_ON_BOOT_MS 1500
+#define MAX_NAME_LENGTH 16
+
+#define ACC_TASK_FREQUENCY_DEFAULT 500
+#define ACC_TASK_FREQUENCY_MIN 100
+#define ACC_TASK_FREQUENCY_MAX 1000
+#define ATTITUDE_TASK_FREQUENCY_DEFAULT 250
+#define ATTITUDE_TASK_FREQUENCY_MIN 100
+#define ATTITUDE_TASK_FREQUENCY_MAX 1000
+
+typedef enum {
+    ASYNC_MODE_NONE,
+    ASYNC_MODE_GYRO,
+    ASYNC_MODE_ALL
+} asyncMode_e;
+
+typedef enum {
+    FEATURE_RX_PPM = 1 << 0,
+    FEATURE_VBAT = 1 << 1,
+    FEATURE_UNUSED_1 = 1 << 2,
+    FEATURE_RX_SERIAL = 1 << 3,
+    FEATURE_MOTOR_STOP = 1 << 4,
+    FEATURE_SERVO_TILT = 1 << 5,
+    FEATURE_SOFTSERIAL = 1 << 6,
+    FEATURE_GPS = 1 << 7,
+    FEATURE_UNUSED_3 = 1 << 8,
+    FEATURE_UNUSED_4 = 1 << 9,
+    FEATURE_TELEMETRY = 1 << 10,
+    FEATURE_CURRENT_METER = 1 << 11,
+    FEATURE_3D = 1 << 12,
+    FEATURE_RX_PARALLEL_PWM = 1 << 13,
+    FEATURE_RX_MSP = 1 << 14,
+    FEATURE_RSSI_ADC = 1 << 15,
+    FEATURE_LED_STRIP = 1 << 16,
+    FEATURE_DASHBOARD = 1 << 17,
+    FEATURE_UNUSED_2 = 1 << 18,
+    FEATURE_BLACKBOX = 1 << 19,
+    FEATURE_CHANNEL_FORWARDING = 1 << 20,
+    FEATURE_TRANSPONDER = 1 << 21,
+    FEATURE_AIRMODE = 1 << 22,
+    FEATURE_SUPEREXPO_RATES = 1 << 23,
+    FEATURE_VTX = 1 << 24,
+    FEATURE_RX_SPI = 1 << 25,
+    FEATURE_SOFTSPI = 1 << 26,
+    FEATURE_PWM_SERVO_DRIVER = 1 << 27,
+    FEATURE_PWM_OUTPUT_ENABLE = 1 << 28,
+    FEATURE_OSD = 1 << 29,
+} features_e;
+
+typedef struct systemConfig_s {
+    uint16_t accTaskFrequency;
+    uint16_t attitudeTaskFrequency;
+    uint8_t current_profile_index;
+    uint8_t asyncMode;
+    uint8_t debug_mode;
+    uint8_t i2c_speed;
+    uint8_t cpuUnderclock;
+    uint8_t throttle_tilt_compensation_strength;
+    inputFilteringMode_e pwmRxInputFilteringMode;
+    char name[16 + 1];
+} systemConfig_t;
+
+extern systemConfig_t systemConfig_System; extern systemConfig_t systemConfig_Copy; static inline const systemConfig_t* systemConfig(void) { return &systemConfig_System; } static inline systemConfig_t* systemConfigMutable(void) { return &systemConfig_System; } struct _dummy;
+
+typedef struct beeperConfig_s {
+    uint32_t beeper_off_flags;
+    uint32_t preferred_beeper_off_flags;
+} beeperConfig_t;
+
+extern beeperConfig_t beeperConfig_System; extern beeperConfig_t beeperConfig_Copy; static inline const beeperConfig_t* beeperConfig(void) { return &beeperConfig_System; } static inline beeperConfig_t* beeperConfigMutable(void) { return &beeperConfig_System; } struct _dummy;
+
+typedef struct adcChannelConfig_s {
+    uint8_t adcFunctionChannel[ADC_FUNCTION_COUNT];
+} adcChannelConfig_t;
+
+extern adcChannelConfig_t adcChannelConfig_System; extern adcChannelConfig_t adcChannelConfig_Copy; static inline const adcChannelConfig_t* adcChannelConfig(void) { return &adcChannelConfig_System; } static inline adcChannelConfig_t* adcChannelConfigMutable(void) { return &adcChannelConfig_System; } struct _dummy;
+
+
+
+
+
+
+void beeperOffSet(uint32_t mask);
+void beeperOffSetAll(uint8_t beeperCount);
+void beeperOffClear(uint32_t mask);
+void beeperOffClearAll(void);
+uint32_t getBeeperOffMask(void);
+void setBeeperOffMask(uint32_t mask);
+uint32_t getPreferredBeeperOffMask(void);
+void setPreferredBeeperOffMask(uint32_t mask);
+
+void copyCurrentProfileToProfileSlot(uint8_t profileSlotIndex);
+
+void initEEPROM(void);
+void resetEEPROM(void);
+void readEEPROM(void);
+void writeEEPROM();
+void ensureEEPROMContainsValidData(void);
+
+void saveConfigAndNotify(void);
+void validateAndFixConfig(void);
+
+uint8_t getConfigProfile(void);
+_Bool setConfigProfile(uint8_t profileIndex);
+void setConfigProfileAndWriteEEPROM(uint8_t profileIndex);
+
+_Bool canSoftwareSerialBeUsed(void);
+void applyAndSaveBoardAlignmentDelta(int16_t roll, int16_t pitch);
+
+void createDefaultConfig(void);
+void resetConfigs(void);
+void targetConfiguration(void);
+
+uint32_t getPidUpdateRate(void);
+timeDelta_t getGyroUpdateRate(void);
+uint16_t getAccUpdateRate(void);
+# 27 "./src/main/fc/settings_generated.c" 2
 # 1 "./src/main/fc/rc_modes.h" 1
 # 18 "./src/main/fc/rc_modes.h"
        
@@ -17493,8 +17570,8 @@ void configureModeActivationCondition(int macIndex, boxId_e modeId, uint8_t auxC
 # 28 "./src/main/fc/settings_generated.c" 2
 const pgn_t cliValuePgn[] = {
  10,
- 1010,
  35,
+ 40,
  38,
  24,
  5,
@@ -17522,16 +17599,16 @@ const pgn_t cliValuePgn[] = {
 };
 const uint8_t cliValuePgnCounts[] = {
  7,
- 4,
  9,
+ 7,
  2,
- 13,
+ 12,
  3,
  5,
  10,
  3,
  1,
- 9,
+ 5,
  2,
  3,
  5,
@@ -17543,7 +17620,7 @@ const uint8_t cliValuePgnCounts[] = {
  5,
  57,
  5,
- 17,
+ 18,
  44,
  11,
  5,
@@ -17555,8 +17632,8 @@ static const char *cliValueWords[] = {
  "fw",
  "mc",
  "p",
- "yaw",
  "inav",
+ "yaw",
  "z",
  "rate",
  "i",
@@ -17567,19 +17644,20 @@ static const char *cliValueWords[] = {
  "d",
  "failsafe",
  "launch",
- "max",
  "pitch",
  "roll",
  "w",
+ "max",
+ "auto",
  "delay",
- "min",
  "rth",
  "thr",
- "auto",
  "deadband",
  "limit",
+ "mag",
+ "min",
  "mode",
- "channel",
+ "align",
  "climb",
  "frsky",
  "level",
@@ -17587,29 +17665,24 @@ static const char *cliValueWords[] = {
  "threshold",
  "throttle",
  "vel",
- "align",
- "current",
  "gyro",
  "hz",
  "speed",
+ "time",
  "v",
- "vbat",
  "3d",
  "acc",
- "adc",
  "baro",
- "cell",
+ "current",
  "dcm",
  "disarm",
+ "hardware",
  "imu",
  "landing",
  "meter",
  "motor",
  "rc",
- "rssi",
  "servo",
- "time",
- "voltage",
  "accel",
  "accgain",
  "acczero",
@@ -17619,19 +17692,21 @@ static const char *cliValueWords[] = {
  "board",
  "expo",
  "ff",
- "hardware",
  "hold",
  "ignore",
  "iterm",
+ "magzero",
  "pwm",
+ "rssi",
  "rx",
- "scale",
  "surface",
  "telemetry",
  "use",
- "airspeed",
+ "x",
+ "y",
  "alt",
  "bank",
+ "channel",
  "check",
  "default",
  "denom",
@@ -17646,13 +17721,13 @@ static const char *cliValueWords[] = {
  "kp",
  "land",
  "low",
- "mag",
  "manual",
  "mid",
  "offset",
  "provider",
  "radius",
  "res",
+ "scale",
  "slowdown",
  "switch",
  "sync",
@@ -17663,9 +17738,8 @@ static const char *cliValueWords[] = {
  "usec",
  "vfas",
  "wp",
- "x",
- "y",
  "abort",
+ "airspeed",
  "alarm",
  "allow",
  "althold",
@@ -17675,10 +17749,11 @@ static const char *cliValueWords[] = {
  "battery",
  "baud",
  "bias",
- "bind",
  "breakpoint",
  "cal",
+ "calibration",
  "capacity",
+ "cell",
  "center",
  "character",
  "command",
@@ -17690,6 +17765,8 @@ static const char *cliValueWords[] = {
  "cpu",
  "cruise",
  "debug",
+ "decl",
+ "declination",
  "detect",
  "device",
  "direction",
@@ -17758,7 +17835,6 @@ static const char *cliValueWords[] = {
  "rll",
  "safe",
  "safety",
- "sat",
  "sats",
  "sbas",
  "sbus",
@@ -17767,7 +17843,6 @@ static const char *cliValueWords[] = {
  "small",
  "smoothing",
  "sound",
- "spektrum",
  "spi",
  "spinup",
  "stick",
@@ -17785,7 +17860,7 @@ static const char *cliValueWords[] = {
  "user",
  "velned",
  "velocity",
- "warning",
+ "voltage",
  "weight",
  "wing",
 };
@@ -17900,6 +17975,18 @@ const char *table_ltm_rates[] = {
  "MEDIUM",
  "SLOW",
 };
+const char *table_mag_hardware[] = {
+ "NONE",
+ "AUTO",
+ "HMC5883",
+ "AK8975",
+ "GPSMAG",
+ "MAG3110",
+ "AK8963",
+ "IST8310",
+ "QMC5883",
+ "FAKE",
+};
 const char *table_motor_pwm_protocol[] = {
  "STANDARD",
  "ONESHOT125",
@@ -17956,6 +18043,7 @@ const lookupTableEntry_t cliLookupTables[] = {
  { table_gyro_lpf, sizeof(table_gyro_lpf) / sizeof(char*) },
  { table_i2c_speed, sizeof(table_i2c_speed) / sizeof(char*) },
  { table_ltm_rates, sizeof(table_ltm_rates) / sizeof(char*) },
+ { table_mag_hardware, sizeof(table_mag_hardware) / sizeof(char*) },
  { table_motor_pwm_protocol, sizeof(table_motor_pwm_protocol) / sizeof(char*) },
  { table_nav_rth_alt_mode, sizeof(table_nav_rth_alt_mode) / sizeof(char*) },
  { table_nav_user_control_mode, sizeof(table_nav_user_control_mode) / sizeof(char*) },
@@ -17966,34 +18054,34 @@ const lookupTableEntry_t cliLookupTables[] = {
 const uint32_t cliValueMinMaxTable[] = {
  0,
  200,
- 10,
- 255,
  2000,
+ 255,
+ 10,
  100,
  1000,
  1,
- 50,
  500,
+ -32768,
  5,
  180,
  10000,
- 4,
+ 32767,
+ 50,
  80,
  5000,
  65535,
- -32768,
  -1800,
  2,
  15,
  250,
  3600,
  8192,
- 32767,
  65000,
  -800,
  6,
  32,
  45,
+ 120,
  400,
  750,
  800,
@@ -18002,6 +18090,7 @@ const uint32_t cliValueMinMaxTable[] = {
  9999,
  20000,
  500000,
+ -18000,
  -10000,
  -1000,
  -180,
@@ -18009,10 +18098,10 @@ const uint32_t cliValueMinMaxTable[] = {
  -1,
  8,
  18,
+ 30,
  48,
  60,
  90,
- 120,
  126,
  128,
  300,
@@ -18022,6 +18111,7 @@ const uint32_t cliValueMinMaxTable[] = {
  3300,
  4000,
  9000,
+ 18000,
  32000,
  60000,
 };
@@ -18030,182 +18120,180 @@ typedef uint8_t clivalue_min_max_idx_t;
 #define CLIVALUE_INDEXES_GET_MAX(val) (val->config.minmax.indexes[1])
 const clivalue_t cliValueTable[] = {
 
- { {174, 0, 0, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 57}, __builtin_offsetof (gyroConfig_t, looptime) },
- { {39, 105, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (gyroConfig_t, gyroSync) },
- { {39, 105, 84, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {7, 28}, __builtin_offsetof (gyroConfig_t, gyroSyncDenominator) },
- { {37, 39, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_ALIGNMENT }, __builtin_offsetof (gyroConfig_t, gyro_align) },
- { {39, 69, 33, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_GYRO_LPF }, __builtin_offsetof (gyroConfig_t, gyro_lpf) },
- { {39, 33, 40, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (gyroConfig_t, gyro_soft_lpf_hz) },
- { {181, 34, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 50}, __builtin_offsetof (gyroConfig_t, gyroMovementCalibrationThreshold) },
+ { {174, 0, 0, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 58}, __builtin_offsetof (gyroConfig_t, looptime) },
+ { {38, 103, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (gyroConfig_t, gyroSync) },
+ { {38, 103, 82, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {7, 27}, __builtin_offsetof (gyroConfig_t, gyroSyncDenominator) },
+ { {30, 38, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_ALIGNMENT }, __builtin_offsetof (gyroConfig_t, gyro_align) },
+ { {38, 49, 34, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_GYRO_LPF }, __builtin_offsetof (gyroConfig_t, gyro_lpf) },
+ { {38, 34, 39, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (gyroConfig_t, gyro_soft_lpf_hz) },
+ { {181, 35, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 51}, __builtin_offsetof (gyroConfig_t, gyroMovementCalibrationThreshold) },
 
- { {43, 46, 29, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 13}, __builtin_offsetof (adcChannelConfig_t, adcFunctionChannel[ADC_BATTERY]) },
- { {56, 46, 29, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 13}, __builtin_offsetof (adcChannelConfig_t, adcFunctionChannel[ADC_RSSI]) },
- { {38, 46, 29, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 13}, __builtin_offsetof (adcChannelConfig_t, adcFunctionChannel[ADC_CURRENT]) },
- { {79, 46, 29, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 13}, __builtin_offsetof (adcChannelConfig_t, adcFunctionChannel[ADC_AIRSPEED]) },
+ { {30, 44, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_ALIGNMENT }, __builtin_offsetof (accelerometerConfig_t, acc_align) },
+ { {44, 49, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_ACC_HARDWARE }, __builtin_offsetof (accelerometerConfig_t, acc_hardware) },
+ { {44, 34, 39, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (accelerometerConfig_t, acc_lpf_hz) },
+ { {58, 75, 0, 0, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {9, 13}, __builtin_offsetof (accelerometerConfig_t, accZero.raw[X]) },
+ { {58, 76, 0, 0, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {9, 13}, __builtin_offsetof (accelerometerConfig_t, accZero.raw[Y]) },
+ { {58, 7, 0, 0, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {9, 13}, __builtin_offsetof (accelerometerConfig_t, accZero.raw[Z]) },
+ { {57, 75, 0, 0, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {7, 23}, __builtin_offsetof (accelerometerConfig_t, accGain.raw[X]) },
+ { {57, 76, 0, 0, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {7, 23}, __builtin_offsetof (accelerometerConfig_t, accGain.raw[Y]) },
+ { {57, 7, 0, 0, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {7, 23}, __builtin_offsetof (accelerometerConfig_t, accGain.raw[Z]) },
 
- { {37, 45, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_ALIGNMENT }, __builtin_offsetof (accelerometerConfig_t, acc_align) },
- { {45, 69, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_ACC_HARDWARE }, __builtin_offsetof (accelerometerConfig_t, acc_hardware) },
- { {45, 33, 40, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (accelerometerConfig_t, acc_lpf_hz) },
- { {62, 113, 0, 0, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {17, 24}, __builtin_offsetof (accelerometerConfig_t, accZero.raw[X]) },
- { {62, 114, 0, 0, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {17, 24}, __builtin_offsetof (accelerometerConfig_t, accZero.raw[Y]) },
- { {62, 7, 0, 0, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {17, 24}, __builtin_offsetof (accelerometerConfig_t, accZero.raw[Z]) },
- { {61, 113, 0, 0, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {7, 23}, __builtin_offsetof (accelerometerConfig_t, accGain.raw[X]) },
- { {61, 114, 0, 0, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {7, 23}, __builtin_offsetof (accelerometerConfig_t, accGain.raw[Y]) },
- { {61, 7, 0, 0, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {7, 23}, __builtin_offsetof (accelerometerConfig_t, accGain.raw[Z]) },
+ { {30, 27, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_ALIGNMENT }, __builtin_offsetof (compassConfig_t, mag_align) },
+ { {27, 49, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_MAG_HARDWARE }, __builtin_offsetof (compassConfig_t, mag_hardware) },
+ { {27, 139, 0, 0, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {38, 59}, __builtin_offsetof (compassConfig_t, mag_declination) },
+ { {68, 75, 0, 0, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {9, 13}, __builtin_offsetof (compassConfig_t, magZero.raw[X]) },
+ { {68, 76, 0, 0, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {9, 13}, __builtin_offsetof (compassConfig_t, magZero.raw[Y]) },
+ { {68, 7, 0, 0, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {9, 13}, __builtin_offsetof (compassConfig_t, magZero.raw[Z]) },
+ { {27, 124, 41, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {46, 29}, __builtin_offsetof (compassConfig_t, magCalibrationTimeLimit) },
 
- { {47, 69, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_BARO_HARDWARE }, __builtin_offsetof (barometerConfig_t, baro_hardware) },
- { {47, 78, 177, 147, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (barometerConfig_t, use_median_filtering) },
+ { {45, 49, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_BARO_HARDWARE }, __builtin_offsetof (barometerConfig_t, baro_hardware) },
+ { {45, 74, 177, 147, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (barometerConfig_t, use_median_filtering) },
 
- { {98, 55, 0, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {53, 54}, __builtin_offsetof (rxConfig_t, midrc) },
- { {22, 82, 0, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 4}, __builtin_offsetof (rxConfig_t, mincheck) },
- { {17, 82, 0, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 4}, __builtin_offsetof (rxConfig_t, maxcheck) },
- { {56, 29, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 44}, __builtin_offsetof (rxConfig_t, rssi_channel) },
- { {56, 75, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {7, 3}, __builtin_offsetof (rxConfig_t, rssi_scale) },
- { {56, 167, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (rxConfig_t, rssiInvert) },
- { {55, 215, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (rxConfig_t, rcSmoothing) },
- { {212, 100, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_SERIAL_RX }, __builtin_offsetof (rxConfig_t, serialrx_provider) },
- { {211, 91, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (rxConfig_t, sbus_inversion) },
- { {74, 218, 204, 29, 136}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 43}, __builtin_offsetof (rxConfig_t, rx_spi_rf_channel_count) },
- { {217, 208, 125, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 2}, __builtin_offsetof (rxConfig_t, spektrum_sat_bind) },
- { {74, 22, 110, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {31, 34}, __builtin_offsetof (rxConfig_t, rx_min_usec) },
- { {74, 17, 110, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {31, 34}, __builtin_offsetof (rxConfig_t, rx_max_usec) },
+ { {95, 54, 0, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {54, 55}, __builtin_offsetof (rxConfig_t, midrc) },
+ { {28, 80, 0, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 2}, __builtin_offsetof (rxConfig_t, mincheck) },
+ { {20, 80, 0, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 2}, __builtin_offsetof (rxConfig_t, maxcheck) },
+ { {70, 79, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 45}, __builtin_offsetof (rxConfig_t, rssi_channel) },
+ { {70, 100, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {7, 3}, __builtin_offsetof (rxConfig_t, rssi_scale) },
+ { {70, 167, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (rxConfig_t, rssiInvert) },
+ { {54, 214, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (rxConfig_t, rcSmoothing) },
+ { {211, 97, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_SERIAL_RX }, __builtin_offsetof (rxConfig_t, serialrx_provider) },
+ { {210, 89, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (rxConfig_t, sbus_inversion) },
+ { {71, 216, 204, 79, 134}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 44}, __builtin_offsetof (rxConfig_t, rx_spi_rf_channel_count) },
+ { {71, 28, 108, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {31, 34}, __builtin_offsetof (rxConfig_t, rx_min_usec) },
+ { {71, 20, 108, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {31, 34}, __builtin_offsetof (rxConfig_t, rx_max_usec) },
 
- { {65, 8, 184, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {7, 3}, __builtin_offsetof (blackboxConfig_t, rate_num) },
- { {65, 8, 84, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {7, 3}, __builtin_offsetof (blackboxConfig_t, rate_denom) },
- { {65, 141, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_BLACKBOX_DEVICE }, __builtin_offsetof (blackboxConfig_t, device) },
+ { {61, 8, 184, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {7, 3}, __builtin_offsetof (blackboxConfig_t, rate_num) },
+ { {61, 8, 82, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {7, 3}, __builtin_offsetof (blackboxConfig_t, rate_denom) },
+ { {61, 141, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_BLACKBOX_DEVICE }, __builtin_offsetof (blackboxConfig_t, device) },
 
- { {22, 35, 0, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 4}, __builtin_offsetof (motorConfig_t, minthrottle) },
- { {17, 35, 0, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 4}, __builtin_offsetof (motorConfig_t, maxthrottle) },
- { {22, 131, 0, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 4}, __builtin_offsetof (motorConfig_t, mincommand) },
- { {54, 73, 8, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {8, 58}, __builtin_offsetof (motorConfig_t, motorPwmRate) },
- { {54, 73, 197, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_MOTOR_PWM_PROTOCOL }, __builtin_offsetof (motorConfig_t, motorPwmProtocol) },
+ { {28, 36, 0, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 2}, __builtin_offsetof (motorConfig_t, minthrottle) },
+ { {20, 36, 0, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 2}, __builtin_offsetof (motorConfig_t, maxthrottle) },
+ { {28, 129, 0, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 2}, __builtin_offsetof (motorConfig_t, mincommand) },
+ { {53, 69, 8, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {14, 60}, __builtin_offsetof (motorConfig_t, motorPwmRate) },
+ { {53, 69, 197, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_MOTOR_PWM_PROTOCOL }, __builtin_offsetof (motorConfig_t, motorPwmProtocol) },
 
- { {15, 21, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (failsafeConfig_t, failsafe_delay) },
- { {15, 201, 21, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (failsafeConfig_t, failsafe_recovery_delay) },
- { {15, 185, 21, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (failsafeConfig_t, failsafe_off_delay) },
- { {15, 35, 0, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {6, 4}, __builtin_offsetof (failsafeConfig_t, failsafe_throttle) },
- { {15, 35, 95, 21, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 51}, __builtin_offsetof (failsafeConfig_t, failsafe_throttle_low_delay) },
+ { {15, 22, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (failsafeConfig_t, failsafe_delay) },
+ { {15, 201, 22, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (failsafeConfig_t, failsafe_recovery_delay) },
+ { {15, 185, 22, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (failsafeConfig_t, failsafe_off_delay) },
+ { {15, 36, 0, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {6, 2}, __builtin_offsetof (failsafeConfig_t, failsafe_throttle) },
+ { {15, 36, 93, 22, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 52}, __builtin_offsetof (failsafeConfig_t, failsafe_throttle_low_delay) },
  { {15, 196, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_FAILSAFE_PROCEDURE }, __builtin_offsetof (failsafeConfig_t, failsafe_procedure) },
- { {15, 220, 34, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 9}, __builtin_offsetof (failsafeConfig_t, failsafe_stick_motion_threshold) },
- { {15, 2, 19, 13, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {26, 32}, __builtin_offsetof (failsafeConfig_t, failsafe_fw_roll_angle) },
- { {15, 2, 18, 13, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {26, 32}, __builtin_offsetof (failsafeConfig_t, failsafe_fw_pitch_angle) },
- { {15, 2, 5, 8, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {39, 6}, __builtin_offsetof (failsafeConfig_t, failsafe_fw_yaw_rate) },
+ { {15, 218, 35, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 8}, __builtin_offsetof (failsafeConfig_t, failsafe_stick_motion_threshold) },
+ { {15, 2, 18, 13, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {25, 32}, __builtin_offsetof (failsafeConfig_t, failsafe_fw_roll_angle) },
+ { {15, 2, 17, 13, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {25, 32}, __builtin_offsetof (failsafeConfig_t, failsafe_fw_pitch_angle) },
+ { {15, 2, 6, 8, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {40, 6}, __builtin_offsetof (failsafeConfig_t, failsafe_fw_yaw_rate) },
 
- { {37, 66, 19, 0, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {18, 22}, __builtin_offsetof (boardAlignment_t, rollDeciDegrees) },
- { {37, 66, 18, 0, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {18, 22}, __builtin_offsetof (boardAlignment_t, pitchDeciDegrees) },
- { {37, 66, 5, 0, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {18, 22}, __builtin_offsetof (boardAlignment_t, yawDeciDegrees) },
+ { {30, 62, 18, 0, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {18, 22}, __builtin_offsetof (boardAlignment_t, rollDeciDegrees) },
+ { {30, 62, 17, 0, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {18, 22}, __builtin_offsetof (boardAlignment_t, pitchDeciDegrees) },
+ { {30, 62, 6, 0, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {18, 22}, __builtin_offsetof (boardAlignment_t, yawDeciDegrees) },
 
- { {156, 28, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_GIMBAL_MODE }, __builtin_offsetof (gimbalConfig_t, mode) },
+ { {156, 29, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_GIMBAL_MODE }, __builtin_offsetof (gimbalConfig_t, mode) },
 
- { {122, 128, 0, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 36}, __builtin_offsetof (batteryConfig_t, batteryCapacity) },
- { {43, 75, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 3}, __builtin_offsetof (batteryConfig_t, vbatscale) },
- { {43, 17, 48, 59, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {2, 8}, __builtin_offsetof (batteryConfig_t, vbatmaxcellvoltage) },
- { {43, 22, 48, 59, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {2, 8}, __builtin_offsetof (batteryConfig_t, vbatmincellvoltage) },
- { {43, 235, 48, 59, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {2, 8}, __builtin_offsetof (batteryConfig_t, vbatwarningcellvoltage) },
- { {38, 53, 75, 0, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {38, 12}, __builtin_offsetof (batteryConfig_t, currentMeterScale) },
- { {38, 53, 99, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 55}, __builtin_offsetof (batteryConfig_t, currentMeterOffset) },
- { {182, 38, 53, 188, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (batteryConfig_t, multiwiiCurrentMeterOutput) },
- { {38, 53, 109, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_CURRENT_SENSOR }, __builtin_offsetof (batteryConfig_t, currentMeterType) },
+ { {119, 125, 0, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 36}, __builtin_offsetof (batteryConfig_t, batteryCapacity) },
+ { {46, 52, 100, 0, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {39, 12}, __builtin_offsetof (batteryConfig_t, currentMeterScale) },
+ { {46, 52, 96, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 56}, __builtin_offsetof (batteryConfig_t, currentMeterOffset) },
+ { {182, 46, 52, 188, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (batteryConfig_t, multiwiiCurrentMeterOutput) },
+ { {46, 52, 107, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_CURRENT_SENSOR }, __builtin_offsetof (batteryConfig_t, currentMeterType) },
 
- { {5, 54, 142, 0, 0}, VAR_INT8 | MASTER_VALUE, .config.minmax.indexes = {42, 7}, __builtin_offsetof (mixerConfig_t, yaw_motor_direction) },
- { {5, 168, 195, 27, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {14, 9}, __builtin_offsetof (mixerConfig_t, yaw_jump_prevention_limit) },
+ { {6, 53, 142, 0, 0}, VAR_INT8 | MASTER_VALUE, .config.minmax.indexes = {43, 7}, __builtin_offsetof (mixerConfig_t, yaw_motor_direction) },
+ { {6, 168, 195, 26, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {15, 8}, __builtin_offsetof (mixerConfig_t, yaw_jump_prevention_limit) },
 
- { {44, 26, 95, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 4}, __builtin_offsetof (flight3DConfig_t, deadband3d_low) },
- { {44, 26, 159, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 4}, __builtin_offsetof (flight3DConfig_t, deadband3d_high) },
- { {44, 183, 0, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 4}, __builtin_offsetof (flight3DConfig_t, neutral3d) },
+ { {43, 25, 93, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 2}, __builtin_offsetof (flight3DConfig_t, deadband3d_low) },
+ { {43, 25, 159, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 2}, __builtin_offsetof (flight3DConfig_t, deadband3d_high) },
+ { {43, 183, 0, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 2}, __builtin_offsetof (flight3DConfig_t, neutral3d) },
 
- { {57, 129, 198, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 4}, __builtin_offsetof (servoConfig_t, servoCenterPulse) },
- { {57, 73, 8, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {8, 52}, __builtin_offsetof (servoConfig_t, servoPwmRate) },
- { {57, 33, 40, 0, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {0, 30}, __builtin_offsetof (servoConfig_t, servo_lowpass_freq) },
- { {150, 106, 99, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {5, 30}, __builtin_offsetof (servoConfig_t, flaperon_throw_offset) },
- { {225, 227, 57, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (servoConfig_t, tri_unarmed_servo) },
+ { {55, 127, 198, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 2}, __builtin_offsetof (servoConfig_t, servoCenterPulse) },
+ { {55, 69, 8, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {14, 53}, __builtin_offsetof (servoConfig_t, servoPwmRate) },
+ { {55, 34, 39, 0, 0}, VAR_INT16 | MASTER_VALUE, .config.minmax.indexes = {0, 30}, __builtin_offsetof (servoConfig_t, servo_lowpass_freq) },
+ { {150, 104, 96, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {5, 30}, __builtin_offsetof (servoConfig_t, flaperon_throw_offset) },
+ { {223, 225, 55, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (servoConfig_t, tri_unarmed_servo) },
 
- { {55, 67, 0, 0, 0}, VAR_UINT8 | CONTROL_RATE_VALUE, .config.minmax.indexes = {0, 5}, __builtin_offsetof (controlRateConfig_t, rcExpo8) },
- { {55, 5, 67, 0, 0}, VAR_UINT8 | CONTROL_RATE_VALUE, .config.minmax.indexes = {0, 5}, __builtin_offsetof (controlRateConfig_t, rcYawExpo8) },
- { {24, 98, 0, 0, 0}, VAR_UINT8 | CONTROL_RATE_VALUE, .config.minmax.indexes = {0, 5}, __builtin_offsetof (controlRateConfig_t, thrMid8) },
- { {24, 67, 0, 0, 0}, VAR_UINT8 | CONTROL_RATE_VALUE, .config.minmax.indexes = {0, 5}, __builtin_offsetof (controlRateConfig_t, thrExpo8) },
- { {19, 8, 0, 0, 0}, VAR_UINT8 | CONTROL_RATE_VALUE, .config.minmax.indexes = {27, 11}, __builtin_offsetof (controlRateConfig_t, rates[FD_ROLL]) },
- { {18, 8, 0, 0, 0}, VAR_UINT8 | CONTROL_RATE_VALUE, .config.minmax.indexes = {27, 11}, __builtin_offsetof (controlRateConfig_t, rates[FD_PITCH]) },
- { {5, 8, 0, 0, 0}, VAR_UINT8 | CONTROL_RATE_VALUE, .config.minmax.indexes = {19, 11}, __builtin_offsetof (controlRateConfig_t, rates[FD_YAW]) },
- { {108, 8, 0, 0, 0}, VAR_UINT8 | CONTROL_RATE_VALUE, .config.minmax.indexes = {0, 5}, __builtin_offsetof (controlRateConfig_t, dynThrPID) },
- { {108, 126, 0, 0, 0}, VAR_UINT16 | CONTROL_RATE_VALUE, .config.minmax.indexes = {6, 4}, __builtin_offsetof (controlRateConfig_t, tpa_breakpoint) },
+ { {54, 63, 0, 0, 0}, VAR_UINT8 | CONTROL_RATE_VALUE, .config.minmax.indexes = {0, 5}, __builtin_offsetof (controlRateConfig_t, rcExpo8) },
+ { {54, 6, 63, 0, 0}, VAR_UINT8 | CONTROL_RATE_VALUE, .config.minmax.indexes = {0, 5}, __builtin_offsetof (controlRateConfig_t, rcYawExpo8) },
+ { {24, 95, 0, 0, 0}, VAR_UINT8 | CONTROL_RATE_VALUE, .config.minmax.indexes = {0, 5}, __builtin_offsetof (controlRateConfig_t, thrMid8) },
+ { {24, 63, 0, 0, 0}, VAR_UINT8 | CONTROL_RATE_VALUE, .config.minmax.indexes = {0, 5}, __builtin_offsetof (controlRateConfig_t, thrExpo8) },
+ { {18, 8, 0, 0, 0}, VAR_UINT8 | CONTROL_RATE_VALUE, .config.minmax.indexes = {26, 11}, __builtin_offsetof (controlRateConfig_t, rates[FD_ROLL]) },
+ { {17, 8, 0, 0, 0}, VAR_UINT8 | CONTROL_RATE_VALUE, .config.minmax.indexes = {26, 11}, __builtin_offsetof (controlRateConfig_t, rates[FD_PITCH]) },
+ { {6, 8, 0, 0, 0}, VAR_UINT8 | CONTROL_RATE_VALUE, .config.minmax.indexes = {19, 11}, __builtin_offsetof (controlRateConfig_t, rates[FD_YAW]) },
+ { {106, 8, 0, 0, 0}, VAR_UINT8 | CONTROL_RATE_VALUE, .config.minmax.indexes = {0, 5}, __builtin_offsetof (controlRateConfig_t, dynThrPID) },
+ { {106, 122, 0, 0, 0}, VAR_UINT16 | CONTROL_RATE_VALUE, .config.minmax.indexes = {6, 2}, __builtin_offsetof (controlRateConfig_t, tpa_breakpoint) },
 
- { {200, 130, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {45, 49}, __builtin_offsetof (serialConfig_t, reboot_character) },
+ { {200, 128, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {47, 50}, __builtin_offsetof (serialConfig_t, reboot_character) },
 
- { {51, 49, 93, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 16}, __builtin_offsetof (imuConfig_t, dcm_kp_acc) },
- { {51, 49, 92, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 16}, __builtin_offsetof (imuConfig_t, dcm_ki_acc) },
- { {51, 49, 93, 96, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 16}, __builtin_offsetof (imuConfig_t, dcm_kp_mag) },
- { {51, 49, 92, 96, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 16}, __builtin_offsetof (imuConfig_t, dcm_ki_mag) },
- { {214, 13, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 11}, __builtin_offsetof (imuConfig_t, small_angle) },
+ { {50, 47, 91, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 17}, __builtin_offsetof (imuConfig_t, dcm_kp_acc) },
+ { {50, 47, 90, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 17}, __builtin_offsetof (imuConfig_t, dcm_ki_acc) },
+ { {50, 47, 91, 27, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 17}, __builtin_offsetof (imuConfig_t, dcm_kp_mag) },
+ { {50, 47, 90, 27, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 17}, __builtin_offsetof (imuConfig_t, dcm_ki_mag) },
+ { {213, 13, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 11}, __builtin_offsetof (imuConfig_t, small_angle) },
 
- { {149, 237, 25, 119, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (armingConfig_t, fixed_wing_auto_arm) },
- { {50, 169, 104, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (armingConfig_t, disarm_kill_switch) },
- { {25, 50, 21, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 46}, __builtin_offsetof (armingConfig_t, auto_disarm_delay) },
+ { {149, 235, 21, 116, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (armingConfig_t, fixed_wing_auto_arm) },
+ { {48, 169, 102, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (armingConfig_t, disarm_kill_switch) },
+ { {21, 48, 22, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 48}, __builtin_offsetof (armingConfig_t, auto_disarm_delay) },
 
- { {11, 100, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_GPS_PROVIDER }, __builtin_offsetof (gpsConfig_t, provider) },
- { {11, 210, 28, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_GPS_SBAS_MODE }, __builtin_offsetof (gpsConfig_t, sbasMode) },
+ { {11, 97, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_GPS_PROVIDER }, __builtin_offsetof (gpsConfig_t, provider) },
+ { {11, 209, 29, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_GPS_SBAS_MODE }, __builtin_offsetof (gpsConfig_t, sbasMode) },
  { {11, 144, 180, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_GPS_DYN_MODEL }, __builtin_offsetof (gpsConfig_t, dynModel) },
- { {11, 25, 133, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (gpsConfig_t, autoConfig) },
- { {11, 25, 123, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (gpsConfig_t, autoBaud) },
- { {11, 22, 209, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {10, 2}, __builtin_offsetof (gpsConfig_t, gpsMinSats) },
+ { {11, 21, 131, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (gpsConfig_t, autoConfig) },
+ { {11, 21, 120, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (gpsConfig_t, autoBaud) },
+ { {11, 28, 208, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {10, 4}, __builtin_offsetof (gpsConfig_t, gpsMinSats) },
 
- { {26, 0, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 28}, __builtin_offsetof (rcControlsConfig_t, deadband) },
- { {5, 26, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 5}, __builtin_offsetof (rcControlsConfig_t, yaw_deadband) },
- { {10, 70, 26, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {2, 21}, __builtin_offsetof (rcControlsConfig_t, pos_hold_deadband) },
- { {80, 70, 26, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {2, 21}, __builtin_offsetof (rcControlsConfig_t, alt_hold_deadband) },
- { {44, 26, 35, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 4}, __builtin_offsetof (rcControlsConfig_t, deadband3d_throttle) },
+ { {25, 0, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 27}, __builtin_offsetof (rcControlsConfig_t, deadband) },
+ { {6, 25, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 5}, __builtin_offsetof (rcControlsConfig_t, yaw_deadband) },
+ { {10, 65, 25, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {4, 21}, __builtin_offsetof (rcControlsConfig_t, pos_hold_deadband) },
+ { {77, 65, 25, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {4, 21}, __builtin_offsetof (rcControlsConfig_t, alt_hold_deadband) },
+ { {43, 25, 36, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 2}, __builtin_offsetof (rcControlsConfig_t, deadband3d_throttle) },
 
- { {3, 4, 18, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_PITCH].P) },
- { {3, 9, 18, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_PITCH].I) },
- { {3, 14, 18, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_PITCH].D) },
- { {3, 4, 19, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_ROLL].P) },
- { {3, 9, 19, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_ROLL].I) },
- { {3, 14, 19, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_ROLL].D) },
- { {3, 4, 5, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_YAW].P) },
- { {3, 9, 5, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_YAW].I) },
- { {3, 14, 5, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_YAW].D) },
- { {3, 4, 32, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_LEVEL].P) },
- { {3, 9, 32, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_LEVEL].I) },
- { {3, 14, 32, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_LEVEL].D) },
- { {2, 4, 18, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_fw.pid[PID_PITCH].P) },
- { {2, 9, 18, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_fw.pid[PID_PITCH].I) },
- { {2, 68, 18, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_fw.pid[PID_PITCH].D) },
- { {2, 4, 19, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_fw.pid[PID_ROLL].P) },
- { {2, 9, 19, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_fw.pid[PID_ROLL].I) },
- { {2, 68, 19, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_fw.pid[PID_ROLL].D) },
- { {2, 4, 5, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_fw.pid[PID_YAW].P) },
- { {2, 9, 5, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_fw.pid[PID_YAW].I) },
- { {2, 68, 5, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_fw.pid[PID_YAW].D) },
- { {2, 4, 32, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_fw.pid[PID_LEVEL].P) },
- { {2, 9, 32, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_fw.pid[PID_LEVEL].I) },
- { {2, 14, 32, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_fw.pid[PID_LEVEL].D) },
- { {17, 13, 90, 205, 0}, VAR_INT16 | PROFILE_VALUE, .config.minmax.indexes = {5, 33}, __builtin_offsetof (pidProfile_t, max_angle_inclination[FD_ROLL]) },
- { {17, 13, 90, 191, 0}, VAR_INT16 | PROFILE_VALUE, .config.minmax.indexes = {5, 33}, __builtin_offsetof (pidProfile_t, max_angle_inclination[FD_PITCH]) },
- { {86, 33, 40, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, dterm_lpf_hz) },
- { {5, 33, 40, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, yaw_lpf_hz) },
- { {86, 213, 236, 0, 0}, VAR_FLOAT | PROFILE_VALUE, .config.minmax.indexes = {0, 19}, __builtin_offsetof (pidProfile_t, dterm_setpoint_weight) },
- { {2, 72, 106, 27, 0}, VAR_UINT16 | PROFILE_VALUE, .config.minmax.indexes = {0, 9}, __builtin_offsetof (pidProfile_t, fixedWingItermThrowLimit) },
- { {2, 202, 79, 0, 0}, VAR_FLOAT | PROFILE_VALUE, .config.minmax.indexes = {7, 15}, __builtin_offsetof (pidProfile_t, fixedWingReferenceAirspeed) },
- { {2, 226, 121, 5, 155}, VAR_FLOAT | PROFILE_VALUE, .config.minmax.indexes = {0, 19}, __builtin_offsetof (pidProfile_t, fixedWingCoordinatedYawGain) },
- { {190, 27, 0, 0, 0}, VAR_UINT16 | PROFILE_VALUE, .config.minmax.indexes = {5, 6}, __builtin_offsetof (pidProfile_t, pidSumLimit) },
- { {5, 4, 27, 0, 0}, VAR_UINT16 | PROFILE_VALUE, .config.minmax.indexes = {5, 9}, __builtin_offsetof (pidProfile_t, yaw_p_limit) },
- { {72, 71, 34, 0, 0}, VAR_UINT16 | PROFILE_VALUE, .config.minmax.indexes = {20, 6}, __builtin_offsetof (pidProfile_t, rollPitchItermIgnoreRate) },
- { {5, 72, 71, 34, 0}, VAR_UINT16 | PROFILE_VALUE, .config.minmax.indexes = {20, 12}, __builtin_offsetof (pidProfile_t, yawItermIgnoreRate) },
- { {8, 60, 27, 19, 18}, VAR_UINT32 | PROFILE_VALUE, .config.minmax.indexes = {0, 37}, __builtin_offsetof (pidProfile_t, axisAccelerationLimitRollPitch) },
- { {8, 60, 27, 5, 0}, VAR_UINT32 | PROFILE_VALUE, .config.minmax.indexes = {0, 37}, __builtin_offsetof (pidProfile_t, axisAccelerationLimitYaw) },
- { {158, 70, 8, 27, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {2, 21}, __builtin_offsetof (pidProfile_t, heading_hold_rate_limit) },
+ { {3, 4, 17, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_PITCH].P) },
+ { {3, 9, 17, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_PITCH].I) },
+ { {3, 14, 17, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_PITCH].D) },
+ { {3, 4, 18, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_ROLL].P) },
+ { {3, 9, 18, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_ROLL].I) },
+ { {3, 14, 18, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_ROLL].D) },
+ { {3, 4, 6, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_YAW].P) },
+ { {3, 9, 6, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_YAW].I) },
+ { {3, 14, 6, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_YAW].D) },
+ { {3, 4, 33, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_LEVEL].P) },
+ { {3, 9, 33, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_LEVEL].I) },
+ { {3, 14, 33, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_LEVEL].D) },
+ { {2, 4, 17, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_fw.pid[PID_PITCH].P) },
+ { {2, 9, 17, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_fw.pid[PID_PITCH].I) },
+ { {2, 64, 17, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_fw.pid[PID_PITCH].D) },
+ { {2, 4, 18, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_fw.pid[PID_ROLL].P) },
+ { {2, 9, 18, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_fw.pid[PID_ROLL].I) },
+ { {2, 64, 18, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_fw.pid[PID_ROLL].D) },
+ { {2, 4, 6, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_fw.pid[PID_YAW].P) },
+ { {2, 9, 6, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_fw.pid[PID_YAW].I) },
+ { {2, 64, 6, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_fw.pid[PID_YAW].D) },
+ { {2, 4, 33, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_fw.pid[PID_LEVEL].P) },
+ { {2, 9, 33, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_fw.pid[PID_LEVEL].I) },
+ { {2, 14, 33, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, bank_fw.pid[PID_LEVEL].D) },
+ { {20, 13, 88, 205, 0}, VAR_INT16 | PROFILE_VALUE, .config.minmax.indexes = {5, 33}, __builtin_offsetof (pidProfile_t, max_angle_inclination[FD_ROLL]) },
+ { {20, 13, 88, 191, 0}, VAR_INT16 | PROFILE_VALUE, .config.minmax.indexes = {5, 33}, __builtin_offsetof (pidProfile_t, max_angle_inclination[FD_PITCH]) },
+ { {84, 34, 39, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, dterm_lpf_hz) },
+ { {6, 34, 39, 0, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 1}, __builtin_offsetof (pidProfile_t, yaw_lpf_hz) },
+ { {84, 212, 234, 0, 0}, VAR_FLOAT | PROFILE_VALUE, .config.minmax.indexes = {0, 19}, __builtin_offsetof (pidProfile_t, dterm_setpoint_weight) },
+ { {2, 67, 104, 26, 0}, VAR_UINT16 | PROFILE_VALUE, .config.minmax.indexes = {0, 8}, __builtin_offsetof (pidProfile_t, fixedWingItermThrowLimit) },
+ { {2, 202, 112, 0, 0}, VAR_FLOAT | PROFILE_VALUE, .config.minmax.indexes = {7, 16}, __builtin_offsetof (pidProfile_t, fixedWingReferenceAirspeed) },
+ { {2, 224, 118, 6, 155}, VAR_FLOAT | PROFILE_VALUE, .config.minmax.indexes = {0, 19}, __builtin_offsetof (pidProfile_t, fixedWingCoordinatedYawGain) },
+ { {190, 26, 0, 0, 0}, VAR_UINT16 | PROFILE_VALUE, .config.minmax.indexes = {5, 6}, __builtin_offsetof (pidProfile_t, pidSumLimit) },
+ { {6, 4, 26, 0, 0}, VAR_UINT16 | PROFILE_VALUE, .config.minmax.indexes = {5, 8}, __builtin_offsetof (pidProfile_t, yaw_p_limit) },
+ { {67, 66, 35, 0, 0}, VAR_UINT16 | PROFILE_VALUE, .config.minmax.indexes = {20, 6}, __builtin_offsetof (pidProfile_t, rollPitchItermIgnoreRate) },
+ { {6, 67, 66, 35, 0}, VAR_UINT16 | PROFILE_VALUE, .config.minmax.indexes = {20, 12}, __builtin_offsetof (pidProfile_t, yawItermIgnoreRate) },
+ { {8, 56, 26, 18, 17}, VAR_UINT32 | PROFILE_VALUE, .config.minmax.indexes = {0, 37}, __builtin_offsetof (pidProfile_t, axisAccelerationLimitRollPitch) },
+ { {8, 56, 26, 6, 0}, VAR_UINT32 | PROFILE_VALUE, .config.minmax.indexes = {0, 37}, __builtin_offsetof (pidProfile_t, axisAccelerationLimitYaw) },
+ { {158, 65, 8, 26, 0}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {4, 21}, __builtin_offsetof (pidProfile_t, heading_hold_rate_limit) },
  { {1, 3, 10, 7, 4}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 3}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_POS_Z].P) },
  { {1, 3, 10, 7, 9}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 3}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_POS_Z].I) },
  { {1, 3, 10, 7, 14}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 3}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_POS_Z].D) },
- { {1, 3, 36, 7, 4}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 3}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_VEL_Z].P) },
- { {1, 3, 36, 7, 9}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 3}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_VEL_Z].I) },
- { {1, 3, 36, 7, 14}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 3}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_VEL_Z].D) },
+ { {1, 3, 37, 7, 4}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 3}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_VEL_Z].P) },
+ { {1, 3, 37, 7, 9}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 3}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_VEL_Z].I) },
+ { {1, 3, 37, 7, 14}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 3}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_VEL_Z].D) },
  { {1, 3, 10, 12, 4}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 3}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_POS_XY].P) },
  { {1, 3, 10, 12, 9}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 3}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_POS_XY].I) },
  { {1, 3, 10, 12, 14}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 3}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_POS_XY].D) },
- { {1, 3, 36, 12, 4}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 3}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_VEL_XY].P) },
- { {1, 3, 36, 12, 9}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 3}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_VEL_XY].I) },
- { {1, 3, 36, 12, 14}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 3}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_VEL_XY].D) },
+ { {1, 3, 37, 12, 4}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 3}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_VEL_XY].P) },
+ { {1, 3, 37, 12, 9}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 3}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_VEL_XY].I) },
+ { {1, 3, 37, 12, 14}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 3}, __builtin_offsetof (pidProfile_t, bank_mc.pid[PID_VEL_XY].D) },
  { {1, 2, 10, 7, 4}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 3}, __builtin_offsetof (pidProfile_t, bank_fw.pid[PID_POS_Z].P) },
  { {1, 2, 10, 7, 9}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 3}, __builtin_offsetof (pidProfile_t, bank_fw.pid[PID_POS_Z].I) },
  { {1, 2, 10, 7, 14}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 3}, __builtin_offsetof (pidProfile_t, bank_fw.pid[PID_POS_Z].D) },
@@ -18213,94 +18301,95 @@ const clivalue_t cliValueTable[] = {
  { {1, 2, 10, 12, 9}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 3}, __builtin_offsetof (pidProfile_t, bank_fw.pid[PID_POS_XY].I) },
  { {1, 2, 10, 12, 14}, VAR_UINT8 | PROFILE_VALUE, .config.minmax.indexes = {0, 3}, __builtin_offsetof (pidProfile_t, bank_fw.pid[PID_POS_XY].D) },
 
- { {2, 64, 189, 58, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {8, 9}, __builtin_offsetof (pidAutotuneConfig_t, fw_overshoot_time) },
- { {2, 64, 229, 58, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {8, 9}, __builtin_offsetof (pidAutotuneConfig_t, fw_undershoot_time) },
- { {2, 64, 34, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 5}, __builtin_offsetof (pidAutotuneConfig_t, fw_max_rate_threshold) },
+ { {2, 60, 189, 41, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {14, 8}, __builtin_offsetof (pidAutotuneConfig_t, fw_overshoot_time) },
+ { {2, 60, 227, 41, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {14, 8}, __builtin_offsetof (pidAutotuneConfig_t, fw_undershoot_time) },
+ { {2, 60, 35, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 5}, __builtin_offsetof (pidAutotuneConfig_t, fw_max_rate_threshold) },
  { {154, 0, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 5}, __builtin_offsetof (pidAutotuneConfig_t, fw_ff_to_p_gain) },
- { {153, 0, 0, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {6, 15}, __builtin_offsetof (pidAutotuneConfig_t, fw_ff_to_i_time_constant) },
+ { {153, 0, 0, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {6, 16}, __builtin_offsetof (pidAutotuneConfig_t, fw_ff_to_i_time_constant) },
 
- { {6, 157, 127, 224, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 3}, __builtin_offsetof (positionEstimationConfig_t, gravity_calibration_tolerance) },
- { {6, 78, 11, 233, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (positionEstimationConfig_t, use_gps_velned) },
- { {6, 11, 21, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 9}, __builtin_offsetof (positionEstimationConfig_t, gps_delay_ms) },
- { {6, 203, 63, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_RESET_ALTITUDE }, __builtin_offsetof (positionEstimationConfig_t, reset_altitude_type) },
- { {6, 17, 76, 63, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 6}, __builtin_offsetof (positionEstimationConfig_t, max_surface_altitude) },
- { {6, 20, 7, 76, 4}, VAR_FLOAT | MASTER_VALUE, .config.minmax.indexes = {0, 2}, __builtin_offsetof (positionEstimationConfig_t, w_z_surface_p) },
- { {6, 20, 7, 76, 42}, VAR_FLOAT | MASTER_VALUE, .config.minmax.indexes = {0, 2}, __builtin_offsetof (positionEstimationConfig_t, w_z_surface_v) },
- { {6, 20, 7, 47, 4}, VAR_FLOAT | MASTER_VALUE, .config.minmax.indexes = {0, 2}, __builtin_offsetof (positionEstimationConfig_t, w_z_baro_p) },
- { {6, 20, 7, 11, 4}, VAR_FLOAT | MASTER_VALUE, .config.minmax.indexes = {0, 2}, __builtin_offsetof (positionEstimationConfig_t, w_z_gps_p) },
- { {6, 20, 7, 11, 42}, VAR_FLOAT | MASTER_VALUE, .config.minmax.indexes = {0, 2}, __builtin_offsetof (positionEstimationConfig_t, w_z_gps_v) },
- { {6, 20, 12, 11, 4}, VAR_FLOAT | MASTER_VALUE, .config.minmax.indexes = {0, 2}, __builtin_offsetof (positionEstimationConfig_t, w_xy_gps_p) },
- { {6, 20, 12, 11, 42}, VAR_FLOAT | MASTER_VALUE, .config.minmax.indexes = {0, 2}, __builtin_offsetof (positionEstimationConfig_t, w_xy_gps_v) },
- { {6, 20, 7, 102, 42}, VAR_FLOAT | MASTER_VALUE, .config.minmax.indexes = {0, 2}, __builtin_offsetof (positionEstimationConfig_t, w_z_res_v) },
- { {6, 20, 12, 102, 42}, VAR_FLOAT | MASTER_VALUE, .config.minmax.indexes = {0, 2}, __builtin_offsetof (positionEstimationConfig_t, w_xy_res_v) },
- { {6, 20, 45, 124, 0}, VAR_FLOAT | MASTER_VALUE, .config.minmax.indexes = {0, 7}, __builtin_offsetof (positionEstimationConfig_t, w_acc_bias) },
- { {6, 17, 145, 88, 0}, VAR_FLOAT | MASTER_VALUE, .config.minmax.indexes = {0, 35}, __builtin_offsetof (positionEstimationConfig_t, max_eph_epv) },
- { {6, 47, 88, 0, 0}, VAR_FLOAT | MASTER_VALUE, .config.minmax.indexes = {0, 35}, __builtin_offsetof (positionEstimationConfig_t, baro_epv) },
+ { {5, 21, 27, 138, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (positionEstimationConfig_t, automatic_mag_declination) },
+ { {5, 157, 123, 222, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 3}, __builtin_offsetof (positionEstimationConfig_t, gravity_calibration_tolerance) },
+ { {5, 74, 11, 231, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (positionEstimationConfig_t, use_gps_velned) },
+ { {5, 11, 22, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 8}, __builtin_offsetof (positionEstimationConfig_t, gps_delay_ms) },
+ { {5, 203, 59, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_RESET_ALTITUDE }, __builtin_offsetof (positionEstimationConfig_t, reset_altitude_type) },
+ { {5, 20, 72, 59, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 6}, __builtin_offsetof (positionEstimationConfig_t, max_surface_altitude) },
+ { {5, 19, 7, 72, 4}, VAR_FLOAT | MASTER_VALUE, .config.minmax.indexes = {0, 4}, __builtin_offsetof (positionEstimationConfig_t, w_z_surface_p) },
+ { {5, 19, 7, 72, 42}, VAR_FLOAT | MASTER_VALUE, .config.minmax.indexes = {0, 4}, __builtin_offsetof (positionEstimationConfig_t, w_z_surface_v) },
+ { {5, 19, 7, 45, 4}, VAR_FLOAT | MASTER_VALUE, .config.minmax.indexes = {0, 4}, __builtin_offsetof (positionEstimationConfig_t, w_z_baro_p) },
+ { {5, 19, 7, 11, 4}, VAR_FLOAT | MASTER_VALUE, .config.minmax.indexes = {0, 4}, __builtin_offsetof (positionEstimationConfig_t, w_z_gps_p) },
+ { {5, 19, 7, 11, 42}, VAR_FLOAT | MASTER_VALUE, .config.minmax.indexes = {0, 4}, __builtin_offsetof (positionEstimationConfig_t, w_z_gps_v) },
+ { {5, 19, 12, 11, 4}, VAR_FLOAT | MASTER_VALUE, .config.minmax.indexes = {0, 4}, __builtin_offsetof (positionEstimationConfig_t, w_xy_gps_p) },
+ { {5, 19, 12, 11, 42}, VAR_FLOAT | MASTER_VALUE, .config.minmax.indexes = {0, 4}, __builtin_offsetof (positionEstimationConfig_t, w_xy_gps_v) },
+ { {5, 19, 7, 99, 42}, VAR_FLOAT | MASTER_VALUE, .config.minmax.indexes = {0, 4}, __builtin_offsetof (positionEstimationConfig_t, w_z_res_v) },
+ { {5, 19, 12, 99, 42}, VAR_FLOAT | MASTER_VALUE, .config.minmax.indexes = {0, 4}, __builtin_offsetof (positionEstimationConfig_t, w_xy_res_v) },
+ { {5, 19, 44, 121, 0}, VAR_FLOAT | MASTER_VALUE, .config.minmax.indexes = {0, 7}, __builtin_offsetof (positionEstimationConfig_t, w_acc_bias) },
+ { {5, 20, 145, 86, 0}, VAR_FLOAT | MASTER_VALUE, .config.minmax.indexes = {0, 35}, __builtin_offsetof (positionEstimationConfig_t, max_eph_epv) },
+ { {5, 45, 86, 0, 0}, VAR_FLOAT | MASTER_VALUE, .config.minmax.indexes = {0, 35}, __builtin_offsetof (positionEstimationConfig_t, baro_epv) },
 
- { {1, 50, 186, 52, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (navConfig_t, general.flags.disarm_on_landing) },
- { {1, 78, 178, 151, 118}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (navConfig_t, general.flags.use_thr_mid_for_althold) },
- { {1, 146, 120, 207, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (navConfig_t, general.flags.extra_arming_safety) },
- { {1, 232, 134, 28, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_NAV_USER_CONTROL_MODE }, __builtin_offsetof (navConfig_t, general.flags.user_control_mode) },
- { {1, 193, 107, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 2}, __builtin_offsetof (navConfig_t, general.pos_failure_timeout) },
- { {1, 112, 101, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {2, 12}, __builtin_offsetof (navConfig_t, general.waypoint_radius) },
- { {1, 112, 206, 85, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 25}, __builtin_offsetof (navConfig_t, general.waypoint_safe_distance) },
- { {1, 25, 41, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {2, 4}, __builtin_offsetof (navConfig_t, general.max_auto_speed) },
- { {1, 25, 30, 8, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {2, 4}, __builtin_offsetof (navConfig_t, general.max_auto_climb_rate) },
- { {1, 97, 41, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {2, 4}, __builtin_offsetof (navConfig_t, general.max_manual_speed) },
- { {1, 97, 30, 8, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {2, 4}, __builtin_offsetof (navConfig_t, general.max_manual_climb_rate) },
- { {1, 52, 41, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {5, 4}, __builtin_offsetof (navConfig_t, general.land_descent_rate) },
- { {1, 94, 103, 179, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {8, 6}, __builtin_offsetof (navConfig_t, general.land_slowdown_minalt) },
- { {1, 94, 103, 176, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {9, 56}, __builtin_offsetof (navConfig_t, general.land_slowdown_maxalt) },
- { {1, 87, 52, 41, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {5, 4}, __builtin_offsetof (navConfig_t, general.emerg_descent_rate) },
- { {1, 22, 23, 85, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 15}, __builtin_offsetof (navConfig_t, general.min_rth_distance) },
- { {1, 23, 30, 89, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (navConfig_t, general.flags.rth_climb_first) },
- { {1, 23, 30, 71, 87}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (navConfig_t, general.flags.rth_climb_ignore_emerg) },
- { {1, 23, 222, 89, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (navConfig_t, general.flags.rth_tail_first) },
- { {1, 23, 117, 52, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (navConfig_t, general.flags.rth_allow_landing) },
- { {1, 23, 80, 28, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_NAV_RTH_ALT_MODE }, __builtin_offsetof (navConfig_t, general.flags.rth_alt_control_mode) },
- { {1, 23, 115, 34, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 25}, __builtin_offsetof (navConfig_t, general.rth_abort_threshold) },
- { {1, 23, 63, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 25}, __builtin_offsetof (navConfig_t, general.rth_altitude) },
- { {1, 3, 81, 13, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {20, 29}, __builtin_offsetof (navConfig_t, mc.max_bank_angle) },
- { {1, 3, 161, 24, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {6, 4}, __builtin_offsetof (navConfig_t, mc.hover_throttle) },
- { {1, 3, 25, 50, 21}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {5, 12}, __builtin_offsetof (navConfig_t, mc.auto_disarm_delay) },
- { {1, 2, 138, 24, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {6, 4}, __builtin_offsetof (navConfig_t, fw.cruise_throttle) },
- { {1, 2, 22, 24, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {6, 4}, __builtin_offsetof (navConfig_t, fw.min_throttle) },
- { {1, 2, 17, 24, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {6, 4}, __builtin_offsetof (navConfig_t, fw.max_throttle) },
- { {1, 2, 81, 13, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {10, 14}, __builtin_offsetof (navConfig_t, fw.max_bank_angle) },
- { {1, 2, 30, 13, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {10, 14}, __builtin_offsetof (navConfig_t, fw.max_climb_angle) },
- { {1, 2, 143, 13, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {10, 14}, __builtin_offsetof (navConfig_t, fw.max_dive_angle) },
+ { {1, 48, 186, 51, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (navConfig_t, general.flags.disarm_on_landing) },
+ { {1, 74, 178, 151, 115}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (navConfig_t, general.flags.use_thr_mid_for_althold) },
+ { {1, 146, 117, 207, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (navConfig_t, general.flags.extra_arming_safety) },
+ { {1, 230, 132, 29, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_NAV_USER_CONTROL_MODE }, __builtin_offsetof (navConfig_t, general.flags.user_control_mode) },
+ { {1, 193, 105, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 4}, __builtin_offsetof (navConfig_t, general.pos_failure_timeout) },
+ { {1, 110, 98, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {4, 12}, __builtin_offsetof (navConfig_t, general.waypoint_radius) },
+ { {1, 110, 206, 83, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 24}, __builtin_offsetof (navConfig_t, general.waypoint_safe_distance) },
+ { {1, 21, 40, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {4, 2}, __builtin_offsetof (navConfig_t, general.max_auto_speed) },
+ { {1, 21, 31, 8, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {4, 2}, __builtin_offsetof (navConfig_t, general.max_auto_climb_rate) },
+ { {1, 94, 40, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {4, 2}, __builtin_offsetof (navConfig_t, general.max_manual_speed) },
+ { {1, 94, 31, 8, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {4, 2}, __builtin_offsetof (navConfig_t, general.max_manual_climb_rate) },
+ { {1, 51, 40, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {5, 2}, __builtin_offsetof (navConfig_t, general.land_descent_rate) },
+ { {1, 92, 101, 179, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {14, 6}, __builtin_offsetof (navConfig_t, general.land_slowdown_minalt) },
+ { {1, 92, 101, 176, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {8, 57}, __builtin_offsetof (navConfig_t, general.land_slowdown_maxalt) },
+ { {1, 85, 51, 40, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {5, 2}, __builtin_offsetof (navConfig_t, general.emerg_descent_rate) },
+ { {1, 28, 23, 83, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 16}, __builtin_offsetof (navConfig_t, general.min_rth_distance) },
+ { {1, 23, 31, 87, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (navConfig_t, general.flags.rth_climb_first) },
+ { {1, 23, 31, 66, 85}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (navConfig_t, general.flags.rth_climb_ignore_emerg) },
+ { {1, 23, 220, 87, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (navConfig_t, general.flags.rth_tail_first) },
+ { {1, 23, 114, 51, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (navConfig_t, general.flags.rth_allow_landing) },
+ { {1, 23, 77, 29, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_NAV_RTH_ALT_MODE }, __builtin_offsetof (navConfig_t, general.flags.rth_alt_control_mode) },
+ { {1, 23, 111, 35, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 24}, __builtin_offsetof (navConfig_t, general.rth_abort_threshold) },
+ { {1, 23, 59, 0, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 24}, __builtin_offsetof (navConfig_t, general.rth_altitude) },
+ { {1, 3, 78, 13, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {20, 28}, __builtin_offsetof (navConfig_t, mc.max_bank_angle) },
+ { {1, 3, 161, 24, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {6, 2}, __builtin_offsetof (navConfig_t, mc.hover_throttle) },
+ { {1, 3, 21, 48, 22}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {5, 12}, __builtin_offsetof (navConfig_t, mc.auto_disarm_delay) },
+ { {1, 2, 136, 24, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {6, 2}, __builtin_offsetof (navConfig_t, fw.cruise_throttle) },
+ { {1, 2, 28, 24, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {6, 2}, __builtin_offsetof (navConfig_t, fw.min_throttle) },
+ { {1, 2, 20, 24, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {6, 2}, __builtin_offsetof (navConfig_t, fw.max_throttle) },
+ { {1, 2, 78, 13, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {10, 15}, __builtin_offsetof (navConfig_t, fw.max_bank_angle) },
+ { {1, 2, 31, 13, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {10, 15}, __builtin_offsetof (navConfig_t, fw.max_climb_angle) },
+ { {1, 2, 143, 13, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {10, 15}, __builtin_offsetof (navConfig_t, fw.max_dive_angle) },
  { {1, 2, 192, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 5}, __builtin_offsetof (navConfig_t, fw.pitch_to_throttle) },
- { {1, 2, 172, 101, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 12}, __builtin_offsetof (navConfig_t, fw.loiter_radius) },
- { {1, 2, 16, 234, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {5, 12}, __builtin_offsetof (navConfig_t, fw.launch_velocity_thresh) },
- { {1, 2, 16, 60, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {6, 36}, __builtin_offsetof (navConfig_t, fw.launch_accel_thresh) },
- { {1, 2, 16, 17, 13}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {10, 11}, __builtin_offsetof (navConfig_t, fw.launch_max_angle) },
- { {1, 2, 16, 140, 58}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {2, 6}, __builtin_offsetof (navConfig_t, fw.launch_time_thresh) },
- { {1, 2, 16, 24, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {6, 4}, __builtin_offsetof (navConfig_t, fw.launch_throttle) },
- { {1, 2, 16, 164, 24}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {6, 4}, __builtin_offsetof (navConfig_t, fw.launch_idle_throttle) },
- { {1, 2, 16, 54, 21}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 15}, __builtin_offsetof (navConfig_t, fw.launch_motor_timer) },
- { {1, 2, 16, 219, 58}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 6}, __builtin_offsetof (navConfig_t, fw.launch_motor_spinup_time) },
- { {1, 2, 16, 107, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 59}, __builtin_offsetof (navConfig_t, fw.launch_timeout) },
- { {1, 2, 16, 30, 13}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {10, 29}, __builtin_offsetof (navConfig_t, fw.launch_climb_angle) },
+ { {1, 2, 172, 98, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 12}, __builtin_offsetof (navConfig_t, fw.loiter_radius) },
+ { {1, 2, 16, 232, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {5, 12}, __builtin_offsetof (navConfig_t, fw.launch_velocity_thresh) },
+ { {1, 2, 16, 56, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {6, 36}, __builtin_offsetof (navConfig_t, fw.launch_accel_thresh) },
+ { {1, 2, 16, 20, 13}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {10, 11}, __builtin_offsetof (navConfig_t, fw.launch_max_angle) },
+ { {1, 2, 16, 140, 41}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {4, 6}, __builtin_offsetof (navConfig_t, fw.launch_time_thresh) },
+ { {1, 2, 16, 24, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {6, 2}, __builtin_offsetof (navConfig_t, fw.launch_throttle) },
+ { {1, 2, 16, 164, 24}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {6, 2}, __builtin_offsetof (navConfig_t, fw.launch_idle_throttle) },
+ { {1, 2, 16, 53, 22}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 16}, __builtin_offsetof (navConfig_t, fw.launch_motor_timer) },
+ { {1, 2, 16, 217, 41}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 6}, __builtin_offsetof (navConfig_t, fw.launch_motor_spinup_time) },
+ { {1, 2, 16, 105, 0}, VAR_UINT16 | MASTER_VALUE, .config.minmax.indexes = {0, 61}, __builtin_offsetof (navConfig_t, fw.launch_timeout) },
+ { {1, 2, 16, 31, 13}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {10, 28}, __builtin_offsetof (navConfig_t, fw.launch_climb_angle) },
 
- { {77, 104, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (telemetryConfig_t, telemetry_switch) },
- { {77, 91, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (telemetryConfig_t, telemetry_inversion) },
- { {31, 83, 170, 0, 0}, VAR_FLOAT | MASTER_VALUE, .config.minmax.indexes = {41, 47}, __builtin_offsetof (telemetryConfig_t, gpsNoFixLatitude) },
- { {31, 83, 173, 0, 0}, VAR_FLOAT | MASTER_VALUE, .config.minmax.indexes = {40, 11}, __builtin_offsetof (telemetryConfig_t, gpsNoFixLongitude) },
- { {31, 135, 152, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 7}, __builtin_offsetof (telemetryConfig_t, frsky_coordinate_format) },
- { {31, 230, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_FRSKY_UNIT }, __builtin_offsetof (telemetryConfig_t, frsky_unit) },
- { {31, 111, 194, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 7}, __builtin_offsetof (telemetryConfig_t, frsky_vfas_precision) },
- { {31, 111, 48, 59, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (telemetryConfig_t, frsky_vfas_cell_voltage) },
- { {160, 116, 216, 166, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 48}, __builtin_offsetof (telemetryConfig_t, hottAlarmSoundInterval) },
- { {163, 77, 109, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 3}, __builtin_offsetof (telemetryConfig_t, ibusTelemetryType) },
- { {175, 231, 8, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_LTM_RATES }, __builtin_offsetof (telemetryConfig_t, ltmUpdateRate) },
+ { {73, 102, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (telemetryConfig_t, telemetry_switch) },
+ { {73, 89, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (telemetryConfig_t, telemetry_inversion) },
+ { {32, 81, 170, 0, 0}, VAR_FLOAT | MASTER_VALUE, .config.minmax.indexes = {42, 49}, __builtin_offsetof (telemetryConfig_t, gpsNoFixLatitude) },
+ { {32, 81, 173, 0, 0}, VAR_FLOAT | MASTER_VALUE, .config.minmax.indexes = {41, 11}, __builtin_offsetof (telemetryConfig_t, gpsNoFixLongitude) },
+ { {32, 133, 152, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 7}, __builtin_offsetof (telemetryConfig_t, frsky_coordinate_format) },
+ { {32, 228, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_FRSKY_UNIT }, __builtin_offsetof (telemetryConfig_t, frsky_unit) },
+ { {32, 109, 194, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 7}, __builtin_offsetof (telemetryConfig_t, frsky_vfas_precision) },
+ { {32, 109, 126, 233, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (telemetryConfig_t, frsky_vfas_cell_voltage) },
+ { {160, 113, 215, 166, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 29}, __builtin_offsetof (telemetryConfig_t, hottAlarmSoundInterval) },
+ { {163, 73, 107, 0, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 3}, __builtin_offsetof (telemetryConfig_t, ibusTelemetryType) },
+ { {175, 229, 8, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_LTM_RATES }, __builtin_offsetof (telemetryConfig_t, ltmUpdateRate) },
 
- { {162, 41, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_I2C_SPEED }, __builtin_offsetof (systemConfig_t, i2c_speed) },
- { {137, 228, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (systemConfig_t, cpuUnderclock) },
- { {139, 28, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_DEBUG_MODES }, __builtin_offsetof (systemConfig_t, debug_mode) },
- { {35, 223, 132, 221, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 5}, __builtin_offsetof (systemConfig_t, throttle_tilt_compensation_strength) },
- { {165, 148, 28, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (systemConfig_t, pwmRxInputFilteringMode) },
+ { {162, 40, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_I2C_SPEED }, __builtin_offsetof (systemConfig_t, i2c_speed) },
+ { {135, 226, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (systemConfig_t, cpuUnderclock) },
+ { {137, 29, 0, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_DEBUG_MODES }, __builtin_offsetof (systemConfig_t, debug_mode) },
+ { {36, 221, 130, 219, 0}, VAR_UINT8 | MASTER_VALUE, .config.minmax.indexes = {0, 5}, __builtin_offsetof (systemConfig_t, throttle_tilt_compensation_strength) },
+ { {165, 148, 29, 0, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, __builtin_offsetof (systemConfig_t, pwmRxInputFilteringMode) },
 
- { {28, 199, 171, 187, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_AUX_OPERATOR }, __builtin_offsetof (modeActivationOperatorConfig_t, modeActivationOperator) },
+ { {29, 199, 171, 187, 0}, VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_AUX_OPERATOR }, __builtin_offsetof (modeActivationOperatorConfig_t, modeActivationOperator) },
 };
 # 10 "./src/main/fc/settings.c" 2
 

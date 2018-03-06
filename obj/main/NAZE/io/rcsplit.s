@@ -14,10 +14,10 @@
 	.file	"rcsplit.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.ce1cb35be5aea1e0,"",%progbits
+	.section	.gnu.lto_.profile.c92da85e596495d3,"",%progbits
 	.ascii	"x\234cf```e\200\000F\2065\214\361\000\002\357\001\026"
 	.text
-	.section	.gnu.lto_.jmpfuncs.ce1cb35be5aea1e0,"",%progbits
+	.section	.gnu.lto_.jmpfuncs.c92da85e596495d3,"",%progbits
 	.ascii	"x\234m\220=K\003A\020\206\347\235\275\313-*\210VrM\356"
 	.ascii	"\327\370\017\374\001b\256\260Q\020\021,\302\035\230"
 	.ascii	"R\013A0(b\023\3748?\356\264\364O\310\021\3042\006RX"
@@ -35,7 +35,7 @@
 	.ascii	"^ \330\311-X\177s\256\021o\255\256\304\321\332\372f"
 	.ascii	"\264\021/7\266\351\0339\336cP"
 	.text
-	.section	.gnu.lto_.inline.ce1cb35be5aea1e0,"",%progbits
+	.section	.gnu.lto_.inline.c92da85e596495d3,"",%progbits
 	.ascii	"x\234cf\300\016\226CiV\006\006\301\013,\214@\300\300"
 	.ascii	"\300$\323\327\345\301\300\266@\236\211\201\005(\305"
 	.ascii	"\310*&\311\310\300$\266\241\022\"\006\004,\274\014\014"
@@ -46,11 +46,11 @@
 	.ascii	"\027\250\212\355\203\036\\\021#\027\210\004\000\337"
 	.ascii	"\267\023\027"
 	.text
-	.section	.gnu.lto_.pureconst.ce1cb35be5aea1e0,"",%progbits
+	.section	.gnu.lto_.pureconst.c92da85e596495d3,"",%progbits
 	.ascii	"x\234cf``\340f\200\000V\006VF\011f\013vK\016\011\000"
 	.ascii	"\004Z\000\315"
 	.text
-	.section	.gnu.lto_crc_high_first.ce1cb35be5aea1e0,"",%progbits
+	.section	.gnu.lto_crc_high_first.c92da85e596495d3,"",%progbits
 	.ascii	"x\234mT[oTU\024^\337\336\347:\247\355\224\336$\343\203"
 	.ascii	"&\265A\023C\243o\276\341\3170\361\305L|h\202\225\024"
 	.ascii	"|4\234\316\014S\304jLcH\025\210\240\261\312\245\035"
@@ -106,7 +106,7 @@
 	.ascii	"{\367\354\356\332\2673Kz\317\276\036\275\373\325nt\351"
 	.ascii	"lO\366o\250\227\304\245"
 	.text
-	.section	.gnu.lto_sendCtrlCommand.ce1cb35be5aea1e0,"",%progbits
+	.section	.gnu.lto_sendCtrlCommand.c92da85e596495d3,"",%progbits
 	.ascii	"x\234\215S[HTA\030\236\177\346\234\263\353\356\212\322"
 	.ascii	"Sl\017\006&\025\204'\020|\010\202\036\202\036{\3529"
 	.ascii	"t\311\020\272\261\351\2434\256\253\030E\230D\211Vd\226"
@@ -154,7 +154,7 @@
 	.ascii	"\312\334\345E\376\262\335\305\345%%{\374\314\347\367"
 	.ascii	"\375\002\022 \305\232"
 	.text
-	.section	.gnu.lto_rcSplitProcessMode.ce1cb35be5aea1e0,"",%progbits
+	.section	.gnu.lto_rcSplitProcessMode.c92da85e596495d3,"",%progbits
 	.ascii	"x\234\215UKL\\e\024\376\317\177g\346^\270w\036w\246"
 	.ascii	"\214\006\323@\302\2026\021&ib\214\013\343\302\304\304"
 	.ascii	"\215\013\227\256D :\211P\003\370Z\220\336\201\211t\201"
@@ -226,7 +226,7 @@
 	.ascii	"/)}\317_\\\232[~\270*\267\242\264\250\344C\366/\315"
 	.ascii	"~\272\361"
 	.text
-	.section	.gnu.lto_rcSplitInit.ce1cb35be5aea1e0,"",%progbits
+	.section	.gnu.lto_rcSplitInit.c92da85e596495d3,"",%progbits
 	.ascii	"x\234}T\335S\023W\024\277\347\356fw\223MH\240\206@Z"
 	.ascii	"\307\316\320\251v\246!3\355L\337\372\324\247\366\261"
 	.ascii	"\377A\213\375\310L\005\007\230\261/\214\013IK\037\264"
@@ -292,7 +292,7 @@
 	.ascii	"WU\327\276SU\371q\350\023\010\2315{B\265\025\237\276"
 	.ascii	"[\271\363\243\317\377\005UvqJ"
 	.text
-	.section	.gnu.lto_rcSplitProcess.ce1cb35be5aea1e0,"",%progbits
+	.section	.gnu.lto_rcSplitProcess.c92da85e596495d3,"",%progbits
 	.ascii	"x\234eOKK\202Q\020\2353\367\373\314^\020\255\244\326"
 	.ascii	"a+]\264\026\372\021\365\003JZ\010\275\320ZJ\3272hSD"
 	.ascii	"P\004Y\033\223\336/\215\332\305W\253@H*\302\210\250"
@@ -316,7 +316,7 @@
 	.ascii	"\320\220?\034\214\014\367\207F|Aj\014\216\206\303}\203"
 	.ascii	"#]\241\201\276\356\3107\243\367\234\271"
 	.text
-	.section	.gnu.lto_.symbol_nodes.ce1cb35be5aea1e0,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.c92da85e596495d3,"",%progbits
 	.ascii	"x\234U\217K\016\001Q\020E\317{\245u\267\317\002\304"
 	.ascii	":\254\257z \030\211\015\220&m`3\006>\335\376D\330\002"
 	.ascii	"\023\021\215H\236\232\334\234s\357\244\004\010\015\337"
@@ -328,13 +328,13 @@
 	.ascii	"{/\212_%9=\215\370\025\222kf$\020\316\217\213\341\005"
 	.ascii	"\261-Jq"
 	.text
-	.section	.gnu.lto_.refs.ce1cb35be5aea1e0,"",%progbits
+	.section	.gnu.lto_.refs.c92da85e596495d3,"",%progbits
 	.ascii	"x\234%\312\301\011\2000\024\005\301\335\237\274D<)\036"
 	.ascii	"\004\261\005\373oO\3019O\003\036~J\231F\227\254\214"
 	.ascii	"\303\\\346\316\264\0065\315fv\373\351\3625^\035\346"
 	.ascii	"\001 "
 	.text
-	.section	.gnu.lto_.decls.ce1cb35be5aea1e0,"",%progbits
+	.section	.gnu.lto_.decls.c92da85e596495d3,"",%progbits
 	.ascii	"x\234\255{\013P\324W\2267\377\276\335\3204\015DM\324"
 	.ascii	"a2\233\204\354ge\247fc\036\223\314N}[\337\004\025\025"
 	.ascii	"\243\300@\033\223\335\257\252\227h\233P\243\350\000"
@@ -805,7 +805,7 @@
 	.ascii	"^\356\271\001\246\340\207\037\177\372\377\000\214e~"
 	.ascii	"\205"
 	.text
-	.section	.gnu.lto_.symtab.ce1cb35be5aea1e0,"",%progbits
+	.section	.gnu.lto_.symtab.c92da85e596495d3,"",%progbits
 	.ascii	"rcSplitSerialPort\000\000\000\000\000\000\000\000\000"
 	.ascii	"\000\000\000|\002\000\000cameraState\000\000\000\000"
 	.ascii	"\000\000\000\000\000\000\000\000\212\002\000\000swi"

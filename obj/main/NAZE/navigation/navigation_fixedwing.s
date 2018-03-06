@@ -14,10 +14,10 @@
 	.file	"navigation_fixedwing.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.b9869991b7819ced,"",%progbits
+	.section	.gnu.lto_.profile.3feafc7f00e82049,"",%progbits
 	.ascii	"x\234cf```c\200\000F\206'\034GY\000\005\330\001\300"
 	.text
-	.section	.gnu.lto_.jmpfuncs.b9869991b7819ced,"",%progbits
+	.section	.gnu.lto_.jmpfuncs.3feafc7f00e82049,"",%progbits
 	.ascii	"x\234\225SIKC1\020\236\231T\373\\\253\240(\026\004A"
 	.ascii	"E\301\376>O\362\036\366\240\010Z\257*HO\356{\335w\321"
 	.ascii	"\213\013\212\364\344\251=\210zUP\250Zu&\311s\301W\320"
@@ -45,7 +45,7 @@
 	.ascii	"\3227\213\365i\345U\033\377\333m\206\257O\207<\232\230"
 	.ascii	"nB\370\000\216\230\010\255"
 	.text
-	.section	.gnu.lto_.inline.b9869991b7819ced,"",%progbits
+	.section	.gnu.lto_.inline.3feafc7f00e82049,"",%progbits
 	.ascii	"x\234\205R\275N\3030\020\376\354\244iI\177\222\206\322"
 	.ascii	"\"\212R@\245*\0220 \261!\036!\023\023C_\004!u`\354\220"
 	.ascii	"\201\251S\007\006\336\201\001\326.\025\003\342\021\000"
@@ -67,13 +67,13 @@
 	.ascii	"\336\233\337\363\325\336\257\032\207(\273\024\356\017"
 	.ascii	"\257\223\350#\024=\203YM\003~\001\324Sy\340"
 	.text
-	.section	.gnu.lto_.pureconst.b9869991b7819ced,"",%progbits
+	.section	.gnu.lto_.pureconst.3feafc7f00e82049,"",%progbits
 	.ascii	"x\234cf``\320f\200\000Q\006\011\026\011\016\011>\011"
 	.ascii	"~\011\001\006A\011\021\011q\006\011\011)\011i\0119\011"
 	.ascii	"EI\025\011U\0115\011\015\011MI\035)]\011\000R\244\004"
 	.ascii	"*"
 	.text
-	.section	.gnu.lto_updateAltitudeVelocityAndPitchController_FW.b9869991b7819ced,"",%progbits
+	.section	.gnu.lto_updateAltitudeVelocityAndPitchController_FW.3feafc7f00e82049,"",%progbits
 	.ascii	"x\234\215VkLTG\024\276g.\334eY`\221R\344a\253\215\265"
 	.ascii	"\376B\372\257\375a\232T%\255\032\023\233\376h\3774-"
 	.ascii	"\205-n\013h`cMZ\302\005)\022*\202\306\264\264 \305\330"
@@ -163,7 +163,7 @@
 	.ascii	"*\353f\213>\364\265E\304G[l\353\011\361v\\t\214\345"
 	.ascii	"?4\026s\275"
 	.text
-	.section	.gnu.lto_calculateVirtualPositionTarget_FW.b9869991b7819ced,"",%progbits
+	.section	.gnu.lto_calculateVirtualPositionTarget_FW.3feafc7f00e82049,"",%progbits
 	.ascii	"x\234\235X\013T\224\325\026\376\317\371g\206\031fx\224"
 	.ascii	"\311U\020-\321\354!\242e\232\313\314\314k\345\352a\245"
 	.ascii	"\225V^\343\"\031]\202\273p\352\266z\\G\340\"V*>n\341"
@@ -341,7 +341,7 @@
 	.ascii	"\363\252u\226\317\234\204\230y\257YG\375\0179\347\331"
 	.ascii	"\206"
 	.text
-	.section	.gnu.lto_updatePositionHeadingController_FW.b9869991b7819ced,"",%progbits
+	.section	.gnu.lto_updatePositionHeadingController_FW.3feafc7f00e82049,"",%progbits
 	.ascii	"x\234\215W{P\224\327\025\277\347~\354\267\357]T@\205"
 	.ascii	"\004\037\210\210)b\232\232N\247M\232t&\231Ng\362W\323"
 	.ascii	"\351\364\217\216%B-\031\324\316\0026\355\224\361\003"
@@ -468,7 +468,7 @@
 	.ascii	"\237\231\236\261\004u\031\026&\275\227\276@\214\257"
 	.ascii	"\212\361\373b|E\214?\370?\3222\364\333"
 	.text
-	.section	.gnu.lto_adjustFixedWingAltitudeFromRCInput.part.0.b9869991b7819ced,"",%progbits
+	.section	.gnu.lto_adjustFixedWingAltitudeFromRCInput.part.0.3feafc7f00e82049,"",%progbits
 	.ascii	"x\234}QMk\023Q\024}\347\275I\2322A\203+\235.\024\262"
 	.ascii	"(Bm\374\003\"\342\306\245\270s%1\211e\304DH\343\307"
 	.ascii	"\246\364\245\244\264\270\260\"]X\0276\"bkmZ\255Z*\210"
@@ -499,7 +499,7 @@
 	.ascii	"(~\372\\{&\231He\314t\354\360\031;y\362X4\223\370\001"
 	.ascii	"\371\251\362#"
 	.text
-	.section	.gnu.lto_adjustFixedWingAltitudeFromRCInput.b9869991b7819ced,"",%progbits
+	.section	.gnu.lto_adjustFixedWingAltitudeFromRCInput.3feafc7f00e82049,"",%progbits
 	.ascii	"x\234uU]lTE\024\2363s\357\335e\177\272\267\277.[\242"
 	.ascii	"&%!&.k|\361\251\017\306\027\023\337|\365\301\324\266"
 	.ascii	"\2225\266&\245*1i\230\245\013\255F\245\376D\264\370"
@@ -560,7 +560,7 @@
 	.ascii	"\361\372\015\353\253Y\240\241\372\361\232\027^\336\330"
 	.ascii	"XW[\337\350o\250~\342\305x\335sOW5\326\376\007s~N\002"
 	.text
-	.section	.gnu.lto_setupFixedWingAltitudeController.b9869991b7819ced,"",%progbits
+	.section	.gnu.lto_setupFixedWingAltitudeController.3feafc7f00e82049,"",%progbits
 	.ascii	"x\234cf\300\004R@\\\012\304\372@\314\310\314\300\310"
 	.ascii	"4\341\034\003C#\007\023##\210\301\300\310P\317\304X"
 	.ascii	"\317\370\222\351#\023\343\204\003\253gp\253/mhh\370"
@@ -572,7 +572,7 @@
 	.ascii	"\314<\375\274\304\262\314\364\304\222\314|df|ZfEjJy"
 	.ascii	"f^\272^2\003\000\3719:2"
 	.text
-	.section	.gnu.lto_resetFixedWingAltitudeController.b9869991b7819ced,"",%progbits
+	.section	.gnu.lto_resetFixedWingAltitudeController.3feafc7f00e82049,"",%progbits
 	.ascii	"x\234uRMO\023Q\024}\347\226N\247\024\202aE\312\202\215"
 	.ascii	"IWe\376\200k\022~\205iP\310,(\211\022d\3230Cj\342\302"
 	.ascii	"X\330I\000\343F\255\224\217B\251\010\345c\330\350\206"
@@ -601,7 +601,7 @@
 	.ascii	"\366U\037\357v\233\203\367\357=2\223=\355]\342\017\223"
 	.ascii	"\035\001\360"
 	.text
-	.section	.gnu.lto_applyFixedWingAltitudeAndThrottleController.b9869991b7819ced,"",%progbits
+	.section	.gnu.lto_applyFixedWingAltitudeAndThrottleController.3feafc7f00e82049,"",%progbits
 	.ascii	"x\234\215T_L[e\024\377\316wo{o{/\3202\037\220\207iB"
 	.ascii	"\026LLW_5\301\354\331\304\304\007\367\252\251\005\227"
 	.ascii	"&\016LA\347\013\331\205v\221\247\255\251\216-\250\333"
@@ -665,7 +665,7 @@
 	.ascii	"`\270\241\361\311-\353W\032\032C\024z\360\355\332@S"
 	.ascii	"\335\377\303\315\3149"
 	.text
-	.section	.gnu.lto_adjustFixedWingHeadingFromRCInput.b9869991b7819ced,"",%progbits
+	.section	.gnu.lto_adjustFixedWingHeadingFromRCInput.3feafc7f00e82049,"",%progbits
 	.ascii	"x\234cf\300\004R@<\001\210\365\201\230\221\231\201\221"
 	.ascii	"i\3029\006\206F\016&FF\020\203\201\221\241\236\211\261"
 	.ascii	"\236\361%\323G&\3063;\377]fT_\332\320\320\364\341\323"
@@ -678,7 +678,7 @@
 	.ascii	"\027%\353\347&f\346\351\347%\226e\246'\226d\346#3\343"
 	.ascii	"\3232+RS\3123\363\322\365\222\031\000\201fG\033"
 	.text
-	.section	.gnu.lto_resetFixedWingPositionController.b9869991b7819ced,"",%progbits
+	.section	.gnu.lto_resetFixedWingPositionController.3feafc7f00e82049,"",%progbits
 	.ascii	"x\234\225\324KO\023Q\024\007\360\373\277\323\226\326"
 	.ascii	"\012\005\334\220v\341\302EWe>\200\372\001\334\270ui"
 	.ascii	"\032T\322\2055Q\243n\032\246X\014+\213\272\221\370X"
@@ -714,7 +714,7 @@
 	.ascii	"G=\031\216D\325h\370\\\2447|6r\252\366\361\350\211\310"
 	.ascii	"\205\343\307\316G\242\275\335=\342\017\204\253\265r"
 	.text
-	.section	.gnu.lto_adjustFixedWingPositionFromRCInput.b9869991b7819ced,"",%progbits
+	.section	.gnu.lto_adjustFixedWingPositionFromRCInput.3feafc7f00e82049,"",%progbits
 	.ascii	"x\234mQ[k\023a\020\375\316\354nvs)\004\237$/>\344\241"
 	.ascii	"\010\246\353O\320\277\340\037\220\220\326\262\322\246"
 	.ascii	"\320\306\013H\350\227\032\211\240H\025\037\304\033\010"
@@ -746,7 +746,7 @@
 	.ascii	"\335\035\031\025\357\317\354\350\353\351\331\336\271"
 	.ascii	"{\317@\256\267+\233\373\003Y\003\357\214"
 	.text
-	.section	.gnu.lto_applyFixedWingPositionController.b9869991b7819ced,"",%progbits
+	.section	.gnu.lto_applyFixedWingPositionController.3feafc7f00e82049,"",%progbits
 	.ascii	"x\234\215U]L\034U\024\276\347\316\356\314\354\316\000"
 	.ascii	"\313\226\230\266$\325\2044\230\030\212O&>`\372lb\342"
 	.ascii	"\203}\325 `\263\211\005\003X}!\014\335\335\210/-!-\255"
@@ -812,7 +812,7 @@
 	.ascii	"%e\001:z\350\203\302\374\362\242\377\001\345\277\357"
 	.ascii	"\342"
 	.text
-	.section	.gnu.lto_applyFixedWingMinSpeedController.b9869991b7819ced,"",%progbits
+	.section	.gnu.lto_applyFixedWingMinSpeedController.3feafc7f00e82049,"",%progbits
 	.ascii	"x\234\225VYL\225W\020>s\376\273/\334\213\212eq\015%"
 	.ascii	"\032\025i\322\207\306\207\266\246\217M\232\364A\333"
 	.ascii	"\2676(\267\226D\241\001\264M\023\353\317\"\345\301*"
@@ -909,7 +909,7 @@
 	.ascii	"\224\230\222\262\326\365Abbr\212\376\363\330U\311\357"
 	.ascii	"\374\007l\266\313\300"
 	.text
-	.section	.gnu.lto_applyFixedWingPitchRollThrottleController.b9869991b7819ced,"",%progbits
+	.section	.gnu.lto_applyFixedWingPitchRollThrottleController.3feafc7f00e82049,"",%progbits
 	.ascii	"x\234\215X\013TUe\026>\373?\367\315\275pA%4\037\245"
 	.ascii	"\222\275\020\247\367k\312V\345\352\351\252\314\351e"
 	.ascii	"\017T\224;\022\030\222\323\2325\325\025\010\234FM\231"
@@ -1079,7 +1079,7 @@
 	.ascii	"O\014\214\035\234\245%\217\2212\231c\015\245\277dd?"
 	.ascii	"\223\371?D_C>"
 	.text
-	.section	.gnu.lto_applyFixedWingNavigationController.part.1.b9869991b7819ced,"",%progbits
+	.section	.gnu.lto_applyFixedWingNavigationController.part.1.3feafc7f00e82049,"",%progbits
 	.ascii	"x\234}\222MH\224Q\024\206\357{\357\3677\243\226\265"
 	.ascii	"p\341\302M\210mr\332\265\213VnZV\353\032l\222\201\234"
 	.ascii	"`\234~6\342\325\231L(\264 \243\\\024d\332\217\346\244"
@@ -1117,7 +1117,7 @@
 	.ascii	"Rs6\\\327PR{>\036\217\304\022\307\243\365\221\023\015"
 	.ascii	"\277\001\022\3031\026"
 	.text
-	.section	.gnu.lto_applyFixedWingNavigationController.b9869991b7819ced,"",%progbits
+	.section	.gnu.lto_applyFixedWingNavigationController.3feafc7f00e82049,"",%progbits
 	.ascii	"x\234u\222KhSQ\020\206\317\314\271\217<\361\3422[\011"
 	.ascii	"uc\243\270\256\270r\343R\273\326\030c\270`#$\261\272"
 	.ascii	")=M\322Z\264h\027\332DAAb}566\365\261\320E\254\010b"
@@ -1153,7 +1153,7 @@
 	.ascii	"\007\343\251l8q8\223I\246s\273\355\256dg\366\007\023"
 	.ascii	"^\004\320"
 	.text
-	.section	.gnu.lto_resetFixedWingLandingDetector.b9869991b7819ced,"",%progbits
+	.section	.gnu.lto_resetFixedWingLandingDetector.3feafc7f00e82049,"",%progbits
 	.ascii	"x\234cf\300\004R@\374\017\210\365\201\230\221\231\201"
 	.ascii	"\221i\3029\006\206F\016&FF\020\203\201\221\241\236\211"
 	.ascii	"\261\236\361%\323G&\306\011\007V\317\340V_\332\320\320"
@@ -1171,7 +1171,7 @@
 	.ascii	"\323\317K,\313LO,\311\314Gf\306\247eV\244\246\224g\346"
 	.ascii	"\245\353%3\000\000>\"lP"
 	.text
-	.section	.gnu.lto_isFixedWingLandingDetected.b9869991b7819ced,"",%progbits
+	.section	.gnu.lto_isFixedWingLandingDetected.3feafc7f00e82049,"",%progbits
 	.ascii	"x\234e\220\315K[Q\020\305\347\314kB\212\010\305\225"
 	.ascii	"d\343\"\013\333\242\306\177@\364\217\260\340NB\214\341"
 	.ascii	"-L!~n\2027\032!\013\021+X\305/,6\370Ym\272\260\024\\"
@@ -1196,7 +1196,7 @@
 	.ascii	"\365\332\261h]\230\312\303\335\361x$\326\325lwD\336"
 	.ascii	"u\336\001\177\350\243\263"
 	.text
-	.section	.gnu.lto_applyFixedWingEmergencyLandingController.b9869991b7819ced,"",%progbits
+	.section	.gnu.lto_applyFixedWingEmergencyLandingController.3feafc7f00e82049,"",%progbits
 	.ascii	"x\234\235U[O\023A\030\235o\266\224R.m\251\330Z\214\211"
 	.ascii	"Q\343\023\364\325\237\340\277P\002\012M\024\215\022"
 	.ascii	"\365\205\260\030Dc\324\020\365\241\021/1J@\021\021\224"
@@ -1249,7 +1249,7 @@
 	.ascii	"3P^ZX\314\274\206\325\0337\005J\313*\374[\003%\205e"
 	.ascii	"\354\017\354M\311\214"
 	.text
-	.section	.gnu.lto_calculateFixedWingInitialHoldPosition.b9869991b7819ced,"",%progbits
+	.section	.gnu.lto_calculateFixedWingInitialHoldPosition.3feafc7f00e82049,"",%progbits
 	.ascii	"x\234ePMK[Q\020\2353\367\3455\020\304\322eV\335\004"
 	.ascii	"WI\004\373\003\\\367O\264A[y\213\306b\244\272\011\271"
 	.ascii	"\011\241\010\342\007R!\320\332.D\252\306\306\232\240"
@@ -1275,7 +1275,7 @@
 	.ascii	"\006_t\017x\351\236D\027\231\327\275\231\377\344\237"
 	.ascii	"\244\362"
 	.text
-	.section	.gnu.lto_resetFixedWingHeadingController.b9869991b7819ced,"",%progbits
+	.section	.gnu.lto_resetFixedWingHeadingController.3feafc7f00e82049,"",%progbits
 	.ascii	"x\234e\220MK\002Q\024\206\317{f\032\007\\\024-\373\003"
 	.ascii	"n\032]\367SZ\225\364!\263\320\240\242\"\020G\023\013"
 	.ascii	"\202rQ$\364\261\213,M\301\240]\344\246mQ-\022\021\203"
@@ -1298,7 +1298,7 @@
 	.ascii	"\354Hx\326\236\372}\035\231\264\027&\306\347\355X$8"
 	.ascii	"F?\302\373\227\014"
 	.text
-	.section	.gnu.lto_.symbol_nodes.b9869991b7819ced,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.3feafc7f00e82049,"",%progbits
 	.ascii	"x\234U\220\331NSQ\024\206\377uv\013ej)\024(\024\301"
 	.ascii	"j\213\324D\021\234E\360u|\213\205\365X\020\024\020\024"
 	.ascii	"\025\004*\326\001\307\027\360B\233\006M4xc\274\360\302"
@@ -1337,7 +1337,7 @@
 	.ascii	"\355\236[\322\311\310wI=\224\013\375\362gG\036\372\206"
 	.ascii	"\370\017*\027t\275"
 	.text
-	.section	.gnu.lto_.refs.b9869991b7819ced,"",%progbits
+	.section	.gnu.lto_.refs.3feafc7f00e82049,"",%progbits
 	.ascii	"x\2345\221\333k\324`\020\305\317or3\311\306\270I6\333"
 	.ascii	"l\272\3566\265\273mZ/OE\301?\336'E\024,\"\365A|\221"
 	.ascii	"\212\012\025\305\027\361ApZu\3400g\256\337\307\231@"
@@ -1359,7 +1359,7 @@
 	.ascii	"5&\032R\342\211\306B\307%q\243qF<\347\304\025\347\356"
 	.ascii	"\325E\377\000//+\343"
 	.text
-	.section	.gnu.lto_.decls.b9869991b7819ced,"",%progbits
+	.section	.gnu.lto_.decls.3feafc7f00e82049,"",%progbits
 	.ascii	"x\234\275\275\011XUW\226(\314\271\233\013\367^\020\242"
 	.ascii	"&\232\230\244\3122\211U\251)I\245\272\272\372\275z_"
 	.ascii	"\225\245&1\235\250eL\015\335\375>\232BLx\205b\001f\350"
@@ -2406,7 +2406,7 @@
 	.ascii	"\305\237z\257\253\233#\254G\205\300\374\377\000'\223"
 	.ascii	"d\321"
 	.text
-	.section	.gnu.lto_.symtab.b9869991b7819ced,"",%progbits
+	.section	.gnu.lto_.symtab.3feafc7f00e82049,"",%progbits
 	.ascii	"adjustFixedWingAltitudeFromRCInput\000\000\000\000\000"
 	.ascii	"\000\000\000\000\000\000\000\260\002\000\000setupFi"
 	.ascii	"xedWingAltitudeController\000\000\000\000\000\000\000"

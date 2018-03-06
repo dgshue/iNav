@@ -14,10 +14,10 @@
 	.file	"gps_ublox.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.c4aec61e21061550,"",%progbits
+	.section	.gnu.lto_.profile.38d31d2c2085d861,"",%progbits
 	.ascii	"x\234cf```c\200\000F\206wl_\230\001\006W\001\366"
 	.text
-	.section	.gnu.lto_.jmpfuncs.c4aec61e21061550,"",%progbits
+	.section	.gnu.lto_.jmpfuncs.38d31d2c2085d861,"",%progbits
 	.ascii	"x\234}SK/\003Q\024>\337\235\253ZA\023,<\202`\335\360"
 	.ascii	"_\374\003\377\243i\243$\"\221Z\021\335\210D\274\212"
 	.ascii	"\252z\324scAXH\027B,\020\217D\302\3023\321\210r\356"
@@ -45,7 +45,7 @@
 	.ascii	"8\306\272k\264\233E\331\013\353\220?\211\255\031\271"
 	.ascii	"\023?\237\300\317\315"
 	.text
-	.section	.gnu.lto_.inline.c4aec61e21061550,"",%progbits
+	.section	.gnu.lto_.inline.38d31d2c2085d861,"",%progbits
 	.ascii	"x\234\255Q1/\304`\030~\336\257\237^\265\347\316\035"
 	.ascii	"9\034\347p\221\334d\263\212_\320\370\003\026\223\333"
 	.ascii	"\304lhL,\322\205AH.\"q\010\233MD\254\022\216\205 \256"
@@ -70,12 +70,12 @@
 	.ascii	"\217\350'\026\207!X\0316d\034\217\305\014\371\247VB"
 	.ascii	">H\304nbcK(\306'Y\345o\307"
 	.text
-	.section	.gnu.lto_.pureconst.c4aec61e21061550,"",%progbits
+	.section	.gnu.lto_.pureconst.38d31d2c2085d861,"",%progbits
 	.ascii	"x\234cf``\220g\200\000~\006\006F\011f\011.\011a\013"
 	.ascii	"\021I\011)I\011i)Y\0119\011yIEI%Ie\011\000*\356\002"
 	.ascii	"\353"
 	.text
-	.section	.gnu.lto_gpsMapFixType.c4aec61e21061550,"",%progbits
+	.section	.gnu.lto_gpsMapFixType.38d31d2c2085d861,"",%progbits
 	.ascii	"x\234e\221\317KTQ\024\307\317\367\334y\357\01560\022"
 	.ascii	"\004\361\240M2\015\375\300\201\026-\243U\177A\270M3"
 	.ascii	"\215\007\226\222\004\323\312g3\013W\325b,\230]Lf\352"
@@ -103,7 +103,7 @@
 	.ascii	"t\246\253;\335\334N\321\316 \335\322\326\025\234\215"
 	.ascii	"\331\314\311 }\352rO\307o\235\267\303\354"
 	.text
-	.section	.gnu.lto_gpsCheckVersion.c4aec61e21061550,"",%progbits
+	.section	.gnu.lto_gpsCheckVersion.38d31d2c2085d861,"",%progbits
 	.ascii	"x\234eOMK\002Q\024\275\347\216\211\321\242h9\324\332"
 	.ascii	"\202t\226\375\216~A\037.B(\225$h#>e\210hQ\021A`\037"
 	.ascii	"\253\"KSi\327nh\035\205\270\010*rcP\324Bs5\204N\357"
@@ -123,7 +123,7 @@
 	.ascii	"J.E\254\305\331h\314\212\306\255\371Drzyn!\276\022\216"
 	.ascii	"\320\027\346{\205a"
 	.text
-	.section	.gnu.lto_gpsParceFrameUBLOX.c4aec61e21061550,"",%progbits
+	.section	.gnu.lto_gpsParceFrameUBLOX.38d31d2c2085d861,"",%progbits
 	.ascii	"x\234\235\231mpT\325\031\307\357s\356\276\277dcH\010"
 	.ascii	"\254\220@\0052\245,[\031edd\340\213H;\264\375\334vl"
 	.ascii	"m\353t::Z::\235\321\017\324\015\211\011\255B\200ZS\021"
@@ -249,7 +249,7 @@
 	.ascii	"\303\177\370\323KO\377\371w\317/~y\3463\312\377\001"
 	.ascii	"W\2649\263"
 	.text
-	.section	.gnu.lto_gpsNewFrameUBLOX.c4aec61e21061550,"",%progbits
+	.section	.gnu.lto_gpsNewFrameUBLOX.38d31d2c2085d861,"",%progbits
 	.ascii	"x\234\235YiPTW\026\276\367\276\346\365J\263\011\262"
 	.ascii	"\030\255\030\3432.h\305\232\212V\234XI\264,\313\322"
 	.ascii	"\2512\216\226\345$c\222\251\251TM&)\235}\306J#\210\032"
@@ -393,7 +393,7 @@
 	.ascii	"\271\257\376\345\265?\276\375\367a\2573\313\033\263"
 	.ascii	"\377<[\177g\366\234\271\277\177\343\177U\001>P"
 	.text
-	.section	.gnu.lto_gpsReceiveData.c4aec61e21061550,"",%progbits
+	.section	.gnu.lto_gpsReceiveData.38d31d2c2085d861,"",%progbits
 	.ascii	"x\234\215T]K\224A\024>\347\314\276\037\273\253h]\012"
 	.ascii	"]\355\205J\351\376\204\210\272\016\352\266\213ZER0\025"
 	.ascii	"-\354\"\365\335u\011\2030/\002\301\315\250@\3232\277"
@@ -438,7 +438,7 @@
 	.ascii	"\371\340)\014T\234.\250<\025\270\034\260J\012*O\026"
 	.ascii	"\006\312\377\0009[\221o"
 	.text
-	.section	.gnu.lto_gpsChangeBaud.c4aec61e21061550,"",%progbits
+	.section	.gnu.lto_gpsChangeBaud.38d31d2c2085d861,"",%progbits
 	.ascii	"x\234\215U[O\023A\024\2363\273\335.\245\205R\004\265"
 	.ascii	"^\337\324h\351\243\211&\376\012\237\364\301\333\203"
 	.ascii	"1\361\026\215\211/\204\205V%1\021b\210\030\253\022\215"
@@ -493,7 +493,7 @@
 	.ascii	"\334\272eMp\303\252u\033\203\3536\005\327n\336\272b"
 	.ascii	"\333\352\365\233\266\227\254a\177\000\276d\261\376"
 	.text
-	.section	.gnu.lto__update_checksum.c4aec61e21061550,"",%progbits
+	.section	.gnu.lto__update_checksum.38d31d2c2085d861,"",%progbits
 	.ascii	"x\234uS\337K\323Q\024?\347\336\357w\337\271o:\365\251"
 	.ascii	"\006A\004*Q\270\367\036\302G\377\202\350M\346\212\220"
 	.ascii	"L#\023z\011\277\316%!b\"E\003\221(\311\264\325l3+\015"
@@ -532,7 +532,7 @@
 	.ascii	"\263\271\265\375r}\020\214\323\201K\001\331z\246\315"
 	.ascii	"\010\236k\012\360\322\374\017Z]?K"
 	.text
-	.section	.gnu.lto_sendConfigMessageUBLOX.c4aec61e21061550,"",%progbits
+	.section	.gnu.lto_sendConfigMessageUBLOX.38d31d2c2085d861,"",%progbits
 	.ascii	"x\234\225\226\177LSW\024\307\357\271\257}-\264\374\234"
 	.ascii	"B\322\305\230\214djfi\366\217\331_\272\277\367\307\376"
 	.ascii	"\333\262\370\217\023\3760\304m\232\021\023\023\323\360"
@@ -594,7 +594,7 @@
 	.ascii	"\334\363\376\366\212\017<\025\273<;vWn\333S\366\336"
 	.ascii	"\256\275\245\345\314R\276s\333v\032\312\376\005O^g%"
 	.text
-	.section	.gnu.lto_configureNAV5.c4aec61e21061550,"",%progbits
+	.section	.gnu.lto_configureNAV5.38d31d2c2085d861,"",%progbits
 	.ascii	"x\234\225\224[HTQ\024\206\367\277\217s<\343TD\217\003"
 	.ascii	"\2755Y\3208\257=U\217\021\324k\217VZ!\230\023\211`\017"
 	.ascii	"\342\0313\210\244\234\300D\272=\030\203\232\267\321"
@@ -634,7 +634,7 @@
 	.ascii	"\345\010-\367|\301\341`\356\311\374\364Sy\305<\371\015"
 	.ascii	"\036\234\3705"
 	.text
-	.section	.gnu.lto_configureMSG.c4aec61e21061550,"",%progbits
+	.section	.gnu.lto_configureMSG.38d31d2c2085d861,"",%progbits
 	.ascii	"x\234\225\324\337kRa\030\007\360\367y\217\0365\027E"
 	.ascii	"\227BW\303V\221\363\266\273\272\354\242\277\240\233"
 	.ascii	"2\213\020V\213\331\240\033\331\353\017\242\253&\364"
@@ -674,7 +674,7 @@
 	.ascii	"vW\257\375\334E\367\311\376\323=\275\227\273\235D\357"
 	.ascii	"\354q\270\335\324uF\327\347\270t\366\037x-\014X"
 	.text
-	.section	.gnu.lto_configureRATE.c4aec61e21061550,"",%progbits
+	.section	.gnu.lto_configureRATE.38d31d2c2085d861,"",%progbits
 	.ascii	"x\234\225\224KL\023Q\024\206\357\177\247\035\246\024"
 	.ascii	"#q\331\304e\203\211)\335\272\323%\0337.\335h%\304\220"
 	.ascii	"\210\030+\211\233\206)4\306\225\2600\015\301GB\214\210"
@@ -710,7 +710,7 @@
 	.ascii	"\377\341c\301\003m\207\216\264\236\254odZKS \270/p\242"
 	.ascii	"\351\017\211\260\371+"
 	.text
-	.section	.gnu.lto_configureSBAS.c4aec61e21061550,"",%progbits
+	.section	.gnu.lto_configureSBAS.38d31d2c2085d861,"",%progbits
 	.ascii	"x\234\225\225\313O\323A\020\307w\366W\332B\037\200\017"
 	.ascii	"\016\304;&\246\364@L<\301\325\213\177\201&\276\016\206"
 	.ascii	"D\305HH\274\020~H\0239\030J\010!$\210\304\203O\344-"
@@ -762,7 +762,7 @@
 	.ascii	"f?w)\375d\306\231\363iW\022\317\262\337\215\031\017"
 	.ascii	"\000"
 	.text
-	.section	.gnu.lto_gpsConfigure.c4aec61e21061550,"",%progbits
+	.section	.gnu.lto_gpsConfigure.38d31d2c2085d861,"",%progbits
 	.ascii	"x\234\235W\373O\024W\024\276\347\316\356\354cv\201\322"
 	.ascii	"j\322M5\321D-i\221&\306\177\243?\364\037\350\303\244"
 	.ascii	"\306\244\255Mm\223\376b\234uW\323&U\254\325V\360\331"
@@ -843,7 +843,7 @@
 	.ascii	"\224\254Y[\262\372\323u\357~\361\301Gk\277\\\276\212"
 	.ascii	"\375\017\263\234\321\376"
 	.text
-	.section	.gnu.lto_gpsHandleUBLOX.part.0.c4aec61e21061550,"",%progbits
+	.section	.gnu.lto_gpsHandleUBLOX.part.0.38d31d2c2085d861,"",%progbits
 	.ascii	"x\234m\221\337K\223a\024\307\237\357y\336\275\233[\321"
 	.ascii	"\350r\020^\354bD\315\375\011\335\324\255\177@7\265$"
 	.ascii	"J\260\014-\352f\370\314\275\201t\341\017\010\026\244"
@@ -877,7 +877,7 @@
 	.ascii	"[\015M\312\1779\336\336x\361\346\351\370\365\370\037"
 	.ascii	"Zh\377\034"
 	.text
-	.section	.gnu.lto_gpsHandleUBLOX.c4aec61e21061550,"",%progbits
+	.section	.gnu.lto_gpsHandleUBLOX.38d31d2c2085d861,"",%progbits
 	.ascii	"x\234m\224\317OSA\020\307wv\337\333\367\240\242\304"
 	.ascii	"c\023O\034\210Q\350\311\030O^<\373\007x\301J\214\222"
 	.ascii	" \030\320\350\205\360J\233Hb\240\004MH@Q\343/\020\244"
@@ -922,7 +922,7 @@
 	.ascii	"\035;Y_q\372Hu\355\331\362JVx\334]\177\360\350\231\003"
 	.ascii	"\356S\356\277f`\225e"
 	.text
-	.section	.gnu.lto_.symbol_nodes.c4aec61e21061550,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.38d31d2c2085d861,"",%progbits
 	.ascii	"x\234U\320KOSA\024\007\360\377\314\341B)\005\012\367"
 	.ascii	"Rhx4\264\213*>\360\013\030?\332\2517\304\032H\300\310"
 	.ascii	"\202\304\004S\233n\\\270p\351\312\344\246\021\023M\215"
@@ -953,7 +953,7 @@
 	.ascii	"\332\222\012\002\2211\217\260\334\226\370\007\252\377"
 	.ascii	"\026\264"
 	.text
-	.section	.gnu.lto_.refs.c4aec61e21061550,"",%progbits
+	.section	.gnu.lto_.refs.38d31d2c2085d861,"",%progbits
 	.ascii	"x\234e\217mk\024A\020\204\253z\267{\367vngv\367.\267"
 	.ascii	"\334x\211\227\234\321\230\304\034Q1!\321\370\3275\211"
 	.ascii	"\301\267\017\"(\212\242\210\242\177\303Q\242\0106\024"
@@ -978,7 +978,7 @@
 	.ascii	"\224\024\034)3\310\202\262\011\331\242lCnQ\226\334H"
 	.ascii	"\277q\001\311\360\023\356\3050\322"
 	.text
-	.section	.gnu.lto_.decls.c4aec61e21061550,"",%progbits
+	.section	.gnu.lto_.decls.38d31d2c2085d861,"",%progbits
 	.ascii	"x\234\315\275\011\\Tg\2268\312\255\257\252\250*\212"
 	.ascii	"\"\321t\222\261g&\211\351v\272{2\235h\322=\335\363\237"
 	.ascii	"7\323&\232D\023\227V\223\356\331\036C\224D\246\025l"
@@ -2073,7 +2073,7 @@
 	.ascii	"\273\313~\027\030\274\321\011\031M\\\324\201\235\330"
 	.ascii	"\\\354\377\006?L*\215"
 	.text
-	.section	.gnu.lto_.symtab.c4aec61e21061550,"",%progbits
+	.section	.gnu.lto_.symtab.38d31d2c2085d861,"",%progbits
 	.ascii	"_update_checksum\000\000\000\000\000\000\000\000\000"
 	.ascii	"\000\000\000\\\001\000\000gpsHandleUBLOX\000\000\000"
 	.ascii	"\000\000\000\000\000\000\000\000\000w\001\000\000ub"

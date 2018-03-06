@@ -14,24 +14,24 @@
 	.file	"pid_autotune.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.a917fb377ea79296,"",%progbits
+	.section	.gnu.lto_.profile.e8597a2ce21c37bf,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.inline.a917fb377ea79296,"",%progbits
+	.section	.gnu.lto_.inline.e8597a2ce21c37bf,"",%progbits
 	.ascii	"x\234cf\300\016\230\340,\000\000\234\000\006"
 	.text
-	.section	.gnu.lto_.pureconst.a917fb377ea79296,"",%progbits
+	.section	.gnu.lto_.pureconst.e8597a2ce21c37bf,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.symbol_nodes.a917fb377ea79296,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.e8597a2ce21c37bf,"",%progbits
 	.ascii	"x\234cf``Pb\200\002\326\227\014\014\213\231\352\031"
 	.ascii	"X_00\202\351g\014L\013A\364s\006f\020\315\000\000\232"
 	.ascii	"\030\010j"
 	.text
-	.section	.gnu.lto_.refs.a917fb377ea79296,"",%progbits
+	.section	.gnu.lto_.refs.e8597a2ce21c37bf,"",%progbits
 	.ascii	"x\234cf``\340d\200\000fF&&&f&\006\006\000\001F\000\034"
 	.text
-	.section	.gnu.lto_.decls.a917fb377ea79296,"",%progbits
+	.section	.gnu.lto_.decls.e8597a2ce21c37bf,"",%progbits
 	.ascii	"x\234\215W{LT\351\025\277\347\336\201\031\206\001\266"
 	.ascii	"\342\"!\331\310\342.u7\256\270\315\306\364\257.\215"
 	.ascii	"I\233\370Gk\333m\377\351\037\263Sf\200I`\230\314\\\332"
@@ -171,7 +171,7 @@
 	.ascii	".\010\341o\003\377\262\332.\233\222\303\336^X\201\346"
 	.ascii	"\377\007\007\027ZL"
 	.text
-	.section	.gnu.lto_.symtab.a917fb377ea79296,"",%progbits
+	.section	.gnu.lto_.symtab.e8597a2ce21c37bf,"",%progbits
 	.ascii	"pgResetTemplate_pidAutotuneConfig\000\000\000\000\000"
 	.ascii	"\000\000\000\000\000\000\000\354\000\000\000pidAuto"
 	.ascii	"tuneConfig_Registry\000\000\000\000\000\000\000\000"

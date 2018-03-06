@@ -14,23 +14,23 @@
 	.file	"debug.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.6085bfd0945867b3,"",%progbits
+	.section	.gnu.lto_.profile.b42eba5d1045bc6b,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.inline.6085bfd0945867b3,"",%progbits
+	.section	.gnu.lto_.inline.b42eba5d1045bc6b,"",%progbits
 	.ascii	"x\234cf\300\016\230\340,\000\000\234\000\006"
 	.text
-	.section	.gnu.lto_.pureconst.6085bfd0945867b3,"",%progbits
+	.section	.gnu.lto_.pureconst.b42eba5d1045bc6b,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.symbol_nodes.6085bfd0945867b3,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.b42eba5d1045bc6b,"",%progbits
 	.ascii	"x\234cf``\220b\200\002\326C\014\014\013\231\352\031"
 	.ascii	"X\01720\202\351\003\014L \232\001\000R\223\005\331"
 	.text
-	.section	.gnu.lto_.refs.6085bfd0945867b3,"",%progbits
+	.section	.gnu.lto_.refs.b42eba5d1045bc6b,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.decls.6085bfd0945867b3,"",%progbits
+	.section	.gnu.lto_.decls.b42eba5d1045bc6b,"",%progbits
 	.ascii	"x\234}TQL[U\030\276\177\017\345\266\327\256j\023\211"
 	.ascii	"\242\211d\030\262%\214\253\311\262\3706\023\037|\232"
 	.ascii	"\321\304=7\320^\245\011m\015\367\366aO;\330M'26\231"
@@ -91,7 +91,7 @@
 	.ascii	"/z5\247^2\233\361\255\035a\277\"\342\302\013\333\370"
 	.ascii	"\2361\263\363\275\377\000\215\316 )"
 	.text
-	.section	.gnu.lto_.symtab.6085bfd0945867b3,"",%progbits
+	.section	.gnu.lto_.symtab.b42eba5d1045bc6b,"",%progbits
 	.ascii	"sectionTimes\000\000\004\000@\000\000\000\000\000\000"
 	.ascii	"\000\301\000\000\000debugMode\000\000\004\000\001\000"
 	.ascii	"\000\000\000\000\000\000\313\000\000\000debug\000\000"

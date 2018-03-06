@@ -14,10 +14,10 @@
 	.file	"gps_i2cnav.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.f6f7691e78917837,"",%progbits
+	.section	.gnu.lto_.profile.b2cccbab9403f54e,"",%progbits
 	.ascii	"x\234cf```e\200\000F\206fF'\000\002W\000\320"
 	.text
-	.section	.gnu.lto_.jmpfuncs.f6f7691e78917837,"",%progbits
+	.section	.gnu.lto_.jmpfuncs.b2cccbab9403f54e,"",%progbits
 	.ascii	"x\234cf\300\016r\030!4\023\020\2632}db\274\377\344\374"
 	.ascii	"E\216\027L?A\002\214\313\031\245\030@\202\017{\277n"
 	.ascii	"f\004\0112*00\256\200\012\302U\002\215`\\\011\025\274"
@@ -30,16 +30,16 @@
 	.ascii	"\001\273\306\357\177\216\267B\274\313\316\300\270\021"
 	.ascii	",\205M%$x\240\341\301\000\000J\320X\300"
 	.text
-	.section	.gnu.lto_.inline.f6f7691e78917837,"",%progbits
+	.section	.gnu.lto_.inline.b2cccbab9403f54e,"",%progbits
 	.ascii	"x\234cf\300\016\312\2414\023\003#\217\010#\003\023\313"
 	.ascii	"\002y\006\266\005\362L 1v\001\006\006V\260,#\243\225"
 	.ascii	"*##\003#P\235Lw\005\003\337]'\260\0026~\250\202\011"
 	.ascii	"~\2440\021\3462\000\000z\325\011\357"
 	.text
-	.section	.gnu.lto_.pureconst.f6f7691e78917837,"",%progbits
+	.section	.gnu.lto_.pureconst.b2cccbab9403f54e,"",%progbits
 	.ascii	"x\234cf```e\200\000&\006\011F)\000\000\363\000>"
 	.text
-	.section	.gnu.lto_i2cnavGPSModuleDetect.f6f7691e78917837,"",%progbits
+	.section	.gnu.lto_i2cnavGPSModuleDetect.b2cccbab9403f54e,"",%progbits
 	.ascii	"x\234mRKk\023Q\024>\337\271\223\0304\322\3422\202\024"
 	.ascii	"\262\010\202t\304B\377\202[\301\255 !\212\004\261\224"
 	.ascii	"\244v\027z\223\006\311F\021\273\261.\244\012\276k\242"
@@ -70,7 +70,7 @@
 	.ascii	"\023O\034\017\313\333\376\376\364\301\201\370\300\311"
 	.ascii	"\364o\024L\327|"
 	.text
-	.section	.gnu.lto_i2cnavGPSModuleRead.f6f7691e78917837,"",%progbits
+	.section	.gnu.lto_i2cnavGPSModuleRead.b2cccbab9403f54e,"",%progbits
 	.ascii	"x\234\225\226mL[U\030\307\317s\356\355\355\273\035\020"
 	.ascii	"\202\324d`\310B\266Y\232\370aK\366\311\370\305O&&~5"
 	.ascii	"1\210\313B\214d\241\270\017&d\227\202\023\2231\201}"
@@ -142,17 +142,17 @@
 	.ascii	"\256\267\013\262\013>r\011\3319\037\374\007\031\344"
 	.ascii	"\272\223"
 	.text
-	.section	.gnu.lto_.symbol_nodes.f6f7691e78917837,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.b2cccbab9403f54e,"",%progbits
 	.ascii	"x\234M\310\261\011\200@\020D\321\277{\311\025k\017{"
 	.ascii	"\201\221\202X\201\030l)jh\015\012\366p\231\010\272\201"
 	.ascii	"\223<\346'\240!\246\013\006\343\016fLsFWL\376A6L\277"
 	.ascii	"@)\231\204\342\307-I\224\366\374\364\256\276^\241\367"
 	.ascii	"\361C\037\252\360\000\217H\036\301"
 	.text
-	.section	.gnu.lto_.refs.f6f7691e78917837,"",%progbits
+	.section	.gnu.lto_.refs.b2cccbab9403f54e,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.decls.f6f7691e78917837,"",%progbits
+	.section	.gnu.lto_.decls.b2cccbab9403f54e,"",%progbits
 	.ascii	"x\234\225V{PT\327\031\277\337=\373\274\362\260\245\242"
 	.ascii	"\2633\3150\264\3354\255\021\203\235N\372\237\251t\254"
 	.ascii	"\231\326\330&\361\237vfg\303\256\272S\\,\273\230\346"
@@ -269,7 +269,7 @@
 	.ascii	"-p}\\l\274\323f\211\216\215\217s\3315\033l\261\233B"
 	.ascii	"\236\253\361\357v\253M\2176\372\376/\215oS\352"
 	.text
-	.section	.gnu.lto_.symtab.f6f7691e78917837,"",%progbits
+	.section	.gnu.lto_.symtab.b2cccbab9403f54e,"",%progbits
 	.ascii	"i2cnavGPSModuleDetect\000\000\000\000\000\000\000\000"
 	.ascii	"\000\000\000\000\313\000\000\000i2cnavGPSModuleRead"
 	.ascii	"\000\000\000\000\000\000\000\000\000\000\000\000\011"

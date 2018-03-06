@@ -14,26 +14,26 @@
 	.file	"serial_4way_stk500v2.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.2df3fef07a043f7a,"",%progbits
+	.section	.gnu.lto_.profile.d98cbd8fb83c8d6e,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.inline.2df3fef07a043f7a,"",%progbits
+	.section	.gnu.lto_.inline.d98cbd8fb83c8d6e,"",%progbits
 	.ascii	"x\234cf\300\016\230\340,\000\000\234\000\006"
 	.text
-	.section	.gnu.lto_.pureconst.2df3fef07a043f7a,"",%progbits
+	.section	.gnu.lto_.pureconst.d98cbd8fb83c8d6e,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.symbol_nodes.2df3fef07a043f7a,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.d98cbd8fb83c8d6e,"",%progbits
 	.ascii	"x\234cf```b\200\001\000\000L\000\006"
 	.text
-	.section	.gnu.lto_.refs.2df3fef07a043f7a,"",%progbits
+	.section	.gnu.lto_.refs.d98cbd8fb83c8d6e,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.decls.2df3fef07a043f7a,"",%progbits
+	.section	.gnu.lto_.decls.d98cbd8fb83c8d6e,"",%progbits
 	.ascii	"x\234cf``P\001\342\377@\000\244\030\030\2418\200\201"
 	.ascii	"\000\000\000\3208\004v"
 	.text
-	.section	.gnu.lto_.symtab.2df3fef07a043f7a,"",%progbits
+	.section	.gnu.lto_.symtab.d98cbd8fb83c8d6e,"",%progbits
 	.text
 	.section	.gnu.lto_.opts,"",%progbits
 	.ascii	"'-fno-trapv' '-mthumb' '-mcpu=cortex-m3' '-ggdb3' '"

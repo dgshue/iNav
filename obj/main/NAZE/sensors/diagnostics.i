@@ -370,7 +370,7 @@
 #define NAZE 1
 #define __FORKNAME__ "inav"
 #define __TARGET__ "NAZE"
-#define __REVISION__ "3d51ccc"
+#define __REVISION__ "8d7eea1"
 # 1 "./src/main/sensors/diagnostics.c"
 # 1 "/usr/lib/gcc/arm-none-eabi/4.9.3/include/stdbool.h" 1 3 4
 # 29 "/usr/lib/gcc/arm-none-eabi/4.9.3/include/stdbool.h" 3 4
@@ -12901,6 +12901,11 @@ extern void assert_param(int val);
 #define BARO 
 #define USE_BARO_MS5611 
 #define USE_BARO_BMP280 
+
+#define MAG 
+#define USE_MAG_HMC5883 
+#define USE_MAG_QMC5883 
+#define MAG_HMC5883_ALIGN CW180_DEG
 # 116 "./src/main/target/NAZE/target.h"
 #define SOFTSERIAL_1_RX_PIN PA6
 #define SOFTSERIAL_1_TX_PIN PA7
@@ -12909,26 +12914,26 @@ extern void assert_param(int val);
 
 #define USE_I2C 
 #define I2C_DEVICE (I2CDEV_2)
-# 168 "./src/main/target/NAZE/target.h"
-#define USE_ADC 
-#define ADC_CHANNEL_1_PIN PB1
-#define ADC_CHANNEL_2_PIN PA4
-#define ADC_CHANNEL_3_PIN PA1
-#define CURRENT_METER_ADC_CHANNEL ADC_CHN_1
-#define VBAT_ADC_CHANNEL ADC_CHN_2
-#define RSSI_ADC_CHANNEL ADC_CHN_3
-# 184 "./src/main/target/NAZE/target.h"
+# 176 "./src/main/target/NAZE/target.h"
+#define NAV_AUTO_MAG_DECLINATION 
+#define NAV_GPS_GLITCH_DETECTION 
+
+
+
+
+
+
 #define USE_SERIALRX_SPEKTRUM 
 #undef USE_SERIALRX_IBUS
-#define SPEKTRUM_BIND 
-#define BIND_PIN PA3
+
+
 
 
 
 #define TARGET_MOTOR_COUNT 6
 
-#define DEFAULT_FEATURES FEATURE_VBAT
-#define DEFAULT_RX_FEATURE FEATURE_RX_PPM
+
+
 
 
 #define MAX_PWM_OUTPUT_PORTS 10
@@ -16018,8 +16023,27 @@ hardwareSensorStatus_e getHwAccelerometerStatus(void)
 
 hardwareSensorStatus_e getHwCompassStatus(void)
 {
-# 84 "./src/main/sensors/diagnostics.c"
-    return HW_SENSOR_NONE;
+
+    if (detectedSensors[SENSOR_INDEX_MAG] != MAG_NONE) {
+        if (compassIsHealthy()) {
+            return HW_SENSOR_OK;
+        }
+        else {
+            return HW_SENSOR_UNHEALTHY;
+        }
+    }
+    else {
+        if (requestedSensors[SENSOR_INDEX_MAG] != MAG_NONE) {
+
+            return HW_SENSOR_UNAVAILABLE;
+        }
+        else {
+
+            return HW_SENSOR_NONE;
+        }
+    }
+
+
 
 }
 

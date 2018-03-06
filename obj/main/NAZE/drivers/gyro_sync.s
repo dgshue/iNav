@@ -14,15 +14,15 @@
 	.file	"gyro_sync.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.55ddfcc4034f0f48,"",%progbits
+	.section	.gnu.lto_.profile.6fbb435d644d5087,"",%progbits
 	.ascii	"x\234cf```a\200\000F\006e\021\000\000\316\000@"
 	.text
-	.section	.gnu.lto_.jmpfuncs.55ddfcc4034f0f48,"",%progbits
+	.section	.gnu.lto_.jmpfuncs.6fbb435d644d5087,"",%progbits
 	.ascii	"x\234cf\300\016\224\24143\003##c=#s9\003#\003\303\003"
 	.ascii	"\006.FVF\020\220\257\007\001&\220\034\003\000QL\005"
 	.ascii	";"
 	.text
-	.section	.gnu.lto_.inline.55ddfcc4034f0f48,"",%progbits
+	.section	.gnu.lto_.inline.6fbb435d644d5087,"",%progbits
 	.ascii	"x\234m\217\261\015\302@\014E\377\267\035.\"\005\201"
 	.ascii	"2MJ\326`\002fH\231l\021:\012\012FH\005\354\300\020\300"
 	.ascii	"\0044H\244\004\211\206\216\273$H\024X:\177\351\331\376"
@@ -34,10 +34,10 @@
 	.ascii	"\026\013\310\272AO4D\202?R2D|\310oF\353{\367\315\017"
 	.ascii	"\261\316&q"
 	.text
-	.section	.gnu.lto_.pureconst.55ddfcc4034f0f48,"",%progbits
+	.section	.gnu.lto_.pureconst.6fbb435d644d5087,"",%progbits
 	.ascii	"x\234cf```g\200\000f\006IF)&V\000\001\242\000I"
 	.text
-	.section	.gnu.lto_gyroSyncCheckIntStatus.55ddfcc4034f0f48,"",%progbits
+	.section	.gnu.lto_gyroSyncCheckIntStatus.6fbb435d644d5087,"",%progbits
 	.ascii	"x\234mOMK\224Q\024>\317\271w\336\031\234\244AZ\275\213"
 	.ascii	"\012\301DLg\341Z\350'\364\017\242\246\010\027*\314\200"
 	.ascii	"\340\312\3538\313\026R\233\240\231q!6\225\316LM\024"
@@ -63,7 +63,7 @@
 	.ascii	"M\016\215\335K\246\342\367\307\223\243\267R\343#\211"
 	.ascii	"\376\004Y\005\177\001&\321\241\210"
 	.text
-	.section	.gnu.lto_gyroSetSampleRate.55ddfcc4034f0f48,"",%progbits
+	.section	.gnu.lto_gyroSetSampleRate.6fbb435d644d5087,"",%progbits
 	.ascii	"x\234\215\224KhSQ\020\206\317\234s\037\251ImQD\011\370"
 	.ascii	"@)A\264\215\013\267>\026.\\\211\"\270q!\245\215\022"
 	.ascii	"h\222\222\212\320\205\364\266M\253H\021\211 E-\276\353"
@@ -111,7 +111,7 @@
 	.ascii	"<\376\200\317\353\317\337\035\010fK_\276\257\270\310"
 	.ascii	"\263\331\023\364\006\012\177\001|\014\220\362"
 	.text
-	.section	.gnu.lto_gyroMPU6xxxGetDividerDrops.55ddfcc4034f0f48,"",%progbits
+	.section	.gnu.lto_gyroMPU6xxxGetDividerDrops.6fbb435d644d5087,"",%progbits
 	.ascii	"x\234eO\273JCA\020\2353{\023\002\0271XI\032E\360\005"
 	.ascii	"&)m\375\023\221(\222B\205\033\020\254\262\011\261\023"
 	.ascii	"\021+A\304B\304GL\002\212\206XE\013\261\360\201Z\210"
@@ -132,16 +132,16 @@
 	.ascii	"D'G\234Xxt\312\231\030\214M\215GB\021\262\004\374\000"
 	.ascii	")Uz\277"
 	.text
-	.section	.gnu.lto_.symbol_nodes.55ddfcc4034f0f48,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.6fbb435d644d5087,"",%progbits
 	.ascii	"x\234cf``\260a\200\002&\373z\006\206\011\347\030\030"
 	.ascii	"\352\353\031\346-\340``:\300P\317\210\"p\220\241\236"
 	.ascii	"\011Y\200\205\201\341\313\237'\214\014\014\000\003\244"
 	.ascii	"\021E"
 	.text
-	.section	.gnu.lto_.refs.55ddfcc4034f0f48,"",%progbits
+	.section	.gnu.lto_.refs.6fbb435d644d5087,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.decls.55ddfcc4034f0f48,"",%progbits
+	.section	.gnu.lto_.decls.6fbb435d644d5087,"",%progbits
 	.ascii	"x\234\265:kP\224W\226}\277\333@\323\335\200#F3\354\326"
 	.ascii	"\216a'T\262\225\211\306\2318\246*5\025\243\321\230q"
 	.ascii	"\242\253\2612;\331\332.\002\035\323\025m\334\356&\243"
@@ -428,7 +428,7 @@
 	.ascii	"\365Z\323z\337\315[6iIZy\021\014\270a\361\326\255[W"
 	.ascii	"jM\322\364\372_\017\365c\245"
 	.text
-	.section	.gnu.lto_.symtab.55ddfcc4034f0f48,"",%progbits
+	.section	.gnu.lto_.symtab.6fbb435d644d5087,"",%progbits
 	.ascii	"gyroSyncCheckIntStatus\000\000\000\000\000\000\000\000"
 	.ascii	"\000\000\000\000\322\001\000\000gyroSetSampleRate\000"
 	.ascii	"\000\000\000\000\000\000\000\000\000\000\000\342\001"

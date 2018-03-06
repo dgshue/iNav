@@ -14,20 +14,20 @@
 	.file	"main.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.42e3cf9b3ec7ea6c,"",%progbits
+	.section	.gnu.lto_.profile.d77bb66ba639b141,"",%progbits
 	.ascii	"x\234cf```a\200\000F\006\021&\000\000\236\000\037"
 	.text
-	.section	.gnu.lto_.jmpfuncs.42e3cf9b3ec7ea6c,"",%progbits
+	.section	.gnu.lto_.jmpfuncs.d77bb66ba639b141,"",%progbits
 	.ascii	"x\234cf\300\016\330\2414#\204\002\000\001\014\000\014"
 	.text
-	.section	.gnu.lto_.inline.42e3cf9b3ec7ea6c,"",%progbits
+	.section	.gnu.lto_.inline.d77bb66ba639b141,"",%progbits
 	.ascii	"x\234cf\300\016\344\2404#\003\003\313'vF\006& \233\005"
 	.ascii	"L20r1\202\010\020\023\000 \225\001@"
 	.text
-	.section	.gnu.lto_.pureconst.42e3cf9b3ec7ea6c,"",%progbits
+	.section	.gnu.lto_.pureconst.d77bb66ba639b141,"",%progbits
 	.ascii	"x\234cf```f\200\000F\006\023\000\000\224\000<"
 	.text
-	.section	.gnu.lto_main.42e3cf9b3ec7ea6c,"",%progbits
+	.section	.gnu.lto_main.d77bb66ba639b141,"",%progbits
 	.ascii	"x\234cf\300\004\246@\374\001\210E\200\230\221\225\201"
 	.ascii	"\221i\3029\006\206F\016&Ff\010\203\231\221\005\302`"
 	.ascii	"\201\210822\32431\2630\002\011\210\001/\231>21\356\\"
@@ -44,16 +44,16 @@
 	.ascii	"\303\370\004d\026\020\010\351\351\027\027%\353\347&"
 	.ascii	"f\346\201\011\275d\006\0009\207_\200"
 	.text
-	.section	.gnu.lto_.symbol_nodes.42e3cf9b3ec7ea6c,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.d77bb66ba639b141,"",%progbits
 	.ascii	"x\234M\310\261\025@@\024\005\321y\377\007\024\240$}"
 	.ascii	"\275\315%*p6P\011\033\013\305*q\004\004&\273\223\300"
 	.ascii	"\310Wl\030\346\003l\226:\240\206\365\016J\351\321\216"
 	.ascii	"\343\347$X\257[\211h\365\234:\036\211\364\022\345"
 	.text
-	.section	.gnu.lto_.refs.42e3cf9b3ec7ea6c,"",%progbits
+	.section	.gnu.lto_.refs.d77bb66ba639b141,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.decls.42e3cf9b3ec7ea6c,"",%progbits
+	.section	.gnu.lto_.decls.d77bb66ba639b141,"",%progbits
 	.ascii	"x\234cf``(\000\342\377@0\235\221\201!\025\310f\002\342"
 	.ascii	"\000\006\004`\006\342\325@\274\016\21070`\002\220\034"
 	.ascii	"+\020\363\0011\017\020{\001\361f ^\203\246\177\003\324"
@@ -78,7 +78,7 @@
 	.ascii	"``\311\314\313,\221@R\226\226\014D\361 Q\240,\000\252"
 	.ascii	"\375\255}"
 	.text
-	.section	.gnu.lto_.symtab.42e3cf9b3ec7ea6c,"",%progbits
+	.section	.gnu.lto_.symtab.d77bb66ba639b141,"",%progbits
 	.ascii	"main\000\000\000\000\000\000\000\000\000\000\000\000"
 	.ascii	"\253\000\000\000scheduler\000\000\002\000\000\000\000"
 	.ascii	"\000\000\000\000\000\256\000\000\000init\000\000\002"

@@ -370,7 +370,7 @@
 #define NAZE 1
 #define __FORKNAME__ "inav"
 #define __TARGET__ "NAZE"
-#define __REVISION__ "3d51ccc"
+#define __REVISION__ "8d7eea1"
 # 1 "./src/main/blackbox/blackbox.c"
 # 18 "./src/main/blackbox/blackbox.c"
 # 1 "/usr/lib/gcc/arm-none-eabi/4.9.3/include/stdbool.h" 1 3 4
@@ -14537,6 +14537,11 @@ extern void assert_param(int val);
 #define BARO 
 #define USE_BARO_MS5611 
 #define USE_BARO_BMP280 
+
+#define MAG 
+#define USE_MAG_HMC5883 
+#define USE_MAG_QMC5883 
+#define MAG_HMC5883_ALIGN CW180_DEG
 # 116 "./src/main/target/NAZE/target.h"
 #define SOFTSERIAL_1_RX_PIN PA6
 #define SOFTSERIAL_1_TX_PIN PA7
@@ -14545,26 +14550,26 @@ extern void assert_param(int val);
 
 #define USE_I2C 
 #define I2C_DEVICE (I2CDEV_2)
-# 168 "./src/main/target/NAZE/target.h"
-#define USE_ADC 
-#define ADC_CHANNEL_1_PIN PB1
-#define ADC_CHANNEL_2_PIN PA4
-#define ADC_CHANNEL_3_PIN PA1
-#define CURRENT_METER_ADC_CHANNEL ADC_CHN_1
-#define VBAT_ADC_CHANNEL ADC_CHN_2
-#define RSSI_ADC_CHANNEL ADC_CHN_3
-# 184 "./src/main/target/NAZE/target.h"
+# 176 "./src/main/target/NAZE/target.h"
+#define NAV_AUTO_MAG_DECLINATION 
+#define NAV_GPS_GLITCH_DETECTION 
+
+
+
+
+
+
 #define USE_SERIALRX_SPEKTRUM 
 #undef USE_SERIALRX_IBUS
-#define SPEKTRUM_BIND 
-#define BIND_PIN PA3
+
+
 
 
 
 #define TARGET_MOTOR_COUNT 6
 
-#define DEFAULT_FEATURES FEATURE_VBAT
-#define DEFAULT_RX_FEATURE FEATURE_RX_PPM
+
+
 
 
 #define MAX_PWM_OUTPUT_PORTS 10
@@ -19398,9 +19403,9 @@ static const blackboxDeltaFieldDefinition_t blackboxMainFields[] = {
     {"amperageLatest",-1, FLIGHT_LOG_FIELD_UNSIGNED, .Ipredict = FLIGHT_LOG_FIELD_PREDICTOR_0, .Iencode = FLIGHT_LOG_FIELD_ENCODING_UNSIGNED_VB, .Ppredict = FLIGHT_LOG_FIELD_PREDICTOR_PREVIOUS, .Pencode = FLIGHT_LOG_FIELD_ENCODING_TAG8_8SVB, FLIGHT_LOG_FIELD_CONDITION_AMPERAGE_ADC},
 
 
-
-
-
+    {"magADC", 0, FLIGHT_LOG_FIELD_SIGNED, .Ipredict = FLIGHT_LOG_FIELD_PREDICTOR_0, .Iencode = FLIGHT_LOG_FIELD_ENCODING_SIGNED_VB, .Ppredict = FLIGHT_LOG_FIELD_PREDICTOR_PREVIOUS, .Pencode = FLIGHT_LOG_FIELD_ENCODING_TAG8_8SVB, FLIGHT_LOG_FIELD_CONDITION_MAG},
+    {"magADC", 1, FLIGHT_LOG_FIELD_SIGNED, .Ipredict = FLIGHT_LOG_FIELD_PREDICTOR_0, .Iencode = FLIGHT_LOG_FIELD_ENCODING_SIGNED_VB, .Ppredict = FLIGHT_LOG_FIELD_PREDICTOR_PREVIOUS, .Pencode = FLIGHT_LOG_FIELD_ENCODING_TAG8_8SVB, FLIGHT_LOG_FIELD_CONDITION_MAG},
+    {"magADC", 2, FLIGHT_LOG_FIELD_SIGNED, .Ipredict = FLIGHT_LOG_FIELD_PREDICTOR_0, .Iencode = FLIGHT_LOG_FIELD_ENCODING_SIGNED_VB, .Ppredict = FLIGHT_LOG_FIELD_PREDICTOR_PREVIOUS, .Pencode = FLIGHT_LOG_FIELD_ENCODING_TAG8_8SVB, FLIGHT_LOG_FIELD_CONDITION_MAG},
 
 
     {"BaroAlt", -1, FLIGHT_LOG_FIELD_SIGNED, .Ipredict = FLIGHT_LOG_FIELD_PREDICTOR_0, .Iencode = FLIGHT_LOG_FIELD_ENCODING_SIGNED_VB, .Ppredict = FLIGHT_LOG_FIELD_PREDICTOR_PREVIOUS, .Pencode = FLIGHT_LOG_FIELD_ENCODING_TAG8_8SVB, FLIGHT_LOG_FIELD_CONDITION_BARO},
@@ -19540,7 +19545,16 @@ typedef struct blackboxMainState_s {
 
 
     int32_t BaroAlt;
-# 358 "./src/main/blackbox/blackbox.c"
+
+
+
+
+
+    int16_t magADC[3];
+
+
+
+
     uint16_t rssi;
 
     int16_t navState;
@@ -19664,9 +19678,9 @@ static _Bool testBlackboxConditionUncached(FlightLogFieldCondition condition)
 
     case FLIGHT_LOG_FIELD_CONDITION_MAG:
 
+        return sensors(SENSOR_MAG);
 
 
-        return 0;
 
 
     case FLIGHT_LOG_FIELD_CONDITION_BARO:
@@ -19805,7 +19819,14 @@ static void writeIntraframe(void)
 
         blackboxWriteUnsignedVB(blackboxCurrent->amperageLatest);
     }
-# 630 "./src/main/blackbox/blackbox.c"
+
+
+    if (testBlackboxCondition(FLIGHT_LOG_FIELD_CONDITION_MAG)) {
+        blackboxWriteSigned16VBArray(blackboxCurrent->magADC, 3);
+    }
+
+
+
     if (testBlackboxCondition(FLIGHT_LOG_FIELD_CONDITION_BARO)) {
         blackboxWriteSignedVB(blackboxCurrent->BaroAlt);
     }
@@ -19952,7 +19973,16 @@ static void writeInterframe(void)
     if (testBlackboxCondition(FLIGHT_LOG_FIELD_CONDITION_AMPERAGE_ADC)) {
         deltas[optionalFieldCount++] = (int32_t) blackboxCurrent->amperageLatest - blackboxLast->amperageLatest;
     }
-# 799 "./src/main/blackbox/blackbox.c"
+
+
+    if (testBlackboxCondition(FLIGHT_LOG_FIELD_CONDITION_MAG)) {
+        for (int x = 0; x < 3; x++) {
+            deltas[optionalFieldCount++] = blackboxCurrent->magADC[x] - blackboxLast->magADC[x];
+        }
+    }
+
+
+
     if (testBlackboxCondition(FLIGHT_LOG_FIELD_CONDITION_BARO)) {
         deltas[optionalFieldCount++] = blackboxCurrent->BaroAlt - blackboxLast->BaroAlt;
     }
@@ -20254,7 +20284,7 @@ static void loadMainState(timeUs_t currentTimeUs)
         blackboxCurrent->gyroADC[i] = lrintf(gyro.gyroADCf[i]);
         blackboxCurrent->accADC[i] = acc.accADC[i];
 
-
+        blackboxCurrent->magADC[i] = mag.magADC[i];
 
     }
 

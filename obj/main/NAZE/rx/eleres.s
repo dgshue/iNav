@@ -14,23 +14,23 @@
 	.file	"eleres.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.2becf70b090476db,"",%progbits
+	.section	.gnu.lto_.profile.cbe5c4386442cfd6,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.inline.2becf70b090476db,"",%progbits
+	.section	.gnu.lto_.inline.cbe5c4386442cfd6,"",%progbits
 	.ascii	"x\234cf\300\016\230\340,\000\000\234\000\006"
 	.text
-	.section	.gnu.lto_.pureconst.2becf70b090476db,"",%progbits
+	.section	.gnu.lto_.pureconst.cbe5c4386442cfd6,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.symbol_nodes.2becf70b090476db,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.cbe5c4386442cfd6,"",%progbits
 	.ascii	"x\234cf``\340b\200\002\326\363\014\014\013\231\352\031"
 	.ascii	"\030\000\014[\002\004"
 	.text
-	.section	.gnu.lto_.refs.2becf70b090476db,"",%progbits
+	.section	.gnu.lto_.refs.cbe5c4386442cfd6,"",%progbits
 	.ascii	"x\234cf```d\200\002\000\000=\000\005"
 	.text
-	.section	.gnu.lto_.decls.2becf70b090476db,"",%progbits
+	.section	.gnu.lto_.decls.cbe5c4386442cfd6,"",%progbits
 	.ascii	"x\234e\323{HSQ\034\007\360{v\234\356\341f\366\020Z\177"
 	.ascii	"\030XQ J\317\377\327Z\272Z*s\253\354\237\021b%T\206"
 	.ascii	"\313\376\276.\024\203\225e\224bF\232\226\232\226ii\346"
@@ -81,7 +81,7 @@
 	.ascii	"\343\311g#O\234N>y\352|\244))\365B\212)\342\024'K>{"
 	.ascii	".\355||JZjb\2221\351\017\340c\235\245"
 	.text
-	.section	.gnu.lto_.symtab.2becf70b090476db,"",%progbits
+	.section	.gnu.lto_.symtab.cbe5c4386442cfd6,"",%progbits
 	.ascii	"inputSource_e\000\000\004\000\001\000\000\000\000\000"
 	.ascii	"\000\000\332\000\000\000"
 	.text

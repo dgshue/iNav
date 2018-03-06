@@ -370,7 +370,7 @@
 #define NAZE 1
 #define __FORKNAME__ "inav"
 #define __TARGET__ "NAZE"
-#define __REVISION__ "3d51ccc"
+#define __REVISION__ "8d7eea1"
 # 1 "./src/main/fc/config.c"
 # 18 "./src/main/fc/config.c"
 # 1 "/usr/lib/gcc/arm-none-eabi/4.9.3/include/stdbool.h" 1 3 4
@@ -14028,6 +14028,11 @@ extern void assert_param(int val);
 #define BARO 
 #define USE_BARO_MS5611 
 #define USE_BARO_BMP280 
+
+#define MAG 
+#define USE_MAG_HMC5883 
+#define USE_MAG_QMC5883 
+#define MAG_HMC5883_ALIGN CW180_DEG
 # 116 "./src/main/target/NAZE/target.h"
 #define SOFTSERIAL_1_RX_PIN PA6
 #define SOFTSERIAL_1_TX_PIN PA7
@@ -14036,26 +14041,26 @@ extern void assert_param(int val);
 
 #define USE_I2C 
 #define I2C_DEVICE (I2CDEV_2)
-# 168 "./src/main/target/NAZE/target.h"
-#define USE_ADC 
-#define ADC_CHANNEL_1_PIN PB1
-#define ADC_CHANNEL_2_PIN PA4
-#define ADC_CHANNEL_3_PIN PA1
-#define CURRENT_METER_ADC_CHANNEL ADC_CHN_1
-#define VBAT_ADC_CHANNEL ADC_CHN_2
-#define RSSI_ADC_CHANNEL ADC_CHN_3
-# 184 "./src/main/target/NAZE/target.h"
+# 176 "./src/main/target/NAZE/target.h"
+#define NAV_AUTO_MAG_DECLINATION 
+#define NAV_GPS_GLITCH_DETECTION 
+
+
+
+
+
+
 #define USE_SERIALRX_SPEKTRUM 
 #undef USE_SERIALRX_IBUS
-#define SPEKTRUM_BIND 
-#define BIND_PIN PA3
+
+
 
 
 
 #define TARGET_MOTOR_COUNT 6
 
-#define DEFAULT_FEATURES FEATURE_VBAT
-#define DEFAULT_RX_FEATURE FEATURE_RX_PPM
+
+
 
 
 #define MAX_PWM_OUTPUT_PORTS 10
@@ -19461,19 +19466,36 @@ extern uint16_t navEPH;
 extern uint16_t navEPV;
 extern int16_t navAccNEU[3];
 # 79 "./src/main/fc/config.c" 2
-# 87 "./src/main/fc/config.c"
+
+
+#define DEFAULT_RX_FEATURE FEATURE_RX_PARALLEL_PWM
+
+
+#define DEFAULT_FEATURES 0
+
+
 #define RX_SPI_DEFAULT_PROTOCOL 0
 
 
 #define BRUSHED_MOTORS_PWM_RATE 16000
 #define BRUSHLESS_MOTORS_PWM_RATE 400
-# 103 "./src/main/fc/config.c"
+
+
+#define VBAT_ADC_CHANNEL ADC_CHN_NONE
+
+
+#define RSSI_ADC_CHANNEL ADC_CHN_NONE
+
+
+#define CURRENT_METER_ADC_CHANNEL ADC_CHN_NONE
+
+
 #define AIRSPEED_ADC_CHANNEL ADC_CHN_NONE
 
 
 extern const featureConfig_t pgResetTemplate_featureConfig; featureConfig_t featureConfig_System; featureConfig_t featureConfig_Copy; extern const pgRegistry_t featureConfig_Registry; const pgRegistry_t featureConfig_Registry __attribute__ ((section(".pg_registry"), used, aligned(4))) = { .pgn = 19 | (0 << 12), .size = sizeof(featureConfig_t) | PGR_SIZE_SYSTEM_FLAG, .address = (uint8_t*)&featureConfig_System, .copy = (uint8_t*)&featureConfig_Copy, .ptr = 0, .reset = {.ptr = (void*)&pgResetTemplate_featureConfig}, };
 
-const featureConfig_t pgResetTemplate_featureConfig __attribute__ ((section(".pg_resetdata"), used, aligned(2))) = { .enabledFeatures = FEATURE_VBAT | FEATURE_RX_PPM }
+const featureConfig_t pgResetTemplate_featureConfig __attribute__ ((section(".pg_resetdata"), used, aligned(2))) = { .enabledFeatures = 0 | FEATURE_RX_PARALLEL_PWM }
 
  ;
 
@@ -19487,7 +19509,7 @@ beeperConfig_t beeperConfig_System; beeperConfig_t beeperConfig_Copy; extern con
 
 extern const adcChannelConfig_t pgResetTemplate_adcChannelConfig; adcChannelConfig_t adcChannelConfig_System; adcChannelConfig_t adcChannelConfig_Copy; extern const pgRegistry_t adcChannelConfig_Registry; const pgRegistry_t adcChannelConfig_Registry __attribute__ ((section(".pg_registry"), used, aligned(4))) = { .pgn = 1010 | (0 << 12), .size = sizeof(adcChannelConfig_t) | PGR_SIZE_SYSTEM_FLAG, .address = (uint8_t*)&adcChannelConfig_System, .copy = (uint8_t*)&adcChannelConfig_Copy, .ptr = 0, .reset = {.ptr = (void*)&pgResetTemplate_adcChannelConfig}, };
 
-const adcChannelConfig_t pgResetTemplate_adcChannelConfig __attribute__ ((section(".pg_resetdata"), used, aligned(2))) = { .adcFunctionChannel = { [ADC_BATTERY] = ADC_CHN_2, [ADC_RSSI] = ADC_CHN_3, [ADC_CURRENT] = ADC_CHN_1, [ADC_AIRSPEED] = ADC_CHN_NONE, } }
+const adcChannelConfig_t pgResetTemplate_adcChannelConfig __attribute__ ((section(".pg_resetdata"), used, aligned(2))) = { .adcFunctionChannel = { [ADC_BATTERY] = ADC_CHN_NONE, [ADC_RSSI] = ADC_CHN_NONE, [ADC_CURRENT] = ADC_CHN_NONE, [ADC_AIRSPEED] = ADC_CHN_NONE, } }
 
 
 
@@ -19549,7 +19571,7 @@ void validateAndFixConfig(void)
 
 
     if (!(featureConfigured(FEATURE_RX_PARALLEL_PWM) || featureConfigured(FEATURE_RX_PPM) || featureConfigured(FEATURE_RX_SERIAL) || featureConfigured(FEATURE_RX_MSP) || featureConfigured(FEATURE_RX_SPI))) {
-        featureSet(FEATURE_RX_PPM);
+        featureSet(FEATURE_RX_PARALLEL_PWM);
     }
 
     if (featureConfigured(FEATURE_RX_PPM)) {

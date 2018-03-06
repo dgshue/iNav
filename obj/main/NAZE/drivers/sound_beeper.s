@@ -14,10 +14,10 @@
 	.file	"sound_beeper.c"
 	.text
 .Ltext0:
-	.section	.gnu.lto_.profile.bceab880f453777c,"",%progbits
+	.section	.gnu.lto_.profile.ea1bfe0c6f0f0ec,"",%progbits
 	.ascii	"x\234cf```a\200\000F\206D\015\000\001^\000\222"
 	.text
-	.section	.gnu.lto_.jmpfuncs.bceab880f453777c,"",%progbits
+	.section	.gnu.lto_.jmpfuncs.ea1bfe0c6f0f0ec,"",%progbits
 	.ascii	"x\234cf\300\016\312\24143\003##c=\023\210\311\302\300"
 	.ascii	"\300\310\300\300\012\34232}db\274\377\344\374E\216\027"
 	.ascii	"L?A\222\214\313\031\245\030`\252@\222\357\033^\236\345"
@@ -25,7 +25,7 @@
 	.ascii	"dbb`\\\011\025\204\033\303\0144f\025P\020h\011\003\000"
 	.ascii	"9d\035D"
 	.text
-	.section	.gnu.lto_.inline.bceab880f453777c,"",%progbits
+	.section	.gnu.lto_.inline.ea1bfe0c6f0f0ec,"",%progbits
 	.ascii	"x\234cf\300\016Z\24043\003\003\217\010##\003#\220\311"
 	.ascii	"5\301\217\201m\201<\023\003\323\021N\026\260$\017\003"
 	.ascii	"\003\323\004\277\011~,\014\354\374\214\014L,\013\344"
@@ -34,11 +34,11 @@
 	.ascii	"%\302,V>\006\006\026\240M\020\343\201F0\000\000\007"
 	.ascii	",\017\250"
 	.text
-	.section	.gnu.lto_.pureconst.bceab880f453777c,"",%progbits
+	.section	.gnu.lto_.pureconst.ea1bfe0c6f0f0ec,"",%progbits
 	.ascii	"x\234cf```g\200\000f\006\011\026\011VI\000\001\275\000"
 	.ascii	"`"
 	.text
-	.section	.gnu.lto_systemBeep.bceab880f453777c,"",%progbits
+	.section	.gnu.lto_systemBeep.ea1bfe0c6f0f0ec,"",%progbits
 	.ascii	"x\234m\221\277K\034Q\020\307\347;ow\275h\012\261\274"
 	.ascii	"\302B8D\021\267Hc\351\237\340\177 FO\260\360N\356\320"
 	.ascii	"\356\360\355qE\212\020$E\020L\322D\211zz\247\346\312"
@@ -65,7 +65,7 @@
 	.ascii	"\371\334\270?=6\225\361'rSs\351\\\336\317gg3\023\243"
 	.ascii	"O\323\351\231tnp\234\334l&;9\371\027\206\276\320\260"
 	.text
-	.section	.gnu.lto_systemBeepToggle.bceab880f453777c,"",%progbits
+	.section	.gnu.lto_systemBeepToggle.ea1bfe0c6f0f0ec,"",%progbits
 	.ascii	"x\234e\217\277J\003A\020\306\347\233M\216\2034ji)B\272"
 	.ascii	"\334\253\370\006\242\311\025)\214r\207vGv\345\012+\011"
 	.ascii	"V\202\177:1\032Q\304\302\306\342\362\000*j!\210hs\202"
@@ -84,7 +84,7 @@
 	.ascii	"}\305\017B/\\\\n\324f\347}\177\311\017*U\372\005\337"
 	.ascii	"4k%"
 	.text
-	.section	.gnu.lto_beeperInit.bceab880f453777c,"",%progbits
+	.section	.gnu.lto_beeperInit.ea1bfe0c6f0f0ec,"",%progbits
 	.ascii	"x\234uS[KTQ\024^\337>\227\031\363\2143ZY\315CD \006"
 	.ascii	"\345\370\013\202\236\202 \242?\020Qf\341C\026J\275I"
 	.ascii	"gj\250\036\302$(,\273\020\335\323\354\252],=\232\331"
@@ -130,7 +130,7 @@
 	.ascii	"\266\226VT\026Wn\332R\276n\365\332\322\322\315\245\025"
 	.ascii	"\211\022\262K6\225\257/\333\360\033\206&\260\203"
 	.text
-	.section	.gnu.lto_.symbol_nodes.bceab880f453777c,"",%progbits
+	.section	.gnu.lto_.symbol_nodes.ea1bfe0c6f0f0ec,"",%progbits
 	.ascii	"x\234M\312\275\015\302@\014\206\341\367\3548\204\035"
 	.ascii	"\220\030\325\351h\231 J\301\0324\341 \374H\260\002D"
 	.ascii	")Y\001\304\021(\316\315\243\367\223\025\330\362?\331"
@@ -140,12 +140,12 @@
 	.ascii	"{\322\346\304\311\212\3615&gl\372\333B\015\272\325s"
 	.ascii	"\311\007\215\2255\322"
 	.text
-	.section	.gnu.lto_.refs.bceab880f453777c,"",%progbits
+	.section	.gnu.lto_.refs.ea1bfe0c6f0f0ec,"",%progbits
 	.ascii	"x\234%\301\301\021\000 \014\3030;\241\007C\260\377\234"
 	.ascii	"<\220\012\\\276\202\222\330\355\242v\264f\360\360\000"
 	.ascii	"\007\203\000["
 	.text
-	.section	.gnu.lto_.decls.bceab880f453777c,"",%progbits
+	.section	.gnu.lto_.decls.ea1bfe0c6f0f0ec,"",%progbits
 	.ascii	"x\234\205\230\011P\224I\226\200+\377,\250\203\242\320"
 	.ascii	"\261\327\356e\2176\354Y\347\330\356&\266g6b6bc\247\025"
 	.ascii	"\252\265f\324b\213\322\266c&\242\306\321\352n&l\234"
@@ -357,7 +357,7 @@
 	.ascii	"6\007\006\353\202\242\217y\273\331\364\377\005\263/"
 	.ascii	"a"
 	.text
-	.section	.gnu.lto_.symtab.bceab880f453777c,"",%progbits
+	.section	.gnu.lto_.symtab.ea1bfe0c6f0f0ec,"",%progbits
 	.ascii	"systemBeep\000\000\000\000\000\000\000\000\000\000\000"
 	.ascii	"\000E\001\000\000systemBeepToggle\000\000\000\000\000"
 	.ascii	"\000\000\000\000\000\000\000H\001\000\000beeperInit"
