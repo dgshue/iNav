@@ -100,10 +100,10 @@
 #define USE_BARO_MS5611 // needed for Flip32 board
 #define USE_BARO_BMP280
 
-//#define MAG
-//#define USE_MAG_HMC5883
-//#define USE_MAG_QMC5883
-//#define MAG_HMC5883_ALIGN       CW180_DEG
+#define MAG
+#define USE_MAG_HMC5883
+#define USE_MAG_QMC5883
+#define MAG_HMC5883_ALIGN       CW180_DEG
 
 // #define USE_RANGEFINDER
 // #define USE_RANGEFINDER_HCSR04
@@ -173,8 +173,8 @@
 #define VBAT_ADC_CHANNEL                ADC_CHN_2
 #define RSSI_ADC_CHANNEL                ADC_CHN_3
 
-//#define NAV_AUTO_MAG_DECLINATION
-//#define NAV_GPS_GLITCH_DETECTION
+#define NAV_AUTO_MAG_DECLINATION
+#define NAV_GPS_GLITCH_DETECTION
 
 // #define LED_STRIP
 // #define WS2811_PIN                      PA6
@@ -183,8 +183,8 @@
 
 #define USE_SERIALRX_SPEKTRUM
 #undef USE_SERIALRX_IBUS
-#define SPEKTRUM_BIND
-#define BIND_PIN                PA3
+//#define SPEKTRUM_BIND
+//#define BIND_PIN                PA3
 
 //#define USE_SERIAL_4WAY_BLHELI_INTERFACE
 
